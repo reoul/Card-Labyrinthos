@@ -12,9 +12,11 @@ public class Card : MonoBehaviour
 
     public PRS originPRS;
     public Transform parent;
+    int a = 10;
 
     public void Setup(int num)
     {
+        a = 20;
         this.original_Num = num;
         this.final_Num = num;
         num_TMP.text = (num + 1).ToString();
