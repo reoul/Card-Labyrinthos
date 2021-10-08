@@ -325,6 +325,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cea70c1c177eed44931028dcd2c3625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapdata:
+    event_type: 0
+    monster_type: 0
+    count: 0
+    isClear: 0
 --- !u!1 &1404755822
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,6 +468,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8119fcdd4f4706499896ba14e8027d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTrue: 0
+  a: 0
 --- !u!114 &1482734532
 MonoBehaviour:
   m_ObjectHideFlags: 0

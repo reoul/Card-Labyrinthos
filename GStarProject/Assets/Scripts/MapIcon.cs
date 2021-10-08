@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class MapIcon : MonoBehaviour
 {
-    void OnMouseDown()
-    {
-        MapManager.Inst.IconMouseDown();
-    }
+    public MapData mapdata;
+
+    //void OnMouseDown()
+    //{
+    //    //MapManager.Inst.IconMouseDown();
+    //}
 
     private void OnMouseUp()
     {
-        MapManager.Inst.IconMouseUp();
+        MapData a = new MapData();
+        MapManager.Inst.IconMouseUp(a);
     }
 }

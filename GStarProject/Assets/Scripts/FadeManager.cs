@@ -45,7 +45,9 @@ public class FadeManager : MonoBehaviour
                 SR.color = new Color(0, 0, 0, Mathf.Clamp01(alpha));
                 yield return new WaitForEndOfFrame();
             }
-        FadeEvent.Invoke(this, EventArgs.Empty);
+
+        if(FadeEvent != null)
+            FadeEvent.Invoke(this, EventArgs.Empty);
     }
 
     public void TestEvent(object sender, EventArgs e)
