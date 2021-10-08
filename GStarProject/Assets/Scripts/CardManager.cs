@@ -28,16 +28,16 @@ public class CardManager : MonoBehaviour
     [SerializeField] List<Card> itemBuffer;  //뽑을 카드 더미
     [SerializeField] List<Card> tombItemBuffer;  //버린 카드 더미, 사용한 카드가 여기 리스트에 쌓인다
 
-    public Card selectCard;
+    public Card selectCard;     //선택된 카드
 
-    bool isMyCardDrag;
-    bool onMyCardArea;
+    bool isMyCardDrag;          //현재 플레이어가 카드를 드래그 중인지
+    bool onMyCardArea;          //플레이어 마우스가 카드Area에 있는지
 
     public Ease ease;
 
     public Transform waypoint2;
 
-    private Vector3[] waypoints;
+    private Vector3[] waypoints;        //카드 사용후 버린 카드더미로 이동할때 사용
 
     //Quaternion cardRotate = Utils.QI;
 
@@ -107,7 +107,7 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    void InitCard()
+    void InitCard()         //카드 초기화
     {
         for (int i = 0; i < itemBuffer.Count; i++)
         {
@@ -117,7 +117,7 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    public void CardTombToItemBuffer()
+    public void CardTombToItemBuffer()      //버린 카드 더미에서 뽑을 카드 더미로 섞고 이동
     {
         ShuffleCard();
         //StartCoroutine(CreateBeenCard());
@@ -166,7 +166,7 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    public void AddCard()
+    public void AddCard()           //카드 추가(카드 드로우시 사용)
     {
         Card card = PopItem();
         card.parent.gameObject.SetActive(true);
@@ -176,7 +176,7 @@ public class CardManager : MonoBehaviour
         CardAlignment();
     }
 
-    void SetOriginOrder()
+    void SetOriginOrder()           //카드 랜더링 순서 조정
     {
         int count = MyHandCards.Count;
         for (int i = 0; i < count; i++)
@@ -186,7 +186,7 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    void CardAlignment()
+    void CardAlignment()            //카드 위치 조정
     {
         List<PRS> originCardPRSs = new List<PRS>();
 
@@ -232,7 +232,7 @@ public class CardManager : MonoBehaviour
         //}
     }
 
-    List<PRS> RoundAlignment(Transform leftTr, Transform rightTr, int objCount, float height, Vector3 scale)
+    List<PRS> RoundAlignment(Transform leftTr, Transform rightTr, int objCount, float height, Vector3 scale)        //카드 정렬(둥글게 정렬)
     {
         float[] objLerps = new float[objCount];
         List<PRS> results = new List<PRS>(objCount);
@@ -296,7 +296,7 @@ public class CardManager : MonoBehaviour
         isMyCardDrag = false;
         RaycastHit2D[] hits = Physics2D.RaycastAll(Utils.MousePos, Vector3.forward);
         int layer = LayerMask.NameToLayer("Player");
-        if (Array.Exists(hits, x => x.collider.gameObject.layer == layer))
+        if (Array.Exists(hits, x => x.collider.gameObject.layer == layer))      //만약 플레이어라면
         {
             UseCard(Player.Inst.gameObject);
             if (MyHandCards.Count == 0)
@@ -305,7 +305,7 @@ public class CardManager : MonoBehaviour
         else
         {
             layer = LayerMask.NameToLayer("Enemy");
-            if (Array.Exists(hits, x => x.collider.gameObject.layer == layer))
+            if (Array.Exists(hits, x => x.collider.gameObject.layer == layer))      //만약 적이라면
             {
                 UseCard(EnemyManager.Inst.enemys[0].gameObject);
                 if (MyHandCards.Count == 0)
@@ -314,7 +314,7 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    void UseCard(GameObject obj)
+    void UseCard(GameObject obj)        //카드 사용
     {
         tombItemBuffer.Add(selectCard);
         MyHandCards.Remove(selectCard);
@@ -326,7 +326,7 @@ public class CardManager : MonoBehaviour
         CardFinishMove();
     }
 
-    void CardDrag()
+    void CardDrag()             //카드 드래그
     {
         if(!onMyCardArea)
         {
@@ -338,7 +338,7 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    public void CardFinishMove()
+    public void CardFinishMove()            //카드 사용 후 버린 카드 더미로 이동
     {
         selectCard.FinishCard();
         waypoints = new Vector3[3];
@@ -364,7 +364,7 @@ public class CardManager : MonoBehaviour
         yield return null;
     }
 
-    void EnlargeCard(bool isEnlarge, Card card)
+    void EnlargeCard(bool isEnlarge, Card card)         //카드 확대 함수
     {
         if (isEnlarge)
         { 
@@ -379,7 +379,7 @@ public class CardManager : MonoBehaviour
         card.GetComponent<Order>().SetMostFrontOrder(isEnlarge);
     }
 
-    void DetectCardArea()
+    void DetectCardArea()           //마우스가 카드area에 있는지 체크
     {
         RaycastHit2D[] hits = Physics2D.RaycastAll(Utils.MousePos, Vector3.forward);
         int layer = LayerMask.NameToLayer("MyCardArea");

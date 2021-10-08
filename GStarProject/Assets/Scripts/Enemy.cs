@@ -5,13 +5,13 @@ using TMPro;
 
 public class Enemy : MonoBehaviour
 {
-    public HpBar hpbar;
+    public HpBar hpbar;         //적 체력바
 
-    public int damage;
-    public int weaknessNum;
+    public int damage;          //플레이어에게 줄 데미지
+    public int weaknessNum;     //약점카드 숫자
 
-    [SerializeField] TMP_Text damageTMP;
-    [SerializeField] TMP_Text weaknessTMP;
+    [SerializeField] TMP_Text damageTMP;        //데미지 텍스트
+    [SerializeField] TMP_Text weaknessTMP;      //약점카드 테스트
     public GameObject[] ui;
 
     private void Start()
@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
         UpdateStateText();
     }
 
-    public void RandomPatten()      //턴 끝날때 실행
+    public void RandomPatten()      //랜덤 패턴 함수, 턴 끝날때 실행
     {
         weaknessNum = Random.Range(1, 6);
         int patten = Random.Range(0, 6);
@@ -55,26 +55,26 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void UseTurn()
+    public void UseTurn()           //적 턴 시작할때 호출됨
     {
-        this.GetComponent<Animator>().SetTrigger("Attack");
+        this.GetComponent<Animator>().SetTrigger("Attack");         //공격 애니메이션 실행
         if(damage < 20)
             Player.Inst.hpbar.Damage(damage);
         damage = 0;
     }
 
-    public void UpdateStateText()
+    public void UpdateStateText()           //텍스트 최신화
     {
         damageTMP.text = damage.ToString();
         weaknessTMP.text = (weaknessNum+1).ToString();
     }
 
-    public void Damage(int damage)
+    public void Damage(int damage)          //적이 공격 당할때 호출
     {
         hpbar.Damage(damage);
     }
 
-    public void Dead()
+    public void Dead()              //적이 죽을때 호출
     {
         for (int i = 0; i < ui.Length; i++)
             ui[i].SetActive(false);
@@ -83,7 +83,7 @@ public class Enemy : MonoBehaviour
         this.GetComponent<Animator>().SetTrigger("Dead");
     }
 
-    public void DeadAnimationFinish()
+    public void DeadAnimationFinish()       //Dead 애니메이션이 다 끝날때 호출 
     {
         EnemyManager.Inst.enemys.Remove(this);
         TurnManager.Inst.isFinish = true;
