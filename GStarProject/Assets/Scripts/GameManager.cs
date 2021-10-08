@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 
 public class GameManager : MonoBehaviour
@@ -10,37 +11,18 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Notification notificationPanel;
 
+    [SerializeField] SpriteRenderer fadeInOutObj;
+
     void Awake()
     {
         Inst = this;
+        DontDestroyOnLoad(this.gameObject);
     }
 
-    //public GameObject aaaa;
-
-    // Start is called before the first frame update
     void Start()
     {
-        StartGame();
+        //StartGame();
         DOTween.Init(false, true, LogBehaviour.ErrorsOnly);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-#if UNITY_EDITOR
-        InputCheatKey();
-#endif
-
-        //if(TouchManager.inst.IsTouchLeft())
-        //    Debug.Log(Vector2.Distance(Utils.TouchPos,aaaa.transform.position));
-    }
-
-    void InputCheatKey()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-            TurnManager.OnAddCard.Invoke();
-        if (Input.GetKeyDown(KeyCode.W))
-            TurnManager.Inst.EndTurn();
     }
 
     public void StartGame()

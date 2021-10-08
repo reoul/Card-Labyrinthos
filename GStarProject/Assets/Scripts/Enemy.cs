@@ -25,13 +25,41 @@ public class Enemy : MonoBehaviour
     public void RandomPatten()      //턴 끝날때 실행
     {
         weaknessNum = Random.Range(1, 6);
-        damage = Random.Range(4, 10);
+        int patten = Random.Range(0, 6);
+        switch (patten)
+        {
+            case 0:
+                damage = 10;
+                break;
+            case 1:
+                damage = 4;
+                break;
+            case 2:
+                damage = 60;
+                break;
+            case 3:
+                damage = 15;
+                break;
+            case 4:
+                damage = 8;
+                break;
+            case 5:
+                damage = 90;
+                break;
+            case 6:
+                damage = 7;
+                break;
+            default:
+                damage = 5;
+                break;
+        }
     }
 
     public void UseTurn()
     {
         this.GetComponent<Animator>().SetTrigger("Attack");
-        Player.Inst.hpbar.Damage(damage);
+        if(damage < 20)
+            Player.Inst.hpbar.Damage(damage);
         damage = 0;
     }
 
