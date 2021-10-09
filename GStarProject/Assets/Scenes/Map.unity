@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 1381869456}
   - component: {fileID: 1381869459}
   m_Layer: 0
-  m_Name: mapicon
+  m_Name: field
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -322,14 +322,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1381869455}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cea70c1c177eed44931028dcd2c3625, type: 3}
+  m_Script: {fileID: 11500000, guid: f9bd9349b0400904095b7441e67a99a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapdata:
-    event_type: 0
-    monster_type: 0
-    count: 0
-    isClear: 0
+  field_type: 2
+  event_type: 0
+  monster_type: 0
 --- !u!1 &1404755822
 GameObject:
   m_ObjectHideFlags: 0

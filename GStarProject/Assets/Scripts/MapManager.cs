@@ -1,35 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEditor;
+﻿using UnityEngine;
 
 [System.Serializable]
-public class MapData
+public class FieldData
 {
-    public EVENT_TYPE event_type;
-    public MONSTER_TYPE monster_type;
-    public int count;
-    public bool isClear;
+    [SerializeField]
+    FIELD_TYPE field_type;
+    [SerializeField]
+    EVENT_TYPE event_type;
+    [SerializeField]
+    MONSTER_TYPE monster_type;
+
+    public FieldData()
+    {
+    }
+
+    public FieldData(FIELD_TYPE field_type, EVENT_TYPE event_type, MONSTER_TYPE monster_type)
+    {
+        this.field_type = field_type;
+        this.event_type = event_type;
+        this.monster_type = monster_type;
+    }
 }
 
+public enum FIELD_TYPE { MONSTER, EVENT, REST }
 public enum EVENT_TYPE { EVENT1, EVENT2, EVENT3 };
 public enum MONSTER_TYPE { MONSTER1, MONSTER2, MONSTER3 };
 
-[CustomEditor(typeof(MapManager))]
-public class TestInspector : Editor
-{
-    SerializedProperty abc;
-    public override void OnInspectorGUI()
-    {
-        serializedObject.Update();
-
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("isTrue"));
-        if (serializedObject.FindProperty("isTrue").boolValue)
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("a"));
-
-        serializedObject.ApplyModifiedProperties();
-    }
-}
 
 public class MapManager : MonoBehaviour
 {
@@ -45,7 +41,7 @@ public class MapManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public void IconMouseUp(MapData mapData)
+    public void IconMouseUp(FieldData fieldData)
     {
         FadeManager.Inst.FadeOut();
     }
