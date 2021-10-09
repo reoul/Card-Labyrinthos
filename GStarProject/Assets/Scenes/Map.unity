@@ -325,7 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9bd9349b0400904095b7441e67a99a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  field_type: 2
+  field_type: 0
   event_type: 0
   monster_type: 0
 --- !u!1 &1404755822
