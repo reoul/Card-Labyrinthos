@@ -8,7 +8,7 @@ public class FieldInspector : Editor
     {
         serializedObject.Update();
         EditorGUILayout.PropertyField(serializedObject.FindProperty("field_type"));
-        if (serializedObject.FindProperty("field_type").enumValueIndex == (int)FIELD_TYPE.MONSTER)
+        if (serializedObject.FindProperty("field_type").enumValueIndex == (int)FIELD_TYPE.BATTLE)
             EditorGUILayout.PropertyField(serializedObject.FindProperty("monster_type"));
         else if (serializedObject.FindProperty("field_type").enumValueIndex == (int)FIELD_TYPE.EVENT)
             EditorGUILayout.PropertyField(serializedObject.FindProperty("event_type"));

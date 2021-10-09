@@ -45,3 +45,6 @@ TagManager:
   - name: Card
     uniqueID: 1347361645
     locked: 0
+  - name: FadeObj
+    uniqueID: 3840145323
+    locked: 0

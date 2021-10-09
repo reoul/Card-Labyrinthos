@@ -1735,7 +1735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notificationPanel: {fileID: 963037026}
-  turnBtn: {fileID: 0}
+  fadeInOutObj: {fileID: 0}
 --- !u!4 &1591938820
 Transform:
   m_ObjectHideFlags: 0
@@ -2217,7 +2217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2096854075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2233,7 +2233,6 @@ MonoBehaviour:
   isFinish: 0
   startCardCount: 3
   isLoading: 0
-  EndTurnBtn: {fileID: 0}
 --- !u!4 &2096854076
 Transform:
   m_ObjectHideFlags: 0

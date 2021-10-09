@@ -1,7 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 using Random = UnityEngine.Random;
 
 public class TurnManager : MonoBehaviour
@@ -13,6 +13,7 @@ public class TurnManager : MonoBehaviour
     {
         Inst = this;
         isFinish = false;
+        DontDestroyOnLoad(this.gameObject);
     }
 
     [SerializeField] [Tooltip("시작 카드 개수를 정합니다")] int startCardCount;
@@ -91,5 +92,5 @@ public class TurnManager : MonoBehaviour
         EnemyManager.Inst.UpdateStateTextAllEnemy();
         StartCoroutine(StartTurnCorutine());
     }
-    
+
 }

@@ -27,31 +27,32 @@ public class FadeManager : MonoBehaviour
         StartCoroutine(Fade(true));
     }
 
+    public IEnumerator FadeInOut(IEnumerator enumerator = null)
+    {
+        yield return StartCoroutine(Fade(true));       //페이드 실행
+        if (FadeEvent != null)
+            FadeEvent(this, EventArgs.Empty);           //실행 후 이벤트 실행
+        yield return StartCoroutine(Fade(false));                   //다시 페이드 실행
+        if (enumerator != null)
+            StartCoroutine(enumerator);
+    }
+
     IEnumerator Fade(bool isOut)
     {
         float alpha = isOut ? 0 : 1;
         if (isOut)
             while (alpha < 1)
             {
-                alpha += Time.deltaTime;
+                alpha += Time.deltaTime * 2;
                 SR.color = new Color(0, 0, 0, Mathf.Clamp01(alpha));
                 yield return new WaitForEndOfFrame();
             }
         else
             while (alpha > 0)
             {
-                alpha -= Time.deltaTime;
-                Debug.Log(alpha);
+                alpha -= Time.deltaTime / 2;
                 SR.color = new Color(0, 0, 0, Mathf.Clamp01(alpha));
                 yield return new WaitForEndOfFrame();
             }
-
-        if(FadeEvent != null)
-            FadeEvent.Invoke(this, EventArgs.Empty);
-    }
-
-    public void TestEvent(object sender, EventArgs e)
-    {
-
     }
 }
