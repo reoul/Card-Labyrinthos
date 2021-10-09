@@ -1,8 +1,8 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 using Random = UnityEngine.Random;
 
 
@@ -137,10 +137,10 @@ public class CardManager : MonoBehaviour
         for (int i = 0; i < tombItemBuffer.Count; i++)
         {
             var cardObject = Instantiate(beenCardPrefab, cardEndPoint.position, Utils.CardRotate);
-            cardObject.transform.DOMove(cardSpawnPoint.position,1f).OnComplete(()=>
-            {
-                Destroy(cardObject);
-            });
+            cardObject.transform.DOMove(cardSpawnPoint.position, 1f).OnComplete(() =>
+             {
+                 Destroy(cardObject);
+             });
             yield return new WaitForEndOfFrame();
         }
     }
@@ -204,7 +204,7 @@ public class CardManager : MonoBehaviour
     {
         StartCoroutine(FinishTurnCorutine());
     }
-    
+
     IEnumerator FinishTurnCorutine()
     {
         for (int i = 0; i < MyHandCards.Count; i++)
@@ -216,7 +216,7 @@ public class CardManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
             PRS endPRS = new PRS(cardEndPoint.position, Utils.CardRotate, Vector3.one * 0.1f);
             var card = MyHandCards[i].GetComponent<Card>();
-            card.transform.DOMove(cardEndPoint.position, 0.7f).OnComplete(()=>
+            card.transform.DOMove(cardEndPoint.position, 0.7f).OnComplete(() =>
             {
                 MyHandCards.Remove(card);
                 Destroy(card.gameObject);
@@ -278,6 +278,8 @@ public class CardManager : MonoBehaviour
     public void CardMouseOver(Card card)
     {
         selectCard = card;
+        Debug.Log(card.parent.gameObject.name);
+        Debug.Log(onMyCardArea);
         EnlargeCard(true, card);
     }
 
@@ -328,7 +330,7 @@ public class CardManager : MonoBehaviour
 
     void CardDrag()             //카드 드래그
     {
-        if(!onMyCardArea)
+        if (!onMyCardArea)
         {
             selectCard.MoveTransform(new PRS(Utils.MousePos, Utils.CardRotate, selectCard.originPRS.scale * 0.5f), false);
         }
@@ -347,7 +349,7 @@ public class CardManager : MonoBehaviour
         waypoints.SetValue(cardEndPoint.position, 2);
         GameObject target = selectCard.parent.gameObject;
         selectCard.parent.DOPath(waypoints, 1, PathType.CatmullRom).
-            SetLookAt(new Vector3(0, 0, 0)).SetEase(ease).OnComplete(()=>
+            SetLookAt(new Vector3(0, 0, 0)).SetEase(ease).OnComplete(() =>
             {
                 target.SetActive(false);
             });
@@ -367,9 +369,10 @@ public class CardManager : MonoBehaviour
     void EnlargeCard(bool isEnlarge, Card card)         //카드 확대 함수
     {
         if (isEnlarge)
-        { 
+        {
             Vector3 enlargePos = new Vector3(card.originPRS.pos.x, onMyCardArea ? -3 : card.originPRS.pos.y, onMyCardArea ? -100 : card.originPRS.pos.z);
             card.MoveTransform(new PRS(enlargePos, Utils.CardRotate, Vector3.one * (onMyCardArea ? 1.5f : 1)), false);
+            Debug.Log(onMyCardArea ? "확대" : "기본");
         }
         else
         {
