@@ -277,10 +277,10 @@ public class CardManager : MonoBehaviour
 
     public void CardMouseOver(Card card)
     {
-        selectCard = card;
-        Debug.Log(card.parent.gameObject.name);
-        Debug.Log(onMyCardArea);
-        EnlargeCard(true, card);
+        if (!isMyCardDrag)
+            selectCard = card;
+        if (selectCard == card && onMyCardArea)
+            EnlargeCard(true, card);
     }
 
     public void CardMouseExit(Card card)
@@ -290,7 +290,8 @@ public class CardManager : MonoBehaviour
 
     public void CardMouseDown()
     {
-        isMyCardDrag = true;
+        if (onMyCardArea)
+            isMyCardDrag = true;
     }
 
     public void CardMouseUp()
@@ -298,8 +299,11 @@ public class CardManager : MonoBehaviour
         isMyCardDrag = false;
         RaycastHit2D[] hits = Physics2D.RaycastAll(Utils.MousePos, Vector3.forward);
         int layer = LayerMask.NameToLayer("Player");
+        bool isUse = false;
         if (Array.Exists(hits, x => x.collider.gameObject.layer == layer))      //만약 플레이어라면
         {
+            EnlargeCard(false, selectCard, true);
+            isUse = true;
             UseCard(Player.Inst.gameObject);
             if (MyHandCards.Count == 0)
                 TurnManager.Inst.EndTurn();
@@ -309,11 +313,15 @@ public class CardManager : MonoBehaviour
             layer = LayerMask.NameToLayer("Enemy");
             if (Array.Exists(hits, x => x.collider.gameObject.layer == layer))      //만약 적이라면
             {
+                EnlargeCard(false, selectCard, true);
+                isUse = true;
                 UseCard(EnemyManager.Inst.enemys[0].gameObject);
                 if (MyHandCards.Count == 0)
                     TurnManager.Inst.EndTurn();
             }
         }
+        if (!isUse)
+            EnlargeCard(false, selectCard);
     }
 
     void UseCard(GameObject obj)        //카드 사용
@@ -366,17 +374,19 @@ public class CardManager : MonoBehaviour
         yield return null;
     }
 
-    void EnlargeCard(bool isEnlarge, Card card)         //카드 확대 함수
+    void EnlargeCard(bool isEnlarge, Card card, bool isUse = false)         //카드 확대 함수
     {
         if (isEnlarge)
         {
             Vector3 enlargePos = new Vector3(card.originPRS.pos.x, onMyCardArea ? -3 : card.originPRS.pos.y, onMyCardArea ? -100 : card.originPRS.pos.z);
             card.MoveTransform(new PRS(enlargePos, Utils.CardRotate, Vector3.one * (onMyCardArea ? 1.5f : 1)), false);
-            Debug.Log(onMyCardArea ? "확대" : "기본");
         }
         else
         {
-            card.MoveTransform(card.originPRS, false);
+            if (isUse)
+                card.MoveTransform(new PRS(card.parent.transform.position, card.parent.transform.rotation, Vector3.one), false);
+            else
+                card.MoveTransform(card.originPRS, false);
         }
 
         card.GetComponent<Order>().SetMostFrontOrder(isEnlarge);
