@@ -385,4 +385,5 @@ public class CardManager : MonoBehaviour
         int layer = LayerMask.NameToLayer("MyCardArea");
         onMyCardArea = Array.Exists(hits, x => x.collider.gameObject.layer == layer);
     }
+
 }
