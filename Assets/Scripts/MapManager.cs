@@ -49,45 +49,34 @@ public class MapManager : MonoBehaviour
     public void IconMouseUp(FieldData fieldData)
     {
         data = fieldData;
-        FadeManager.FadeEvent += GetLoadMethod();
-        StartCoroutine(FadeManager.Inst.FadeInOut(TurnManager.Inst.StartGameCorutine()));
+        FadeManager.FadeEvent += new EventHandler(LoadScene);
+        StartEvent();
     }
 
-    public void LoadBattleScene(object obj, EventArgs e)
+    public void LoadScene(object obj, EventArgs e)
     {
-        SceneManager.LoadScene("Battle");
-    }
-    public void LoadRestScene(object obj, EventArgs e)
-    {
-        SceneManager.LoadScene("Rest");
-    }
-    public void LoadEventScene(object obj, EventArgs e)
-    {
-        SceneManager.LoadScene("Event");
-    }
-    public void LoadShopScene(object obj, EventArgs e)
-    {
-        SceneManager.LoadScene("Shop");
-    }
-    public void LoadMapScene(object obj, EventArgs e)
-    {
-        SceneManager.LoadScene("Map");
+        SceneManager.LoadScene(data.field_type.ToString());
     }
 
-    public EventHandler GetLoadMethod()
+    void StartEvent()
     {
-        switch (data.field_type.ToString())
+        switch (data.field_type)
         {
-            case "BATTLE":
-                return new EventHandler(LoadBattleScene);
-            case "SHOP":
-                return new EventHandler(LoadShopScene);
-            case "EVENT":
-                return new EventHandler(LoadEventScene);
-            case "REST":
-                return new EventHandler(LoadRestScene);
-            default:
-                return new EventHandler(LoadMapScene);
+            case FIELD_TYPE.BATTLE:
+                StartCoroutine(FadeManager.Inst.FadeInOut(TurnManager.Inst.StartGameCorutine()));
+                break;
+            case FIELD_TYPE.EVENT:
+                StartCoroutine(FadeManager.Inst.FadeInOut());
+                break;
+            case FIELD_TYPE.SHOP:
+                StartCoroutine(FadeManager.Inst.FadeInOut());
+                break;
+            case FIELD_TYPE.REST:
+                StartCoroutine(FadeManager.Inst.FadeInOut());
+                break;
+            case FIELD_TYPE.MAP:
+                StartCoroutine(FadeManager.Inst.FadeInOut());
+                break;
         }
     }
 }
