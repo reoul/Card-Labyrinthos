@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 
@@ -12,6 +13,7 @@ public class CardManager : MonoBehaviour
     void Awake()
     {
         Inst = this;
+        DontDestroyOnLoad(this.gameObject);
     }
 
     //[SerializeField] ItemSO itemSO;
@@ -23,7 +25,7 @@ public class CardManager : MonoBehaviour
     [SerializeField] Transform myCardRight; //내 손패 오른쪽 포지션
     [SerializeField] Transform CardCenterPoint;
 
-    int[] cardCount;        //현재 가지고 있는 1~6카드 갯수
+    [SerializeField] int[] cardDeck;        //현재 플레이어 카드 덱, 1~6
     [SerializeField] List<Card> MyHandCards;    //내 손에 들고 있는 카드 리스트
     [SerializeField] List<Card> itemBuffer;  //뽑을 카드 더미
     [SerializeField] List<Card> tombItemBuffer;  //버린 카드 더미, 사용한 카드가 여기 리스트에 쌓인다
@@ -43,20 +45,20 @@ public class CardManager : MonoBehaviour
 
     void Start()
     {
-        cardCount = new int[6];
-        for (int i = 0; i < cardCount.Length; i++)
-            cardCount[i] = 1;
-        SetupItemBuffer();
-        TurnManager.OnAddCard += AddCard;
-        //Time.timeScale = 0.1f;
+        cardDeck = new int[6];
+        for (int i = 0; i < cardDeck.Length; i++)
+            cardDeck[i] = 1;
     }
 
     void Update()
     {
-        if (isMyCardDrag)
-            CardDrag();
+        if (SceneManager.GetActiveScene().name == "Battle")
+        {
+            if (isMyCardDrag)
+                CardDrag();
 
-        DetectCardArea();
+            DetectCardArea();
+        }
     }
 
     public Card PopItem()   //카드 뽑기
@@ -71,12 +73,13 @@ public class CardManager : MonoBehaviour
 
     void SetupItemBuffer()  //초기 카드 생성
     {
+        Debug.Log("-----------------------------");
         itemBuffer = new List<Card>();
         tombItemBuffer = new List<Card>();
         MyHandCards = new List<Card>();
-        for (int i = 0; i < cardCount.Length; i++)
+        for (int i = 0; i < cardDeck.Length; i++)
         {
-            for (int j = 0; j < cardCount[i]; j++)
+            for (int j = 0; j < cardDeck[i]; j++)
             {
                 GameObject cardObj = Instantiate(cardPrefab, cardSpawnPoint.position, Utils.CardRotate);
                 Card card = cardObj.GetComponentInChildren<Card>();
@@ -87,6 +90,7 @@ public class CardManager : MonoBehaviour
                 itemBuffer.Add(card);
             }
         }
+        Debug.Log("-----------------------------");
         for (int i = 0; i < itemBuffer.Count; i++)
         {
             int rand = Random.Range(i, itemBuffer.Count);
@@ -107,6 +111,21 @@ public class CardManager : MonoBehaviour
         }
     }
 
+    public IEnumerator InitCorutine()
+    {
+        cardSpawnPoint = GameObject.Find("CardSpawn").transform;
+        cardEndPoint = GameObject.Find("CardEnd").transform;
+        myCardLeft = GameObject.Find("CardLeft").transform;
+        myCardRight = GameObject.Find("CardRight").transform;
+        waypoint2 = GameObject.Find("WayPoint").transform;
+
+        SetupItemBuffer();
+        TurnManager.OnAddCard += AddCard;
+
+        InitCard();
+        yield return null;
+    }
+
     void InitCard()         //카드 초기화
     {
         for (int i = 0; i < itemBuffer.Count; i++)
@@ -115,6 +134,33 @@ public class CardManager : MonoBehaviour
             itemBuffer[i].parent.rotation = Utils.CardRotate;
             itemBuffer[i].parent.localScale = Vector3.zero;
         }
+    }
+
+    void FinishBattle()
+    {
+        while (MyHandCards.Count > 0)
+        {
+            GameObject card = MyHandCards[0].parent.gameObject;
+            MyHandCards.RemoveAt(0);
+            Destroy(card);
+        }
+        while (itemBuffer.Count > 0)
+        {
+            GameObject card = itemBuffer[0].parent.gameObject;
+            itemBuffer.RemoveAt(0);
+            Destroy(card);
+        }
+        while (tombItemBuffer.Count > 0)
+        {
+            GameObject card = tombItemBuffer[0].parent.gameObject;
+            tombItemBuffer.RemoveAt(0);
+            Destroy(card);
+        }
+        selectCard = null;
+        MyHandCards = null;
+        itemBuffer = null;
+        tombItemBuffer = null;
+        TurnManager.OnAddCard -= AddCard;
     }
 
     public void CardTombToItemBuffer()      //버린 카드 더미에서 뽑을 카드 더미로 섞고 이동
@@ -397,6 +443,16 @@ public class CardManager : MonoBehaviour
         RaycastHit2D[] hits = Physics2D.RaycastAll(Utils.MousePos, Vector3.forward);
         int layer = LayerMask.NameToLayer("MyCardArea");
         onMyCardArea = Array.Exists(hits, x => x.collider.gameObject.layer == layer);
+    }
+
+    public void AddCardDeck(Card card)      //플레이어 카드 덱에 카드 추가, 상점이나 보상에서 카드 획득할 때
+    {
+        cardDeck[card.original_Num]++;
+    }
+
+    public void AddCardDeck(int card)      //플레이어 카드 덱에 카드 추가, 상점이나 보상에서 카드 획득할 때
+    {
+        cardDeck[card]++;
     }
 
 }
