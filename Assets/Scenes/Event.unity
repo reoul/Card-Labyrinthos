@@ -695,8 +695,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "[\uBD88\uD0DC\uC6B4\uB2E4] +\uC2A4\uD0AC\uBD81and+\uC22B\uC790\uCE74\uB4DC
-    or -HP20"
+  m_Text: "[\uCC22\uB294\uB2E4] +\uC2A4\uD0AC\uBD81and+\uC22B\uC790\uCE74\uB4DC or
+    -HP20"
 --- !u!222 &69517077
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3228,7 +3228,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "[\uB9C8\uC2E0\uB2E4] +\uC2A4\uD0AC\uBD81(50%) / - HP 10(50%)"
+  m_Text: "[\uB9C8\uC2E0\uB2E4] + HP 10(50%) / - HP 10(50%)"
 --- !u!222 &512693148
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3601,7 +3601,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &597947632
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3698,7 +3698,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "[\uBD80\uC2E0\uB2E4] +\uC7AC\uD654 100"
+  m_Text: "[\uBD80\uC2E0\uB2E4] + \uCE74\uB4DC\uD30C\uD3B8 100"
 --- !u!222 &610556646
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7277,7 +7277,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "[\uBB34\uB108\uB728\uB9B0\uB2E4] +\uC2A4\uD0AC\uBD81(50%) or -HP10(50%)"
+  m_Text: "[\uBB34\uB108\uB728\uB9B0\uB2E4] + \uCE74\uB4DC\uD30C\uD3B8(50%) or -HP10(50%)"
 --- !u!222 &1198289107
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8901,7 +8901,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "[\uB4A4\uC9C4\uB2E4] +\uC2A4\uD0AC\uBD81"
+  m_Text: "[\uB4A4\uC9C4\uB2E4] +\uC2A4\uD0AC\uBD81(30%) or -HP10(70%)"
 --- !u!222 &1442675504
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13038,8 +13038,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "\uBAA9\uC548\uC774 \uD0C0\uB4E4\uC5B4 \uAC00\uB294 \uB4EF\uD55C \uAC08\uC99D\uC774
     \n\uB2F9\uC2E0\uC744 \uBBF8\uCE58\uAC8C \uD558\uACE0\uC788\uC2B5\uB2C8\uB2E4.\n\n\uB2F9\uC2E0\uC758
-    \uC55E\uC5D0 \uBB34\uC5C7\uC774 \uB4E4\uC5B4\uC788\uB294\uC9C0\n\uBAA8\uB974\uB294
-    \uBB3C\uC774 \uC788\uC2B5\uB2C8\uB2E4.\n\n\uC120\uD0DD\uD558\uC2ED\uC2DC\uC624."
+    \uC55E\uC5D0 \uACE0\uC5EC\uC9C4 \uBB3C\uC774 \uC788\uC2B5\uB2C8\uB2E4.\n\n\uC120\uD0DD\uD558\uC2ED\uC2DC\uC624."
 --- !u!222 &2118911376
 CanvasRenderer:
   m_ObjectHideFlags: 0
