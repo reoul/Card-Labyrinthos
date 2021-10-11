@@ -73,7 +73,6 @@ public class CardManager : MonoBehaviour
 
     void SetupItemBuffer()  //초기 카드 생성
     {
-        Debug.Log("-----------------------------");
         itemBuffer = new List<Card>();
         tombItemBuffer = new List<Card>();
         MyHandCards = new List<Card>();
@@ -90,7 +89,6 @@ public class CardManager : MonoBehaviour
                 itemBuffer.Add(card);
             }
         }
-        Debug.Log("-----------------------------");
         for (int i = 0; i < itemBuffer.Count; i++)
         {
             int rand = Random.Range(i, itemBuffer.Count);
