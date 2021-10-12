@@ -6,6 +6,8 @@ public class StageManager : MonoBehaviour
 {
     public static StageManager Inst;
 
+    public MonsterSO monsterSO;
+
     public Transform player_spawn;
     public Transform enemy_spawn;
 
@@ -14,8 +16,20 @@ public class StageManager : MonoBehaviour
         Inst = this;
     }
 
+    private void Start()
+    {
+        CreateStage();
+    }
+
     public void CreateStage()
     {
-
+        for (int i = 0; i < monsterSO.monsters.Length; i++)
+        {
+            if (MapManager.Inst.data.monster_type == monsterSO.monsters[i].type)
+            {
+                GameObject cardObject = Instantiate(monsterSO.monsters[i].prefab, enemy_spawn.position, Quaternion.identity);
+                break;
+            }
+        }
     }
 }

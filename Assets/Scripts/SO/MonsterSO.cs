@@ -39,7 +39,7 @@ public class Monster
 }
 
 [CreateAssetMenu(fileName = "MonsterSO", menuName = "Scriptable Object/MonsterSO")]
-public class ItemSO : ScriptableObject
+public class MonsterSO : ScriptableObject
 {
     public Monster[] monsters;
 }

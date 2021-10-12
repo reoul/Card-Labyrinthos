@@ -1439,7 +1439,7 @@ GameObject:
   - component: {fileID: 4297450255173574645}
   - component: {fileID: 4647357947262103119}
   - component: {fileID: 6741687728378613300}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Djinn Bandit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1473,7 +1473,7 @@ Animator:
   m_GameObject: {fileID: 8718625113256462797}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 284c8931d7f46c041bf75d1731ffa9b8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

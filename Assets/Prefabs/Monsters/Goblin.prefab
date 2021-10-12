@@ -1439,8 +1439,8 @@ GameObject:
   - component: {fileID: 4297450255173574645}
   - component: {fileID: 4647357947262103119}
   - component: {fileID: 6741687728378613300}
-  m_Layer: 0
-  m_Name: Djinn Bandit
+  m_Layer: 10
+  m_Name: Goblin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

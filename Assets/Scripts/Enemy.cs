@@ -71,6 +71,10 @@ public class Enemy : MonoBehaviour
     public void UseTurn()           //적 턴 시작할때 호출됨
     {
         this.GetComponent<Animator>().SetTrigger("Attack");         //공격 애니메이션 실행
+    }
+
+    public void Attack()
+    {
         if (damage < 20)
             Player.Inst.hpbar.Damage(damage);
         damage = 0;
