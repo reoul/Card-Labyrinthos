@@ -360,7 +360,7 @@ MonoBehaviour:
       index: 5
   - name: Normal_Chest
     hp: 10
-    type: 12
+    type: 29
     prefab: {fileID: 8718625113256462797, guid: 97b42d7f0b4b80b4f99ebfa25682fc2f,
       type: 3}
     pattern_1:
@@ -497,8 +497,8 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Red Ogre
-    hp: 35
-    type: 12
+    hp: 5
+    type: 30
     prefab: {fileID: 8718625113256462797, guid: 848eebfa6a44bcb4b98c7a5c0795cb69,
       type: 3}
     pattern_1:

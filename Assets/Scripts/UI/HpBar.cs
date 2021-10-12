@@ -25,6 +25,7 @@ public class HpBar : MonoBehaviour
     {
         this.hp = hp;
         this.max_hp = hp;
+        parent = this.transform.parent.gameObject;
         Init();
     }
 

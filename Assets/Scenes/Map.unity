@@ -1166,7 +1166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8119fcdd4f4706499896ba14e8027d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
+  fieldData:
     field_type: 0
     event_type: 0
     monster_type: 0
@@ -1393,7 +1393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   field_type: 0
   event_type: 0
-  monster_type: 12
+  monster_type: 30
 --- !u!61 &1906898752
 BoxCollider2D:
   m_ObjectHideFlags: 0
