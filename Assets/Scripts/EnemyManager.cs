@@ -20,4 +20,6 @@ public class EnemyManager : MonoBehaviour
             enemys[i].UpdateStateText();
         }
     }
+
+    //public void 
 }

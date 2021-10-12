@@ -12,4 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: MonsterSO
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
-  monsters: []
+  monsters:
+  - name: DJINN_BANDIT
+    hp: 80
+    type: 12
+    sprite: {fileID: 21300000, guid: 5bd29cb38fe3ea44bbed664ff5d377e6, type: 3}
+    animatorController: {fileID: 9100000, guid: 284c8931d7f46c041bf75d1731ffa9b8,
+      type: 2}
+    pattern_1:
+      pattern_type: 0
+      index: 0
+    pattern_2:
+      pattern_type: 0
+      index: 0
+    pattern_3:
+      pattern_type: 0
+      index: 0
+    pattern_4:
+      pattern_type: 0
+      index: 0
+    pattern_5:
+      pattern_type: 0
+      index: 0
+    pattern_6:
+      pattern_type: 0
+      index: 0
