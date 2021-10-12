@@ -92,4 +92,10 @@ public class HpBar : MonoBehaviour
         else
             parent.GetComponent<Enemy>().Dead();
     }
+
+   /* public void Heal(int Heal_amout)
+    {
+
+    }
+    */
 }
