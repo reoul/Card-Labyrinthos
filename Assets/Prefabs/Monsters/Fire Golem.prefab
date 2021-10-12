@@ -523,7 +523,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7454673875095221265}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.105, y: -0.234, z: 0.42342427}
+  m_LocalPosition: {x: 0.052, y: -0.312, z: 0.42342427}
   m_LocalScale: {x: 0.05, y: 0.05, z: 1}
   m_Children:
   - {fileID: 6211480611614817096}
@@ -820,7 +820,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8023498797250102828}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.009060174, y: 0.119828686, z: 0}
+  m_LocalPosition: {x: -0.038, y: 0.238, z: -0}
   m_LocalScale: {x: 0.29999998, y: 0.03, z: 0.029999997}
   m_Children:
   - {fileID: 8023498796944669835}
@@ -854,7 +854,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8023498797359241748}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.083, y: 0.119, z: 0}
+  m_LocalPosition: {x: 0.048, y: 0.232, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 8023498797937024166}
@@ -1473,7 +1473,7 @@ Animator:
   m_GameObject: {fileID: 8718625113256462797}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dfee2beb2aba96c4b9acc199ab27a6e6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1521,7 +1521,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5bd29cb38fe3ea44bbed664ff5d377e6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 37ea3c99ba85a764e86fff3af33b3bfd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1563,16 +1563,16 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.1137015, y: -0.07428892}
+  m_Offset: {x: 0.029638454, y: -0.06126508}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.48, y: 0.42}
+    oldSize: {x: 0.64, y: 0.57}
     newSize: {x: 0.48, y: 0.42}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.23059027, y: 0.27142218}
+  m_Size: {x: 0.48396334, y: 0.4348123}
   m_EdgeRadius: 0
