@@ -27,7 +27,8 @@ public class StageManager : MonoBehaviour
         {
             if (MapManager.Inst.data.monster_type == monsterSO.monsters[i].type)
             {
-                GameObject cardObject = Instantiate(monsterSO.monsters[i].prefab, enemy_spawn.position, Quaternion.identity);
+                GameObject enemy = Instantiate(monsterSO.monsters[i].prefab, enemy_spawn.position, Quaternion.identity);
+                EnemyManager.Inst.enemys.Add(enemy.GetComponent<Enemy>());
                 break;
             }
         }
