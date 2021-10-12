@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   monsters:
   - name: Djinn Bandit
-    hp: 80
+    hp: 20
     type: 12
     prefab: {fileID: 8718625113256462797, guid: 663ea81a439268a479470bad28d388b7,
       type: 3}
@@ -37,7 +37,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Earth Wisp
-    hp: 80
+    hp: 15
     type: 5
     prefab: {fileID: 8718625113256462797, guid: 00e93119361392c4f9011e274693cf54,
       type: 3}
@@ -60,7 +60,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Executioner
-    hp: 80
+    hp: 35
     type: 19
     prefab: {fileID: 8718625113256462797, guid: e1f4b4cf8e8f1c0438df28b90c36bc9c,
       type: 3}
@@ -83,7 +83,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Fire Golem
-    hp: 80
+    hp: 50
     type: 20
     prefab: {fileID: 8718625113256462797, guid: 38779d5c4f700e94182b940168329850,
       type: 3}
@@ -106,7 +106,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Fire Wisp
-    hp: 80
+    hp: 25
     type: 7
     prefab: {fileID: 8718625113256462797, guid: ea29ac1bb140f0643b4cc9f5800ae091,
       type: 3}
@@ -129,7 +129,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Ghoul
-    hp: 80
+    hp: 30
     type: 21
     prefab: {fileID: 8718625113256462797, guid: 667d036721b963041b295625954a2ea3,
       type: 3}
@@ -152,7 +152,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Goblin
-    hp: 80
+    hp: 15
     type: 0
     prefab: {fileID: 8718625113256462797, guid: 760b6b0c7e49cdf48875be328f26b795,
       type: 3}
@@ -175,7 +175,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Golem
-    hp: 80
+    hp: 50
     type: 18
     prefab: {fileID: 8718625113256462797, guid: 0c6c378132d7ff94f8d4aa2061e9ecac,
       type: 3}
@@ -198,7 +198,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Ice Golem
-    hp: 80
+    hp: 50
     type: 22
     prefab: {fileID: 8718625113256462797, guid: 464d194bf735f014bbeef66f34901c98,
       type: 3}
@@ -221,7 +221,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Imp
-    hp: 20
+    hp: 15
     type: 23
     prefab: {fileID: 8718625113256462797, guid: 91a07a7c90ffa454293b8ba1307aeaeb,
       type: 3}
@@ -244,7 +244,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Kobold
-    hp: 20
+    hp: 15
     type: 1
     prefab: {fileID: 8718625113256462797, guid: 40ec34be6b93d0e49ab823a3288d0b77,
       type: 3}
@@ -267,7 +267,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Mandrake
-    hp: 80
+    hp: 10
     type: 11
     prefab: {fileID: 8718625113256462797, guid: a0e0032a65598f94c8f4905ce5a1161a,
       type: 3}
@@ -290,7 +290,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Mimic
-    hp: 30
+    hp: 15
     type: 4
     prefab: {fileID: 8718625113256462797, guid: c8768a5b68ea79a43b31006b9dda9c4d,
       type: 3}
@@ -313,7 +313,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Minotaur
-    hp: 80
+    hp: 40
     type: 9
     prefab: {fileID: 8718625113256462797, guid: 2ed14905c50ffdb4eb1f0f452ea54a84,
       type: 3}
@@ -336,7 +336,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Necromancer
-    hp: 80
+    hp: 35
     type: 24
     prefab: {fileID: 8718625113256462797, guid: 1db61188e3ed97d45a0c4694f6bbaba9,
       type: 3}
@@ -359,8 +359,8 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Normal_Chest
-    hp: 80
-    type: 12
+    hp: 10
+    type: 29
     prefab: {fileID: 8718625113256462797, guid: 97b42d7f0b4b80b4f99ebfa25682fc2f,
       type: 3}
     pattern_1:
@@ -382,7 +382,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Oculothorax
-    hp: 80
+    hp: 15
     type: 3
     prefab: {fileID: 8718625113256462797, guid: 4294427ed3d523241951c11ca54bc5f3,
       type: 3}
@@ -405,7 +405,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Ogre
-    hp: 80
+    hp: 30
     type: 2
     prefab: {fileID: 8718625113256462797, guid: 5665c6d550794a44393de78913ef48cd,
       type: 3}
@@ -428,7 +428,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Phantom Knight
-    hp: 80
+    hp: 45
     type: 25
     prefab: {fileID: 8718625113256462797, guid: 8a7d4764c5caa3243b2f2cb5d56772a5,
       type: 3}
@@ -474,7 +474,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Reaper
-    hp: 35
+    hp: 20
     type: 26
     prefab: {fileID: 8718625113256462797, guid: 555a9bfda3f04ed43a716088b5461637,
       type: 3}
@@ -497,8 +497,8 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Red Ogre
-    hp: 80
-    type: 12
+    hp: 5
+    type: 30
     prefab: {fileID: 8718625113256462797, guid: 848eebfa6a44bcb4b98c7a5c0795cb69,
       type: 3}
     pattern_1:
@@ -520,7 +520,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Satyr
-    hp: 80
+    hp: 25
     type: 13
     prefab: {fileID: 8718625113256462797, guid: aa28dc80b6185de4aa7e250bcc6455dd,
       type: 3}
@@ -543,7 +543,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Shade
-    hp: 80
+    hp: 25
     type: 14
     prefab: {fileID: 8718625113256462797, guid: 2adebc14cb1f18d44a0c7b5dafaf1d72,
       type: 3}
@@ -566,7 +566,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Slug
-    hp: 80
+    hp: 15
     type: 27
     prefab: {fileID: 8718625113256462797, guid: 8c85f02114d007744ab0d4a350eb3d96,
       type: 3}
@@ -589,7 +589,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Undead Warrior
-    hp: 80
+    hp: 20
     type: 28
     prefab: {fileID: 8718625113256462797, guid: cd970e449e0945d49a544be40f019740,
       type: 3}
@@ -612,7 +612,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Wasp
-    hp: 80
+    hp: 15
     type: 15
     prefab: {fileID: 8718625113256462797, guid: b24e16e170ea75f488191a1d2bba3774,
       type: 3}
@@ -635,7 +635,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Water Wisp
-    hp: 80
+    hp: 25
     type: 8
     prefab: {fileID: 8718625113256462797, guid: 37d0677e7ee161f44810ec8880f6fd46,
       type: 3}
@@ -658,7 +658,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Werewolf
-    hp: 80
+    hp: 40
     type: 16
     prefab: {fileID: 8718625113256462797, guid: 4eed5bf0b1cc04b43b1715c8f53d613d,
       type: 3}
@@ -681,7 +681,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Wind Wisp
-    hp: 80
+    hp: 25
     type: 6
     prefab: {fileID: 8718625113256462797, guid: 808d525163bb5374685be4eca0a0c7a9,
       type: 3}
@@ -704,7 +704,7 @@ MonoBehaviour:
       pattern_type: 3
       index: 5
   - name: Yeti
-    hp: 80
+    hp: 35
     type: 17
     prefab: {fileID: 8718625113256462797, guid: c5e5fb28e37468d4c8f5a2d299154596,
       type: 3}
