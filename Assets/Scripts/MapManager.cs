@@ -23,7 +23,6 @@ public class FieldData
 
 public enum FIELD_TYPE { BATTLE, EVENT, REST, SHOP, MAP }
 public enum EVENT_TYPE { EVENT1, EVENT2, EVENT3 };
-public enum MONSTER_TYPE { MONSTER1, MONSTER2, MONSTER3 };
 
 public class SceneEventArgs : EventArgs
 {
