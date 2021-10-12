@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 //체력바 스크립트
 public class HpBar : MonoBehaviour
@@ -15,15 +15,17 @@ public class HpBar : MonoBehaviour
     [SerializeField] TMP_Text hptext;           //체력 텍스트
     [SerializeField] TMP_Text sheldtext;        //실드 텍스트
 
-    public void Start()
-    {
-        Init();
-    }
-
     public void Init()          //초기화, 게임 시작할때 실행
     {
         ShowText();
         UpdateHpBar();
+    }
+
+    public void SetHP(int hp)
+    {
+        this.hp = hp;
+        this.max_hp = hp;
+        Init();
     }
 
     public void UpdateHp()      //현재 데이터로 텍스트랑 체력바 게이지 조정
@@ -58,7 +60,7 @@ public class HpBar : MonoBehaviour
         }
         else
             hp -= damage;
-        if(hp <= 0)         //체력이 0 이하가 되면 죽음
+        if (hp <= 0)         //체력이 0 이하가 되면 죽음
         {
             Dead();
         }
@@ -84,7 +86,7 @@ public class HpBar : MonoBehaviour
     void Dead()         //죽었을때 발동
     {
         hp = 0;
-        if(parent.CompareTag("Player"))
+        if (parent.CompareTag("Player"))
             parent.GetComponent<Player>().Dead();
         else
             parent.GetComponent<Enemy>().Dead();

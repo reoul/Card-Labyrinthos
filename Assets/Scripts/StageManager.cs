@@ -25,10 +25,11 @@ public class StageManager : MonoBehaviour
     {
         for (int i = 0; i < monsterSO.monsters.Length; i++)
         {
-            if (MapManager.Inst.data.monster_type == monsterSO.monsters[i].type)
+            if (MapManager.Inst.fieldData.monster_type == monsterSO.monsters[i].type)
             {
-                GameObject enemy = Instantiate(monsterSO.monsters[i].prefab, enemy_spawn.position, Quaternion.identity);
-                EnemyManager.Inst.enemys.Add(enemy.GetComponent<Enemy>());
+                Enemy enemy = Instantiate(monsterSO.monsters[i].prefab, enemy_spawn.position, Quaternion.identity).GetComponent<Enemy>();
+                EnemyManager.Inst.enemys.Add(enemy);
+                enemy.hpbar.SetHP(monsterSO.monsters[i].hp);
                 break;
             }
         }

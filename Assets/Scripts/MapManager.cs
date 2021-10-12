@@ -43,23 +43,23 @@ public class MapManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public FieldData data;
+    public FieldData fieldData;
 
     public void IconMouseUp(FieldData fieldData)
     {
-        data = fieldData;
+        this.fieldData = fieldData;
         FadeManager.FadeEvent += new EventHandler(LoadScene);
         StartEvent();
     }
 
     public void LoadScene(object obj, EventArgs e)
     {
-        SceneManager.LoadScene(data.field_type.ToString());
+        SceneManager.LoadScene(fieldData.field_type.ToString());
     }
 
     void StartEvent()
     {
-        switch (data.field_type)
+        switch (fieldData.field_type)
         {
             case FIELD_TYPE.BATTLE:
                 StartCoroutine(FadeManager.Inst.FadeInOut(CardManager.Inst.InitCorutine(), TurnManager.Inst.StartGameCorutine()));
