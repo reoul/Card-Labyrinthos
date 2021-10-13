@@ -25,7 +25,7 @@ public class CardManager : MonoBehaviour
     [SerializeField] Transform myCardRight; //내 손패 오른쪽 포지션
     [SerializeField] Transform CardCenterPoint;
 
-    [SerializeField] int[] cardDeck;        //현재 플레이어 카드 덱, 1~6
+    public int[] cardDeck;        //현재 플레이어 카드 덱, 1~6
     [SerializeField] List<Card> MyHandCards;    //내 손에 들고 있는 카드 리스트
     [SerializeField] List<Card> itemBuffer;  //뽑을 카드 더미
     [SerializeField] List<Card> tombItemBuffer;  //버린 카드 더미, 사용한 카드가 여기 리스트에 쌓인다
@@ -43,12 +43,6 @@ public class CardManager : MonoBehaviour
 
     //Quaternion cardRotate = Utils.QI;
 
-    void Start()
-    {
-        cardDeck = new int[6];
-        for (int i = 0; i < cardDeck.Length; i++)
-            cardDeck[i] = 1;
-    }
 
     void Update()
     {

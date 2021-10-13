@@ -1714,7 +1714,7 @@ MonoBehaviour:
   myCardLeft: {fileID: 0}
   myCardRight: {fileID: 0}
   CardCenterPoint: {fileID: 0}
-  cardDeck: 
+  cardDeck: 010000000200000003000000030000000200000001000000
   MyHandCards: []
   itemBuffer: []
   tombItemBuffer: []
