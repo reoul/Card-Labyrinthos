@@ -16,7 +16,8 @@ public class TurnManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    [SerializeField] [Tooltip("시작 카드 개수를 정합니다")] int startCardCount;
+    [Tooltip("시작 카드 개수를 정합니다")] 
+    public int startCardCount;
 
     [Header("Properties")]
     public bool isLoading;
