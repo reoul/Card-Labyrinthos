@@ -23,11 +23,16 @@ public class ShopManager : MonoBehaviour
         switch (item.type)
         {
             case SHOPITEM_TYPE.CARD:
-                CardManager.Inst.cardDeck[item.index]++;
+                CardManager.Inst.AddCardDeck(item.index);
                 break;
             case SHOPITEM_TYPE.ADD_DRAW:
-                TurnManager.Inst.startCardCount++;
+                TurnManager.Inst.AddStartTurnCard();
                 break;
         }
+    }
+
+    public void CheckItemLimit()
+    {
+        //TurnManager.Inst.
     }
 }

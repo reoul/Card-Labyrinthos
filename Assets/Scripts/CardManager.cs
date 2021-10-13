@@ -26,6 +26,7 @@ public class CardManager : MonoBehaviour
     [SerializeField] Transform CardCenterPoint;
 
     public int[] cardDeck;        //현재 플레이어 카드 덱, 1~6
+
     [SerializeField] List<Card> MyHandCards;    //내 손에 들고 있는 카드 리스트
     [SerializeField] List<Card> itemBuffer;  //뽑을 카드 더미
     [SerializeField] List<Card> tombItemBuffer;  //버린 카드 더미, 사용한 카드가 여기 리스트에 쌓인다
@@ -444,7 +445,18 @@ public class CardManager : MonoBehaviour
 
     public void AddCardDeck(int card)      //플레이어 카드 덱에 카드 추가, 상점이나 보상에서 카드 획득할 때
     {
-        cardDeck[card]++;
+        if(!isCardDeckMax()[card])
+            cardDeck[card]++;
+    }
+
+    public bool[] isCardDeckMax()       //카드덱에 최대치가 된 카드가 있는지
+    {
+        bool[] check = new bool[6];
+        for (int i = 0; i < check.Length; i++)
+        {
+            check[i] = cardDeck[i] >= (18 - 3 * i);
+        }
+        return check;
     }
 
 }

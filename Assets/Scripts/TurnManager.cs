@@ -19,6 +19,14 @@ public class TurnManager : MonoBehaviour
     [Tooltip("시작 카드 개수를 정합니다")] 
     public int startCardCount;
 
+    public bool isStartCardCoutMax        //시작 카드 개수가 최대치에 달했는지
+    {
+        get
+        {
+            return startCardCount >= 6 ? true : false;
+        }
+    }
+
     [Header("Properties")]
     public bool isLoading;
 
@@ -92,6 +100,12 @@ public class TurnManager : MonoBehaviour
         }
         EnemyManager.Inst.UpdateStateTextAllEnemy();
         StartCoroutine(StartTurnCorutine());
+    }
+
+    public void AddStartTurnCard()
+    {
+        if (!isStartCardCoutMax)
+            startCardCount++;
     }
 
 }
