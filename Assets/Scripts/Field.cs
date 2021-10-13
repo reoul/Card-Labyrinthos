@@ -24,12 +24,24 @@ public class Field : MonoBehaviour
     [SerializeField]
     MONSTER_DIFFICULTY monster_difficulty;
 
+    bool onField = false;   //마우스가 필드 위에 있는지
+
     public FieldData fielddata { get { return new FieldData(field_type, event_type, GetMonster(monster_difficulty)); } }
 
     void OnMouseUp()
     {
-        //FieldData a = new FieldData();
-        MapManager.Inst.IconMouseUp(fielddata);
+        if(onField)
+            MapManager.Inst.IconMouseUp(fielddata);
+    }
+
+    void OnMouseEnter()
+    {
+        onField = true;
+    }
+
+    void OnMouseExit()
+    {
+        onField = false;
     }
 
     public MONSTER_TYPE GetMonster(MONSTER_DIFFICULTY difficulty)       //필드 난이도에 따라 랜덤 몬스터 소환
