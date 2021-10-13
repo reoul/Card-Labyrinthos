@@ -1393,7 +1393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   field_type: 0
   event_type: 0
-  monster_type: 30
+  monster_type: 13
 --- !u!61 &1906898752
 BoxCollider2D:
   m_ObjectHideFlags: 0
