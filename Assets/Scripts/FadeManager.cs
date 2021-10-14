@@ -5,15 +5,22 @@ using UnityEngine;
 
 public class FadeManager : MonoBehaviour
 {
-    public static FadeManager Inst { get; private set; }
+    public static FadeManager Inst = null;
     SpriteRenderer SR;
 
     public static event EventHandler FadeEvent;
 
     private void Awake()
     {
-        Inst = this;
-        DontDestroyOnLoad(this.gameObject);
+        if (Inst == null)
+        {
+            Inst = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
         SR = this.GetComponent<SpriteRenderer>();
     }
 

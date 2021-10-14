@@ -6,20 +6,27 @@ using Random = UnityEngine.Random;
 
 public class TurnManager : MonoBehaviour
 {
-    public static TurnManager Inst { get; private set; }
+    public static TurnManager Inst = null;
 
     public bool isFinish;
     void Awake()
     {
-        Inst = this;
+        if (Inst == null)
+        {
+            Inst = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
         isFinish = false;
-        DontDestroyOnLoad(this.gameObject);
     }
 
-    [Tooltip("시작 카드 개수를 정합니다")] 
+    [Tooltip("시작 카드 개수를 정합니다")]
     public int startCardCount;
 
-    public bool isStartCardCoutMax        //시작 카드 개수가 최대치에 달했는지
+    public bool isStartCardCountMax        //시작 카드 개수가 최대치에 달했는지
     {
         get
         {
@@ -104,7 +111,7 @@ public class TurnManager : MonoBehaviour
 
     public void AddStartTurnCard()
     {
-        if (!isStartCardCoutMax)
+        if (!isStartCardCountMax)
             startCardCount++;
     }
 

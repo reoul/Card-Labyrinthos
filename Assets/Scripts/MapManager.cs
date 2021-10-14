@@ -35,12 +35,19 @@ public class SceneEventArgs : EventArgs
 
 public class MapManager : MonoBehaviour
 {
-    public static MapManager Inst { get; private set; }
+    public static MapManager Inst = null;
 
     private void Awake()
     {
-        Inst = this;
-        DontDestroyOnLoad(this.gameObject);
+        if (Inst == null)
+        {
+            Inst = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public FieldData fieldData;

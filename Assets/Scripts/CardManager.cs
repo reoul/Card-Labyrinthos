@@ -9,11 +9,18 @@ using Random = UnityEngine.Random;
 
 public class CardManager : MonoBehaviour
 {
-    public static CardManager Inst { get; private set; }
+    public static CardManager Inst = null;
     void Awake()
     {
-        Inst = this;
-        DontDestroyOnLoad(this.gameObject);
+        if (Inst == null)
+        {
+            Inst = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     //[SerializeField] ItemSO itemSO;
@@ -445,7 +452,7 @@ public class CardManager : MonoBehaviour
 
     public void AddCardDeck(int card)      //플레이어 카드 덱에 카드 추가, 상점이나 보상에서 카드 획득할 때
     {
-        if(!isCardDeckMax()[card])
+        if (!isCardDeckMax()[card])
             cardDeck[card]++;
     }
 

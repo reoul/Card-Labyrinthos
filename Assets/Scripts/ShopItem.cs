@@ -16,6 +16,7 @@ public class ShopItem : MonoBehaviour
     public Item item;
     bool onItem = false;    //마우스가 아이템 위에 있는지
     Vector3 originalScale;
+    bool isMax = false;
 
     private void Start()
     {
@@ -24,18 +25,28 @@ public class ShopItem : MonoBehaviour
 
     private void OnMouseUp()
     {
-        ShopManager.Inst.Click(item);
+        if (onItem)
+            ShopManager.Inst.Click(item);
     }
 
     private void OnMouseEnter()
     {
-        onItem = true;
-        transform.localScale = originalScale + Vector3.one * 0.1f;
+        if (!isMax)
+        {
+            onItem = true;
+            transform.localScale = originalScale + Vector3.one * 0.1f;
+        }
     }
 
     private void OnMouseExit()
     {
         onItem = false;
+        transform.localScale = originalScale;
+    }
+
+    public void CountMax()
+    {
+        isMax = true;
         transform.localScale = originalScale;
     }
 }

@@ -13,9 +13,9 @@ public class ShopManager : MonoBehaviour
         Inst = this;
     }
 
-    public void Init()
+    private void Start()
     {
-
+        CheckItemMax();
     }
 
     public void Click(Item item)
@@ -29,10 +29,24 @@ public class ShopManager : MonoBehaviour
                 TurnManager.Inst.AddStartTurnCard();
                 break;
         }
+        CheckItemMax();
     }
 
-    public void CheckItemLimit()
+    public void CheckItemMax()
     {
-        //TurnManager.Inst.
+        bool[] cardmax = CardManager.Inst.isCardDeckMax();
+        for (int i = 0; i < cardmax.Length; i++)
+        {
+            if (cardmax[i])
+            {
+                items[i].transform.GetChild(0).gameObject.SetActive(true);
+                items[i].CountMax();
+            }
+        }
+        if (TurnManager.Inst.isStartCardCountMax)
+        {
+            items[6].transform.GetChild(0).gameObject.SetActive(true);
+            items[6].CountMax();
+        }
     }
 }
