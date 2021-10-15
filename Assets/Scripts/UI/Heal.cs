@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Heal : MonoBehaviour
 {
-   // public HpBar hpbar();
+    //public HpBar HpBar();
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +20,6 @@ public class Heal : MonoBehaviour
     public void Click()
     {
         Debug.Log("체력이 40회복 되었습니다!");
-      //  hpbar.heal(40);
+        //HpBar.Heal(40);
     }
 }
