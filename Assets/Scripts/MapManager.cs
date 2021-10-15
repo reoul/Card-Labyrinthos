@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class FieldData
@@ -21,7 +22,7 @@ public class FieldData
     }
 }
 
-public enum FIELD_TYPE { BATTLE, EVENT, REST, SHOP, MAP }
+public enum FIELD_TYPE { BATTLE, EVENT, REST, SHOP, MAP, BOSS }
 public enum EVENT_TYPE { EVENT1, EVENT2, EVENT3 };
 
 public class SceneEventArgs : EventArgs

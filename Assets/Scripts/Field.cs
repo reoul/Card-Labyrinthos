@@ -8,13 +8,37 @@ public class FieldInspector : Editor
     {
         serializedObject.Update();
         EditorGUILayout.PropertyField(serializedObject.FindProperty("field_type"));
-        if (serializedObject.FindProperty("field_type").enumValueIndex == (int)FIELD_TYPE.BATTLE)
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("monster_difficulty"));
-        else if (serializedObject.FindProperty("field_type").enumValueIndex == (int)FIELD_TYPE.EVENT)
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("event_type"));
+        int propertyfield = serializedObject.FindProperty("field_type").enumValueIndex;
+        Field field = (Field)target;
+        Sprite[] fieldIcon = Resources.LoadAll<Sprite>("FieldIcon");
+        switch (propertyfield)
+        {
+            case (int)FIELD_TYPE.BATTLE:
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("monster_difficulty"));
+                field.spriteRenderer.sprite = fieldIcon[1];
+                break;
+            case (int)FIELD_TYPE.EVENT:
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("event_type"));
+                field.spriteRenderer.sprite = fieldIcon[2];
+                break;
+            case (int)FIELD_TYPE.REST:
+                field.spriteRenderer.sprite = fieldIcon[3];
+                break;
+            case (int)FIELD_TYPE.SHOP:
+                field.spriteRenderer.sprite = fieldIcon[4];
+                break;
+            case (int)FIELD_TYPE.BOSS:
+                field.spriteRenderer.sprite = fieldIcon[0];
+                break;
+            default:
+                field.spriteRenderer.sprite = fieldIcon[1];
+                break;
+        }
         serializedObject.ApplyModifiedProperties();
     }
 }
+
+[System.Serializable]
 public class Field : MonoBehaviour
 {
     [SerializeField]
@@ -28,9 +52,11 @@ public class Field : MonoBehaviour
 
     public FieldData fielddata { get { return new FieldData(field_type, event_type, GetMonster(monster_difficulty)); } }
 
+    public SpriteRenderer spriteRenderer => this.GetComponent<SpriteRenderer>();
+
     void OnMouseUp()
     {
-        if(onField)
+        if (onField)
             MapManager.Inst.IconMouseUp(fielddata);
     }
 
