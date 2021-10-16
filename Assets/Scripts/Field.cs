@@ -54,6 +54,11 @@ public class Field : MonoBehaviour
 
     public SpriteRenderer spriteRenderer => this.GetComponent<SpriteRenderer>();
 
+    private void Start()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+    }
+
     void OnMouseUp()
     {
         if (onField)

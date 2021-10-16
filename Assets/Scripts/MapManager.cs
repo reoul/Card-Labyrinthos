@@ -73,7 +73,7 @@ public class MapManager : MonoBehaviour
                 StartCoroutine(FadeManager.Inst.FadeInOut(CardManager.Inst.InitCorutine(), TurnManager.Inst.StartGameCorutine()));
                 break;
             case FIELD_TYPE.EVENT:
-                StartCoroutine(FadeManager.Inst.FadeInOut());
+                StartCoroutine(FadeManager.Inst.FadeInOut(CardManager.Inst.InitCorutine(), TurnManager.Inst.StartGameCorutine()));
                 break;
             case FIELD_TYPE.SHOP:
                 StartCoroutine(FadeManager.Inst.FadeInOut());
