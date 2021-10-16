@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(Field))]
@@ -34,6 +35,41 @@ public class FieldInspector : Editor
                 field.spriteRenderer.sprite = fieldIcon[1];
                 break;
         }
+        string text = "";
+        switch (propertyfield)
+        {
+            case (int)FIELD_TYPE.BATTLE:
+                int monster_difficulty = serializedObject.FindProperty("monster_difficulty").enumValueIndex;
+                switch (monster_difficulty)
+                {
+                    case (int)MONSTER_DIFFICULTY.EASY:
+                        text = "이지";
+                        break;
+                    case (int)MONSTER_DIFFICULTY.NOMAL:
+                        text = "노말";
+                        break;
+                    case (int)MONSTER_DIFFICULTY.HARD:
+                        text = "하드";
+                        break;
+                }
+                break;
+            case (int)FIELD_TYPE.EVENT:
+                text = "이벤트";
+                break;
+            case (int)FIELD_TYPE.REST:
+                text = "휴식";
+                break;
+            case (int)FIELD_TYPE.SHOP:
+                text = "상점";
+                break;
+            case (int)FIELD_TYPE.MAP:
+                break;
+            case (int)FIELD_TYPE.BOSS:
+                text = "보스";
+                break;
+        }
+        field.transform.GetChild(0).GetComponent<TextMeshPro>().text = text;
+
         serializedObject.ApplyModifiedProperties();
     }
 }
@@ -157,5 +193,43 @@ public class Field : MonoBehaviour
                 break;
         }
         return MONSTER_TYPE.IMP;
+    }
+
+    public void UpdateTypeText()
+    {
+        string text = "";
+        switch (field_type)
+        {
+            case FIELD_TYPE.BATTLE:
+                switch (monster_difficulty)
+                {
+                    case MONSTER_DIFFICULTY.EASY:
+                        text = "이지";
+                        break;
+                    case MONSTER_DIFFICULTY.NOMAL:
+                        text = "노말";
+                        break;
+                    case MONSTER_DIFFICULTY.HARD:
+                        text = "하드";
+                        break;
+                }
+                break;
+            case FIELD_TYPE.EVENT:
+                text = "이벤트";
+                break;
+            case FIELD_TYPE.REST:
+                text = "휴식";
+                break;
+            case FIELD_TYPE.SHOP:
+                text = "상점";
+                break;
+            case FIELD_TYPE.MAP:
+                break;
+            case FIELD_TYPE.BOSS:
+                text = "보스";
+                break;
+        }
+        this.transform.GetChild(0).GetComponent<TextMeshPro>().text = text;
+        this.transform.GetChild(0).GetComponent<TextMeshPro>().text = text;
     }
 }
