@@ -704,7 +704,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5a06e8c1a9107904595a5c2c2a2acc11, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e7a9c2647e62f2c4d97055b658860dca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -785,7 +785,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9acf5a4ce191df84e97e5d7575a08e2b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 00701892663d32847918730f88f42b21, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -855,9 +855,8 @@ Transform:
   m_GameObject: {fileID: 8023498797359241748}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.106, y: 0.44300002, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
-  m_Children:
-  - {fileID: 8023498797937024166}
+  m_LocalScale: {x: 0.012, y: 0.012, z: 1}
+  m_Children: []
   m_Father: {fileID: 503547873078626960}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -900,7 +899,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2da59f2281441de48be761580fa9a9f6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 21740af1a60c41d43b9b17c10ec992ca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1019,16 +1018,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8023498797937024170}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.4999999, z: 0.3}
+  m_LocalScale: {x: 0.15, y: 0.14999999, z: 0.3}
   m_Children: []
-  m_Father: {fileID: 8023498797359241751}
-  m_RootOrder: 0
+  m_Father: {fileID: 503547873078626960}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.659, y: 0.018}
+  m_AnchoredPosition: {x: 0.17190003, y: 0.44480002}
   m_SizeDelta: {x: 0.6, y: 0.47}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &8023498797937024164
@@ -1049,7 +1048,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3302512694407733868, guid: d5b7ca50b1a33f6408edc898e60567b3, type: 2}
+  - {fileID: -7979993461461724876, guid: 07922e3040ec4c74099cc4d9fa01c455, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1099,8 +1098,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 10
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d5b7ca50b1a33f6408edc898e60567b3, type: 2}
-  m_sharedMaterial: {fileID: -3302512694407733868, guid: d5b7ca50b1a33f6408edc898e60567b3,
+  m_fontAsset: {fileID: 11400000, guid: 07922e3040ec4c74099cc4d9fa01c455, type: 2}
+  m_sharedMaterial: {fileID: -7979993461461724876, guid: 07922e3040ec4c74099cc4d9fa01c455,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1125,7 +1124,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 4.7
+  m_fontSize: 3.1
   m_fontSizeBase: 2.98
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1225,7 +1224,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3302512694407733868, guid: d5b7ca50b1a33f6408edc898e60567b3, type: 2}
+  - {fileID: -7979993461461724876, guid: 07922e3040ec4c74099cc4d9fa01c455, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1275,8 +1274,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 5
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d5b7ca50b1a33f6408edc898e60567b3, type: 2}
-  m_sharedMaterial: {fileID: -3302512694407733868, guid: d5b7ca50b1a33f6408edc898e60567b3,
+  m_fontAsset: {fileID: 11400000, guid: 07922e3040ec4c74099cc4d9fa01c455, type: 2}
+  m_sharedMaterial: {fileID: -7979993461461724876, guid: 07922e3040ec4c74099cc4d9fa01c455,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1301,7 +1300,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.9
+  m_fontSize: 14.65
   m_fontSizeBase: 21
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1460,6 +1459,7 @@ Transform:
   - {fileID: 5104960430215682760}
   - {fileID: 8023498797250102831}
   - {fileID: 8023498797359241751}
+  - {fileID: 8023498797937024166}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
