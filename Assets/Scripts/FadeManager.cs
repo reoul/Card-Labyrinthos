@@ -34,11 +34,14 @@ public class FadeManager : MonoBehaviour
         StartCoroutine(Fade(true));
     }
 
-    public IEnumerator FadeInOut(IEnumerator enumerator = null, IEnumerator enumerator2 = null)
+    public IEnumerator FadeInOut(IEnumerator enumerator = null, IEnumerator enumerator2 = null, IEnumerator enumerator3 = null)
     {
         yield return StartCoroutine(Fade(true));       //페이드 실행
         if (FadeEvent != null)
             FadeEvent(this, EventArgs.Empty);           //실행 후 이벤트 실행
+        yield return new WaitForSeconds(0.1f);
+        if (enumerator3 != null)
+            yield return StartCoroutine(enumerator3);
         yield return StartCoroutine(Fade(false));                   //다시 페이드 실행
         if (enumerator != null)
         {

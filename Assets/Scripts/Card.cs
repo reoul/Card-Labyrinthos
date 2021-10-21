@@ -93,6 +93,7 @@ public class Card : MonoBehaviour
 
     void OnMouseOver()
     {
+        Debug.Log(this.parent.name.ToString() + " 카드에 마우스를 올렸습니다.");
         CardManager.Inst.CardMouseOver(this);
     }
 

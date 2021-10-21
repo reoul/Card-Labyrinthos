@@ -424,7 +424,7 @@ public class CardManager : MonoBehaviour
     {
         if (isEnlarge)
         {
-            Vector3 enlargePos = new Vector3(card.originPRS.pos.x, onMyCardArea ? -3 : card.originPRS.pos.y, onMyCardArea ? -100 : card.originPRS.pos.z);
+            Vector3 enlargePos = new Vector3(card.originPRS.pos.x, onMyCardArea ? -4 : card.originPRS.pos.y, onMyCardArea ? -100 : card.originPRS.pos.z);
             card.MoveTransform(new PRS(enlargePos, Utils.CardRotate, Vector3.one * (onMyCardArea ? 1.5f : 1)), false);
         }
         else

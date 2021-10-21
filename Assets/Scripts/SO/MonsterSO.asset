@@ -34,7 +34,7 @@ MonoBehaviour:
       pattern_type: 0
       index: 14
     pattern_6:
-      pattern_type: 3
+      pattern_type: 2
       index: 5
   - name: Earth Wisp
     hp: 15
