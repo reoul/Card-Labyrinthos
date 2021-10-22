@@ -37,11 +37,11 @@ public class Monster
     public GameObject prefab;   //몬스터 프리팹
 
     [Header("패턴")]
-    public PATTERN pattern_1;
-    public PATTERN pattern_2;
-    public PATTERN pattern_3;
-    public PATTERN pattern_4;
-    public PATTERN pattern_5;
+    public PATTERN pattern_1; //약공
+    public PATTERN pattern_2; //중공
+    public PATTERN pattern_3; //강공
+    public PATTERN pattern_4; //회복
+    public PATTERN pattern_5; //스킬
 }
 
 [CreateAssetMenu(fileName = "MonsterSO", menuName = "Scriptable Object/MonsterSO")]

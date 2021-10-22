@@ -22,20 +22,17 @@ MonoBehaviour:
       pattern_type: 0
       index: 7
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 10
     pattern_3:
       pattern_type: 0
-      index: 9
+      index: 12
     pattern_4:
-      pattern_type: 2
-      index: 5
+      pattern_type: 1
+      index: 3
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
       pattern_type: 2
-      index: 5
+      index: 14
   - name: Earth Wisp
     hp: 15
     type: 5
@@ -43,22 +40,19 @@ MonoBehaviour:
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
+      index: 4
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 7
     pattern_3:
       pattern_type: 0
       index: 9
     pattern_4:
-      pattern_type: 2
-      index: 5
+      pattern_type: 1
+      index: 2
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
-      index: 5
+      pattern_type: 2
+      index: 3
   - name: Executioner
     hp: 28
     type: 19
@@ -66,22 +60,19 @@ MonoBehaviour:
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
+      index: 8
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 11
     pattern_3:
       pattern_type: 0
-      index: 9
+      index: 13
     pattern_4:
-      pattern_type: 2
-      index: 5
+      pattern_type: 1
+      index: 3
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
-      index: 5
+      pattern_type: 2
+      index: 13
   - name: Fire Golem
     hp: 42
     type: 20
@@ -89,22 +80,19 @@ MonoBehaviour:
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
+      index: 9
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 13
     pattern_3:
       pattern_type: 0
-      index: 9
+      index: 15
     pattern_4:
-      pattern_type: 2
+      pattern_type: 1
       index: 5
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
-      index: 5
+      pattern_type: 2
+      index: 1
   - name: Fire Wisp
     hp: 15
     type: 7
@@ -112,22 +100,19 @@ MonoBehaviour:
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
+      index: 4
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 7
     pattern_3:
       pattern_type: 0
       index: 9
     pattern_4:
-      pattern_type: 2
-      index: 5
+      pattern_type: 1
+      index: 2
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
-      index: 5
+      pattern_type: 2
+      index: 3
   - name: Ghoul
     hp: 23
     type: 21
@@ -137,20 +122,17 @@ MonoBehaviour:
       pattern_type: 0
       index: 7
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 10
     pattern_3:
       pattern_type: 0
-      index: 9
+      index: 12
     pattern_4:
-      pattern_type: 2
-      index: 5
+      pattern_type: 1
+      index: 3
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
-      index: 5
+      pattern_type: 2
+      index: 2
   - name: Goblin
     hp: 20
     type: 0
@@ -158,21 +140,18 @@ MonoBehaviour:
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
+      index: 6
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 10
     pattern_3:
       pattern_type: 0
-      index: 9
+      index: 2
     pattern_4:
-      pattern_type: 2
-      index: 5
+      pattern_type: 1
+      index: 3
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
+      pattern_type: 2
       index: 5
   - name: Golem
     hp: 45
@@ -181,22 +160,19 @@ MonoBehaviour:
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
+      index: 9
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 12
     pattern_3:
       pattern_type: 0
-      index: 9
+      index: 14
     pattern_4:
-      pattern_type: 2
+      pattern_type: 1
       index: 5
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
-      index: 5
+      pattern_type: 2
+      index: 1
   - name: Ice Golem
     hp: 48
     type: 22
@@ -204,22 +180,19 @@ MonoBehaviour:
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
+      index: 9
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 13
     pattern_3:
       pattern_type: 0
-      index: 9
+      index: 15
     pattern_4:
-      pattern_type: 2
+      pattern_type: 1
       index: 5
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
-      index: 5
+      pattern_type: 2
+      index: 1
   - name: Imp
     hp: 15
     type: 23
@@ -227,21 +200,18 @@ MonoBehaviour:
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
-    pattern_2:
-      pattern_type: 1
       index: 5
+    pattern_2:
+      pattern_type: 0
+      index: 7
     pattern_3:
       pattern_type: 0
-      index: 9
+      index: 10
     pattern_4:
-      pattern_type: 2
-      index: 5
+      pattern_type: 1
+      index: 2
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
+      pattern_type: 2
       index: 5
   - name: Kobold
     hp: 20
@@ -250,21 +220,18 @@ MonoBehaviour:
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
+      index: 6
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 11
     pattern_3:
       pattern_type: 0
-      index: 9
+      index: 13
     pattern_4:
-      pattern_type: 2
-      index: 5
+      pattern_type: 1
+      index: 3
     pattern_5:
       pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
       index: 5
   - name: Mandrake
     hp: 10
@@ -273,45 +240,39 @@ MonoBehaviour:
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
+      index: 4
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 8
     pattern_3:
       pattern_type: 0
       index: 9
     pattern_4:
-      pattern_type: 2
-      index: 5
+      pattern_type: 1
+      index: 2
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
-      index: 5
+      pattern_type: 2
+      index: 2
   - name: Mimic
-    hp: 15
+    hp: 10
     type: 4
     prefab: {fileID: 8718625113256462797, guid: c8768a5b68ea79a43b31006b9dda9c4d,
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
+      index: 6
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 10
     pattern_3:
       pattern_type: 0
-      index: 9
+      index: 12
     pattern_4:
-      pattern_type: 2
-      index: 5
+      pattern_type: 1
+      index: 3
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
-      index: 5
+      pattern_type: 2
+      index: 1
   - name: Minotaur
     hp: 40
     type: 9
@@ -319,22 +280,19 @@ MonoBehaviour:
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
+      index: 10
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 12
     pattern_3:
       pattern_type: 0
-      index: 9
+      index: 14
     pattern_4:
-      pattern_type: 2
+      pattern_type: 1
       index: 5
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
-      index: 5
+      pattern_type: 2
+      index: 3
   - name: Necromancer
     hp: 50
     type: 24
@@ -342,45 +300,39 @@ MonoBehaviour:
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
+      index: 10
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 13
     pattern_3:
       pattern_type: 0
-      index: 9
+      index: 15
     pattern_4:
       pattern_type: 2
       index: 5
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
-      index: 5
+      pattern_type: 2
+      index: 10
   - name: Normal_Chest
-    hp: 1
+    hp: 10
     type: 29
     prefab: {fileID: 8718625113256462797, guid: 97b42d7f0b4b80b4f99ebfa25682fc2f,
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
+      index: 0
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 0
     pattern_3:
       pattern_type: 0
-      index: 9
+      index: 0
     pattern_4:
-      pattern_type: 2
-      index: 5
+      pattern_type: 1
+      index: 0
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
-      index: 5
+      pattern_type: 2
+      index: 0
   - name: Oculothorax
     hp: 22
     type: 3
@@ -388,22 +340,19 @@ MonoBehaviour:
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
+      index: 6
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 10
     pattern_3:
       pattern_type: 0
-      index: 9
+      index: 12
     pattern_4:
-      pattern_type: 2
-      index: 5
+      pattern_type: 1
+      index: 3
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
-      index: 5
+      pattern_type: 2
+      index: 4
   - name: Ogre
     hp: 45
     type: 2
@@ -411,21 +360,18 @@ MonoBehaviour:
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
+      index: 9
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 13
     pattern_3:
       pattern_type: 0
-      index: 9
+      index: 15
     pattern_4:
-      pattern_type: 2
+      pattern_type: 1
       index: 5
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
+      pattern_type: 2
       index: 5
   - name: Phantom Knight
     hp: 60
@@ -436,20 +382,17 @@ MonoBehaviour:
       pattern_type: 0
       index: 7
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 10
     pattern_3:
       pattern_type: 0
-      index: 9
+      index: 13
     pattern_4:
-      pattern_type: 2
-      index: 5
+      pattern_type: 1
+      index: 15
     pattern_5:
-      pattern_type: 0
+      pattern_type: 2
       index: 14
-    pattern_6:
-      pattern_type: 3
-      index: 5
   - name: Rat
     hp: 10
     type: 10
@@ -457,22 +400,19 @@ MonoBehaviour:
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
+      index: 4
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 7
     pattern_3:
       pattern_type: 0
       index: 9
     pattern_4:
-      pattern_type: 2
-      index: 5
+      pattern_type: 1
+      index: 2
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
-      index: 5
+      pattern_type: 2
+      index: 3
   - name: Reaper
     hp: 23
     type: 26
@@ -480,21 +420,18 @@ MonoBehaviour:
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
+      index: 8
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 11
     pattern_3:
       pattern_type: 0
-      index: 9
+      index: 13
     pattern_4:
-      pattern_type: 2
-      index: 5
+      pattern_type: 1
+      index: 3
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
+      pattern_type: 2
       index: 5
   - name: Red Ogre
     hp: 45
@@ -503,22 +440,19 @@ MonoBehaviour:
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
+      index: 9
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 13
     pattern_3:
       pattern_type: 0
-      index: 9
+      index: 15
     pattern_4:
-      pattern_type: 2
+      pattern_type: 1
       index: 5
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
-      index: 5
+      pattern_type: 2
+      index: 3
   - name: Satyr
     hp: 21
     type: 13
@@ -526,22 +460,19 @@ MonoBehaviour:
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
+      index: 6
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 10
     pattern_3:
       pattern_type: 0
-      index: 9
+      index: 12
     pattern_4:
-      pattern_type: 2
-      index: 5
+      pattern_type: 1
+      index: 3
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
-      index: 5
+      pattern_type: 2
+      index: 11
   - name: Shade
     hp: 27
     type: 14
@@ -549,22 +480,19 @@ MonoBehaviour:
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
+      index: 8
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 11
     pattern_3:
       pattern_type: 0
-      index: 9
+      index: 13
     pattern_4:
-      pattern_type: 2
-      index: 5
+      pattern_type: 1
+      index: 3
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
-      index: 5
+      pattern_type: 2
+      index: 6
   - name: Slug
     hp: 15
     type: 27
@@ -572,22 +500,19 @@ MonoBehaviour:
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
-    pattern_2:
-      pattern_type: 1
       index: 5
+    pattern_2:
+      pattern_type: 0
+      index: 7
     pattern_3:
       pattern_type: 0
       index: 9
     pattern_4:
-      pattern_type: 2
-      index: 5
+      pattern_type: 1
+      index: 2
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
-      index: 5
+      pattern_type: 2
+      index: 3
   - name: Undead Warrior
     hp: 20
     type: 28
@@ -595,22 +520,19 @@ MonoBehaviour:
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
+      index: 6
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 8
     pattern_3:
       pattern_type: 0
-      index: 9
+      index: 11
     pattern_4:
-      pattern_type: 2
-      index: 5
+      pattern_type: 1
+      index: 2
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
-      index: 5
+      pattern_type: 2
+      index: 11
   - name: Wasp
     hp: 15
     type: 15
@@ -618,22 +540,19 @@ MonoBehaviour:
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
+      index: 4
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 7
     pattern_3:
       pattern_type: 0
       index: 9
     pattern_4:
-      pattern_type: 2
-      index: 5
+      pattern_type: 1
+      index: 2
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
-      index: 5
+      pattern_type: 2
+      index: 1
   - name: Water Wisp
     hp: 15
     type: 8
@@ -641,22 +560,19 @@ MonoBehaviour:
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
+      index: 4
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 7
     pattern_3:
       pattern_type: 0
       index: 9
     pattern_4:
-      pattern_type: 2
-      index: 5
+      pattern_type: 1
+      index: 2
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
-      index: 5
+      pattern_type: 2
+      index: 3
   - name: Werewolf
     hp: 40
     type: 16
@@ -664,22 +580,19 @@ MonoBehaviour:
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
+      index: 10
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 12
     pattern_3:
       pattern_type: 0
-      index: 9
+      index: 14
     pattern_4:
-      pattern_type: 2
+      pattern_type: 1
       index: 5
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
-      index: 5
+      pattern_type: 2
+      index: 3
   - name: Wind Wisp
     hp: 15
     type: 6
@@ -687,22 +600,19 @@ MonoBehaviour:
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
+      index: 4
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 7
     pattern_3:
       pattern_type: 0
       index: 9
     pattern_4:
-      pattern_type: 2
-      index: 5
+      pattern_type: 1
+      index: 2
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
-      index: 5
+      pattern_type: 2
+      index: 3
   - name: Yeti
     hp: 40
     type: 17
@@ -710,19 +620,16 @@ MonoBehaviour:
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 7
+      index: 9
     pattern_2:
-      pattern_type: 1
-      index: 5
+      pattern_type: 0
+      index: 12
     pattern_3:
       pattern_type: 0
-      index: 9
+      index: 14
     pattern_4:
-      pattern_type: 2
+      pattern_type: 1
       index: 5
     pattern_5:
-      pattern_type: 0
-      index: 14
-    pattern_6:
-      pattern_type: 3
-      index: 5
+      pattern_type: 2
+      index: 6
