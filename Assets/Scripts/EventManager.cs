@@ -31,14 +31,21 @@ public class EventData
 
 public class EventManager : MonoBehaviour
 {
-    public static EventManager Inst;
+    public static EventManager Inst = null;
 
     public List<Event> events;
 
     private void Awake()
     {
-        Inst = this;
-        DontDestroyOnLoad(this.gameObject);
+        if (Inst == null)
+        {
+            Inst = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public void Choice(EventData eventData)

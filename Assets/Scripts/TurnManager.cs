@@ -115,4 +115,13 @@ public class TurnManager : MonoBehaviour
             startCardCount++;
     }
 
+    IEnumerator ShowReward()    //전투가 끝나거나 이벤트 보상을 얻을때
+    {
+        while (true)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        yield return null;
+    }
+
 }
