@@ -40,15 +40,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 631378451
+    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Card
-    uniqueID: 1347361645
     locked: 0
   - name: Xobj
     uniqueID: 1679068771
     locked: 0
   - name: FadeObj
     uniqueID: 3840145323
+    locked: 0
+  - name: Card
+    uniqueID: 1347361645
     locked: 0
