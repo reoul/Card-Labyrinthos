@@ -13644,8 +13644,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reward_type: 0
-  index: 0
+  reward_kind: 0
+  first_reward_probability: 0
+  reward_type1_1: 0
+  index1_1: 0
+  reward_type1_2: 0
+  index1_2: 0
+  reward_type2: 0
+  index2: 0
 --- !u!1 &1031483582
 GameObject:
   m_ObjectHideFlags: 0
@@ -18632,8 +18638,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reward_type: 0
-  index: 0
+  reward_kind: 0
+  first_reward_probability: 0
+  reward_type1_1: 0
+  index1_1: 0
+  reward_type1_2: 0
+  index1_2: 0
+  reward_type2: 0
+  index2: 0
 --- !u!1 &1418488321
 GameObject:
   m_ObjectHideFlags: 0
@@ -24803,8 +24815,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reward_type: 0
-  index: 0
+  reward_kind: 0
+  first_reward_probability: 0
+  reward_type1_1: 0
+  index1_1: 0
+  reward_type1_2: 0
+  index1_2: 0
+  reward_type2: 0
+  index2: 0
 --- !u!1 &2105344538
 GameObject:
   m_ObjectHideFlags: 0

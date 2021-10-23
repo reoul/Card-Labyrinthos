@@ -12,6 +12,7 @@ public class FieldData
 
     public FieldData()
     {
+
     }
 
     public FieldData(FIELD_TYPE field_type, EVENT_TYPE event_type, MONSTER_TYPE monster_type)

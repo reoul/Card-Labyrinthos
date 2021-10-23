@@ -3,17 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum EVENT_REWARD_TYPE { CARD, HP }
+public enum EVENT_REWARD_TYPE { CARD, CARD_PIECE, HP, DRAW }
 
 public class EventData
 {
-    public EVENT_REWARD_TYPE reward_type;
-    public int index;
+    public REWARD_KIND reward_kind;
+    public int first_reward_probability;
+    public EVENT_REWARD_TYPE reward_type1_1;
+    public int index1_1;
+    public EVENT_REWARD_TYPE reward_type1_2;
+    public int index1_2;
+    public EVENT_REWARD_TYPE reward_type2;
+    public int index2;
 
-    public EventData(EVENT_REWARD_TYPE _reward_type, int _index)
+    public EventData(REWARD_KIND reward_kind, int first_reward_probability, EVENT_REWARD_TYPE reward_type1_1, int index1_1, EVENT_REWARD_TYPE reward_type1_2, int index1_2, EVENT_REWARD_TYPE reward_type2, int index2)
     {
-        reward_type = _reward_type;
-        index = _index;
+        this.reward_kind = reward_kind;
+        this.first_reward_probability = first_reward_probability;
+        this.reward_type1_1 = reward_type1_1;
+        this.index1_1 = index1_1;
+        this.reward_type1_2 = reward_type1_2;
+        this.index1_2 = index1_2;
+        this.reward_type2 = reward_type2;
+        this.index2 = index2;
     }
 }
 
