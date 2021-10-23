@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 1020144}
   - component: {fileID: 1020146}
   - component: {fileID: 1020145}
+  - component: {fileID: 1020147}
   m_Layer: 0
   m_Name: Q1
   m_TagString: Untagged
@@ -232,6 +233,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1020147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 0
+  first_reward_probability: 0
+  reward_type1_1: 0
+  index1_1: 1
+  reward_type1_2: 0
+  index1_2: 0
+  reward_type2: 0
+  index2: 0
 --- !u!1 &43765223
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,6 +441,7 @@ GameObject:
   - component: {fileID: 46153603}
   - component: {fileID: 46153605}
   - component: {fileID: 46153604}
+  - component: {fileID: 46153606}
   m_Layer: 0
   m_Name: Q2
   m_TagString: Untagged
@@ -440,6 +462,7 @@ Transform:
   m_Children:
   - {fileID: 1983231736}
   - {fileID: 370079562}
+  - {fileID: 1736339562}
   m_Father: {fileID: 2023076709}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -519,6 +542,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &46153606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46153602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 0
+  first_reward_probability: 0
+  reward_type1_1: 1
+  index1_1: 50
+  reward_type1_2: 0
+  index1_2: 0
+  reward_type2: 0
+  index2: 0
 --- !u!1 &48844188
 GameObject:
   m_ObjectHideFlags: 0
@@ -1441,6 +1484,7 @@ GameObject:
   - component: {fileID: 120669363}
   - component: {fileID: 120669365}
   - component: {fileID: 120669364}
+  - component: {fileID: 120669366}
   m_Layer: 0
   m_Name: Q3
   m_TagString: Untagged
@@ -1541,6 +1585,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &120669366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120669362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 0
+  first_reward_probability: 0
+  reward_type1_1: 2
+  index1_1: -10
+  reward_type1_2: 0
+  index1_2: 0
+  reward_type2: 0
+  index2: 0
 --- !u!1 &141467075
 GameObject:
   m_ObjectHideFlags: 0
@@ -3397,6 +3461,7 @@ GameObject:
   - component: {fileID: 270772781}
   - component: {fileID: 270772783}
   - component: {fileID: 270772782}
+  - component: {fileID: 270772784}
   m_Layer: 0
   m_Name: Q3
   m_TagString: Untagged
@@ -3497,6 +3562,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &270772784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270772780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 0
+  first_reward_probability: 0
+  reward_type1_1: 2
+  index1_1: -10
+  reward_type1_2: 0
+  index1_2: 0
+  reward_type2: 0
+  index2: 0
 --- !u!1 &284228642
 GameObject:
   m_ObjectHideFlags: 0
@@ -3860,6 +3945,7 @@ GameObject:
   - component: {fileID: 296185916}
   - component: {fileID: 296185918}
   - component: {fileID: 296185917}
+  - component: {fileID: 296185919}
   m_Layer: 0
   m_Name: Q2
   m_TagString: Untagged
@@ -3962,6 +4048,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &296185919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296185915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 1
+  first_reward_probability: 0
+  reward_type1_1: 2
+  index1_1: -10
+  reward_type1_2: 1
+  index1_2: 100
+  reward_type2: 0
+  index2: 0
 --- !u!1 &306815621
 GameObject:
   m_ObjectHideFlags: 0
@@ -4149,6 +4255,7 @@ GameObject:
   - component: {fileID: 311178904}
   - component: {fileID: 311178906}
   - component: {fileID: 311178905}
+  - component: {fileID: 311178907}
   m_Layer: 0
   m_Name: Q3
   m_TagString: Untagged
@@ -4249,6 +4356,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &311178907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311178903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 0
+  first_reward_probability: 0
+  reward_type1_1: 2
+  index1_1: -10
+  reward_type1_2: 0
+  index1_2: 0
+  reward_type2: 0
+  index2: 0
 --- !u!1 &313774137
 GameObject:
   m_ObjectHideFlags: 0
@@ -4473,6 +4600,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db1847c845b79ed4e8f71787a84e07e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  condition_TMP:
+  - {fileID: 1214439255}
+  - {fileID: 547964994}
+  - {fileID: 848793142}
 --- !u!1 &320658707
 GameObject:
   m_ObjectHideFlags: 0
@@ -4484,6 +4615,7 @@ GameObject:
   - component: {fileID: 320658708}
   - component: {fileID: 320658710}
   - component: {fileID: 320658709}
+  - component: {fileID: 320658711}
   m_Layer: 0
   m_Name: Q3
   m_TagString: Untagged
@@ -4584,6 +4716,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &320658711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320658707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 0
+  first_reward_probability: 0
+  reward_type1_1: 2
+  index1_1: -20
+  reward_type1_2: 0
+  index1_2: 0
+  reward_type2: 0
+  index2: 0
 --- !u!1 &344464955
 GameObject:
   m_ObjectHideFlags: 0
@@ -4993,7 +5145,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uAC00\uBA74\uC744 \uADF8\uB0E5 \uC9C0\uB098\uCCE4\uC2B5\uB2C8\uB2E4."
+  m_text: "\uAC00\uBA74\uC744 \uADF8\uB0E5 \uC9C0\uB098\uCCE4\uB354\uB2C8 \uCE74\uB4DC\uD30C\uD3B8\uC744
+    \uBC1C\uACAC\uD588\uC2B5\uB2C8\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -7093,6 +7246,7 @@ GameObject:
   - component: {fileID: 550751243}
   - component: {fileID: 550751245}
   - component: {fileID: 550751244}
+  - component: {fileID: 550751246}
   m_Layer: 0
   m_Name: Q1
   m_TagString: Untagged
@@ -7193,6 +7347,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &550751246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550751242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 0
+  first_reward_probability: 0
+  reward_type1_1: 0
+  index1_1: 1
+  reward_type1_2: 0
+  index1_2: 0
+  reward_type2: 0
+  index2: 0
 --- !u!1 &556690058
 GameObject:
   m_ObjectHideFlags: 0
@@ -8473,6 +8647,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db1847c845b79ed4e8f71787a84e07e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  condition_TMP:
+  - {fileID: 2086200829}
+  - {fileID: 442939522}
+  - {fileID: 1231957063}
 --- !u!1 &632906719
 GameObject:
   m_ObjectHideFlags: 0
@@ -8541,7 +8719,7 @@ Transform:
   - {fileID: 742992590}
   - {fileID: 1806198522}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &648904960
 GameObject:
@@ -9828,6 +10006,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db1847c845b79ed4e8f71787a84e07e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  condition_TMP:
+  - {fileID: 1321929926}
+  - {fileID: 996595473}
+  - {fileID: 618869814}
 --- !u!1 &750441201
 GameObject:
   m_ObjectHideFlags: 0
@@ -10221,6 +10403,7 @@ GameObject:
   - component: {fileID: 778622832}
   - component: {fileID: 778622834}
   - component: {fileID: 778622833}
+  - component: {fileID: 778622835}
   m_Layer: 0
   m_Name: Q1
   m_TagString: Untagged
@@ -10321,6 +10504,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &778622835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778622831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 0
+  first_reward_probability: 0
+  reward_type1_1: 0
+  index1_1: 1
+  reward_type1_2: 0
+  index1_2: 0
+  reward_type2: 0
+  index2: 0
 --- !u!1 &784053158
 GameObject:
   m_ObjectHideFlags: 0
@@ -10510,6 +10713,7 @@ GameObject:
   - component: {fileID: 787072113}
   - component: {fileID: 787072115}
   - component: {fileID: 787072114}
+  - component: {fileID: 787072116}
   m_Layer: 0
   m_Name: Q1
   m_TagString: Untagged
@@ -10610,6 +10814,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &787072116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787072112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 0
+  first_reward_probability: 0
+  reward_type1_1: 0
+  index1_1: 1
+  reward_type1_2: 0
+  index1_2: 0
+  reward_type2: 0
+  index2: 0
 --- !u!1 &800842541
 GameObject:
   m_ObjectHideFlags: 0
@@ -11911,6 +12135,7 @@ GameObject:
   - component: {fileID: 898446318}
   - component: {fileID: 898446320}
   - component: {fileID: 898446319}
+  - component: {fileID: 898446321}
   m_Layer: 0
   m_Name: Q2
   m_TagString: Untagged
@@ -12013,6 +12238,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &898446321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898446317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 1
+  first_reward_probability: 0
+  reward_type1_1: 1
+  index1_1: -100
+  reward_type1_2: 0
+  index1_2: 1
+  reward_type2: 0
+  index2: 0
 --- !u!1 &903348393
 GameObject:
   m_ObjectHideFlags: 0
@@ -12592,6 +12837,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db1847c845b79ed4e8f71787a84e07e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  condition_TMP:
+  - {fileID: 90607084}
+  - {fileID: 1146241031}
+  - {fileID: 597027480}
 --- !u!1 &940384158
 GameObject:
   m_ObjectHideFlags: 0
@@ -12779,6 +13028,7 @@ GameObject:
   - component: {fileID: 951481242}
   - component: {fileID: 951481244}
   - component: {fileID: 951481243}
+  - component: {fileID: 951481245}
   m_Layer: 0
   m_Name: Q3
   m_TagString: Untagged
@@ -12879,6 +13129,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &951481245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951481241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 0
+  first_reward_probability: 0
+  reward_type1_1: 2
+  index1_1: -10
+  reward_type1_2: 0
+  index1_2: 0
+  reward_type2: 0
+  index2: 0
 --- !u!1 &976097688
 GameObject:
   m_ObjectHideFlags: 0
@@ -13646,8 +13916,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reward_kind: 0
   first_reward_probability: 0
-  reward_type1_1: 0
-  index1_1: 0
+  reward_type1_1: 2
+  index1_1: -10
   reward_type1_2: 0
   index1_2: 0
   reward_type2: 0
@@ -13663,6 +13933,7 @@ GameObject:
   - component: {fileID: 1031483583}
   - component: {fileID: 1031483585}
   - component: {fileID: 1031483584}
+  - component: {fileID: 1031483586}
   m_Layer: 0
   m_Name: Q3
   m_TagString: Untagged
@@ -13763,6 +14034,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1031483586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031483582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 0
+  first_reward_probability: 0
+  reward_type1_1: 2
+  index1_1: -10
+  reward_type1_2: 0
+  index1_2: 0
+  reward_type2: 0
+  index2: 0
 --- !u!1 &1058625941
 GameObject:
   m_ObjectHideFlags: 0
@@ -13774,6 +14065,7 @@ GameObject:
   - component: {fileID: 1058625942}
   - component: {fileID: 1058625944}
   - component: {fileID: 1058625943}
+  - component: {fileID: 1058625945}
   m_Layer: 0
   m_Name: Q2
   m_TagString: Untagged
@@ -13876,6 +14168,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1058625945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058625941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 1
+  first_reward_probability: 0
+  reward_type1_1: 2
+  index1_1: -10
+  reward_type1_2: 0
+  index1_2: 1
+  reward_type2: 0
+  index2: 0
 --- !u!1 &1087300632
 GameObject:
   m_ObjectHideFlags: 0
@@ -18161,6 +18473,7 @@ GameObject:
   - component: {fileID: 1384005769}
   - component: {fileID: 1384005771}
   - component: {fileID: 1384005770}
+  - component: {fileID: 1384005772}
   m_Layer: 0
   m_Name: Q1
   m_TagString: Untagged
@@ -18261,6 +18574,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1384005772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384005768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 0
+  first_reward_probability: 0
+  reward_type1_1: 0
+  index1_1: 1
+  reward_type1_2: 0
+  index1_2: 0
+  reward_type2: 0
+  index2: 0
 --- !u!1 &1405726150
 GameObject:
   m_ObjectHideFlags: 0
@@ -18353,7 +18686,7 @@ Transform:
   m_LocalScale: {x: 0.9345716, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1405819303
 GameObject:
@@ -18403,6 +18736,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db1847c845b79ed4e8f71787a84e07e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  condition_TMP:
+  - {fileID: 903348395}
+  - {fileID: 592583056}
+  - {fileID: 1460258393}
 --- !u!1 &1412171230
 GameObject:
   m_ObjectHideFlags: 0
@@ -18414,6 +18751,7 @@ GameObject:
   - component: {fileID: 1412171231}
   - component: {fileID: 1412171233}
   - component: {fileID: 1412171232}
+  - component: {fileID: 1412171234}
   m_Layer: 0
   m_Name: Q1
   m_TagString: Untagged
@@ -18514,6 +18852,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1412171234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412171230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 0
+  first_reward_probability: 0
+  reward_type1_1: 0
+  index1_1: 1
+  reward_type1_2: 0
+  index1_2: 0
+  reward_type2: 0
+  index2: 0
 --- !u!1 &1413393112
 GameObject:
   m_ObjectHideFlags: 0
@@ -18641,7 +18999,7 @@ MonoBehaviour:
   reward_kind: 0
   first_reward_probability: 0
   reward_type1_1: 0
-  index1_1: 0
+  index1_1: 1
   reward_type1_2: 0
   index1_2: 0
   reward_type2: 0
@@ -18657,6 +19015,7 @@ GameObject:
   - component: {fileID: 1418488322}
   - component: {fileID: 1418488324}
   - component: {fileID: 1418488323}
+  - component: {fileID: 1418488325}
   m_Layer: 0
   m_Name: Q3
   m_TagString: Untagged
@@ -18757,6 +19116,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1418488325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418488321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 0
+  first_reward_probability: 0
+  reward_type1_1: 2
+  index1_1: -10
+  reward_type1_2: 0
+  index1_2: 0
+  reward_type2: 0
+  index2: 0
 --- !u!1 &1424377192
 GameObject:
   m_ObjectHideFlags: 0
@@ -18944,6 +19323,7 @@ GameObject:
   - component: {fileID: 1440182648}
   - component: {fileID: 1440182650}
   - component: {fileID: 1440182649}
+  - component: {fileID: 1440182651}
   m_Layer: 0
   m_Name: Q1
   m_TagString: Untagged
@@ -19044,6 +19424,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1440182651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440182647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 0
+  first_reward_probability: 0
+  reward_type1_1: 3
+  index1_1: 1
+  reward_type1_2: 0
+  index1_2: 0
+  reward_type2: 0
+  index2: 0
 --- !u!1 &1442334900
 GameObject:
   m_ObjectHideFlags: 0
@@ -20266,6 +20666,7 @@ GameObject:
   - component: {fileID: 1549033986}
   - component: {fileID: 1549033988}
   - component: {fileID: 1549033987}
+  - component: {fileID: 1549033989}
   m_Layer: 0
   m_Name: Q3
   m_TagString: Untagged
@@ -20366,6 +20767,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1549033989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549033985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 0
+  first_reward_probability: 0
+  reward_type1_1: 2
+  index1_1: -10
+  reward_type1_2: 0
+  index1_2: 0
+  reward_type2: 0
+  index2: 0
 --- !u!1 &1558962787
 GameObject:
   m_ObjectHideFlags: 0
@@ -20554,6 +20975,7 @@ GameObject:
   - component: {fileID: 1611772279}
   - component: {fileID: 1611772281}
   - component: {fileID: 1611772280}
+  - component: {fileID: 1611772282}
   m_Layer: 0
   m_Name: Q1
   m_TagString: Untagged
@@ -20654,6 +21076,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1611772282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611772278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 0
+  first_reward_probability: 0
+  reward_type1_1: 0
+  index1_1: 1
+  reward_type1_2: 0
+  index1_2: 0
+  reward_type2: 0
+  index2: 0
 --- !u!1 &1631622104
 GameObject:
   m_ObjectHideFlags: 0
@@ -20665,6 +21107,7 @@ GameObject:
   - component: {fileID: 1631622105}
   - component: {fileID: 1631622107}
   - component: {fileID: 1631622106}
+  - component: {fileID: 1631622108}
   m_Layer: 0
   m_Name: Q3
   m_TagString: Untagged
@@ -20765,6 +21208,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1631622108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631622104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 0
+  first_reward_probability: 0
+  reward_type1_1: 2
+  index1_1: -10
+  reward_type1_2: 0
+  index1_2: 0
+  reward_type2: 0
+  index2: 0
 --- !u!1 &1647359250
 GameObject:
   m_ObjectHideFlags: 0
@@ -21344,6 +21807,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db1847c845b79ed4e8f71787a84e07e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  condition_TMP:
+  - {fileID: 648904962}
+  - {fileID: 1661044665}
+  - {fileID: 1702363461}
 --- !u!1 &1702363459
 GameObject:
   m_ObjectHideFlags: 0
@@ -21531,6 +21998,7 @@ GameObject:
   - component: {fileID: 1715254236}
   - component: {fileID: 1715254238}
   - component: {fileID: 1715254237}
+  - component: {fileID: 1715254239}
   m_Layer: 0
   m_Name: Q1
   m_TagString: Untagged
@@ -21631,6 +22099,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1715254239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715254235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 0
+  first_reward_probability: 0
+  reward_type1_1: 1
+  index1_1: 100
+  reward_type1_2: 0
+  index1_2: 0
+  reward_type2: 0
+  index2: 0
 --- !u!1 &1722251369
 GameObject:
   m_ObjectHideFlags: 0
@@ -21855,6 +22343,186 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db1847c845b79ed4e8f71787a84e07e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  condition_TMP:
+  - {fileID: 265225680}
+  - {fileID: 889085727}
+  - {fileID: 776064583}
+--- !u!1 &1736339561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1736339562}
+  - component: {fileID: 1736339565}
+  - component: {fileID: 1736339564}
+  - component: {fileID: 1736339563}
+  m_Layer: 0
+  m_Name: Q2Reward
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1736339562
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736339561}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 46153603}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.001, y: -0.1041}
+  m_SizeDelta: {x: 0.32, y: 0.11}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1736339563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736339561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "<\uCE74\uB4DC\uD30C\uD3B8 +50>"
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
+  m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
+    type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278250593
+  m_fontColor: {r: 0.38039216, g: 0.9254902, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 0.45
+  m_fontSizeBase: 0.45
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 0
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 1736339565}
+  m_maskType: 0
+  _SortingLayerID: 0
+  _SortingOrder: 0
+--- !u!222 &1736339564
+CanvasRenderer:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736339561}
+  m_CullTransparentMesh: 0
+--- !u!23 &1736339565
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736339561}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &1782294711
 GameObject:
   m_ObjectHideFlags: 0
@@ -22042,6 +22710,7 @@ GameObject:
   - component: {fileID: 1788969229}
   - component: {fileID: 1788969231}
   - component: {fileID: 1788969230}
+  - component: {fileID: 1788969232}
   m_Layer: 0
   m_Name: Q2
   m_TagString: Untagged
@@ -22142,6 +22811,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1788969232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788969228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 0
+  first_reward_probability: 0
+  reward_type1_1: 1
+  index1_1: 100
+  reward_type1_2: 0
+  index1_2: 0
+  reward_type2: 0
+  index2: 0
 --- !u!1 &1806198521
 GameObject:
   m_ObjectHideFlags: 0
@@ -22190,6 +22879,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db1847c845b79ed4e8f71787a84e07e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  condition_TMP:
+  - {fileID: 1252087296}
+  - {fileID: 344464957}
+  - {fileID: 1166692500}
 --- !u!1 &1817421493
 GameObject:
   m_ObjectHideFlags: 0
@@ -23296,6 +23989,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db1847c845b79ed4e8f71787a84e07e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  condition_TMP:
+  - {fileID: 668086100}
+  - {fileID: 940384160}
+  - {fileID: 459640019}
 --- !u!1 &1957617967
 GameObject:
   m_ObjectHideFlags: 0
@@ -23838,6 +24535,7 @@ GameObject:
   - component: {fileID: 1998591913}
   - component: {fileID: 1998591915}
   - component: {fileID: 1998591914}
+  - component: {fileID: 1998591916}
   m_Layer: 0
   m_Name: Q2
   m_TagString: Untagged
@@ -23938,6 +24636,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1998591916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998591912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 0
+  first_reward_probability: 0
+  reward_type1_1: 2
+  index1_1: 10
+  reward_type1_2: 0
+  index1_2: 0
+  reward_type2: 0
+  index2: 0
 --- !u!1 &2014214116
 GameObject:
   m_ObjectHideFlags: 0
@@ -24162,6 +24880,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db1847c845b79ed4e8f71787a84e07e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  condition_TMP:
+  - {fileID: 1539694461}
+  - {fileID: 1983231737}
+  - {fileID: 830436430}
 --- !u!1 &2054851854
 GameObject:
   m_ObjectHideFlags: 0
@@ -24815,14 +25537,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reward_kind: 0
+  reward_kind: 2
   first_reward_probability: 0
   reward_type1_1: 0
-  index1_1: 0
+  index1_1: 1
   reward_type1_2: 0
   index1_2: 0
-  reward_type2: 0
-  index2: 0
+  reward_type2: 2
+  index2: -10
 --- !u!1 &2105344538
 GameObject:
   m_ObjectHideFlags: 0
@@ -24834,6 +25556,7 @@ GameObject:
   - component: {fileID: 2105344539}
   - component: {fileID: 2105344541}
   - component: {fileID: 2105344540}
+  - component: {fileID: 2105344542}
   m_Layer: 0
   m_Name: Q2
   m_TagString: Untagged
@@ -24934,6 +25657,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2105344542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105344538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 0
+  first_reward_probability: 0
+  reward_type1_1: 0
+  index1_1: 1
+  reward_type1_2: 0
+  index1_2: 0
+  reward_type2: 0
+  index2: 0
 --- !u!1 &2122374500
 GameObject:
   m_ObjectHideFlags: 0
@@ -24945,6 +25688,7 @@ GameObject:
   - component: {fileID: 2122374501}
   - component: {fileID: 2122374503}
   - component: {fileID: 2122374502}
+  - component: {fileID: 2122374504}
   m_Layer: 0
   m_Name: Q2
   m_TagString: Untagged
@@ -25045,6 +25789,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2122374504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122374500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 0
+  first_reward_probability: 0
+  reward_type1_1: 1
+  index1_1: 100
+  reward_type1_2: 0
+  index1_2: 0
+  reward_type2: 0
+  index2: 0
 --- !u!1 &2129300173
 GameObject:
   m_ObjectHideFlags: 0
@@ -25409,6 +26173,7 @@ GameObject:
   - component: {fileID: 2142525331}
   - component: {fileID: 2142525333}
   - component: {fileID: 2142525332}
+  - component: {fileID: 2142525334}
   m_Layer: 0
   m_Name: Q2
   m_TagString: Untagged
@@ -25511,3 +26276,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2142525334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142525330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ae52f37365e534da9f60dac33aab8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reward_kind: 1
+  first_reward_probability: 0
+  reward_type1_1: 2
+  index1_1: -10
+  reward_type1_2: 0
+  index1_2: 1
+  reward_type2: 0
+  index2: 0
