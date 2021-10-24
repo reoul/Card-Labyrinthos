@@ -98,6 +98,7 @@ public class Field : MonoBehaviour
     private void Start()
     {
         transform.GetChild(0).gameObject.SetActive(false);
+        spriteRenderer.color -= new Color(0, 0, 0, 0.5f);
     }
 
     void OnMouseUp()

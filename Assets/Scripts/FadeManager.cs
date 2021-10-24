@@ -10,6 +10,8 @@ public class FadeManager : MonoBehaviour
 
     public static event EventHandler FadeEvent;
 
+    public float fade_speed;
+
     private void Awake()
     {
         if (Inst == null)
@@ -60,14 +62,14 @@ public class FadeManager : MonoBehaviour
         if (isOut)
             while (alpha < 1)
             {
-                alpha += Time.deltaTime * 2;
+                alpha += Time.deltaTime * fade_speed;
                 SR.color = new Color(0, 0, 0, Mathf.Clamp01(alpha));
                 yield return new WaitForEndOfFrame();
             }
         else
             while (alpha > 0)
             {
-                alpha -= Time.deltaTime / 2;
+                alpha -= Time.deltaTime / fade_speed;
                 SR.color = new Color(0, 0, 0, Mathf.Clamp01(alpha));
                 yield return new WaitForEndOfFrame();
             }

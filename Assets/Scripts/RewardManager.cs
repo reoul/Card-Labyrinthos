@@ -6,7 +6,7 @@ public class RewardManager : MonoBehaviour
 {
     public static RewardManager Inst = null;
 
-    public GameObject rewardWindowPrefab;
+    public GameObject rewardWindow;
     public GameObject rewardPrefab;
 
     public List<GameObject> rewards;
@@ -33,8 +33,15 @@ public class RewardManager : MonoBehaviour
 
     public bool getReward;
 
-    public void ShowRewardWindow()
+    public IEnumerator ShowRewardWindow()
     {
+        while (true)
+        {
+            rewardWindow.GetComponent<SpriteRenderer>().color += Color.black * Time.deltaTime;
+            if (rewardWindow.GetComponent<SpriteRenderer>().color.a > 1)
+                break;
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     public void AddReward(EVENT_REWARD_TYPE reward_type, int index)

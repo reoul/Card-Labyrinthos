@@ -42,10 +42,10 @@ public class TurnManager : MonoBehaviour
 
     public static Action OnAddCard;
 
-
     public IEnumerator StartGameCorutine()
     {
         yield return delay01;
+        Player.Inst.hpbar.SetHP(PlayerManager.Inst.hp);
         StartCoroutine(StartTurnCorutine());
     }
 
