@@ -13,7 +13,7 @@ public enum MONSTER_TYPE
 
 public enum MONSTER_DIFFICULTY { EASY, NOMAL, HARD }
 
-public enum PATTERN_TYPE { ATTACK, HEAL, EVENT1, EVENT2 }
+public enum PATTERN_TYPE { ATTACK, HEAL, SKILL1, SKILL2, SKILL3, SKILL4, SKILL5, SKILL6, SKILL7, SKILL8, SKILL9 }
 
 [System.Serializable]
 public class PATTERN
@@ -44,6 +44,7 @@ public class Monster
     public PATTERN pattern_5; //½ºÅ³
 }
 
+[System.Serializable]
 [CreateAssetMenu(fileName = "MonsterSO", menuName = "Scriptable Object/MonsterSO")]
 public class MonsterSO : ScriptableObject
 {
