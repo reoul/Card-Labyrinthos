@@ -136,7 +136,7 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    void FinishBattle()
+    public void FinishBattle()
     {
         while (MyHandCards.Count > 0)
         {
@@ -161,6 +161,7 @@ public class CardManager : MonoBehaviour
         itemBuffer = null;
         tombItemBuffer = null;
         TurnManager.OnAddCard -= AddCard;
+        StartCoroutine(TurnManager.Inst.ShowReward());
     }
 
     public void CardTombToItemBuffer()      //버린 카드 더미에서 뽑을 카드 더미로 섞고 이동

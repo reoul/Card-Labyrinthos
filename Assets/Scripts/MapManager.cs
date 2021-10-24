@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -23,7 +24,7 @@ public class FieldData
     }
 }
 
-public enum FIELD_TYPE { BATTLE, EVENT, REST, SHOP, MAP, BOSS }
+public enum FIELD_TYPE { BATTLE, EVENT, REST, SHOP, MAP, BOSS, TEST2 }
 public enum EVENT_TYPE { EVENT1, EVENT2, EVENT3 };
 
 public class SceneEventArgs : EventArgs
@@ -53,10 +54,30 @@ public class MapManager : MonoBehaviour
     }
 
     public FieldData fieldData;
+    [SerializeField]
+    int selectFieldIndex;
 
-    public void IconMouseUp(FieldData fieldData)
+    [SerializeField]
+    bool[] isClear;     //필드 클리어 여부, 해당 필드가 끝이 날때 변경
+    [SerializeField]
+    GameObject fieldParent;
+    public Field[] fields;
+
+    private void Start()
     {
-        this.fieldData = fieldData;
+        fieldParent = GameObject.Find("FieldParent");
+        StartCoroutine(FieldClearCheckCorutine());
+    }
+
+    public void IconMouseUp(Field field)
+    {
+        this.fieldData = field.fieldData;
+        for (int i = 0; i < fields.Length; i++)
+        {
+            if (fields[i].Equals(field))
+                selectFieldIndex = i;
+        }
+        fields.Equals(field);
         FadeManager.FadeEvent += new EventHandler(LoadScene);
         StartEvent();
     }
@@ -64,6 +85,15 @@ public class MapManager : MonoBehaviour
     public void LoadScene(object obj, EventArgs e)
     {
         SceneManager.LoadScene(fieldData.field_type.ToString());
+    }
+
+    public void LoadMapScene(bool clear)
+    {
+        isClear[selectFieldIndex] = clear;
+        TurnManager.Inst.isFinish = false;
+        fieldData.field_type = FIELD_TYPE.TEST2;
+        FadeManager.FadeEvent += new EventHandler(LoadScene);
+        StartCoroutine(FadeManager.Inst.FadeInOut(null, null, FieldClearCheckCorutine()));
     }
 
     void StartEvent()
@@ -83,8 +113,24 @@ public class MapManager : MonoBehaviour
                 StartCoroutine(FadeManager.Inst.FadeInOut());
                 break;
             case FIELD_TYPE.MAP:
-                StartCoroutine(FadeManager.Inst.FadeInOut());
+                StartCoroutine(FadeManager.Inst.FadeInOut(null, null, FieldClearCheckCorutine()));
                 break;
         }
+    }
+
+    public IEnumerator FieldClearCheckCorutine()
+    {
+        if (fieldParent == null)
+            fieldParent = GameObject.Find("FieldParent");
+        fields = fieldParent.GetComponentsInChildren<Field>(true);
+        if (isClear.Length == 0)
+            isClear = new bool[fields.Length];
+
+        for (int i = 0; i < fields.Length; i++)
+        {
+            fields[i].isClear = isClear[i];
+            fields[i].UpdateClearImage();
+        }
+        yield return null;
     }
 }

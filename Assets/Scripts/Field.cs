@@ -69,6 +69,8 @@ public class FieldInspector : Editor
                 break;
         }
         field.transform.GetChild(0).GetComponent<TextMeshPro>().text = text;
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("isClear"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("clearObj"));
 
         serializedObject.ApplyModifiedProperties();
     }
@@ -86,7 +88,10 @@ public class Field : MonoBehaviour
 
     bool onField = false;   //마우스가 필드 위에 있는지
 
-    public FieldData fielddata { get { return new FieldData(field_type, event_type, GetMonster(monster_difficulty)); } }
+    public bool isClear;
+    public GameObject clearObj;
+
+    public FieldData fieldData { get { return new FieldData(field_type, event_type, GetMonster(monster_difficulty)); } }
 
     public SpriteRenderer spriteRenderer => this.GetComponent<SpriteRenderer>();
 
@@ -97,8 +102,8 @@ public class Field : MonoBehaviour
 
     void OnMouseUp()
     {
-        if (onField)
-            MapManager.Inst.IconMouseUp(fielddata);
+        if (onField && !isClear)
+            MapManager.Inst.IconMouseUp(this);
     }
 
     void OnMouseEnter()
@@ -231,5 +236,11 @@ public class Field : MonoBehaviour
         }
         this.transform.GetChild(0).GetComponent<TextMeshPro>().text = text;
         this.transform.GetChild(0).GetComponent<TextMeshPro>().text = text;
+    }
+
+    public void UpdateClearImage()
+    {
+        if (isClear)
+            clearObj.gameObject.SetActive(true);
     }
 }

@@ -107,6 +107,9 @@ public class Enemy : MonoBehaviour
         Destroy(hpbar.gameObject);
         Destroy(this.gameObject);
         if (EnemyManager.Inst.enemys.Count == 0)
-            GameManager.Inst.Notification("게임 종료");
+        {
+            GameManager.Inst.Notification("전투 승리");
+            CardManager.Inst.FinishBattle();
+        }
     }
 }

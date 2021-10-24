@@ -38,7 +38,10 @@ public class FadeManager : MonoBehaviour
     {
         yield return StartCoroutine(Fade(true));       //페이드 실행
         if (FadeEvent != null)
+        {
             FadeEvent(this, EventArgs.Empty);           //실행 후 이벤트 실행
+            FadeEvent = null;
+        }
         yield return new WaitForSeconds(0.1f);
         if (enumerator3 != null)
             yield return StartCoroutine(enumerator3);

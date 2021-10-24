@@ -67,7 +67,6 @@ public class TurnManager : MonoBehaviour
             Player.Inst.hpbar.Damage(Player.Inst.hpbar.sheld);
         yield return delay07;
         isLoading = false;
-
     }
 
     IEnumerator EndTurnCorutine()
@@ -115,13 +114,10 @@ public class TurnManager : MonoBehaviour
             startCardCount++;
     }
 
-    IEnumerator ShowReward()    //전투가 끝나거나 이벤트 보상을 얻을때
+    public IEnumerator ShowReward()    //전투가 끝나거나 이벤트 보상을 얻을때
     {
-        while (true)
-        {
-            yield return new WaitForEndOfFrame();
-        }
-        yield return null;
+        yield return StartCoroutine(RewardManager.Inst.RewardCorutine());    //보상 다 받았으면
+        MapManager.Inst.LoadMapScene(true);
     }
 
 }
