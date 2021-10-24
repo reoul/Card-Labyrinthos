@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 
@@ -71,6 +72,7 @@ public class FieldInspector : Editor
         field.transform.GetChild(0).GetComponent<TextMeshPro>().text = text;
         EditorGUILayout.PropertyField(serializedObject.FindProperty("isClear"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("clearObj"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("surroundingObj"));
 
         serializedObject.ApplyModifiedProperties();
     }
@@ -88,6 +90,8 @@ public class Field : MonoBehaviour
 
     bool onField = false;   //마우스가 필드 위에 있는지
 
+    public List<GameObject> surroundingObj;
+
     public bool isClear;
     public GameObject clearObj;
 
@@ -98,6 +102,8 @@ public class Field : MonoBehaviour
     private void Start()
     {
         transform.GetChild(0).gameObject.SetActive(false);
+        if (this.transform.childCount > 1)
+            clearObj = this.transform.GetChild(1).gameObject;
         spriteRenderer.color -= new Color(0, 0, 0, 0.5f);
     }
 

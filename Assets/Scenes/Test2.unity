@@ -1118,6 +1118,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &55208487
@@ -1327,6 +1328,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &66138790
@@ -1455,6 +1457,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 2
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &74721934
@@ -1935,6 +1938,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &78247413
@@ -2239,6 +2243,7 @@ MonoBehaviour:
   field_type: 2
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &85625113
@@ -2367,6 +2372,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &85825467
@@ -2671,6 +2677,7 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &96757835
@@ -2799,6 +2806,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &111576219
@@ -2927,6 +2935,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 1474074035}
 --- !u!61 &115832948
@@ -3138,6 +3147,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &128754700
@@ -3442,6 +3452,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &147254116
@@ -3570,6 +3581,7 @@ MonoBehaviour:
   field_type: 2
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &150616086
@@ -3874,6 +3886,7 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &151887739
@@ -4002,6 +4015,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &158619214
@@ -4306,6 +4320,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &185180260
@@ -4434,6 +4449,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &192911170
@@ -4914,6 +4930,7 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &205152172
@@ -5651,6 +5668,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &248475779
@@ -5779,6 +5797,7 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &248705805
@@ -6245,6 +6264,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &259695378
@@ -6549,6 +6569,7 @@ MonoBehaviour:
   field_type: 2
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &284249497
@@ -6677,6 +6698,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &289281581
@@ -6899,6 +6921,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &302530750
@@ -7284,6 +7307,7 @@ MonoBehaviour:
   field_type: 2
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &325526474
@@ -7412,6 +7436,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 2
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &331099270
@@ -7878,6 +7903,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 2
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &355897507
@@ -8182,6 +8208,7 @@ MonoBehaviour:
   field_type: 2
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &379702455
@@ -8310,6 +8337,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &380016248
@@ -8871,6 +8899,7 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &430609313
@@ -9175,6 +9204,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 2
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &447223605
@@ -9479,6 +9509,7 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &464345222
@@ -9945,6 +9976,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &474804502
@@ -10235,6 +10267,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &492835189
@@ -10363,6 +10396,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &496770906
@@ -10796,6 +10830,7 @@ MonoBehaviour:
   field_type: 2
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &532214718
@@ -11952,6 +11987,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 2
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &586924983
@@ -12080,6 +12116,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &595589278
@@ -12802,6 +12839,7 @@ MonoBehaviour:
   field_type: 3
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &630250917
@@ -13187,6 +13225,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &647522181
@@ -13396,6 +13435,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &664180617
@@ -13524,6 +13564,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &682281241
@@ -13652,6 +13693,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &688543323
@@ -13861,6 +13903,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &714635725
@@ -13989,6 +14032,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &715830506
@@ -14983,6 +15027,7 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &771781309
@@ -15111,6 +15156,7 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &772166592
@@ -16172,6 +16218,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &875605350
@@ -16300,6 +16347,7 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &893320293
@@ -16590,6 +16638,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 2
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &918851063
@@ -16718,6 +16767,7 @@ MonoBehaviour:
   field_type: 2
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &922920497
@@ -16846,6 +16896,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 2
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &923393659
@@ -17393,6 +17444,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &980719427
@@ -18197,6 +18249,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1067407159
@@ -18325,6 +18378,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1077816392
@@ -18453,6 +18507,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1086213006
@@ -18933,6 +18988,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1127601391
@@ -19777,6 +19833,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1166204939
@@ -19905,6 +19962,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1171157035
@@ -20255,6 +20313,7 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1201029607
@@ -20545,6 +20604,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1237373735
@@ -21282,6 +21342,7 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1286748673
@@ -21586,6 +21647,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1297608291
@@ -21714,6 +21776,7 @@ MonoBehaviour:
   field_type: 2
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1323012536
@@ -22132,6 +22195,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 2
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1340322994
@@ -22517,6 +22581,7 @@ MonoBehaviour:
   field_type: 2
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1350136862
@@ -22821,6 +22886,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1363673238
@@ -24519,6 +24585,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1437974030
@@ -25082,6 +25149,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1491026011
@@ -25210,6 +25278,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1502745735
@@ -25338,6 +25407,7 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1508894934
@@ -26656,6 +26726,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1595804851
@@ -26865,6 +26936,7 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1602160728
@@ -27169,6 +27241,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1605229952
@@ -27378,6 +27451,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 2
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1611831713
@@ -27587,6 +27661,9 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj:
+  - {fileID: 0}
+  - {fileID: 0}
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1615295238
@@ -27715,6 +27792,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 2
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1615579800
@@ -28019,6 +28097,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1620595316
@@ -28404,6 +28483,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1644863965
@@ -29465,6 +29545,7 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1693728582
@@ -30188,6 +30269,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1765508168
@@ -30654,6 +30736,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1788567148
@@ -30782,6 +30865,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1790451404
@@ -31938,6 +32022,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1852745616
@@ -32323,6 +32408,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1878146842
@@ -32855,6 +32941,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1935328413
@@ -33497,6 +33584,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 2
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1971474583
@@ -33801,6 +33889,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &1997360887
@@ -34605,6 +34694,7 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &2091824895
@@ -34939,6 +35029,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &2107692818
@@ -35067,6 +35158,7 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &2108468528
@@ -35804,6 +35896,7 @@ MonoBehaviour:
   field_type: 2
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
   isClear: 0
   clearObj: {fileID: 0}
 --- !u!61 &2137784984
