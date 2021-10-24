@@ -20,7 +20,7 @@ public class ShopItem : MonoBehaviour
 
     private void Start()
     {
-        originalScale = transform.localScale;
+        originalScale = transform.localScale == Vector3.zero ? Vector3.one * 0.35f : transform.localScale;
     }
 
     private void OnMouseUp()
@@ -34,7 +34,7 @@ public class ShopItem : MonoBehaviour
         if (!isMax)
         {
             onItem = true;
-            transform.localScale = originalScale + Vector3.one * 0.1f;
+            transform.localScale = originalScale + Vector3.one * 0.02f;
         }
     }
 

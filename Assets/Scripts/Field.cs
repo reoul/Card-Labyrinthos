@@ -92,6 +92,7 @@ public class Field : MonoBehaviour
 
     public List<GameObject> surroundingObj;
 
+    public bool isReady;
     public bool isClear;
     public GameObject clearObj;
 
@@ -109,9 +110,8 @@ public class Field : MonoBehaviour
 
     void OnMouseUp()
     {
-        if (onField && !isClear)
+        if (onField && !isClear && isReady)
         {
-            Debug.Log("asdds");
             MapManager.Inst.IconMouseUp(this);
         }
     }
@@ -250,7 +250,15 @@ public class Field : MonoBehaviour
 
     public void UpdateClearImage()
     {
-        if (isClear)
+        if (isClear && clearObj != null)
+        {
             clearObj.gameObject.SetActive(true);
+            spriteRenderer.color += new Color(0, 0, 0, 0.5f);
+            for (int i = 0; i < surroundingObj.Count; i++)
+            {
+                surroundingObj[i].GetComponent<Field>().spriteRenderer.color += new Color(0, 0, 0, 0.5f);
+                surroundingObj[i].GetComponent<Field>().isReady = true;
+            }
+        }
     }
 }

@@ -39,13 +39,13 @@ public class ShopManager : MonoBehaviour
         {
             if (cardmax[i])
             {
-                items[i].transform.GetChild(0).gameObject.SetActive(true);
+                items[i].transform.GetChild(2).gameObject.SetActive(true);
                 items[i].CountMax();
             }
         }
         if (TurnManager.Inst.isStartCardCountMax)
         {
-            items[6].transform.GetChild(0).gameObject.SetActive(true);
+            items[6].transform.GetChild(2).gameObject.SetActive(true);
             items[6].CountMax();
         }
     }

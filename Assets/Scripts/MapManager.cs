@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 [System.Serializable]
 public class FieldData
@@ -124,16 +125,17 @@ public class MapManager : MonoBehaviour
         fields = fieldParent.GetComponentsInChildren<Field>(true);
         if (isClear.Length == 0)
             isClear = new bool[fields.Length];
+        isClear[0] = true;
 
         for (int i = 0; i < fields.Length; i++)
         {
             fields[i].isClear = isClear[i];
-            fields[i].UpdateClearImage();
             for (int j = 0; j < fields.Length; j++)
             {
                 if (Vector3.Distance(fields[i].transform.position, fields[j].transform.position) == 2)
                     fields[i].surroundingObj.Add(fields[j].gameObject);
             }
+            fields[i].UpdateClearImage();
         }
         yield return null;
     }
