@@ -110,7 +110,10 @@ public class Field : MonoBehaviour
     void OnMouseUp()
     {
         if (onField && !isClear)
+        {
+            Debug.Log("asdds");
             MapManager.Inst.IconMouseUp(this);
+        }
     }
 
     void OnMouseEnter()

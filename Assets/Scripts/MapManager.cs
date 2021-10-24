@@ -77,7 +77,6 @@ public class MapManager : MonoBehaviour
             if (fields[i].Equals(field))
                 selectFieldIndex = i;
         }
-        fields.Equals(field);
         FadeManager.FadeEvent += new EventHandler(LoadScene);
         StartEvent();
     }
@@ -130,6 +129,11 @@ public class MapManager : MonoBehaviour
         {
             fields[i].isClear = isClear[i];
             fields[i].UpdateClearImage();
+            for (int j = 0; j < fields.Length; j++)
+            {
+                if (Vector3.Distance(fields[i].transform.position, fields[j].transform.position) == 2)
+                    fields[i].surroundingObj.Add(fields[j].gameObject);
+            }
         }
         yield return null;
     }

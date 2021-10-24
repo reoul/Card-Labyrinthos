@@ -38,7 +38,9 @@ public class FadeManager : MonoBehaviour
 
     public IEnumerator FadeInOut(IEnumerator enumerator = null, IEnumerator enumerator2 = null, IEnumerator enumerator3 = null)
     {
+        Debug.Log("123");
         yield return StartCoroutine(Fade(true));       //페이드 실행
+        Debug.Log("456");
         if (FadeEvent != null)
         {
             FadeEvent(this, EventArgs.Empty);           //실행 후 이벤트 실행
