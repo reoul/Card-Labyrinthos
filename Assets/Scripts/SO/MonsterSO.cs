@@ -20,6 +20,12 @@ public class PATTERN
 {
     public PATTERN_TYPE pattern_type;
     public int index;
+
+    public PATTERN(PATTERN_TYPE type, int index = 0)
+    {
+        pattern_type = type;
+        this.index = index;
+    }
 }
 
 public enum CardType

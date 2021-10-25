@@ -7,12 +7,15 @@ public class Enemy : MonoBehaviour
 {
     public HpBar hpbar;         //적 체력바
 
+    public Monster monster;
     public int damage;          //플레이어에게 줄 데미지
     public int weaknessNum;     //약점카드 숫자
+    PATTERN curPatten;
     int lastPatten;
     int lastWeaknessNum;
 
-    [SerializeField] TMP_Text damageTMP;        //데미지 텍스트
+    [SerializeField] SpriteRenderer patten_sprite;
+    [SerializeField] TMP_Text pattenIndexTMP;        //데미지 텍스트
     [SerializeField] TMP_Text weaknessTMP;      //약점카드 테스트
     public GameObject[] ui;
 
@@ -36,41 +39,69 @@ public class Enemy : MonoBehaviour
         int patten;
         do
         {
-            patten = Random.Range(0, 6);
+            patten = Random.Range(0, 5);
         } while (patten == lastPatten);
         lastPatten = patten;
         switch (patten)
         {
             case 0:
-                damage = 10;
+                curPatten = monster.pattern_1;
                 break;
             case 1:
-                damage = 4;
+                curPatten = monster.pattern_2;
                 break;
             case 2:
-                damage = 60;
+                curPatten = monster.pattern_3;
                 break;
             case 3:
-                damage = 15;
+                curPatten = monster.pattern_4;
                 break;
             case 4:
-                damage = 8;
+                curPatten = new PATTERN(monster.pattern_5);
                 break;
-            case 5:
-                damage = 90;
+        }
+        switch (curPatten.pattern_type)
+        {
+            case PATTERN_TYPE.ATTACK:
+                damage = curPatten.index;
                 break;
-            case 6:
-                damage = 7;
+            case PATTERN_TYPE.HEAL:
                 break;
-            default:
-                damage = 5;
+            case PATTERN_TYPE.SKILL1:
+                break;
+            case PATTERN_TYPE.SKILL2:
+                break;
+            case PATTERN_TYPE.SKILL3:
+                break;
+            case PATTERN_TYPE.SKILL4:
+                break;
+            case PATTERN_TYPE.SKILL5:
                 break;
         }
     }
 
     public void UseTurn()           //적 턴 시작할때 호출됨
     {
-        this.GetComponent<Animator>().SetTrigger("Attack");         //공격 애니메이션 실행
+        switch (curPatten.pattern_type)
+        {
+            case PATTERN_TYPE.ATTACK:
+                this.GetComponent<Animator>().SetTrigger("Attack");         //공격 애니메이션 실행
+                break;
+            case PATTERN_TYPE.HEAL:
+                break;
+            case PATTERN_TYPE.SKILL1:
+                break;
+            case PATTERN_TYPE.SKILL2:
+                break;
+            case PATTERN_TYPE.SKILL3:
+                break;
+            case PATTERN_TYPE.SKILL4:
+                break;
+            case PATTERN_TYPE.SKILL5:
+                break;
+            default:
+                break;
+        }
     }
 
     public void Attack()
@@ -82,7 +113,7 @@ public class Enemy : MonoBehaviour
 
     public void UpdateStateText()           //텍스트 최신화
     {
-        damageTMP.text = damage.ToString();
+        pattenIndexTMP.text = damage.ToString();
         weaknessTMP.text = (weaknessNum + 1).ToString();
     }
 
