@@ -41,7 +41,7 @@ public class Monster
     public PATTERN pattern_2; //중공
     public PATTERN pattern_3; //강공
     public PATTERN pattern_4; //회복
-    public PATTERN pattern_5; //스킬
+    public PATTERN_TYPE pattern_5; //스킬
     public int index5_1;
     public int index5_2;
 }
