@@ -69,13 +69,14 @@ public class Enemy : MonoBehaviour
                 this.GetComponent<Animator>().SetTrigger("Attack");         //공격 애니메이션 실행
                 break;
             case PATTERN_TYPE.HEAL:
+                Heal();
                 break;
         }
     }
 
     public void Heal()
     {
-
+        hpbar.Heal(pattenIndex);
     }
 
     public void Attack()

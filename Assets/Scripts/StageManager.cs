@@ -44,4 +44,14 @@ public class StageManager : MonoBehaviour
             }
         }
     }
+
+    public void SetDebuff()
+    {
+
+    }
+
+    public void CheckDebuff()
+    {
+
+    }
 }

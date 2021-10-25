@@ -79,6 +79,11 @@ public class HpBar : MonoBehaviour
         ShowSheldText();
     }
 
+    public void Heal(int index)
+    {
+        hp = Mathf.Clamp(hp + index, 0, max_hp);
+    }
+
     void ShowSheldText()                //방어력 텍스트 업데이트
     {
         sheldtext.text = sheld.ToString();
@@ -93,9 +98,9 @@ public class HpBar : MonoBehaviour
             parent.GetComponent<Enemy>().Dead();
     }
 
-   /* public void Heal(int Heal_amout)
-    {
+    /* public void Heal(int Heal_amout)
+     {
 
-    }
-    */
+     }
+     */
 }
