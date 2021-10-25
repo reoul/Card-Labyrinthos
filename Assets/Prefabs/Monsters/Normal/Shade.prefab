@@ -1545,9 +1545,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpbar: {fileID: 8023498795953818867}
+  monster:
+    name: 
+    hp: 0
+    type: 0
+    prefab: {fileID: 0}
+    pattern_1:
+      pattern_type: 0
+      index: 0
+    pattern_2:
+      pattern_type: 0
+      index: 0
+    pattern_3:
+      pattern_type: 0
+      index: 0
+    pattern_4:
+      pattern_type: 0
+      index: 0
+    pattern_5: 0
+    index5_1: 0
+    index5_2: 0
   damage: 0
   weaknessNum: 0
-  damageTMP: {fileID: 8023498797937024165}
+  patten_sprite: {fileID: 8023498797359241750}
+  pattenIndexTMP: {fileID: 8023498797937024165}
   weaknessTMP: {fileID: 8023498797964545950}
   ui: []
 --- !u!61 &6741687728378613300
