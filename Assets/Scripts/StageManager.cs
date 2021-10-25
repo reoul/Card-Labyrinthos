@@ -11,6 +11,10 @@ public class StageManager : MonoBehaviour
     public Transform player_spawn;
     public Transform enemy_spawn;
 
+    public Sprite attackSprite;
+    public Sprite healSprite;
+    public Sprite randomPattenSprite;
+
     private void Awake()
     {
         Inst = this;
@@ -35,6 +39,7 @@ public class StageManager : MonoBehaviour
                     enemy_position.y > enemy_spawn.position.y ? -position_y : position_y, i * -0.5f);
                 EnemyManager.Inst.enemys.Add(enemy);
                 enemy.hpbar.SetHP(monsterSO.monsters[i].hp);
+                enemy.monster = monsterSO.monsters[i];
                 break;
             }
         }
