@@ -18,15 +18,39 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] int _hp;
     [SerializeField] int _max_hp;
     [SerializeField] int _card_piece;
-    public int hp { get { return _hp; } set { _hp = value; } }
-    public int card_piece { get { return _card_piece; } set { _card_piece = value; } }
+    public int hp
+    {
+        get
+        {
+            return _hp;
+        }
+        set
+        {
+            _hp = value;
+            TopBar.Inst.UpdateText();
+        }
+    }
+    public int card_piece
+    {
+        get
+        {
+            return _card_piece;
+        }
+        set
+        {
+            _card_piece = value;
+            TopBar.Inst.UpdateText();
+        }
+    }
     public int max_hp { get { return _max_hp; } set { _max_hp = value; } }
 
     public string hpString { get { return string.Format($"{hp}/{max_hp}"); } }
 
-    public void SetupGame()
+    public IEnumerator SetupGameCorutine()
     {
+        yield return new WaitForEndOfFrame();
         Player.Inst.hpbar.hp = hp;
         Player.Inst.hpbar.max_hp = max_hp;
+        Player.Inst.hpbar.Init();
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class TurnManager : MonoBehaviour
@@ -45,8 +46,6 @@ public class TurnManager : MonoBehaviour
     public IEnumerator StartGameCorutine()
     {
         yield return delay01;
-        PlayerManager.Inst.SetupGame();
-        Player.Inst.hpbar.Init();
         StartCoroutine(StartTurnCorutine());
     }
 
@@ -62,10 +61,12 @@ public class TurnManager : MonoBehaviour
                 OnAddCard.Invoke();
                 yield return delay01;
             }
-            GameManager.Inst.Notification("내 턴");
+            if (SceneManager.GetActiveScene().name == "Battle")
+                GameManager.Inst.Notification("내 턴");
         }
-        if (Player.Inst.hpbar.sheld > 0)
-            Player.Inst.hpbar.Damage(Player.Inst.hpbar.sheld);
+        if (SceneManager.GetActiveScene().name == "Battle")
+            if (Player.Inst.hpbar.sheld > 0)
+                Player.Inst.hpbar.Damage(Player.Inst.hpbar.sheld);
         yield return delay07;
         isLoading = false;
     }

@@ -48,14 +48,31 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public void Choice(EventData eventData)
+    public void Choice(EventData eventData)         //조건에 맞는 해당 선택지를 클릭했을때
     {
-
+        switch (eventData.reward_kind)
+        {
+            case REWARD_KIND.ONE:
+                RewardManager.Inst.AddReward(eventData.reward_type1_1, eventData.index1_1);
+                break;
+            case REWARD_KIND.TWO:
+                RewardManager.Inst.AddReward(eventData.reward_type1_1, eventData.index1_1);
+                RewardManager.Inst.AddReward(eventData.reward_type1_2, eventData.index1_2);
+                break;
+            case REWARD_KIND.RANDOM:
+                int rand = Random.Range(0, 100);
+                if (rand < eventData.first_reward_probability)
+                    RewardManager.Inst.AddReward(eventData.reward_type1_1, eventData.index1_1);
+                else
+                    RewardManager.Inst.AddReward(eventData.reward_type2, eventData.index2);
+                break;
+        }
+        StartCoroutine(RewardManager.Inst.ShowRewardWindowCorutine());
     }
 
     void FindEvents()
     {
-        Event[] events = GameObject.Find("Event").GetComponentsInChildren<Event>();
+        Event[] events = GameObject.Find("Event").GetComponentsInChildren<Event>(true);
         for (int i = 0; i < events.Length; i++)
         {
             events[i].gameObject.SetActive(false);
@@ -67,6 +84,7 @@ public class EventManager : MonoBehaviour
     {
         FindEvents();
         int rand = Random.Range(0, events.Count);
+        events[rand].Init();
         events[rand].gameObject.SetActive(true);
         yield return null;
     }

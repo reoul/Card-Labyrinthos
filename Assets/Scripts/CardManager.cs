@@ -49,6 +49,19 @@ public class CardManager : MonoBehaviour
 
     private Vector3[] waypoints;        //카드 사용후 버린 카드더미로 이동할때 사용
 
+    public int HandCardNumSum
+    {
+        get
+        {
+            int sum = 0;
+            for (int i = 0; i < MyHandCards.Count; i++)
+            {
+                sum += MyHandCards[i].final_Num + 1;
+            }
+            return sum;
+        }
+    }
+
     //Quaternion cardRotate = Utils.QI;
 
 

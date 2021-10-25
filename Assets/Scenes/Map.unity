@@ -9419,7 +9419,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &452875003
 Transform:
   m_ObjectHideFlags: 0
@@ -9447,10 +9447,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4081486301fc174da9d66bc69ab8000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resultTMP: {fileID: 0}
+  resultTMP: {fileID: 1553581237}
   rewardData:
     reward_type: 0
     index: 0
+  isRewardOn: 0
+  windowRenderer: {fileID: 452875006}
+  contentTMP: {fileID: 1553581237}
 --- !u!61 &452875005
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9515,7 +9518,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 987
+  m_SortingOrder: 70
   m_Sprite: {fileID: 21300000, guid: 1def0f20a87499245b0d06e7925854ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -14350,7 +14353,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &692155606
 Transform:
   m_ObjectHideFlags: 0
@@ -14404,7 +14407,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 987
+  m_SortingOrder: 70
   m_Sprite: {fileID: 21300000, guid: 1def0f20a87499245b0d06e7925854ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -14454,10 +14457,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4081486301fc174da9d66bc69ab8000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resultTMP: {fileID: 0}
+  resultTMP: {fileID: 791575712}
   rewardData:
     reward_type: 0
     index: 0
+  isRewardOn: 0
+  windowRenderer: {fileID: 692155607}
+  contentTMP: {fileID: 791575712}
 --- !u!1 &694648836
 GameObject:
   m_ObjectHideFlags: 0
@@ -18327,7 +18333,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &960260973
 Transform:
   m_ObjectHideFlags: 0
@@ -18355,10 +18361,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4081486301fc174da9d66bc69ab8000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resultTMP: {fileID: 0}
+  resultTMP: {fileID: 906767190}
   rewardData:
     reward_type: 0
     index: 0
+  isRewardOn: 0
+  windowRenderer: {fileID: 960260976}
+  contentTMP: {fileID: 906767190}
 --- !u!61 &960260975
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18423,7 +18432,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 987
+  m_SortingOrder: 70
   m_Sprite: {fileID: 21300000, guid: 1def0f20a87499245b0d06e7925854ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -21090,7 +21099,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1163939814
 Transform:
   m_ObjectHideFlags: 0
@@ -21118,10 +21127,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4081486301fc174da9d66bc69ab8000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resultTMP: {fileID: 0}
+  resultTMP: {fileID: 586314952}
   rewardData:
     reward_type: 0
     index: 0
+  isRewardOn: 0
+  windowRenderer: {fileID: 1163939817}
+  contentTMP: {fileID: 586314952}
 --- !u!61 &1163939816
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21186,7 +21198,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 987
+  m_SortingOrder: 70
   m_Sprite: {fileID: 21300000, guid: 1def0f20a87499245b0d06e7925854ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -21909,7 +21921,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1207200694
 Transform:
   m_ObjectHideFlags: 0
@@ -21937,10 +21949,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4081486301fc174da9d66bc69ab8000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resultTMP: {fileID: 0}
+  resultTMP: {fileID: 1480726974}
   rewardData:
     reward_type: 0
     index: 0
+  isRewardOn: 0
+  windowRenderer: {fileID: 1207200697}
+  contentTMP: {fileID: 1480726974}
 --- !u!61 &1207200696
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22005,7 +22020,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 987
+  m_SortingOrder: 70
   m_Sprite: {fileID: 21300000, guid: 1def0f20a87499245b0d06e7925854ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -23181,7 +23196,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uBCA4\uD2B8"
+  m_text: "\uC9C0\uB3C4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -25533,7 +25548,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -454821973
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_FlipX: 0
@@ -25629,7 +25644,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uC9C0"
+  m_text: "\uC774\uBCA4\uD2B8"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: de9a99698b08ae448a6fb09d09e0e7e1, type: 2}
   m_sharedMaterial: {fileID: 1665094978185840691, guid: de9a99698b08ae448a6fb09d09e0e7e1,
@@ -28981,7 +28996,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1601724399}
   - component: {fileID: 1601724398}
-  - component: {fileID: 1601724400}
   m_Layer: 0
   m_Name: Reward
   m_TagString: Untagged
@@ -29027,7 +29041,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 324
+  m_SortingOrder: 50
   m_Sprite: {fileID: 21300000, guid: 5b45999e818438b4fb9d7ac1f5316128, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -29046,7 +29060,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601724397}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -4.18, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children:
@@ -29058,32 +29072,9 @@ Transform:
   - {fileID: 1163939814}
   - {fileID: 1207200694}
   - {fileID: 452875003}
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_Father: {fileID: 1899899786}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1601724400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1601724397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c29c3ba3cc0245468b67e49dfbeee1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rewardWindow: {fileID: 0}
-  rewardPrefab: {fileID: 0}
-  rewards:
-  - {fileID: 692155605}
-  - {fileID: 1878214075}
-  - {fileID: 960260972}
-  - {fileID: 1163939813}
-  - {fileID: 1207200693}
-  - {fileID: 452875002}
-  isGetAllReward: 0
-  getReward: 0
 --- !u!1 &1602160725
 GameObject:
   m_ObjectHideFlags: 0
@@ -30766,7 +30757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9bd9349b0400904095b7441e67a99a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  field_type: 0
+  field_type: 1
   event_type: 0
   monster_difficulty: 0
   surroundingObj: []
@@ -30790,7 +30781,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 5.12}
+    oldSize: {x: 3.51, y: 5.51}
     newSize: {x: 5.12, y: 5.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -30838,7 +30829,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 304a6c5217b2e5b458ada3df4e95bad4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d343f523ba8f27b4da2644e77bbbc694, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -34974,7 +34965,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1878214076
 Transform:
   m_ObjectHideFlags: 0
@@ -35002,10 +34993,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4081486301fc174da9d66bc69ab8000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resultTMP: {fileID: 0}
+  resultTMP: {fileID: 1965032933}
   rewardData:
     reward_type: 0
     index: 0
+  isRewardOn: 0
+  windowRenderer: {fileID: 1878214079}
+  contentTMP: {fileID: 1965032933}
 --- !u!61 &1878214078
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -35070,7 +35064,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 987
+  m_SortingOrder: 70
   m_Sprite: {fileID: 21300000, guid: 1def0f20a87499245b0d06e7925854ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -35163,6 +35157,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1899899785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1899899786}
+  - component: {fileID: 1899899787}
+  m_Layer: 0
+  m_Name: RewardManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1899899786
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899899785}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1601724399}
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1899899787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899899785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c29c3ba3cc0245468b67e49dfbeee1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rewardWindow: {fileID: 1601724397}
+  rewardPrefab: {fileID: 0}
+  rewards: []
+  isGetAllReward: 0
+  getReward: 0
+  activeRewardWindow: 0
 --- !u!1 &1908111532
 GameObject:
   m_ObjectHideFlags: 0
@@ -36822,7 +36866,7 @@ MonoBehaviour:
   m_renderer: {fileID: 1987492746}
   m_maskType: 0
   _SortingLayerID: 0
-  _SortingOrder: 2384
+  _SortingOrder: 70
 --- !u!222 &1987492745
 CanvasRenderer:
   m_ObjectHideFlags: 2
@@ -36869,7 +36913,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2384
+  m_SortingOrder: 70
 --- !u!1 &1997360884
 GameObject:
   m_ObjectHideFlags: 0

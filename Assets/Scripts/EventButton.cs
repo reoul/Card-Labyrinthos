@@ -32,6 +32,7 @@ public class EventButtonInspector : Editor
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("index2"));
                 break;
         }
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("limitNum"));
 
         serializedObject.ApplyModifiedProperties();
     }
@@ -64,12 +65,37 @@ public class EventButton : MonoBehaviour
     [SerializeField]
     int index2;
 
+    public int limitNum;    //이벤트 버튼 숫자 제한
+    public bool IsAchieve       //조건을 통과하는지 검사하는 프로퍼티
+    {
+        get
+        {
+            int sum = CardManager.Inst.HandCardNumSum;
+            switch (limitNum)
+            {
+                case 10:
+                    if (sum <= limitNum)
+                        return true;
+                    return false;
+                case 20:
+                    if (sum <= limitNum && sum >= 11)
+                        return true;
+                    return false;
+                case 36:
+                    if (sum <= limitNum && sum >= 21)
+                        return true;
+                    return false;
+            }
+            return false;
+        }
+    }
+
     public EventData eventData { get { return new EventData(reward_kind, first_reward_probability, reward_type1_1, index1_1, reward_type1_2, index1_2, reward_type2, index2); } }
 
     bool onEvent = false;   //마우스가 필드 위에 있는지
     void OnMouseUp()
     {
-        if (onEvent)
+        if (onEvent && IsAchieve && !RewardManager.Inst.activeRewardWindow)
         {
             this.transform.parent.GetComponent<Event>().MouseUp(eventData);
         }

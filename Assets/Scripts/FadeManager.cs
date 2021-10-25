@@ -36,24 +36,29 @@ public class FadeManager : MonoBehaviour
         StartCoroutine(Fade(true));
     }
 
-    public IEnumerator FadeInOut(IEnumerator enumerator = null, IEnumerator enumerator2 = null, IEnumerator enumerator3 = null)
+    public IEnumerator FadeInOut(IEnumerator FadeOutAfter1 = null, IEnumerator FadeOutAfter2 = null, IEnumerator FadeOutAfter3 = null,
+            IEnumerator FadeInAfter1 = null, IEnumerator FadeInAfter2 = null, IEnumerator FadeInAfter3 = null)
     {
-        yield return StartCoroutine(Fade(true));       //페이드 실행
+        yield return StartCoroutine(Fade(true));       //페이드아웃 실행
         if (FadeEvent != null)
         {
             FadeEvent(this, EventArgs.Empty);           //실행 후 이벤트 실행
             FadeEvent = null;
         }
         yield return new WaitForSeconds(0.1f);
-        if (enumerator3 != null)
-            yield return StartCoroutine(enumerator3);
-        yield return StartCoroutine(Fade(false));                   //다시 페이드 실행
-        if (enumerator != null)
-        {
-            yield return StartCoroutine(enumerator);
-            if (enumerator2 != null)
-                StartCoroutine(enumerator2);
-        }
+        if (FadeOutAfter1 != null)
+            yield return StartCoroutine(FadeOutAfter1);
+        if (FadeOutAfter2 != null)
+            yield return StartCoroutine(FadeOutAfter2);
+        if (FadeOutAfter3 != null)
+            yield return StartCoroutine(FadeOutAfter3);
+        yield return StartCoroutine(Fade(false));                   //다시 페이드인 실행
+        if (FadeInAfter1 != null)
+            yield return StartCoroutine(FadeInAfter1);
+        if (FadeInAfter2 != null)
+            yield return StartCoroutine(FadeInAfter2);
+        if (FadeInAfter3 != null)
+            yield return StartCoroutine(FadeInAfter3);
     }
 
     IEnumerator Fade(bool isOut)

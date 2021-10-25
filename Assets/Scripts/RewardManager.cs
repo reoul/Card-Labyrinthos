@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class RewardManager : MonoBehaviour
@@ -9,7 +10,7 @@ public class RewardManager : MonoBehaviour
     public GameObject rewardWindow;
     public GameObject rewardPrefab;
 
-    public List<GameObject> rewards;
+    public List<Reward> rewards;
 
     public bool isGetAllReward = false;
 
@@ -26,28 +27,60 @@ public class RewardManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        activeRewardWindow = false;
+        Reward[] rewards = this.GetComponentsInChildren<Reward>(true);
+        for (int i = 0; i < rewards.Length; i++)
+        {
+            this.rewards.Add(rewards[i]);
+        }
+    }
+
     private void Update()
     {
 
     }
 
-    public bool getReward;
+    public bool getReward;              //
+    public bool activeRewardWindow;     //보상 창이 켜져있는지 확인하는 변수
 
-    public IEnumerator ShowRewardWindow()
+    public IEnumerator ShowRewardWindowCorutine()
     {
+        activeRewardWindow = true;
+        rewardWindow.SetActive(true);
+        SpriteRenderer windowRenderer = rewardWindow.GetComponent<SpriteRenderer>();
+        TMP_Text titleTMP = rewardWindow.transform.GetChild(0).GetComponent<TMP_Text>();
+
+        windowRenderer.color = new Color(255, 255, 255, 0);
+        titleTMP.color = new Color(255, 255, 255, 0);
         while (true)
         {
-            rewardWindow.GetComponent<SpriteRenderer>().color += Color.black * Time.deltaTime;
-            if (rewardWindow.GetComponent<SpriteRenderer>().color.a > 1)
+            windowRenderer.color += Color.black * Time.deltaTime * 2;
+            titleTMP.color += Color.black * Time.deltaTime * 2;
+            if (windowRenderer.color.a > 1)
                 break;
             yield return new WaitForEndOfFrame();
         }
+        for (int i = 0; i < rewards.Count; i++)
+        {
+            if (rewards[i].isRewardOn)
+                yield return StartCoroutine(rewards[i].FadeCorutine(true));
+        }
+        StartCoroutine(RewardCorutine());
     }
 
     public void AddReward(EVENT_REWARD_TYPE reward_type, int index)
     {
-        GameObject reward = Instantiate(rewardPrefab);
-        rewards.Add(reward);
+        for (int i = 0; i < rewards.Count; i++)
+        {
+            if (!rewards[i].isRewardOn)
+            {
+                rewards[i].SetReward(reward_type, index);
+                rewards[i].gameObject.SetActive(true);
+                break;
+            }
+        }
     }
 
     public IEnumerator RewardCorutine()
@@ -56,21 +89,31 @@ public class RewardManager : MonoBehaviour
         StartCoroutine(CheckGetAllReward());
         while (true)
         {
-            //if (isGetAllReward)
-            if (getReward)
+            if (isGetAllReward)
             {
                 isGetAllReward = false;
                 break;
             }
             yield return new WaitForSeconds(0.1f);
         }
+        activeRewardWindow = false;
+        rewardWindow.SetActive(false);
+        MapManager.Inst.LoadMapScene(true);
     }
 
     public IEnumerator CheckGetAllReward()
     {
         while (true)
         {
-            if (rewards.Count == 0)
+            int count = 0;
+            for (int i = 0; i < rewards.Count; i++)
+            {
+                if (rewards[i].gameObject.activeInHierarchy)
+                {
+                    count++;
+                }
+            }
+            if (count == 0)
             {
                 isGetAllReward = true;
                 break;
@@ -79,20 +122,22 @@ public class RewardManager : MonoBehaviour
         }
     }
 
-    public void GetReward(RewardData rewardData)
+    public void GetReward(Reward reward)
     {
-        switch (rewardData.reward_type)
+        switch (reward.rewardData.reward_type)
         {
             case EVENT_REWARD_TYPE.CARD:
-                CardManager.Inst.AddCardDeck(rewardData.index);
+                CardManager.Inst.AddCardDeck(reward.rewardData.index);
                 break;
             case EVENT_REWARD_TYPE.CARD_PIECE:
-                PlayerManager.Inst.card_piece += rewardData.index;
+                PlayerManager.Inst.card_piece += reward.rewardData.index;
                 break;
             case EVENT_REWARD_TYPE.HP:
+                PlayerManager.Inst.hp += reward.rewardData.index;
                 break;
             case EVENT_REWARD_TYPE.DRAW:
                 break;
         }
+        StartCoroutine(reward.FadeCorutine(false));
     }
 }
