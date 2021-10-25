@@ -44,7 +44,6 @@ public class Monster
     public PATTERN pattern_5; //½ºÅ³
     public int index5_1;
     public int index5_2;
-    public int index5_3;
 }
 
 [System.Serializable]
