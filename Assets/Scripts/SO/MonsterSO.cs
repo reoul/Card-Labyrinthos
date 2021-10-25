@@ -13,7 +13,7 @@ public enum MONSTER_TYPE
 
 public enum MONSTER_DIFFICULTY { EASY, NOMAL, HARD }
 
-public enum PATTERN_TYPE { ATTACK, HEAL, SKILL1, SKILL2, SKILL3, SKILL4, SKILL5 }
+public enum PATTERN_TYPE { ATTACK, HEAL }
 
 [System.Serializable]
 public class PATTERN
@@ -47,9 +47,6 @@ public class Monster
     public PATTERN pattern_2; //중공
     public PATTERN pattern_3; //강공
     public PATTERN pattern_4; //회복
-    public PATTERN_TYPE pattern_5; //스킬
-    public int index5_1;
-    public int index5_2;
 }
 
 [System.Serializable]
