@@ -11,6 +11,10 @@ public class StageManager : MonoBehaviour
     public Transform player_spawn;
     public Transform enemy_spawn;
 
+    public Sprite attackSprite;
+    public Sprite healSprite;
+    public Sprite randomPattenSprite;
+
     private void Awake()
     {
         Inst = this;
