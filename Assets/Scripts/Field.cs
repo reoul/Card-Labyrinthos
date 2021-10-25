@@ -3,6 +3,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(Field))]
 public class FieldInspector : Editor
 {
@@ -77,6 +78,7 @@ public class FieldInspector : Editor
         serializedObject.ApplyModifiedProperties();
     }
 }
+#endif
 
 [System.Serializable]
 public class Field : MonoBehaviour

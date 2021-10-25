@@ -17,8 +17,7 @@ public class HpBar : MonoBehaviour
 
     public void Init()          //초기화, 게임 시작할때 실행
     {
-        ShowText();
-        UpdateHpBar();
+        UpdateHp();
     }
 
     public void SetHP(int hp)
@@ -26,7 +25,7 @@ public class HpBar : MonoBehaviour
         this.hp = hp;
         this.max_hp = hp;
         parent = this.transform.parent.gameObject;
-        Init();
+        UpdateHp();
     }
 
     public void UpdateHp()      //현재 데이터로 텍스트랑 체력바 게이지 조정
@@ -82,6 +81,7 @@ public class HpBar : MonoBehaviour
     public void Heal(int index)
     {
         hp = Mathf.Clamp(hp + index, 0, max_hp);
+        UpdateHp();
     }
 
     void ShowSheldText()                //방어력 텍스트 업데이트

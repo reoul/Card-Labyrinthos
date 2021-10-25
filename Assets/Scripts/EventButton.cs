@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(EventButton))]
 public class EventButtonInspector : Editor
 {
@@ -35,6 +36,7 @@ public class EventButtonInspector : Editor
         serializedObject.ApplyModifiedProperties();
     }
 }
+#endif
 
 public enum REWARD_KIND { ONE, TWO, RANDOM }
 

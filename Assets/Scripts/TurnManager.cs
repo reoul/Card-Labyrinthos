@@ -45,7 +45,8 @@ public class TurnManager : MonoBehaviour
     public IEnumerator StartGameCorutine()
     {
         yield return delay01;
-        Player.Inst.hpbar.SetHP(PlayerManager.Inst.hp);
+        PlayerManager.Inst.SetupGame();
+        Player.Inst.hpbar.Init();
         StartCoroutine(StartTurnCorutine());
     }
 

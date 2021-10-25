@@ -13,7 +13,6 @@ public class StageManager : MonoBehaviour
 
     public Sprite attackSprite;
     public Sprite healSprite;
-    public Sprite randomPattenSprite;
 
     private void Awake()
     {

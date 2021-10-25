@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     public Monster monster;
     public int pattenIndex;          //플레이어에게 줄 데미지
     public int weaknessNum;     //약점카드 숫자
-    PATTERN curPatten;
+    [SerializeField] PATTERN curPatten;
     int lastPatten;
     int lastWeaknessNum;
 
@@ -88,6 +88,15 @@ public class Enemy : MonoBehaviour
 
     public void UpdateStateText()           //텍스트 최신화
     {
+        switch (curPatten.pattern_type)
+        {
+            case PATTERN_TYPE.ATTACK:
+                patten_sprite.sprite = StageManager.Inst.attackSprite;
+                break;
+            case PATTERN_TYPE.HEAL:
+                patten_sprite.sprite = StageManager.Inst.healSprite;
+                break;
+        }
         pattenIndexTMP.text = pattenIndex.ToString();
         weaknessTMP.text = (weaknessNum + 1).ToString();
     }

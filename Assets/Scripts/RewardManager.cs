@@ -78,4 +78,21 @@ public class RewardManager : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
     }
+
+    public void GetReward(RewardData rewardData)
+    {
+        switch (rewardData.reward_type)
+        {
+            case EVENT_REWARD_TYPE.CARD:
+                CardManager.Inst.AddCardDeck(rewardData.index);
+                break;
+            case EVENT_REWARD_TYPE.CARD_PIECE:
+                PlayerManager.Inst.card_piece += rewardData.index;
+                break;
+            case EVENT_REWARD_TYPE.HP:
+                break;
+            case EVENT_REWARD_TYPE.DRAW:
+                break;
+        }
+    }
 }
