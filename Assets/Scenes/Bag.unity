@@ -4157,8 +4157,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbe1f7cc1bcac5740a1994269c91de0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card_text: []
-  skill_spriteRenderer: []
+  card_text:
+  - {fileID: 9279750}
+  - {fileID: 1210499494}
+  - {fileID: 203783987}
+  - {fileID: 1706803667}
+  - {fileID: 1091563433}
+  - {fileID: 1197111534}
+  skill_spriteRenderer:
+  - {fileID: 463286946}
+  - {fileID: 56149428}
+  - {fileID: 992842749}
+  - {fileID: 1054140240}
+  - {fileID: 2101078798}
+  - {fileID: 279946298}
+  - {fileID: 569317464}
+  - {fileID: 381423900}
+  - {fileID: 1874365943}
 --- !u!1 &1463976428
 GameObject:
   m_ObjectHideFlags: 0
