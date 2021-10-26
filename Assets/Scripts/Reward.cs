@@ -6,6 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class RewardData
 {
+    public REWARD_TYPE type;
     public EVENT_REWARD_TYPE reward_type;
     public int index;
 }
@@ -14,6 +15,7 @@ public class Reward : MonoBehaviour
 {
     [SerializeField] TMP_Text resultTMP;
     public RewardData rewardData;
+    public DEBUFF_TYPE debuff_type;
     bool onReward = false;   //마우스가 필드 위에 있는지
     public bool isRewardOn = false;
 
@@ -37,7 +39,7 @@ public class Reward : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (onReward)
+        if (onReward && !RewardManager.Inst.isChoice)
         {
             RewardManager.Inst.GetReward(this);
         }
@@ -58,11 +60,23 @@ public class Reward : MonoBehaviour
             return "";
         }
     }
-    public void SetReward(EVENT_REWARD_TYPE reward_type, int index)
+    public void SetReward(REWARD_TYPE type, int reward_type, int index = 0)
     {
-        rewardData.reward_type = reward_type;
-        rewardData.index = index;
-        resultTMP.text = reward_string;
+        rewardData.type = type;
+        switch (type)
+        {
+            case REWARD_TYPE.REWARD:
+                rewardData.reward_type = (EVENT_REWARD_TYPE)reward_type;
+                rewardData.index = index;
+                resultTMP.text = reward_string;
+                break;
+            case REWARD_TYPE.DEBUFF:
+                debuff_type = (DEBUFF_TYPE)reward_type;
+                DebuffManager.Inst.debuff_type = debuff_type;
+                resultTMP.text = DebuffManager.Inst.DebuffString;
+                break;
+        }
+
         isRewardOn = true;
         ColorAlpha01(true);
     }
@@ -89,5 +103,12 @@ public class Reward : MonoBehaviour
     {
         windowRenderer.color = new Color(255, 255, 255, isZero ? 0 : 1);
         contentTMP.color = new Color(255, 255, 255, isZero ? 0 : 1);
+    }
+
+    public void Init()
+    {
+        onReward = false;
+        isRewardOn = false;
+        this.gameObject.SetActive(false);
     }
 }

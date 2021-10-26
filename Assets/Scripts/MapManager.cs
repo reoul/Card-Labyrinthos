@@ -123,7 +123,7 @@ public class MapManager : MonoBehaviour
         switch (fieldData.field_type)
         {
             case FIELD_TYPE.BATTLE:
-                StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null,
+                StartCoroutine(FadeManager.Inst.FadeInOut(TurnManager.Inst.ShowDebuffCorutine(), null, null,
                     PlayerManager.Inst.SetupGameCorutine(), null, null,
                         CardManager.Inst.InitCorutine(), TurnManager.Inst.StartGameCorutine()));
                 break;

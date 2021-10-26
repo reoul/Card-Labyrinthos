@@ -34,7 +34,7 @@ public class CardManager : MonoBehaviour
 
     public int[] cardDeck;        //현재 플레이어 카드 덱, 1~6
 
-    [SerializeField] List<Card> MyHandCards;    //내 손에 들고 있는 카드 리스트
+    public List<Card> MyHandCards;    //내 손에 들고 있는 카드 리스트
     [SerializeField] List<Card> itemBuffer;  //뽑을 카드 더미
     [SerializeField] List<Card> tombItemBuffer;  //버린 카드 더미, 사용한 카드가 여기 리스트에 쌓인다
 
@@ -155,6 +155,14 @@ public class CardManager : MonoBehaviour
 
     public void FinishBattle()          //전투가 끝날을때 호출
     {
+        Init();
+        TurnManager.OnAddCard -= AddCard;
+        RewardManager.Inst.SetFinishBattleReward();
+        StartCoroutine(TurnManager.Inst.ShowReward());
+    }
+
+    public void Init()
+    {
         while (MyHandCards.Count > 0)
         {
             GameObject card = MyHandCards[0].parent.gameObject;
@@ -177,9 +185,6 @@ public class CardManager : MonoBehaviour
         MyHandCards = null;
         itemBuffer = null;
         tombItemBuffer = null;
-        TurnManager.OnAddCard -= AddCard;
-        RewardManager.Inst.SetFinishBattleReward();
-        StartCoroutine(TurnManager.Inst.ShowReward());
     }
 
     public void CardTombToItemBuffer()      //버린 카드 더미에서 뽑을 카드 더미로 섞고 이동

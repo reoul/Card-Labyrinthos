@@ -53,18 +53,18 @@ public class EventManager : MonoBehaviour
         switch (eventData.reward_kind)
         {
             case REWARD_KIND.ONE:
-                RewardManager.Inst.AddReward(eventData.reward_type1_1, eventData.index1_1);
+                RewardManager.Inst.AddReward(REWARD_TYPE.REWARD, (int)eventData.reward_type1_1, eventData.index1_1);
                 break;
             case REWARD_KIND.TWO:
-                RewardManager.Inst.AddReward(eventData.reward_type1_1, eventData.index1_1);
-                RewardManager.Inst.AddReward(eventData.reward_type1_2, eventData.index1_2);
+                RewardManager.Inst.AddReward(REWARD_TYPE.REWARD, (int)eventData.reward_type1_1, eventData.index1_1);
+                RewardManager.Inst.AddReward(REWARD_TYPE.REWARD, (int)eventData.reward_type1_2, eventData.index1_2);
                 break;
             case REWARD_KIND.RANDOM:
                 int rand = Random.Range(0, 100);
                 if (rand < eventData.first_reward_probability)
-                    RewardManager.Inst.AddReward(eventData.reward_type1_1, eventData.index1_1);
+                    RewardManager.Inst.AddReward(REWARD_TYPE.REWARD, (int)eventData.reward_type1_1, eventData.index1_1);
                 else
-                    RewardManager.Inst.AddReward(eventData.reward_type2, eventData.index2);
+                    RewardManager.Inst.AddReward(REWARD_TYPE.REWARD, (int)eventData.reward_type2, eventData.index2);
                 break;
         }
         StartCoroutine(RewardManager.Inst.ShowRewardWindowCorutine());

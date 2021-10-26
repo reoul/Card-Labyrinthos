@@ -123,4 +123,11 @@ public class TurnManager : MonoBehaviour
         MapManager.Inst.LoadMapScene(true);
     }
 
+    public IEnumerator ShowDebuffCorutine()    //전투에 들어가기 전에 전투 디버프 설정
+    {
+        RewardManager.Inst.SetRandomBattleDebuff();
+        yield return StartCoroutine(RewardManager.Inst.ShowRewardWindowCorutine(false));    //보상 다 받았으면
+        yield return StartCoroutine(RewardManager.Inst.RewardStartBattleCorutine());
+    }
+
 }

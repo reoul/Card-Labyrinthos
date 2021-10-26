@@ -354,9 +354,8 @@ MonoBehaviour:
   monsterSO: {fileID: 11400000, guid: 8c4dac5a72c4d31469a6f0b0f01702ea, type: 2}
   player_spawn: {fileID: 1609679956}
   enemy_spawn: {fileID: 2022119459}
-  attackSprite: {fileID: 21300000, guid: 21740af1a60c41d43b9b17c10ec992ca, type: 3}
-  healSprite: {fileID: 21300000, guid: ea7869f718fdf6946ba53502935f53f4, type: 3}
-  randomPattenSprite: {fileID: 0}
+  attackSprite: {fileID: 21300000, guid: 4235a269bfc99e540a3a27a12738592e, type: 3}
+  healSprite: {fileID: 21300000, guid: 848c64b0e55ef0f428b5813ac9cedca4, type: 3}
 --- !u!4 &497338796
 Transform:
   m_ObjectHideFlags: 0

@@ -6966,7 +6966,7 @@ Transform:
   - {fileID: 1288623154}
   - {fileID: 1005681542}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &289901832
 MonoBehaviour:
@@ -8968,6 +8968,50 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &420883902
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 420883903}
+  - component: {fileID: 420883904}
+  m_Layer: 0
+  m_Name: DebuffManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &420883903
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420883902}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5598843, y: 0.17682925, z: -0.33444113}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &420883904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420883902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f020f0587fc70d4488e59c9e5e4b627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debuff_type: 0
 --- !u!1 &430609310
 GameObject:
   m_ObjectHideFlags: 0
@@ -9431,7 +9475,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 452875002}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.001, y: 0.02, z: 0}
+  m_LocalPosition: {x: -0.001, y: 0.02, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1553581236}
@@ -9452,8 +9496,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resultTMP: {fileID: 1553581237}
   rewardData:
+    type: 0
     reward_type: 0
     index: 0
+  debuff_type: 0
   isRewardOn: 0
   windowRenderer: {fileID: 452875006}
   contentTMP: {fileID: 1553581237}
@@ -12584,9 +12630,9 @@ MonoBehaviour:
   m_fontSize: 6.25
   m_fontSizeBase: 6.25
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 3
+  m_fontSizeMax: 6.25
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -14541,7 +14587,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 692155605}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.001, y: 0.595, z: 0}
+  m_LocalPosition: {x: -0.001, y: 0.595, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 791575711}
@@ -14638,8 +14684,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resultTMP: {fileID: 791575712}
   rewardData:
+    type: 0
     reward_type: 0
     index: 0
+  debuff_type: 0
   isRewardOn: 0
   windowRenderer: {fileID: 692155607}
   contentTMP: {fileID: 791575712}
@@ -16228,9 +16276,9 @@ MonoBehaviour:
   m_fontSize: 6.25
   m_fontSizeBase: 6.25
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 3
+  m_fontSizeMax: 6.25
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -17678,9 +17726,9 @@ MonoBehaviour:
   m_fontSize: 6.25
   m_fontSizeBase: 6.25
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 3
+  m_fontSizeMax: 6.25
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -18521,7 +18569,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 960260972}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.001, y: 0.365, z: 0}
+  m_LocalPosition: {x: -0.001, y: 0.365, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 906767189}
@@ -18542,8 +18590,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resultTMP: {fileID: 906767190}
   rewardData:
+    type: 0
     reward_type: 0
     index: 0
+  debuff_type: 0
   isRewardOn: 0
   windowRenderer: {fileID: 960260976}
   contentTMP: {fileID: 906767190}
@@ -20921,7 +20971,7 @@ Transform:
   - {fileID: 2137784982}
   - {fileID: 532214716}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1141249730
 GameObject:
@@ -21369,7 +21419,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1163939813}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.001, y: 0.25, z: 0}
+  m_LocalPosition: {x: -0.001, y: 0.25, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 586314951}
@@ -21390,8 +21440,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resultTMP: {fileID: 586314952}
   rewardData:
+    type: 0
     reward_type: 0
     index: 0
+  debuff_type: 0
   isRewardOn: 0
   windowRenderer: {fileID: 1163939817}
   contentTMP: {fileID: 586314952}
@@ -22191,7 +22243,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1207200693}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.001, y: 0.135, z: 0}
+  m_LocalPosition: {x: -0.001, y: 0.135, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1480726973}
@@ -22212,8 +22264,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resultTMP: {fileID: 1480726974}
   rewardData:
+    type: 0
     reward_type: 0
     index: 0
+  debuff_type: 0
   isRewardOn: 0
   windowRenderer: {fileID: 1207200697}
   contentTMP: {fileID: 1480726974}
@@ -23967,7 +24021,7 @@ Transform:
   - {fileID: 1654166895}
   - {fileID: 622092144}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1331531714
 GameObject:
@@ -27128,9 +27182,9 @@ MonoBehaviour:
   m_fontSize: 6.25
   m_fontSizeBase: 6.25
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 3
+  m_fontSizeMax: 6.25
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -28869,9 +28923,9 @@ MonoBehaviour:
   m_fontSize: 6.25
   m_fontSizeBase: 6.25
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 3
+  m_fontSizeMax: 6.25
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -35237,7 +35291,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1878214075}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.001, y: 0.48, z: 0}
+  m_LocalPosition: {x: -0.001, y: 0.48, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1965032932}
@@ -35258,8 +35312,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resultTMP: {fileID: 1965032933}
   rewardData:
+    type: 0
     reward_type: 0
     index: 0
+  debuff_type: 0
   isRewardOn: 0
   windowRenderer: {fileID: 1878214079}
   contentTMP: {fileID: 1965032933}
@@ -35450,7 +35506,7 @@ Transform:
   m_Children:
   - {fileID: 1601724399}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1899899787
 MonoBehaviour:
@@ -35468,6 +35524,7 @@ MonoBehaviour:
   rewardPrefab: {fileID: 0}
   rewards: []
   isGetAllReward: 0
+  isChoice: 0
   getReward: 0
   activeRewardWindow: 0
 --- !u!1 &1908111532
@@ -36607,9 +36664,9 @@ MonoBehaviour:
   m_fontSize: 6.25
   m_fontSizeBase: 6.25
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 3
+  m_fontSizeMax: 6.25
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
