@@ -1356,7 +1356,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<\uBB3C\uC74C\uD45C\uCE74\uB4DC +1>"
+  m_text: "<\uCE74\uB4DC \uD30C\uD3B8 + 50>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -4439,7 +4439,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<\uB4DC\uB85C\uC6B0 \uC218 \uC99D\uAC00+1>"
+  m_text: "<\uBB3C\uC74C\uD45C \uCE74\uB4DC+1>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -19363,7 +19363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reward_kind: 0
   first_reward_probability: 0
-  reward_type1_1: 3
+  reward_type1_1: 4
   index1_1: 1
   reward_type1_2: 0
   index1_2: 0
@@ -25604,8 +25604,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reward_kind: 0
   first_reward_probability: 0
-  reward_type1_1: 4
-  index1_1: 1
+  reward_type1_1: 1
+  index1_1: 50
   reward_type1_2: 0
   index1_2: 0
   reward_type2: 0
