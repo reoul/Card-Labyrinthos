@@ -549,6 +549,7 @@ MonoBehaviour:
   hp: 30
   max_hp: 30
   sheld: 0
+  turnStartSheld: 0
   sheldObj: {fileID: 170059371278880854}
   hpbar: {fileID: 992634501129027510}
   hptext: {fileID: 3785235015521557481}
@@ -1027,7 +1028,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.1558398, y: 0.5119713}
+  m_AnchoredPosition: {x: 0.1664, y: 0.5119713}
   m_SizeDelta: {x: 0.6, y: 0.47}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &8023498797937024164
@@ -1131,7 +1132,7 @@ MonoBehaviour:
   m_fontSizeMin: 2
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 32
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1160,7 +1161,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -1.2446754, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1562,11 +1563,12 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 0
       index: 0
-    pattern_5: 0
-    index5_1: 0
-    index5_2: 0
-  damage: 0
+  pattenIndex: 0
   weaknessNum: 0
+  curPatten:
+    pattern_type: 0
+    index: 0
+  force: 0
   patten_sprite: {fileID: 8023498797359241750}
   pattenIndexTMP: {fileID: 8023498797937024165}
   weaknessTMP: {fileID: 8023498797964545950}
