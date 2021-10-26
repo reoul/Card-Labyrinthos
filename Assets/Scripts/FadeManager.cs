@@ -12,6 +12,8 @@ public class FadeManager : MonoBehaviour
 
     public float fade_speed;
 
+    public bool isActiveFade;
+
     private void Awake()
     {
         if (Inst == null)
@@ -24,6 +26,7 @@ public class FadeManager : MonoBehaviour
             Destroy(this.gameObject);
         }
         SR = this.GetComponent<SpriteRenderer>();
+        isActiveFade = false;
     }
 
     public void FadeIn()
@@ -39,6 +42,7 @@ public class FadeManager : MonoBehaviour
     public IEnumerator FadeInOut(IEnumerator FadeOutAfter1 = null, IEnumerator FadeOutAfter2 = null, IEnumerator FadeOutAfter3 = null,
             IEnumerator FadeInAfter1 = null, IEnumerator FadeInAfter2 = null, IEnumerator FadeInAfter3 = null)
     {
+        isActiveFade = true;
         yield return StartCoroutine(Fade(true));       //페이드아웃 실행
         if (FadeEvent != null)
         {
@@ -60,6 +64,7 @@ public class FadeManager : MonoBehaviour
             yield return StartCoroutine(FadeInAfter2);
         if (FadeInAfter3 != null)
             yield return StartCoroutine(FadeInAfter3);
+        isActiveFade = false;
     }
 
     IEnumerator Fade(bool isOut)

@@ -25,13 +25,13 @@ public class ShopItem : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (onItem)
+        if (onItem && !FadeManager.Inst.isActiveFade)
             ShopManager.Inst.Click(item);
     }
 
     private void OnMouseEnter()
     {
-        if (!isMax)
+        if (!isMax && !FadeManager.Inst.isActiveFade)
         {
             onItem = true;
             transform.localScale = originalScale + Vector3.one * 0.02f;

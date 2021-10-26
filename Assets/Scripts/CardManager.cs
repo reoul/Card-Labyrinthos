@@ -133,6 +133,8 @@ public class CardManager : MonoBehaviour
         waypoint2 = GameObject.Find("WayPoint").transform;
 
         SetupItemBuffer();
+        if (TurnManager.OnAddCard != null)
+            TurnManager.OnAddCard -= AddCard;
         TurnManager.OnAddCard += AddCard;
 
         InitCard();
@@ -149,7 +151,7 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    public void FinishBattle()
+    public void FinishBattle()          //전투가 끝날을때 호출
     {
         while (MyHandCards.Count > 0)
         {
@@ -174,6 +176,7 @@ public class CardManager : MonoBehaviour
         itemBuffer = null;
         tombItemBuffer = null;
         TurnManager.OnAddCard -= AddCard;
+        RewardManager.Inst.SetFinishBattleReward();
         StartCoroutine(TurnManager.Inst.ShowReward());
     }
 
@@ -263,6 +266,14 @@ public class CardManager : MonoBehaviour
     public void FnishCardAllMyHand()
     {
         StartCoroutine(FinishTurnCorutine());
+    }
+
+    public void FinishSceneAllMyHand()      //씬이 끌날때 손에 있는 모든 카드를 밑으로 내려버린다.
+    {
+        for (int i = 0; i < MyHandCards.Count; i++)
+        {
+            MyHandCards[i].FinishScene();
+        }
     }
 
     IEnumerator FinishTurnCorutine()

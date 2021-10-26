@@ -37,7 +37,7 @@ public class TopBar : MonoBehaviour
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.D))
-            Debug.Log(MapManager.Inst.CurrentSceneName);
+            CardManager.Inst.FinishSceneAllMyHand();
     }
 
     public void UpdateText(TOPBAR_TYPE type)

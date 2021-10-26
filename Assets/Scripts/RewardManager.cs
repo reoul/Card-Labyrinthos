@@ -54,6 +54,9 @@ public class RewardManager : MonoBehaviour
 
         windowRenderer.color = new Color(255, 255, 255, 0);
         titleTMP.color = new Color(255, 255, 255, 0);
+
+        CardManager.Inst.FinishSceneAllMyHand();
+
         while (true)
         {
             windowRenderer.color += Color.black * Time.deltaTime * 2;
@@ -78,6 +81,7 @@ public class RewardManager : MonoBehaviour
             {
                 rewards[i].SetReward(reward_type, index);
                 rewards[i].gameObject.SetActive(true);
+                Debug.Log($"보상 {reward_type} {index}개 추가 완료");
                 break;
             }
         }
@@ -101,6 +105,15 @@ public class RewardManager : MonoBehaviour
         MapManager.Inst.LoadMapScene(true);
     }
 
+    public void SetFinishBattleReward()
+    {
+        int questionCard = Random.Range(0, 2) == 0 ? 1 : 0;
+        int cardPiece = Random.Range(20, 40);
+        if (questionCard == 1)
+            AddReward(EVENT_REWARD_TYPE.CARD, questionCard);
+        AddReward(EVENT_REWARD_TYPE.CARD_PIECE, cardPiece);
+    }
+
     public IEnumerator CheckGetAllReward()
     {
         while (true)
@@ -108,7 +121,7 @@ public class RewardManager : MonoBehaviour
             int count = 0;
             for (int i = 0; i < rewards.Count; i++)
             {
-                if (rewards[i].gameObject.activeInHierarchy)
+                if (rewards[i].isRewardOn)
                 {
                     count++;
                 }

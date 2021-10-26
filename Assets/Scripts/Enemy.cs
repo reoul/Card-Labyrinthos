@@ -119,12 +119,13 @@ public class Enemy : MonoBehaviour
     {
         EnemyManager.Inst.enemys.Remove(this);
         TurnManager.Inst.isFinish = true;
-        Destroy(hpbar.gameObject);
-        Destroy(this.gameObject);
         if (EnemyManager.Inst.enemys.Count == 0)
         {
             GameManager.Inst.Notification("전투 승리");
-            CardManager.Inst.FinishBattle();
+            StartCoroutine(TurnManager.Inst.ShowReward());
+            //CardManager.Inst.FinishBattle();
         }
+        Destroy(hpbar.gameObject);
+        Destroy(this.gameObject);
     }
 }

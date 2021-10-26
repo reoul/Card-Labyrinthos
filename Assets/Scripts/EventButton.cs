@@ -95,7 +95,7 @@ public class EventButton : MonoBehaviour
     bool onEvent = false;   //마우스가 필드 위에 있는지
     void OnMouseUp()
     {
-        if (onEvent && IsAchieve && !RewardManager.Inst.activeRewardWindow)
+        if (onEvent && IsAchieve && !RewardManager.Inst.activeRewardWindow && !FadeManager.Inst.isActiveFade)
         {
             this.transform.parent.GetComponent<Event>().MouseUp(eventData);
         }
