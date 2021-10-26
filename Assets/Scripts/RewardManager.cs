@@ -41,9 +41,9 @@ public class RewardManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void Init()
     {
-
+        this.transform.position = new Vector3(0, 0, -1);
     }
 
     public bool getReward;              //

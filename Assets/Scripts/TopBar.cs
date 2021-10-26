@@ -34,6 +34,10 @@ public class TopBar : MonoBehaviour
     public TMP_Text questionTMP;
     public TMP_Text sceneNameTMP;
 
+    public void InitPosition()
+    {
+        this.transform.position = new Vector3(0, 4.73f, -5);
+    }
 
     public void UpdateText(TOPBAR_TYPE type)
     {

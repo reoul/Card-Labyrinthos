@@ -63,6 +63,10 @@ public class MapManager : MonoBehaviour
     [SerializeField]
     GameObject fieldParent;
     public Field[] fields;
+
+    bool isMoveCamera = false;
+    Vector3 lastMousePos;
+
     public string CurrentSceneName      //현재 씬 이름
     {
         get

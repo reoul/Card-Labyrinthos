@@ -29,6 +29,11 @@ public class FadeManager : MonoBehaviour
         isActiveFade = false;
     }
 
+    public void Init()
+    {
+        this.transform.position = Vector3.zero;
+    }
+
     public void FadeIn()
     {
         StartCoroutine(Fade(false));
@@ -56,6 +61,10 @@ public class FadeManager : MonoBehaviour
             FadeEvent(this, EventArgs.Empty);           //실행 후 이벤트 실행
             FadeEvent = null;
         }
+        TopBar.Inst.InitPosition();
+        RewardManager.Inst.Init();
+        BagManager.Inst.Init();
+        Init();
         yield return new WaitForSeconds(0.1f);
         TopBar.Inst.UpdateText(TOPBAR_TYPE.SCENENAME);
         if (FadeOutAfter1 != null)

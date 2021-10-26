@@ -25,6 +25,11 @@ public class BagManager : MonoBehaviour
     [SerializeField] List<TMP_Text> card_text;
     [SerializeField] List<SpriteRenderer> skill_spriteRenderer;
 
+    public void Init()
+    {
+        this.transform.position = new Vector3(0, 0, -2);
+    }
+
     public void Open()
     {
         if (isOpen)
