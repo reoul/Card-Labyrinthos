@@ -50,6 +50,7 @@ public class EventManager : MonoBehaviour
 
     public void Choice(EventData eventData)         //조건에 맞는 해당 선택지를 클릭했을때
     {
+        RewardManager.Inst.SetTitleText("결과");
         switch (eventData.reward_kind)
         {
             case REWARD_KIND.ONE:

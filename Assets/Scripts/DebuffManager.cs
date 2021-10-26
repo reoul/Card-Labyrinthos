@@ -53,12 +53,16 @@ public class DebuffManager : MonoBehaviour
             switch (debuff_type)
             {
                 case DEBUFF_TYPE.DEBUFF1:           //플레이어 데미지
+                    Player.Inst.hpbar.Damage(2);
                     break;
                 case DEBUFF_TYPE.DEBUFF2:           //몬스터 체력 2 회복
+                    EnemyManager.Inst.enemys[0].hpbar.Heal(2);
                     break;
                 case DEBUFF_TYPE.DEBUFF3:           //다음 약점 카드 숨김
+                    EnemyManager.Inst.enemys[0].isWeaknessHidden = true;
                     break;
                 case DEBUFF_TYPE.DEBUFF4:           //다음 몬스터 패턴 숨김
+                    EnemyManager.Inst.enemys[0].isPattenHidden = true;
                     break;
             }
         }
@@ -68,6 +72,7 @@ public class DebuffManager : MonoBehaviour
             AddForceTurn = 0;
             EnemyManager.Inst.enemys[0].force++;
         }
+        turnDamage = 0;
     }
 
     public void ApplyDebuff()
@@ -78,6 +83,7 @@ public class DebuffManager : MonoBehaviour
                 AddForceTurnIndex = 1;
                 break;
             case DEBUFF_TYPE.DEBUFF6:       //플레이어에게 넣은 피해만큼 몬스터 회복
+                EnemyManager.Inst.enemys[0].isVampire = true;
                 break;
             case DEBUFF_TYPE.DEBUFF7:       //매턴마다 방어도가 3씩 쌓인다
                 EnemyManager.Inst.enemys[0].hpbar.SetTurnStartSheld(3);

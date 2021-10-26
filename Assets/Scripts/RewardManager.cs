@@ -126,6 +126,7 @@ public class RewardManager : MonoBehaviour
 
     public void SetFinishBattleReward()
     {
+        SetTitleText("보상");
         int questionCard = Random.Range(0, 2) == 0 ? 1 : 0;
         int cardPiece = Random.Range(20, 40);
         if (questionCard == 1)

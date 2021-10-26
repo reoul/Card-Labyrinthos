@@ -18,23 +18,23 @@ public class FieldInspector : Editor
         {
             case (int)FIELD_TYPE.BATTLE:
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("monster_difficulty"));
-                field.spriteRenderer.sprite = fieldIcon[1];
+                //field.spriteRenderer.sprite = fieldIcon[1];
                 break;
             case (int)FIELD_TYPE.EVENT:
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("event_type"));
-                field.spriteRenderer.sprite = fieldIcon[2];
+                //field.spriteRenderer.sprite = fieldIcon[2];
                 break;
             case (int)FIELD_TYPE.REST:
-                field.spriteRenderer.sprite = fieldIcon[3];
+                //field.spriteRenderer.sprite = fieldIcon[3];
                 break;
             case (int)FIELD_TYPE.SHOP:
-                field.spriteRenderer.sprite = fieldIcon[4];
+                //field.spriteRenderer.sprite = fieldIcon[4];
                 break;
             case (int)FIELD_TYPE.BOSS:
-                field.spriteRenderer.sprite = fieldIcon[0];
+                //field.spriteRenderer.sprite = fieldIcon[0];
                 break;
             default:
-                field.spriteRenderer.sprite = fieldIcon[1];
+                //field.spriteRenderer.sprite = fieldIcon[1];
                 break;
         }
         string text = "";
@@ -108,6 +108,11 @@ public class Field : MonoBehaviour
         if (this.transform.childCount > 1)
             clearObj = this.transform.GetChild(1).gameObject;
         spriteRenderer.color -= new Color(0, 0, 0, 0.5f);
+        if (field_type == FIELD_TYPE.MAP)
+        {
+            spriteRenderer.color += new Color(0, 0, 0, 0.5f);
+            isReady = true;
+        }
     }
 
     void OnMouseUp()

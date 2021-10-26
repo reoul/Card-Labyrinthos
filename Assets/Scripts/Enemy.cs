@@ -14,6 +14,9 @@ public class Enemy : MonoBehaviour
     int lastPatten;
     int lastWeaknessNum;
     public int force;
+    public bool isVampire;
+    public bool isWeaknessHidden;
+    public bool isPattenHidden;
 
     [SerializeField] SpriteRenderer patten_sprite;
     [SerializeField] TMP_Text pattenIndexTMP;        //데미지 텍스트
@@ -27,6 +30,9 @@ public class Enemy : MonoBehaviour
         lastPatten = 99;
         lastWeaknessNum = 99;
         force = 0;
+        isVampire = false;
+        isPattenHidden = false;
+        isWeaknessHidden = false;
         RandomPatten();
         UpdateStateText();
     }
@@ -84,6 +90,8 @@ public class Enemy : MonoBehaviour
     public void Attack()
     {
         Player.Inst.Damage(pattenIndex + force);
+        if (isVampire)
+            hpbar.Heal(pattenIndex + force);
         pattenIndex = 0;
     }
 
@@ -92,20 +100,23 @@ public class Enemy : MonoBehaviour
         switch (curPatten.pattern_type)
         {
             case PATTERN_TYPE.ATTACK:
-                patten_sprite.sprite = StageManager.Inst.attackSprite;
-                pattenIndexTMP.text = pattenIndex.ToString() + (force > 0 ? string.Format($" + {force}") : "");
+                patten_sprite.sprite = isPattenHidden ? null : StageManager.Inst.attackSprite;
+                pattenIndexTMP.text = isPattenHidden ? "???" : pattenIndex.ToString() + (force > 0 ? string.Format($" + {force}") : "");
                 break;
             case PATTERN_TYPE.HEAL:
-                patten_sprite.sprite = StageManager.Inst.healSprite;
-                pattenIndexTMP.text = pattenIndex.ToString();
+                patten_sprite.sprite = isPattenHidden ? null : StageManager.Inst.healSprite;
+                pattenIndexTMP.text = isPattenHidden ? "???" : pattenIndex.ToString();
                 break;
         }
-        weaknessTMP.text = (weaknessNum + 1).ToString();
+        weaknessTMP.text = isWeaknessHidden ? "?" : (weaknessNum + 1).ToString();
+        isPattenHidden = false;
+        isWeaknessHidden = false;
     }
 
     public void Damage(int damage)          //적이 공격 당할때 호출
     {
         hpbar.Damage(damage);
+        DebuffManager.Inst.turnDamage += damage;
     }
 
     public void Dead()              //적이 죽을때 호출
