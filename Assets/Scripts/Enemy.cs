@@ -88,9 +88,12 @@ public class Enemy : MonoBehaviour
 
     public void Attack()
     {
-        Player.Inst.Damage(pattenIndex + force);
         if (isVampire)
-            hpbar.Heal(pattenIndex + force);
+        {
+            int damage = Player.Inst.hpbar.sheld - pattenIndex + force;
+            hpbar.Heal(damage < 0 ? Mathf.Abs(damage) : 0);
+        }
+        Player.Inst.Damage(pattenIndex + force);
         pattenIndex = 0;
     }
 
