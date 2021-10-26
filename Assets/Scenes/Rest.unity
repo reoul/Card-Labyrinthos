@@ -1040,7 +1040,7 @@ MonoBehaviour:
   m_renderer: {fileID: 1655886632}
   m_maskType: 0
   _SortingLayerID: 0
-  _SortingOrder: 1871
+  _SortingOrder: 2
 --- !u!222 &1655886631
 CanvasRenderer:
   m_ObjectHideFlags: 2
@@ -1087,4 +1087,4 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1871
+  m_SortingOrder: 2
