@@ -30,7 +30,8 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
             BagManager.Inst.Open();
         if (Input.GetKeyDown(KeyCode.P))
-            EnemyManager.Inst.enemys[0].Damage(EnemyManager.Inst.enemys[0].hpbar.hp - 1);
+            if (EnemyManager.Inst.enemys.Count > 0)
+                EnemyManager.Inst.enemys[0].Damage(EnemyManager.Inst.enemys[0].hpbar.hp - 1);
         if (Input.GetKeyDown(KeyCode.Escape))
             Application.Quit();
     }
