@@ -247,7 +247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reward_kind: 0
   first_reward_probability: 0
-  reward_type1_1: 0
+  reward_type1_1: 4
   index1_1: 1
   reward_type1_2: 0
   index1_2: 0
@@ -7368,7 +7368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reward_kind: 0
   first_reward_probability: 0
-  reward_type1_1: 0
+  reward_type1_1: 4
   index1_1: 1
   reward_type1_2: 0
   index1_2: 0
@@ -10526,7 +10526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reward_kind: 0
   first_reward_probability: 0
-  reward_type1_1: 0
+  reward_type1_1: 4
   index1_1: 1
   reward_type1_2: 0
   index1_2: 0
@@ -10837,7 +10837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reward_kind: 0
   first_reward_probability: 0
-  reward_type1_1: 0
+  reward_type1_1: 4
   index1_1: 1
   reward_type1_2: 0
   index1_2: 0
@@ -12264,7 +12264,7 @@ MonoBehaviour:
   first_reward_probability: 0
   reward_type1_1: 1
   index1_1: -100
-  reward_type1_2: 0
+  reward_type1_2: 4
   index1_2: 1
   reward_type2: 0
   index2: 0
@@ -14198,7 +14198,7 @@ MonoBehaviour:
   first_reward_probability: 0
   reward_type1_1: 2
   index1_1: -10
-  reward_type1_2: 0
+  reward_type1_2: 4
   index1_2: 1
   reward_type2: 0
   index2: 0
@@ -18603,7 +18603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reward_kind: 0
   first_reward_probability: 0
-  reward_type1_1: 0
+  reward_type1_1: 4
   index1_1: 1
   reward_type1_2: 0
   index1_2: 0
@@ -18788,7 +18788,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reward_kind: 0
   first_reward_probability: 0
-  reward_type1_1: 0
+  reward_type1_1: 4
   index1_1: 1
   reward_type1_2: 0
   index1_2: 0
@@ -18921,7 +18921,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reward_kind: 0
   first_reward_probability: 0
-  reward_type1_1: 0
+  reward_type1_1: 4
   index1_1: 1
   reward_type1_2: 0
   index1_2: 0
@@ -21017,7 +21017,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reward_kind: 0
   first_reward_probability: 0
-  reward_type1_1: 0
+  reward_type1_1: 4
   index1_1: 1
   reward_type1_2: 0
   index1_2: 0
@@ -22778,7 +22778,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1806198522
 Transform:
   m_ObjectHideFlags: 0
@@ -25471,7 +25471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reward_kind: 2
   first_reward_probability: 0
-  reward_type1_1: 0
+  reward_type1_1: 4
   index1_1: 1
   reward_type1_2: 0
   index1_2: 0
@@ -25604,7 +25604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reward_kind: 0
   first_reward_probability: 0
-  reward_type1_1: 0
+  reward_type1_1: 4
   index1_1: 1
   reward_type1_2: 0
   index1_2: 0
@@ -26227,7 +26227,7 @@ MonoBehaviour:
   first_reward_probability: 0
   reward_type1_1: 2
   index1_1: -10
-  reward_type1_2: 0
+  reward_type1_2: 4
   index1_2: 1
   reward_type2: 0
   index2: 0
