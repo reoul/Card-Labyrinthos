@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] int _hp;
     [SerializeField] int _max_hp;
     [SerializeField] int _card_piece;
+    [SerializeField] int _question_card;
     public int hp
     {
         get
@@ -27,7 +28,7 @@ public class PlayerManager : MonoBehaviour
         set
         {
             _hp = value;
-            TopBar.Inst.UpdateText();
+            TopBar.Inst.UpdateText(TOPBAR_TYPE.HP);
         }
     }
     public int card_piece
@@ -39,7 +40,19 @@ public class PlayerManager : MonoBehaviour
         set
         {
             _card_piece = value;
-            TopBar.Inst.UpdateText();
+            TopBar.Inst.UpdateText(TOPBAR_TYPE.CARDPIECE);
+        }
+    }
+    public int question_card
+    {
+        get
+        {
+            return _question_card;
+        }
+        set
+        {
+            _question_card = value;
+            TopBar.Inst.UpdateText(TOPBAR_TYPE.QUESTION);
         }
     }
     public int max_hp { get { return _max_hp; } set { _max_hp = value; } }

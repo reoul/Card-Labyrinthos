@@ -46,6 +46,7 @@ public class FadeManager : MonoBehaviour
             FadeEvent = null;
         }
         yield return new WaitForSeconds(0.1f);
+        TopBar.Inst.UpdateText(TOPBAR_TYPE.SCENENAME);
         if (FadeOutAfter1 != null)
             yield return StartCoroutine(FadeOutAfter1);
         if (FadeOutAfter2 != null)

@@ -18,7 +18,7 @@ public class ShopItem : MonoBehaviour
     Vector3 originalScale;
     bool isMax = false;
 
-    private void Start()
+    public void Start()
     {
         originalScale = transform.localScale == Vector3.zero ? Vector3.one * 0.35f : transform.localScale;
     }

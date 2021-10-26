@@ -15,6 +15,10 @@ public class ShopManager : MonoBehaviour
 
     private void Start()
     {
+        for (int i = 0; i < items.Count; i++)
+        {
+            items[i].Start();
+        }
         CheckItemMax();
     }
 

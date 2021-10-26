@@ -63,6 +63,28 @@ public class MapManager : MonoBehaviour
     [SerializeField]
     GameObject fieldParent;
     public Field[] fields;
+    public string CurrentSceneName      //현재 씬 이름
+    {
+        get
+        {
+            switch (SceneManager.GetActiveScene().name)
+            {
+                case "Map":
+                    return "지도";
+                case "Battle":
+                    return "전투";
+                case "Event":
+                    return "이벤트";
+                case "Shop":
+                    return "상점";
+                case "Boss":
+                    return "보스";
+                case "Rest":
+                    return "휴식";
+            }
+            return "지도";
+        }
+    }
 
     private void Start()
     {
