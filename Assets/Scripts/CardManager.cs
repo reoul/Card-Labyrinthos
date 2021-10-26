@@ -49,6 +49,22 @@ public class CardManager : MonoBehaviour
 
     private Vector3[] waypoints;        //카드 사용후 버린 카드더미로 이동할때 사용
 
+    [Header("카드의 이동속도")]
+    public float CardMoveSpeed;
+
+    public int HandCardNumSum
+    {
+        get
+        {
+            int sum = 0;
+            for (int i = 0; i < MyHandCards.Count; i++)
+            {
+                sum += MyHandCards[i].final_Num + 1;
+            }
+            return sum;
+        }
+    }
+
     //Quaternion cardRotate = Utils.QI;
 
 
@@ -120,6 +136,8 @@ public class CardManager : MonoBehaviour
         waypoint2 = GameObject.Find("WayPoint").transform;
 
         SetupItemBuffer();
+        if (TurnManager.OnAddCard != null)
+            TurnManager.OnAddCard -= AddCard;
         TurnManager.OnAddCard += AddCard;
 
         InitCard();
@@ -136,7 +154,7 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    public void FinishBattle()
+    public void FinishBattle()          //전투가 끝날을때 호출
     {
         while (MyHandCards.Count > 0)
         {
@@ -161,6 +179,7 @@ public class CardManager : MonoBehaviour
         itemBuffer = null;
         tombItemBuffer = null;
         TurnManager.OnAddCard -= AddCard;
+        RewardManager.Inst.SetFinishBattleReward();
         StartCoroutine(TurnManager.Inst.ShowReward());
     }
 
@@ -243,13 +262,21 @@ public class CardManager : MonoBehaviour
             var targetCard = MyHandCards[i];
 
             targetCard.originPRS = originCardPRSs[i];
-            targetCard.MoveTransform(targetCard.originPRS, true, 0.7f);
+            targetCard.MoveTransform(targetCard.originPRS, true, CardMoveSpeed);
         }
     }
 
     public void FnishCardAllMyHand()
     {
         StartCoroutine(FinishTurnCorutine());
+    }
+
+    public void FinishSceneAllMyHand()      //씬이 끌날때 손에 있는 모든 카드를 밑으로 내려버린다.
+    {
+        for (int i = 0; i < MyHandCards.Count; i++)
+        {
+            MyHandCards[i].FinishScene();
+        }
     }
 
     IEnumerator FinishTurnCorutine()

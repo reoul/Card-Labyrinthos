@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     {
         if (notificationPanel == null)
             notificationPanel = GameObject.Find("MyTurn").GetComponent<Notification>();
-        notificationPanel.Show(message);
+        if (notificationPanel != null)
+            notificationPanel.Show(message);
     }
 }

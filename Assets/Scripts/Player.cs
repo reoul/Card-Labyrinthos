@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -19,12 +19,18 @@ public class Player : MonoBehaviour
         this.GetComponent<Animator>().SetTrigger("Attack");
     }
 
+    public void Damage(int damage)          //플레이어가 공격 당할때 호출
+    {
+        hpbar.Damage(damage);
+    }
+
     public void Dead()
     {
         this.GetComponent<Animator>().SetTrigger("Dead");
         hpbar.UpdateHp();
         TurnManager.Inst.isFinish = true;
     }
+
     public void DeadAnimationFinish()
     {
         GameManager.Inst.Notification("게임 종료");

@@ -81,8 +81,7 @@ public class Enemy : MonoBehaviour
 
     public void Attack()
     {
-        if (pattenIndex < 20)
-            Player.Inst.hpbar.Damage(pattenIndex);
+        Player.Inst.Damage(pattenIndex);
         pattenIndex = 0;
     }
 
@@ -119,12 +118,12 @@ public class Enemy : MonoBehaviour
     {
         EnemyManager.Inst.enemys.Remove(this);
         TurnManager.Inst.isFinish = true;
-        Destroy(hpbar.gameObject);
-        Destroy(this.gameObject);
         if (EnemyManager.Inst.enemys.Count == 0)
         {
-            GameManager.Inst.Notification("전투 승리");
-            CardManager.Inst.FinishBattle();
+            StartCoroutine(TurnManager.Inst.ShowReward());
+            //CardManager.Inst.FinishBattle();
         }
+        Destroy(hpbar.gameObject);
+        Destroy(this.gameObject);
     }
 }

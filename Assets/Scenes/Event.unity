@@ -253,6 +253,7 @@ MonoBehaviour:
   index1_2: 0
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &43765223
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,6 +563,7 @@ MonoBehaviour:
   index1_2: 0
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &48844188
 GameObject:
   m_ObjectHideFlags: 0
@@ -1605,6 +1607,7 @@ MonoBehaviour:
   index1_2: 0
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &141467075
 GameObject:
   m_ObjectHideFlags: 0
@@ -3582,6 +3585,7 @@ MonoBehaviour:
   index1_2: 0
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &284228642
 GameObject:
   m_ObjectHideFlags: 0
@@ -4068,6 +4072,7 @@ MonoBehaviour:
   index1_2: 100
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &306815621
 GameObject:
   m_ObjectHideFlags: 0
@@ -4376,6 +4381,7 @@ MonoBehaviour:
   index1_2: 0
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &313774137
 GameObject:
   m_ObjectHideFlags: 0
@@ -4736,6 +4742,7 @@ MonoBehaviour:
   index1_2: 0
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &344464955
 GameObject:
   m_ObjectHideFlags: 0
@@ -7367,6 +7374,7 @@ MonoBehaviour:
   index1_2: 0
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &556690058
 GameObject:
   m_ObjectHideFlags: 0
@@ -10524,6 +10532,7 @@ MonoBehaviour:
   index1_2: 0
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &784053158
 GameObject:
   m_ObjectHideFlags: 0
@@ -10834,6 +10843,7 @@ MonoBehaviour:
   index1_2: 0
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &800842541
 GameObject:
   m_ObjectHideFlags: 0
@@ -12258,6 +12268,7 @@ MonoBehaviour:
   index1_2: 1
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &903348393
 GameObject:
   m_ObjectHideFlags: 0
@@ -13149,6 +13160,7 @@ MonoBehaviour:
   index1_2: 0
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &976097688
 GameObject:
   m_ObjectHideFlags: 0
@@ -13922,6 +13934,7 @@ MonoBehaviour:
   index1_2: 0
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &1031483582
 GameObject:
   m_ObjectHideFlags: 0
@@ -14054,6 +14067,7 @@ MonoBehaviour:
   index1_2: 0
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &1058625941
 GameObject:
   m_ObjectHideFlags: 0
@@ -14188,6 +14202,7 @@ MonoBehaviour:
   index1_2: 1
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &1087300632
 GameObject:
   m_ObjectHideFlags: 0
@@ -18594,6 +18609,7 @@ MonoBehaviour:
   index1_2: 0
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &1405819303
 GameObject:
   m_ObjectHideFlags: 0
@@ -18778,6 +18794,7 @@ MonoBehaviour:
   index1_2: 0
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &1413393112
 GameObject:
   m_ObjectHideFlags: 0
@@ -18910,6 +18927,7 @@ MonoBehaviour:
   index1_2: 0
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &1418488321
 GameObject:
   m_ObjectHideFlags: 0
@@ -19042,6 +19060,7 @@ MonoBehaviour:
   index1_2: 0
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &1424377192
 GameObject:
   m_ObjectHideFlags: 0
@@ -19350,6 +19369,7 @@ MonoBehaviour:
   index1_2: 0
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &1442334900
 GameObject:
   m_ObjectHideFlags: 0
@@ -20693,6 +20713,7 @@ MonoBehaviour:
   index1_2: 0
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &1558962787
 GameObject:
   m_ObjectHideFlags: 0
@@ -21002,6 +21023,7 @@ MonoBehaviour:
   index1_2: 0
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &1631622104
 GameObject:
   m_ObjectHideFlags: 0
@@ -21134,6 +21156,7 @@ MonoBehaviour:
   index1_2: 0
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &1647359250
 GameObject:
   m_ObjectHideFlags: 0
@@ -22025,6 +22048,7 @@ MonoBehaviour:
   index1_2: 0
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &1722251369
 GameObject:
   m_ObjectHideFlags: 0
@@ -22737,6 +22761,7 @@ MonoBehaviour:
   index1_2: 0
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &1806198521
 GameObject:
   m_ObjectHideFlags: 0
@@ -24562,6 +24587,7 @@ MonoBehaviour:
   index1_2: 0
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &2014214116
 GameObject:
   m_ObjectHideFlags: 0
@@ -25451,6 +25477,7 @@ MonoBehaviour:
   index1_2: 0
   reward_type2: 2
   index2: -10
+  limitNum: 0
 --- !u!1 &2105344538
 GameObject:
   m_ObjectHideFlags: 0
@@ -25583,6 +25610,7 @@ MonoBehaviour:
   index1_2: 0
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &2122374500
 GameObject:
   m_ObjectHideFlags: 0
@@ -25715,6 +25743,7 @@ MonoBehaviour:
   index1_2: 0
   reward_type2: 0
   index2: 0
+  limitNum: 0
 --- !u!1 &2129300173
 GameObject:
   m_ObjectHideFlags: 0
@@ -26202,3 +26231,4 @@ MonoBehaviour:
   index1_2: 1
   reward_type2: 0
   index2: 0
+  limitNum: 0

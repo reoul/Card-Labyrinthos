@@ -63,6 +63,28 @@ public class MapManager : MonoBehaviour
     [SerializeField]
     GameObject fieldParent;
     public Field[] fields;
+    public string CurrentSceneName      //현재 씬 이름
+    {
+        get
+        {
+            switch (SceneManager.GetActiveScene().name)
+            {
+                case "Map":
+                    return "지도";
+                case "Battle":
+                    return "전투";
+                case "Event":
+                    return "이벤트";
+                case "Shop":
+                    return "상점";
+                case "Boss":
+                    return "보스";
+                case "Rest":
+                    return "휴식";
+            }
+            return "지도";
+        }
+    }
 
     private void Start()
     {
@@ -91,7 +113,7 @@ public class MapManager : MonoBehaviour
     {
         isClear[selectFieldIndex] = clear;
         TurnManager.Inst.isFinish = false;
-        fieldData.field_type = FIELD_TYPE.TEST2;
+        fieldData.field_type = FIELD_TYPE.MAP;
         FadeManager.FadeEvent += new EventHandler(LoadScene);
         StartCoroutine(FadeManager.Inst.FadeInOut(null, null, FieldClearCheckCorutine()));
     }
@@ -101,10 +123,10 @@ public class MapManager : MonoBehaviour
         switch (fieldData.field_type)
         {
             case FIELD_TYPE.BATTLE:
-                StartCoroutine(FadeManager.Inst.FadeInOut(CardManager.Inst.InitCorutine(), TurnManager.Inst.StartGameCorutine()));
+                StartCoroutine(FadeManager.Inst.FadeInOut(PlayerManager.Inst.SetupGameCorutine(), null, null, CardManager.Inst.InitCorutine(), TurnManager.Inst.StartGameCorutine()));
                 break;
             case FIELD_TYPE.EVENT:
-                StartCoroutine(FadeManager.Inst.FadeInOut(CardManager.Inst.InitCorutine(), TurnManager.Inst.StartGameCorutine(), EventManager.Inst.RandomEventCorutine()));
+                StartCoroutine(FadeManager.Inst.FadeInOut(EventManager.Inst.RandomEventCorutine(), null, null, CardManager.Inst.InitCorutine(), TurnManager.Inst.StartGameCorutine()));
                 break;
             case FIELD_TYPE.SHOP:
                 StartCoroutine(FadeManager.Inst.FadeInOut());
@@ -113,7 +135,7 @@ public class MapManager : MonoBehaviour
                 StartCoroutine(FadeManager.Inst.FadeInOut());
                 break;
             case FIELD_TYPE.MAP:
-                StartCoroutine(FadeManager.Inst.FadeInOut(null, null, FieldClearCheckCorutine()));
+                StartCoroutine(FadeManager.Inst.FadeInOut(FieldClearCheckCorutine()));
                 break;
         }
     }
