@@ -25,6 +25,14 @@ public class GameManager : MonoBehaviour
         DOTween.Init(false, true, LogBehaviour.ErrorsOnly);
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+            BagManager.Inst.Open();
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
+    }
+
     public void StartGame()
     {
         StartCoroutine(TurnManager.Inst.StartGameCorutine());

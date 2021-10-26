@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
 
     public void Attack()
     {
-        this.GetComponent<Animator>().SetTrigger("Attack");
+        //this.GetComponent<Animator>().SetTrigger("Attack");
     }
 
     public void Damage(int damage)          //플레이어가 공격 당할때 호출

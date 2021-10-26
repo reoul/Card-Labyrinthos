@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public enum TOPBAR_TYPE { HP, QUESTION, CARDPIECE, SCENENAME };
+public enum TOPBAR_TYPE { HP, QUESTION, CARDPIECE, SCENENAME, BAG, SETTING };
 
 public class TopBar : MonoBehaviour
 {
@@ -34,11 +34,6 @@ public class TopBar : MonoBehaviour
     public TMP_Text questionTMP;
     public TMP_Text sceneNameTMP;
 
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.D))
-            CardManager.Inst.FinishSceneAllMyHand();
-    }
 
     public void UpdateText(TOPBAR_TYPE type)
     {
@@ -55,6 +50,18 @@ public class TopBar : MonoBehaviour
                 break;
             case TOPBAR_TYPE.SCENENAME:
                 sceneNameTMP.text = MapManager.Inst.CurrentSceneName;
+                break;
+        }
+    }
+
+    public void Click(TopBarIcon icon)
+    {
+        switch (icon.type)
+        {
+            case TOPBAR_TYPE.BAG:
+                BagManager.Inst.Open();
+                break;
+            case TOPBAR_TYPE.SETTING:
                 break;
         }
     }

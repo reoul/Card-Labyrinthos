@@ -77,6 +77,7 @@ public class DebuffManager : MonoBehaviour
 
     public void ApplyDebuff()
     {
+        Init();
         switch (debuff_type)
         {
             case DEBUFF_TYPE.DEBUFF5:       //2턴마다 공격력 상승
@@ -93,6 +94,8 @@ public class DebuffManager : MonoBehaviour
 
     public void Init()
     {
-
+        turnDamage = 0;
+        AddForceTurn = 0;
+        AddForceTurnIndex = 0;
     }
 }
