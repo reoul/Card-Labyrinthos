@@ -30,7 +30,6 @@ public class Enemy : MonoBehaviour
         lastPatten = 99;
         lastWeaknessNum = 99;
         force = 0;
-        isVampire = false;
         isPattenHidden = false;
         isWeaknessHidden = false;
         RandomPatten();

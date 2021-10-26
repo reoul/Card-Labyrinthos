@@ -7,7 +7,19 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
     public int original_Num { get; private set; }
-    public int final_Num { get; private set; }
+    int _final_Num;
+    public int final_Num
+    {
+        get
+        {
+            return _final_Num;
+        }
+        private set
+        {
+            _final_Num = Mathf.Clamp(value, 0, 5);
+            UpdateNumTMP();
+        }
+    }
     [SerializeField] TMP_Text num_TMP;
 
     public PRS originPRS;
@@ -20,7 +32,12 @@ public class Card : MonoBehaviour
         a = 20;
         this.original_Num = num;
         this.final_Num = num;
-        num_TMP.text = (num + 1).ToString();
+        UpdateNumTMP();
+    }
+
+    public void UpdateNumTMP()
+    {
+        num_TMP.text = (final_Num + 1).ToString();
     }
 
     private void Awake()
@@ -87,5 +104,10 @@ public class Card : MonoBehaviour
         isFinish = true;
         MoveTransform(originPRS, false);
         MoveTransform(new PRS(originPRS.pos - Vector3.up * 3, originPRS.rot, originPRS.scale), true, 0.3f);
+    }
+
+    public void AddNum(int index)
+    {
+        final_Num += index;
     }
 }

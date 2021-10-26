@@ -236,6 +236,14 @@ public class CardManager : MonoBehaviour
         }
     }
 
+    public void SelectCardNumAdd(int index)
+    {
+        if (selectCard != null)
+        {
+            selectCard.AddNum(index);
+        }
+    }
+
     public void AddCard()           //카드 추가(카드 드로우시 사용)
     {
         Card card = PopItem();

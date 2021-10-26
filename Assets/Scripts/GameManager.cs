@@ -27,6 +27,10 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            CardManager.Inst.SelectCardNumAdd(1);
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+            CardManager.Inst.SelectCardNumAdd(-1);
         if (Input.GetKeyDown(KeyCode.I))
             BagManager.Inst.Open();
         if (Input.GetKeyDown(KeyCode.P))
