@@ -107,7 +107,8 @@ public class RewardManager : MonoBehaviour
         }
         activeRewardWindow = false;
         rewardWindow.SetActive(false);
-        CardManager.Inst.Init();
+        if (MapManager.Inst.CurrentSceneName != "휴식" && MapManager.Inst.CurrentSceneName != "지도")
+            CardManager.Inst.Init();
         MapManager.Inst.LoadMapScene(true);
     }
 
