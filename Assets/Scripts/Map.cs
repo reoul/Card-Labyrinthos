@@ -57,14 +57,19 @@ public class Map : MonoBehaviour
                         float _y = Camera.main.transform.position.y - movePos.y + 18.05999f;
                         movePos.y += _y;
                     }
-                    Camera.main.transform.position -= movePos;
-                    TopBar.Inst.transform.position -= movePos;
-                    RewardManager.Inst.transform.position -= movePos;
-                    BagManager.Inst.transform.position -= movePos;
-                    FadeManager.Inst.transform.position -= movePos;
+                    MoveUI(movePos);
                     lastMousePos = Input.mousePosition * 0.01f;
                 }
             }
         }
+    }
+
+    public void MoveUI(Vector3 pos)
+    {
+        Camera.main.transform.position -= pos;
+        TopBar.Inst.transform.position -= pos;
+        RewardManager.Inst.transform.position -= pos;
+        BagManager.Inst.transform.position -= pos;
+        FadeManager.Inst.transform.position -= pos;
     }
 }

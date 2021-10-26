@@ -22,6 +22,8 @@ public class Event : MonoBehaviour
         } while (rands[0] == rands[1]);
         rands[2] = 3 - rands[0] - rands[1];
         string[] achieve = { "[카드 수 합 : 1 ~ 10]", "[카드 수 합 : 11 ~ 20]", "[카드 수 합 : 21 ~ 36]", };
+        string[] achieve1 = { "[카드 수 합 : 1 ~ 10]", "[카드 수 합 : 11 ~ 20]", "[카드 수 합 : 21 ~ 36]", };
+        string[] achieve2 = { "[카드 수 합 : 1 ~ 10]", "[카드 수 합 : 11 ~ 20]", "[카드 수 합 : 21 ~ 36]", };
         int[] limits = { 10, 20, 36 };
         for (int i = 0; i < condition_TMP.Length; i++)
         {
