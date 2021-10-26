@@ -60,6 +60,8 @@ public class HpBar : MonoBehaviour
         }
         else
             hp -= damage;
+        if (parent.tag == "Player")
+            PlayerManager.Inst.hp = hp;
         if (hp <= 0)         //체력이 0 이하가 되면 죽음
         {
             Dead();

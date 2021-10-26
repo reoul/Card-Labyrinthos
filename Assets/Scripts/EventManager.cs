@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum EVENT_REWARD_TYPE { CARD, CARD_PIECE, HP, DRAW }
+public enum EVENT_REWARD_TYPE { CARD, CARD_PIECE, HP, DRAW, QUESTION_CARD }
 
 public class EventData
 {
@@ -72,6 +72,7 @@ public class EventManager : MonoBehaviour
 
     void FindEvents()
     {
+        this.events = new List<Event>();
         Event[] events = GameObject.Find("Event").GetComponentsInChildren<Event>(true);
         for (int i = 0; i < events.Length; i++)
         {

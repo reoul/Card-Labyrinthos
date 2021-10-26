@@ -27,7 +27,7 @@ public class PlayerManager : MonoBehaviour
         }
         set
         {
-            _hp = value;
+            _hp = Mathf.Clamp(value, 0, max_hp);
             TopBar.Inst.UpdateText(TOPBAR_TYPE.HP);
         }
     }
@@ -39,7 +39,7 @@ public class PlayerManager : MonoBehaviour
         }
         set
         {
-            _card_piece = value;
+            _card_piece = Mathf.Clamp(value, 0, 9999); ;
             TopBar.Inst.UpdateText(TOPBAR_TYPE.CARDPIECE);
         }
     }
@@ -51,7 +51,7 @@ public class PlayerManager : MonoBehaviour
         }
         set
         {
-            _question_card = value;
+            _question_card = Mathf.Clamp(value, 0, 99);
             TopBar.Inst.UpdateText(TOPBAR_TYPE.QUESTION);
         }
     }

@@ -80,7 +80,7 @@ public class FadeManager : MonoBehaviour
         else
             while (alpha > 0)
             {
-                alpha -= Time.deltaTime / fade_speed;
+                alpha -= Time.deltaTime * fade_speed;
                 SR.color = new Color(0, 0, 0, Mathf.Clamp01(alpha));
                 yield return new WaitForEndOfFrame();
             }

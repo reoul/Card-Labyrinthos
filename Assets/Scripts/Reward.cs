@@ -49,10 +49,11 @@ public class Reward : MonoBehaviour
         {
             switch (rewardData.reward_type)
             {
-                case EVENT_REWARD_TYPE.CARD: return string.Format("물음표카드를 {0}장 획득합니다", rewardData.index);
+                case EVENT_REWARD_TYPE.CARD: return string.Format("{0} 카드를 획득합니다", rewardData.index + 1);
                 case EVENT_REWARD_TYPE.CARD_PIECE: return string.Format("카드 파편을 {0}개 {1}합니다", Mathf.Abs(rewardData.index), rewardData.index > 0 ? "획득" : "감소");
                 case EVENT_REWARD_TYPE.HP: return string.Format("체력이 {0} {1}합니다", Mathf.Abs(rewardData.index), rewardData.index > 0 ? "증가" : "감소");
                 case EVENT_REWARD_TYPE.DRAW: return string.Format("시작 드로우 개수가 {0}장 증가합니다", Mathf.Abs(rewardData.index));
+                case EVENT_REWARD_TYPE.QUESTION_CARD: return string.Format("물음표카드를 {0}장 획득합니다", Mathf.Abs(rewardData.index));
             }
             return "";
         }

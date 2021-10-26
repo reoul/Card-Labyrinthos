@@ -118,6 +118,7 @@ public class TurnManager : MonoBehaviour
 
     public IEnumerator ShowReward()    //전투가 끝나거나 이벤트 보상을 얻을때
     {
+        RewardManager.Inst.SetFinishBattleReward();
         yield return StartCoroutine(RewardManager.Inst.ShowRewardWindowCorutine());    //보상 다 받았으면
         MapManager.Inst.LoadMapScene(true);
     }

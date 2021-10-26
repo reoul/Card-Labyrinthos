@@ -110,7 +110,7 @@ public class RewardManager : MonoBehaviour
         int questionCard = Random.Range(0, 2) == 0 ? 1 : 0;
         int cardPiece = Random.Range(20, 40);
         if (questionCard == 1)
-            AddReward(EVENT_REWARD_TYPE.CARD, questionCard);
+            AddReward(EVENT_REWARD_TYPE.QUESTION_CARD, questionCard);
         AddReward(EVENT_REWARD_TYPE.CARD_PIECE, cardPiece);
     }
 
@@ -149,6 +149,9 @@ public class RewardManager : MonoBehaviour
                 PlayerManager.Inst.hp += reward.rewardData.index;
                 break;
             case EVENT_REWARD_TYPE.DRAW:
+                break;
+            case EVENT_REWARD_TYPE.QUESTION_CARD:
+                PlayerManager.Inst.question_card += reward.rewardData.index;
                 break;
         }
         StartCoroutine(reward.FadeCorutine(false));

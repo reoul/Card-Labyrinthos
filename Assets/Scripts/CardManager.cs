@@ -49,6 +49,9 @@ public class CardManager : MonoBehaviour
 
     private Vector3[] waypoints;        //카드 사용후 버린 카드더미로 이동할때 사용
 
+    [Header("카드의 이동속도")]
+    public float CardMoveSpeed;
+
     public int HandCardNumSum
     {
         get
@@ -259,7 +262,7 @@ public class CardManager : MonoBehaviour
             var targetCard = MyHandCards[i];
 
             targetCard.originPRS = originCardPRSs[i];
-            targetCard.MoveTransform(targetCard.originPRS, true, 0.7f);
+            targetCard.MoveTransform(targetCard.originPRS, true, CardMoveSpeed);
         }
     }
 

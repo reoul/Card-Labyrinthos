@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public enum SHOPITEM_TYPE { CARD, ADD_DRAW }
@@ -9,6 +10,7 @@ public class Item
 {
     public SHOPITEM_TYPE type;
     public int index;
+    public int price;
 }
 
 public class ShopItem : MonoBehaviour
@@ -17,6 +19,8 @@ public class ShopItem : MonoBehaviour
     bool onItem = false;    //마우스가 아이템 위에 있는지
     Vector3 originalScale;
     bool isMax = false;
+    [SerializeField] GameObject bottomBar;
+    [SerializeField] TMP_Text priceTMP;
 
     public void Start()
     {
@@ -26,7 +30,8 @@ public class ShopItem : MonoBehaviour
     private void OnMouseUp()
     {
         if (onItem && !FadeManager.Inst.isActiveFade)
-            ShopManager.Inst.Click(item);
+            if (PlayerManager.Inst.card_piece >= item.price)
+                ShopManager.Inst.Click(item);
     }
 
     private void OnMouseEnter()
@@ -44,9 +49,18 @@ public class ShopItem : MonoBehaviour
         transform.localScale = originalScale;
     }
 
+    public void ChangePriceColor()
+    {
+        if (PlayerManager.Inst.card_piece >= item.price)
+            priceTMP.color = Color.green;
+        else
+            priceTMP.color = Color.red;
+    }
+
     public void CountMax()
     {
         isMax = true;
         transform.localScale = originalScale;
+        bottomBar.SetActive(false);
     }
 }
