@@ -54,6 +54,17 @@ public class TurnManager : MonoBehaviour
         isLoading = true;
 
         yield return delay07;
+        if (SceneManager.GetActiveScene().name == "Battle")
+        {
+            if (Player.Inst.hpbar.sheld > 0)
+                Player.Inst.hpbar.Damage(Player.Inst.hpbar.sheld);
+
+            if (EnemyManager.Inst.enemys[0].hpbar.sheld > 0)
+                EnemyManager.Inst.enemys[0].hpbar.Damage(EnemyManager.Inst.enemys[0].hpbar.sheld);
+
+            if (EnemyManager.Inst.enemys[0].hpbar.turnStartSheld > 0)
+                EnemyManager.Inst.enemys[0].hpbar.Sheld(EnemyManager.Inst.enemys[0].hpbar.turnStartSheld);
+        }
         if (!isFinish)
         {
             for (int i = 0; i < startCardCount; i++)
@@ -64,9 +75,6 @@ public class TurnManager : MonoBehaviour
             if (SceneManager.GetActiveScene().name == "Battle")
                 GameManager.Inst.Notification("내 턴");
         }
-        if (SceneManager.GetActiveScene().name == "Battle")
-            if (Player.Inst.hpbar.sheld > 0)
-                Player.Inst.hpbar.Damage(Player.Inst.hpbar.sheld);
         yield return delay07;
         isLoading = false;
     }
@@ -106,6 +114,7 @@ public class TurnManager : MonoBehaviour
         {
             EnemyManager.Inst.enemys[i].RandomPatten();
         }
+        DebuffManager.Inst.CheckDebuff();
         EnemyManager.Inst.UpdateStateTextAllEnemy();
         StartCoroutine(StartTurnCorutine());
     }

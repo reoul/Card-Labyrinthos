@@ -59,7 +59,8 @@ public class RewardManager : MonoBehaviour
         windowRenderer.color = new Color(255, 255, 255, 0);
         titleTMP.color = new Color(255, 255, 255, 0);
 
-        CardManager.Inst.FinishSceneAllMyHand();
+        if (MapManager.Inst.CurrentSceneName != "Map")
+            CardManager.Inst.FinishSceneAllMyHand();
 
         while (true)
         {
@@ -218,7 +219,6 @@ public class RewardManager : MonoBehaviour
                 break;
             case REWARD_TYPE.DEBUFF:
                 isChoice = true;
-                Debug.Log("asdf");
                 DebuffManager.Inst.debuff_type = reward.debuff_type;
                 break;
         }

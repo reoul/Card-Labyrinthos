@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Card
   - Store
+  - Enemy
   layers:
   - Default
   - TransparentFX

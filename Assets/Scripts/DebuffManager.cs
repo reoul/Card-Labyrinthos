@@ -8,6 +8,10 @@ public class DebuffManager : MonoBehaviour
 
     public DEBUFF_TYPE debuff_type;
 
+    public int turnDamage;
+    public int AddForceTurn;
+    public int AddForceTurnIndex;       //이걸로 턴 카운트
+
     public string DebuffString
     {
         get
@@ -38,5 +42,51 @@ public class DebuffManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        AddForceTurnIndex = 0;
+    }
+
+    public void CheckDebuff()
+    {
+        AddForceTurn += AddForceTurnIndex;
+        if (turnDamage == 0)
+        {
+            switch (debuff_type)
+            {
+                case DEBUFF_TYPE.DEBUFF1:           //플레이어 데미지
+                    break;
+                case DEBUFF_TYPE.DEBUFF2:           //몬스터 체력 2 회복
+                    break;
+                case DEBUFF_TYPE.DEBUFF3:           //다음 약점 카드 숨김
+                    break;
+                case DEBUFF_TYPE.DEBUFF4:           //다음 몬스터 패턴 숨김
+                    break;
+            }
+        }
+
+        if (AddForceTurn == 2)                  //2턴마다 공격력 상승
+        {
+            AddForceTurn = 0;
+            EnemyManager.Inst.enemys[0].force++;
+        }
+    }
+
+    public void ApplyDebuff()
+    {
+        switch (debuff_type)
+        {
+            case DEBUFF_TYPE.DEBUFF5:       //2턴마다 공격력 상승
+                AddForceTurnIndex = 1;
+                break;
+            case DEBUFF_TYPE.DEBUFF6:       //플레이어에게 넣은 피해만큼 몬스터 회복
+                break;
+            case DEBUFF_TYPE.DEBUFF7:       //매턴마다 방어도가 3씩 쌓인다
+                EnemyManager.Inst.enemys[0].hpbar.SetTurnStartSheld(3);
+                break;
+        }
+    }
+
+    public void Init()
+    {
+
     }
 }

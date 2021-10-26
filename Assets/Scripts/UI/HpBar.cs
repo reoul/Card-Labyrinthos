@@ -10,6 +10,7 @@ public class HpBar : MonoBehaviour
     public int hp;              //현재 체력
     public int max_hp;          //최대 체력
     public int sheld;           //방어력
+    public int turnStartSheld;
     [SerializeField] GameObject sheldObj;       //실드 오브젝트
     [SerializeField] GameObject hpbar;          //체력바 오브젝트
     [SerializeField] TMP_Text hptext;           //체력 텍스트
@@ -18,6 +19,7 @@ public class HpBar : MonoBehaviour
     public void Init()          //초기화, 게임 시작할때 실행
     {
         UpdateHp();
+        turnStartSheld = 0;
     }
 
     public void SetHP(int hp)
@@ -26,6 +28,11 @@ public class HpBar : MonoBehaviour
         this.max_hp = hp;
         parent = this.transform.parent.gameObject;
         UpdateHp();
+    }
+
+    public void SetTurnStartSheld(int sheld)
+    {
+        turnStartSheld = sheld;
     }
 
     public void UpdateHp()      //현재 데이터로 텍스트랑 체력바 게이지 조정
@@ -94,7 +101,7 @@ public class HpBar : MonoBehaviour
     void Dead()         //죽었을때 발동
     {
         hp = 0;
-        if (parent.CompareTag("Player"))
+        if (parent.tag == "Player")
             parent.GetComponent<Player>().Dead();
         else
             parent.GetComponent<Enemy>().Dead();

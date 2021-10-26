@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] PATTERN curPatten;
     int lastPatten;
     int lastWeaknessNum;
+    public int force;
 
     [SerializeField] SpriteRenderer patten_sprite;
     [SerializeField] TMP_Text pattenIndexTMP;        //데미지 텍스트
@@ -25,6 +26,7 @@ public class Enemy : MonoBehaviour
         weaknessNum = 0;
         lastPatten = 99;
         lastWeaknessNum = 99;
+        force = 0;
         RandomPatten();
         UpdateStateText();
     }
@@ -81,7 +83,7 @@ public class Enemy : MonoBehaviour
 
     public void Attack()
     {
-        Player.Inst.Damage(pattenIndex);
+        Player.Inst.Damage(pattenIndex + force);
         pattenIndex = 0;
     }
 
@@ -91,12 +93,13 @@ public class Enemy : MonoBehaviour
         {
             case PATTERN_TYPE.ATTACK:
                 patten_sprite.sprite = StageManager.Inst.attackSprite;
+                pattenIndexTMP.text = pattenIndex.ToString() + (force > 0 ? string.Format($" + {force}") : "");
                 break;
             case PATTERN_TYPE.HEAL:
                 patten_sprite.sprite = StageManager.Inst.healSprite;
+                pattenIndexTMP.text = pattenIndex.ToString();
                 break;
         }
-        pattenIndexTMP.text = pattenIndex.ToString();
         weaknessTMP.text = (weaknessNum + 1).ToString();
     }
 

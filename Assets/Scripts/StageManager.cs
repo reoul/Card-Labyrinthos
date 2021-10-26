@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class StageManager : MonoBehaviour
@@ -13,6 +14,8 @@ public class StageManager : MonoBehaviour
 
     public Sprite attackSprite;
     public Sprite healSprite;
+
+    public TMP_Text debuffTMP;
 
     private void Awake()
     {
@@ -40,9 +43,13 @@ public class StageManager : MonoBehaviour
                 enemy.hpbar.SetHP(monsterSO.monsters[i].hp);
                 enemy.hpbar.hp = 5;
                 enemy.monster = monsterSO.monsters[i];
+                enemy.name = "Enemy";
+                enemy.tag = "Enemy";
                 break;
             }
         }
+        debuffTMP.text = string.Format($"저주 : {DebuffManager.Inst.DebuffString}");
+        DebuffManager.Inst.ApplyDebuff();
     }
 
     public void SetDebuff()
