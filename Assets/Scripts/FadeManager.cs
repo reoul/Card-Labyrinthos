@@ -39,9 +39,16 @@ public class FadeManager : MonoBehaviour
         StartCoroutine(Fade(true));
     }
 
-    public IEnumerator FadeInOut(IEnumerator FadeOutAfter1 = null, IEnumerator FadeOutAfter2 = null, IEnumerator FadeOutAfter3 = null,
+    public IEnumerator FadeInOut(IEnumerator FadeOutPrev1 = null, IEnumerator FadeOutPrev2 = null, IEnumerator FadeOutPrev3 = null,
+            IEnumerator FadeOutAfter1 = null, IEnumerator FadeOutAfter2 = null, IEnumerator FadeOutAfter3 = null,
             IEnumerator FadeInAfter1 = null, IEnumerator FadeInAfter2 = null, IEnumerator FadeInAfter3 = null)
     {
+        if (FadeOutPrev1 != null)
+            yield return StartCoroutine(FadeOutPrev1);
+        if (FadeOutPrev2 != null)
+            yield return StartCoroutine(FadeOutPrev2);
+        if (FadeOutPrev3 != null)
+            yield return StartCoroutine(FadeOutPrev3);
         isActiveFade = true;
         yield return StartCoroutine(Fade(true));       //페이드아웃 실행
         if (FadeEvent != null)

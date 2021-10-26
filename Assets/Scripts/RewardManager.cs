@@ -81,7 +81,6 @@ public class RewardManager : MonoBehaviour
             {
                 rewards[i].SetReward(reward_type, index);
                 rewards[i].gameObject.SetActive(true);
-                Debug.Log($"보상 {reward_type} {index}개 추가 완료");
                 break;
             }
         }

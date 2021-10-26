@@ -115,7 +115,7 @@ public class MapManager : MonoBehaviour
         TurnManager.Inst.isFinish = false;
         fieldData.field_type = FIELD_TYPE.MAP;
         FadeManager.FadeEvent += new EventHandler(LoadScene);
-        StartCoroutine(FadeManager.Inst.FadeInOut(null, null, FieldClearCheckCorutine()));
+        StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null, null, null, FieldClearCheckCorutine()));
     }
 
     void StartEvent()
@@ -123,10 +123,14 @@ public class MapManager : MonoBehaviour
         switch (fieldData.field_type)
         {
             case FIELD_TYPE.BATTLE:
-                StartCoroutine(FadeManager.Inst.FadeInOut(PlayerManager.Inst.SetupGameCorutine(), null, null, CardManager.Inst.InitCorutine(), TurnManager.Inst.StartGameCorutine()));
+                StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null,
+                    PlayerManager.Inst.SetupGameCorutine(), null, null,
+                        CardManager.Inst.InitCorutine(), TurnManager.Inst.StartGameCorutine()));
                 break;
             case FIELD_TYPE.EVENT:
-                StartCoroutine(FadeManager.Inst.FadeInOut(EventManager.Inst.RandomEventCorutine(), null, null, CardManager.Inst.InitCorutine(), TurnManager.Inst.StartGameCorutine()));
+                StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null,
+                    EventManager.Inst.RandomEventCorutine(), null, null,
+                        CardManager.Inst.InitCorutine(), TurnManager.Inst.StartGameCorutine()));
                 break;
             case FIELD_TYPE.SHOP:
                 StartCoroutine(FadeManager.Inst.FadeInOut());
@@ -135,7 +139,8 @@ public class MapManager : MonoBehaviour
                 StartCoroutine(FadeManager.Inst.FadeInOut());
                 break;
             case FIELD_TYPE.MAP:
-                StartCoroutine(FadeManager.Inst.FadeInOut(FieldClearCheckCorutine()));
+                StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null,
+                    FieldClearCheckCorutine()));
                 break;
         }
     }

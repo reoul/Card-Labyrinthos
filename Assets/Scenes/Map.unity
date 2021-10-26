@@ -25906,7 +25906,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uBCA4\uD2B8"
+  m_text: "\uC774\uC9C0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: de9a99698b08ae448a6fb09d09e0e7e1, type: 2}
   m_sharedMaterial: {fileID: 1665094978185840691, guid: de9a99698b08ae448a6fb09d09e0e7e1,
@@ -31020,7 +31020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9bd9349b0400904095b7441e67a99a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  field_type: 1
+  field_type: 0
   event_type: 0
   monster_difficulty: 0
   surroundingObj: []
@@ -31044,7 +31044,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.51, y: 5.51}
+    oldSize: {x: 5.12, y: 5.12}
     newSize: {x: 5.12, y: 5.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -31092,7 +31092,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d343f523ba8f27b4da2644e77bbbc694, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 304a6c5217b2e5b458ada3df4e95bad4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -39361,9 +39361,11 @@ MonoBehaviour:
   itemBuffer: []
   tombItemBuffer: []
   selectCard: {fileID: 0}
+  isMyCardDrag: 0
+  onMyCardArea: 0
   ease: 0
   waypoint2: {fileID: 0}
-  CardMoveSpeed: 0.3
+  CardMoveSpeed: 0.2
 --- !u!4 &2142492249
 Transform:
   m_ObjectHideFlags: 0

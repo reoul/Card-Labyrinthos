@@ -38,7 +38,7 @@ public class StageManager : MonoBehaviour
                     enemy_position.y > enemy_spawn.position.y ? -position_y : position_y, i * -0.5f);
                 EnemyManager.Inst.enemys.Add(enemy);
                 enemy.hpbar.SetHP(monsterSO.monsters[i].hp);
-                enemy.hpbar.hp = 1;
+                enemy.hpbar.hp = 5;
                 enemy.monster = monsterSO.monsters[i];
                 break;
             }

@@ -130,7 +130,7 @@ public class Field : MonoBehaviour
 
     public MONSTER_TYPE GetMonster(MONSTER_DIFFICULTY difficulty)       //필드 난이도에 따라 랜덤 몬스터 소환
     {
-        int rand = Random.Range(0, difficulty == MONSTER_DIFFICULTY.EASY ? 10 : difficulty == MONSTER_DIFFICULTY.NOMAL ? 10 : 10);
+        int rand = Random.Range(0, difficulty == MONSTER_DIFFICULTY.EASY ? 10 : difficulty == MONSTER_DIFFICULTY.NOMAL ? 9 : 10);
         switch (difficulty)
         {
             case MONSTER_DIFFICULTY.EASY:
@@ -172,15 +172,13 @@ public class Field : MonoBehaviour
                     case 4:
                         return MONSTER_TYPE.KOBOLD;
                     case 5:
-                        return MONSTER_TYPE.MIMIC;
+                        return MONSTER_TYPE.SHADE;
                     case 6:
                         return MONSTER_TYPE.OCULLOTHORAX;
                     case 7:
                         return MONSTER_TYPE.REAPER;
                     case 8:
                         return MONSTER_TYPE.SATYR;
-                    case 9:
-                        return MONSTER_TYPE.SHADE;
                 }
                 break;
             case MONSTER_DIFFICULTY.HARD:

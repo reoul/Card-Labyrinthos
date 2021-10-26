@@ -12,6 +12,7 @@ public class Card : MonoBehaviour
 
     public PRS originPRS;
     public Transform parent;
+    public bool isFinish = false;
     int a = 10;
 
     public void Setup(int num)
@@ -60,13 +61,14 @@ public class Card : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (!FadeManager.Inst.isActiveFade)
+        if (!FadeManager.Inst.isActiveFade && !isFinish)
             CardManager.Inst.CardMouseDown();
     }
 
     void OnMouseUp()
     {
-        CardManager.Inst.CardMouseUp();
+        if (!isFinish)
+            CardManager.Inst.CardMouseUp();
     }
 
     public void Use(GameObject obj = null)
@@ -82,6 +84,7 @@ public class Card : MonoBehaviour
 
     public void FinishScene()
     {
+        isFinish = true;
         MoveTransform(originPRS, false);
         MoveTransform(new PRS(originPRS.pos - Vector3.up * 3, originPRS.rot, originPRS.scale), true, 0.3f);
     }

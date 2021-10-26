@@ -40,8 +40,8 @@ public class CardManager : MonoBehaviour
 
     public Card selectCard;     //선택된 카드
 
-    bool isMyCardDrag;          //현재 플레이어가 카드를 드래그 중인지
-    bool onMyCardArea;          //플레이어 마우스가 카드Area에 있는지
+    [SerializeField] bool isMyCardDrag;          //현재 플레이어가 카드를 드래그 중인지
+    [SerializeField] bool onMyCardArea;          //플레이어 마우스가 카드Area에 있는지
 
     public Ease ease;
 
@@ -74,7 +74,6 @@ public class CardManager : MonoBehaviour
         {
             if (isMyCardDrag)
                 CardDrag();
-
             DetectCardArea();
         }
     }
@@ -260,7 +259,6 @@ public class CardManager : MonoBehaviour
         for (int i = 0; i < MyHandCards.Count; i++)
         {
             var targetCard = MyHandCards[i];
-
             targetCard.originPRS = originCardPRSs[i];
             targetCard.MoveTransform(targetCard.originPRS, true, CardMoveSpeed);
         }
@@ -273,6 +271,9 @@ public class CardManager : MonoBehaviour
 
     public void FinishSceneAllMyHand()      //씬이 끌날때 손에 있는 모든 카드를 밑으로 내려버린다.
     {
+        if (selectCard != null)
+            isMyCardDrag = false;
+        selectCard = null;
         for (int i = 0; i < MyHandCards.Count; i++)
         {
             MyHandCards[i].FinishScene();
@@ -354,7 +355,9 @@ public class CardManager : MonoBehaviour
         if (!isMyCardDrag)
             selectCard = card;
         if (selectCard == card && onMyCardArea)
+        {
             EnlargeCard(true, card);
+        }
     }
 
     public void CardMouseExit(Card card)
