@@ -59,7 +59,7 @@ public class RewardManager : MonoBehaviour
         windowRenderer.color = new Color(255, 255, 255, 0);
         titleTMP.color = new Color(255, 255, 255, 0);
 
-        if (MapManager.Inst.CurrentSceneName != "지도")
+        if (MapManager.Inst.CurrentSceneName != "지도" && MapManager.Inst.CurrentSceneName != "휴식")
             CardManager.Inst.FinishSceneAllMyHand();
 
         while (true)

@@ -30,7 +30,7 @@ public class ShopItem : MonoBehaviour
     private void OnMouseUp()
     {
         if (onItem && !FadeManager.Inst.isActiveFade)
-            if (PlayerManager.Inst.card_piece >= item.price)
+            if (PlayerManager.Inst.card_piece >= item.price || PlayerManager.Inst.question_card > 0)
                 ShopManager.Inst.Click(item);
     }
 

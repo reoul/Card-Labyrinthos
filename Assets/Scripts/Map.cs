@@ -16,6 +16,7 @@ public class Map : MonoBehaviour
     private void OnMouseExit()
     {
         onMap = false;
+        isMoveCamera = false;
     }
     private void Update()
     {

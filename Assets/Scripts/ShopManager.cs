@@ -29,12 +29,19 @@ public class ShopManager : MonoBehaviour
         {
             case SHOPITEM_TYPE.CARD:
                 CardManager.Inst.AddCardDeck(item.index);
+                if (PlayerManager.Inst.question_card > 0)
+                    PlayerManager.Inst.question_card -= 1;
+                else
+                    PlayerManager.Inst.card_piece -= item.price;
                 break;
             case SHOPITEM_TYPE.ADD_DRAW:
-                TurnManager.Inst.AddStartTurnCard();
+                if (PlayerManager.Inst.card_piece >= item.price)
+                {
+                    TurnManager.Inst.AddStartTurnCard();
+                    PlayerManager.Inst.card_piece -= item.price;
+                }
                 break;
         }
-        PlayerManager.Inst.card_piece -= item.price;
         ChangePriceColor();
         CheckItemMax();
     }
