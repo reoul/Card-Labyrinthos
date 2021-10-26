@@ -11,7 +11,7 @@ public class RewardManager : MonoBehaviour
     public static RewardManager Inst = null;
 
     public GameObject rewardWindow;
-    public GameObject rewardPrefab;
+    public TMP_Text titleTMP;
 
     public List<Reward> rewards;
 
@@ -134,6 +134,7 @@ public class RewardManager : MonoBehaviour
 
     public void SetRandomBattleDebuff()
     {
+        SetTitleText("저주");
         int[] choices = new int[3];      //랜덤으로 선택된 3개의 디버프
         int[] Debuffs = new int[7];
         for (int i = 0; i < Debuffs.Length; i++)
@@ -154,6 +155,11 @@ public class RewardManager : MonoBehaviour
             choices[i] = randomDebuff;
             AddReward(REWARD_TYPE.DEBUFF, choices[i], 0);
         }
+    }
+
+    public void SetTitleText(string title)
+    {
+        titleTMP.text = title;
     }
 
     public IEnumerator CheckGetAllReward()
