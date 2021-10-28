@@ -79,7 +79,9 @@ public class Card : MonoBehaviour
     void OnMouseDown()
     {
         if (!FadeManager.Inst.isActiveFade && !isFinish)
+        {
             CardManager.Inst.CardMouseDown();
+        }
     }
 
     void OnMouseUp()

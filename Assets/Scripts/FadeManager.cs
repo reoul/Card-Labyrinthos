@@ -64,6 +64,7 @@ public class FadeManager : MonoBehaviour
         TopBar.Inst.InitPosition();
         RewardManager.Inst.Init();
         BagManager.Inst.Init();
+        SkillManager.Inst.Init();
         Init();
         yield return new WaitForSeconds(0.1f);
         TopBar.Inst.UpdateText(TOPBAR_TYPE.SCENENAME);

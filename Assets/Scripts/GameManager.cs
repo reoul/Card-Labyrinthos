@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
             CardManager.Inst.SelectCardNumAdd(-1);
         if (Input.GetKeyDown(KeyCode.I))
             BagManager.Inst.Open();
+        if (Input.GetKeyDown(KeyCode.K))
+            SkillManager.Inst.Open();
         if (Input.GetKeyDown(KeyCode.P))
             if (EnemyManager.Inst.enemys.Count > 0)
                 EnemyManager.Inst.enemys[0].Damage(EnemyManager.Inst.enemys[0].hpbar.hp - 1);
@@ -50,5 +52,11 @@ public class GameManager : MonoBehaviour
             notificationPanel = GameObject.Find("MyTurn").GetComponent<Notification>();
         if (notificationPanel != null)
             notificationPanel.Show(message);
+    }
+
+    public void CloseAllUI()
+    {
+        BagManager.Inst.Close();
+        SkillManager.Inst.Close();
     }
 }

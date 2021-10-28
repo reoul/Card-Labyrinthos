@@ -37,6 +37,7 @@ public class BagManager : MonoBehaviour
             Close();
             return;
         }
+        GameManager.Inst.CloseAllUI();
         isOpen = true;
         UpdateText();
         this.transform.GetChild(0).gameObject.SetActive(true);

@@ -71,5 +71,6 @@ public class Map : MonoBehaviour
         RewardManager.Inst.transform.position -= pos;
         BagManager.Inst.transform.position -= pos;
         FadeManager.Inst.transform.position -= pos;
+        SkillManager.Inst.transform.position -= pos;
     }
 }

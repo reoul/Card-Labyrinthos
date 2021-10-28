@@ -70,7 +70,7 @@ public class CardManager : MonoBehaviour
 
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "Battle")
+        if (MapManager.Inst.CurrentSceneName != "지도" && MapManager.Inst.CurrentSceneName != "상점")
         {
             if (isMyCardDrag)
                 CardDrag();
