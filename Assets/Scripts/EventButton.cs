@@ -32,7 +32,8 @@ public class EventButtonInspector : Editor
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("index2"));
                 break;
         }
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("limitNum"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("limitNumMin"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("limitNumMax"));
 
         serializedObject.ApplyModifiedProperties();
     }
