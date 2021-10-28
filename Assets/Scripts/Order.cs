@@ -17,22 +17,20 @@ public class Order : MonoBehaviour
 
     public void SetMostFrontOrder(bool isMostFront)
     {
-        SetOrder(isMostFront ? 100 : originOrder);
+        SetOrder(isMostFront ? 3800 : originOrder);
     }
 
     public void SetOrder(int order)
     {
-        int mulOrder = order * 10;
-
         foreach (var renderer in backRenderers)
         {
             renderer.sortingLayerName = sortingLayerName;
-            renderer.sortingOrder = mulOrder;
+            renderer.sortingOrder = order;
         }
         foreach (var renderer in middleRenderers)
         {
             renderer.sortingLayerName = sortingLayerName;
-            renderer.sortingOrder = mulOrder + 1;
+            renderer.sortingOrder = order + 1;
         }
     }
 }

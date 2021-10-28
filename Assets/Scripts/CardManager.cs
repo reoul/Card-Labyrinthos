@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
+public enum THROWING_OBJ_TYPE { CARDBACK, CARD_PIECE, NUM_CARD, QUESTION_CARD }
 
 public class CardManager : MonoBehaviour
 {
@@ -202,19 +203,6 @@ public class CardManager : MonoBehaviour
         InitCard();
     }
 
-    IEnumerator CreateBeenCard()
-    {
-        for (int i = 0; i < tombItemBuffer.Count; i++)
-        {
-            var cardObject = Instantiate(beenCardPrefab, cardEndPoint.position, Utils.CardRotate);
-            cardObject.transform.DOMove(cardSpawnPoint.position, 1f).OnComplete(() =>
-             {
-                 Destroy(cardObject);
-             });
-            yield return new WaitForEndOfFrame();
-        }
-    }
-
 
     void OnDestroy()
     {
@@ -260,7 +248,7 @@ public class CardManager : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             var targetCard = MyHandCards[i];
-            targetCard.GetComponent<Order>().SetOriginOrder(i);
+            targetCard.GetComponent<Order>().SetOriginOrder(3700 + i * 10);
         }
     }
 
@@ -405,7 +393,10 @@ public class CardManager : MonoBehaviour
             {
                 EnlargeCard(false, selectCard, true);
                 isUse = true;
+                int damage = selectCard.final_Num == EnemyManager.Inst.enemys[0].GetComponent<Enemy>().weaknessNum ? selectCard.final_Num + 1 : 1;
                 UseCard(EnemyManager.Inst.enemys[0].gameObject);
+                ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.CARDBACK,
+                    Player.Inst.gameObject.transform.position + Vector3.up * 3.5f, EnemyManager.Inst.enemys[0].transform.position, null, 0.5f, damage);
                 if (MyHandCards.Count == 0)
                     TurnManager.Inst.EndTurn();
             }
@@ -424,6 +415,19 @@ public class CardManager : MonoBehaviour
         selectCard.originPRS.scale = Vector3.one * 0.1f;
         selectCard.Use(obj);
         CardFinishMove();
+    }
+
+    IEnumerator CreateBeenCard()
+    {
+        for (int i = 0; i < tombItemBuffer.Count; i++)
+        {
+            var cardObject = Instantiate(beenCardPrefab, cardEndPoint.position, Utils.CardRotate);
+            cardObject.transform.DOMove(cardSpawnPoint.position, 1f).OnComplete(() =>
+            {
+                Destroy(cardObject);
+            });
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     void CardDrag()             //카드 드래그

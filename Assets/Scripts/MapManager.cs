@@ -119,7 +119,7 @@ public class MapManager : MonoBehaviour
         TurnManager.Inst.isFinish = false;
         fieldData.field_type = FIELD_TYPE.MAP;
         FadeManager.FadeEvent += new EventHandler(LoadScene);
-        StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null, null, null, FieldClearCheckCorutine()));
+        StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null, FieldClearCheckCorutine()));
     }
 
     void StartEvent()
@@ -145,6 +145,11 @@ public class MapManager : MonoBehaviour
             case FIELD_TYPE.MAP:
                 StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null,
                     FieldClearCheckCorutine()));
+                break;
+            case FIELD_TYPE.BOSS:
+                StartCoroutine(FadeManager.Inst.FadeInOut(TurnManager.Inst.ShowDebuffCorutine(), null, null,
+                    PlayerManager.Inst.SetupGameCorutine(), null, null,
+                        CardManager.Inst.InitCorutine(), TurnManager.Inst.StartGameCorutine()));
                 break;
         }
     }

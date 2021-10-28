@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
             CardManager.Inst.SelectCardNumAdd(1);
         if (Input.GetKeyDown(KeyCode.Alpha2))
             CardManager.Inst.SelectCardNumAdd(-1);
+        //if (Input.GetKeyDown(KeyCode.T))
+        //    ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.CARDBACK, Vector3.zero, new Vector3(5, 0), null, 0.5f);
         if (Input.GetKeyDown(KeyCode.I))
             BagManager.Inst.Open();
         if (Input.GetKeyDown(KeyCode.K))

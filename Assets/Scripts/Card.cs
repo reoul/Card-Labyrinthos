@@ -97,7 +97,7 @@ public class Card : MonoBehaviour
         else
         {
             Player.Inst.Attack();
-            EnemyManager.Inst.enemys[0].Damage(final_Num == obj.GetComponent<Enemy>().weaknessNum ? final_Num + 1 : 1);
+            //EnemyManager.Inst.enemys[0].Damage(final_Num == obj.GetComponent<Enemy>().weaknessNum ? final_Num + 1 : 1);
         }
     }
 
