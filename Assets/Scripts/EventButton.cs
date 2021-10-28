@@ -65,28 +65,14 @@ public class EventButton : MonoBehaviour
     [SerializeField]
     int index2;
 
-    public int limitNum;    //이벤트 버튼 숫자 제한
+    public int limitNumMin;    //이벤트 버튼 숫자 제한
+    public int limitNumMax;    //이벤트 버튼 숫자 제한
     public bool IsAchieve       //조건을 통과하는지 검사하는 프로퍼티
     {
         get
         {
             int sum = CardManager.Inst.HandCardNumSum;
-            switch (limitNum)
-            {
-                case 10:
-                    if (sum <= limitNum)
-                        return true;
-                    return false;
-                case 20:
-                    if (sum <= limitNum && sum >= 11)
-                        return true;
-                    return false;
-                case 36:
-                    if (sum <= limitNum && sum >= 21)
-                        return true;
-                    return false;
-            }
-            return false;
+            return sum >= limitNumMin && sum <= limitNumMax;
         }
     }
 
