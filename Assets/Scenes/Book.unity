@@ -260,7 +260,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1347361645
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 3510
   m_Sprite: {fileID: 21300000, guid: e7a9c2647e62f2c4d97055b658860dca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -329,6 +329,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6e2e70e199a4d4fb98d5941c26ec9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hpTMP: {fileID: 0}
+  cardPieceTMP: {fileID: 0}
+  questionTMP: {fileID: 0}
+  sceneNameTMP: {fileID: 0}
 --- !u!212 &798263393
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -448,7 +452,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3500
   m_Sprite: {fileID: 21300000, guid: c84a92ebbe9d4304eaa6e28df5dcc466, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -546,7 +550,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1347361645
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 3510
   m_Sprite: {fileID: 21300000, guid: e7a9c2647e62f2c4d97055b658860dca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -613,7 +617,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1347361645
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 3510
   m_Sprite: {fileID: 21300000, guid: 55c26a096201a644694b265f71bfed25, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -507,6 +507,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &31413598
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1512,6 +1516,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &82169588
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1637,6 +1645,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &91867732
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1762,6 +1774,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 2
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &94739629
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2063,6 +2079,10 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &100055029
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2188,6 +2208,10 @@ MonoBehaviour:
   field_type: 3
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &119033979
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3226,6 +3250,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &167258698
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3351,6 +3379,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 2
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &182207188
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3476,6 +3508,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &202974951
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4129,6 +4165,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &220198905
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4254,6 +4294,10 @@ MonoBehaviour:
   field_type: 3
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &225168401
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4379,6 +4423,10 @@ MonoBehaviour:
   field_type: 2
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &232594440
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4680,6 +4728,10 @@ MonoBehaviour:
   field_type: 2
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &255316507
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4805,6 +4857,10 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &268738609
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5106,6 +5162,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &285960355
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5231,6 +5291,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 2
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &295641194
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5356,6 +5420,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &302939758
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5657,6 +5725,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &318330942
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5782,6 +5854,10 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &319337309
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5907,6 +5983,10 @@ MonoBehaviour:
   field_type: 2
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &324603975
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6032,6 +6112,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 2
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &327525250
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6333,6 +6417,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &331850240
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6458,6 +6546,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 2
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &339988592
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7111,6 +7203,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &405249343
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7236,6 +7332,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &409951794
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7361,6 +7461,10 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &410366364
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7662,6 +7766,10 @@ MonoBehaviour:
   field_type: 2
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &417517207
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7787,6 +7895,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &424702743
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8264,6 +8376,10 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &456170892
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8389,6 +8505,10 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &474115723
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8514,6 +8634,10 @@ MonoBehaviour:
   field_type: 2
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &488606201
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8639,6 +8763,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &493704419
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8764,6 +8892,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &493951042
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9065,6 +9197,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &511172390
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9190,6 +9326,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &512422696
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9491,6 +9631,10 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &549338869
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9968,6 +10112,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &572722868
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10797,6 +10945,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &599226782
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11978,6 +12130,10 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &744485198
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12103,6 +12259,10 @@ MonoBehaviour:
   field_type: 2
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &746231484
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12228,6 +12388,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &763197742
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12610,6 +12774,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &843434862
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12911,6 +13079,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &875158212
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13036,6 +13208,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &896951297
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13337,6 +13513,10 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &922588120
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13814,6 +13994,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &964560715
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14115,6 +14299,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &974606728
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14240,6 +14428,10 @@ MonoBehaviour:
   field_type: 2
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &985034764
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14959,6 +15151,10 @@ MonoBehaviour:
   field_type: 2
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1087936421
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15084,6 +15280,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 2
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1095334629
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15385,6 +15585,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1106948925
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15686,6 +15890,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1128564437
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16149,6 +16357,10 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1199628676
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16274,6 +16486,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1221652286
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17008,6 +17224,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 2
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1230091807
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17133,6 +17353,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 2
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1297701277
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17258,6 +17482,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1314520728
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18170,6 +18398,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 2
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1389273002
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18647,6 +18879,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 2
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1421811463
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18772,6 +19008,10 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1425781570
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18897,6 +19137,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1427779065
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19022,6 +19266,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1441419544
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19932,6 +20180,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1524885561
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20057,6 +20309,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1528668639
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20182,6 +20438,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1548677994
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21011,6 +21271,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1594918607
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21488,6 +21752,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1625929738
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21613,6 +21881,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 2
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1629484639
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22090,6 +22362,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1650207469
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22391,6 +22667,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1655604121
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22516,6 +22796,10 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1659249310
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22817,6 +23101,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1660217845
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22942,6 +23230,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1660282068
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23067,6 +23359,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1673834699
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23896,6 +24192,10 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1713303369
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24021,6 +24321,10 @@ MonoBehaviour:
   field_type: 2
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1716471482
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24146,6 +24450,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1721722857
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24271,6 +24579,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 2
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1739370101
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24396,6 +24708,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1740471163
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25225,6 +25541,10 @@ MonoBehaviour:
   field_type: 2
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1804928065
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25350,6 +25670,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1818025743
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25827,6 +26151,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1824533344
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27265,6 +27593,10 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1971580572
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27566,6 +27898,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1988731996
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27691,6 +28027,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &1992428265
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27937,6 +28277,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &2002352690
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28062,6 +28406,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &2005464361
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28539,6 +28887,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &2012480696
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28664,6 +29016,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &2012732801
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28789,6 +29145,10 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &2036665760
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28914,6 +29274,10 @@ MonoBehaviour:
   field_type: 2
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &2048683503
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29215,6 +29579,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &2065171163
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29340,6 +29708,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &2067463898
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29465,6 +29837,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &2080459600
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29766,6 +30142,10 @@ MonoBehaviour:
   field_type: 1
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &2116096653
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29891,6 +30271,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 0
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &2127458860
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -30016,6 +30400,10 @@ MonoBehaviour:
   field_type: 0
   event_type: 0
   monster_difficulty: 1
+  surroundingObj: []
+  isReady: 0
+  isClear: 0
+  clearObj: {fileID: 0}
 --- !u!61 &2145369741
 BoxCollider2D:
   m_ObjectHideFlags: 0
