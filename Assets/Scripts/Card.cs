@@ -111,6 +111,11 @@ public class Card : MonoBehaviour
         final_Num += index;
     }
 
+    public void SetFinalNum(int index)
+    {
+        final_Num = index;
+    }
+
     public void SetColorAlpha(bool isHalf)
     {
         this.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, isHalf ? 0 : 1);

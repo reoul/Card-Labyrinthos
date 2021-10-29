@@ -14,9 +14,6 @@ public class RewardManager : MonoBehaviour
     public TMP_Text titleTMP;
 
     public List<Reward> rewards;
-    public List<GameObject> throwingRewardObj;
-
-    public int moveThrowingReward { get { return throwingRewardObj.Count; } }
 
     public bool isGetAllReward = true;
     public bool isChoice = false;
@@ -38,7 +35,6 @@ public class RewardManager : MonoBehaviour
     {
         activeRewardWindow = false;
         isGetAllReward = true;
-        throwingRewardObj = new List<GameObject>();
         Reward[] rewards = this.GetComponentsInChildren<Reward>(true);
         for (int i = 0; i < rewards.Length; i++)
         {
@@ -181,7 +177,7 @@ public class RewardManager : MonoBehaviour
                     count++;
                 }
             }
-            if (count == 0 && throwingRewardObj.Count == 0)
+            if (count == 0 && ThrowingObjManager.Inst.moveThrowingReward == 0)
             {
                 isGetAllReward = true;
                 break;

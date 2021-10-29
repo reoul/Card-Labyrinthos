@@ -117,7 +117,7 @@ public class Field : MonoBehaviour
 
     void OnMouseUp()
     {
-        if (onField && !isClear && isReady && !FadeManager.Inst.isActiveFade && RewardManager.Inst.moveThrowingReward == 0)
+        if (onField && !isClear && isReady && !FadeManager.Inst.isActiveFade && ThrowingObjManager.Inst.moveThrowingReward == 0)
         {
             MapManager.Inst.IconMouseUp(this);
         }

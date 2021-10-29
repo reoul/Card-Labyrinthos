@@ -5,27 +5,67 @@ using UnityEngine;
 
 public class SkillBookCard : MonoBehaviour
 {
-    [SerializeField] GameObject frontCard;
-    Card curSelectCard = null;
+    public GameObject frontCard;
+    public Card curSelectCard = null;
+    [SerializeField] List<SkillBookCardButton> cardButtons;
+    int _curNum;
+    public int curNum
+    {
+        get
+        {
+            return _curNum;
+        }
+        set
+        {
+            _curNum = Mathf.Clamp(value, 0, 5);
+            this.transform.GetComponentInChildren<TMP_Text>().text = (_curNum + 1).ToString();
+            if (frontCard != null)
+                frontCard.GetComponentInChildren<TMP_Text>().text = (_curNum + 1).ToString();
+            if (cardButtons.Count == 2)
+            {
+                if (_curNum == 0)
+                    cardButtons[1].gameObject.SetActive(false);
+                else if (_curNum == 5)
+                    cardButtons[0].gameObject.SetActive(false);
+                else
+                {
+                    cardButtons[0].gameObject.SetActive(true);
+                    cardButtons[1].gameObject.SetActive(true);
+                }
+            }
+        }
+    }
+
     public void SetCard(Card card)
     {
-        frontCard.SetActive(true);
-        frontCard.GetComponentInChildren<TMP_Text>().text = (card.final_Num + 1).ToString();
-        if (curSelectCard == null)
+        SkillManager.Inst.SetCard(this, card);
+        for (int i = 0; i < cardButtons.Count; i++)
         {
-            card.SetColorAlpha(true);
-            curSelectCard = card;
+            cardButtons[i].gameObject.SetActive(true);
         }
-        else
-        {
-            curSelectCard.SetColorAlpha(false);
-            curSelectCard = card;
-            curSelectCard.SetColorAlpha(true);
-        }
+    }
+
+    public void Up(int index = 1)
+    {
+        Debug.Log("올리기전 : " + (curNum + 1));
+        curNum += index;
+        Debug.Log("올리기후 : " + (curNum + 1));
+    }
+    public void Down(int index = 1)
+    {
+        Debug.Log("내리기전 : " + (curNum + 1));
+        curNum -= index;
+        Debug.Log("내리기후 : " + (curNum + 1));
     }
 
     public void HideCard()
     {
         frontCard.SetActive(false);
+    }
+
+    public void SetColorAlpha(bool isHalf)
+    {
+        this.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, isHalf ? 0.5f : 1);
+        this.transform.GetChild(0).GetComponent<TMP_Text>().color = new Color(0, 0, 0, isHalf ? 0.5f : 1);     //숫자 텍스트
     }
 }

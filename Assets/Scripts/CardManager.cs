@@ -406,7 +406,7 @@ public class CardManager : MonoBehaviour
                 int damage = selectCard.final_Num == EnemyManager.Inst.enemys[0].GetComponent<Enemy>().weaknessNum ? selectCard.final_Num + 1 : 1;
                 UseCard(EnemyManager.Inst.enemys[0].gameObject);
                 ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.CARDBACK,
-                    Player.Inst.gameObject.transform.position + Vector3.up * 3.5f, EnemyManager.Inst.enemys[0].transform.position, null, 0.5f, damage);
+                    Player.Inst.gameObject.transform.position + Vector3.up * 3.5f, EnemyManager.Inst.enemys[0].hitPos.position, null, 0.5f, damage);
                 if (MyHandCards.Count == 0)
                     TurnManager.Inst.EndTurn();
             }

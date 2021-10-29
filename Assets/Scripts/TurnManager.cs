@@ -114,9 +114,12 @@ public class TurnManager : MonoBehaviour
         {
             EnemyManager.Inst.enemys[i].RandomPatten();
         }
-        DebuffManager.Inst.CheckDebuff();
-        EnemyManager.Inst.UpdateStateTextAllEnemy();
-        StartCoroutine(StartTurnCorutine());
+        if (EnemyManager.Inst.enemys.Count > 0)
+        {
+            DebuffManager.Inst.CheckDebuff();
+            EnemyManager.Inst.UpdateStateTextAllEnemy();
+            StartCoroutine(StartTurnCorutine());
+        }
     }
 
     public void AddStartTurnCard()
