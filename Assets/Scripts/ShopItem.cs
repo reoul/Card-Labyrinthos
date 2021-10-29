@@ -31,7 +31,7 @@ public class ShopItem : MonoBehaviour
     {
         if (onItem && !FadeManager.Inst.isActiveFade)
             if (PlayerManager.Inst.card_piece >= item.price || PlayerManager.Inst.question_card > 0)
-                ShopManager.Inst.Click(item);
+                ShopManager.Inst.Click(this);
     }
 
     private void OnMouseEnter()

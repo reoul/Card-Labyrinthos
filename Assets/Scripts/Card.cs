@@ -25,11 +25,9 @@ public class Card : MonoBehaviour
     public PRS originPRS;
     public Transform parent;
     public bool isFinish = false;
-    int a = 10;
 
     public void Setup(int num)
     {
-        a = 20;
         this.original_Num = num;
         this.final_Num = num;
         UpdateNumTMP();
@@ -111,5 +109,12 @@ public class Card : MonoBehaviour
     public void AddNum(int index)
     {
         final_Num += index;
+    }
+
+    public void SetColorAlpha(bool isHalf)
+    {
+        this.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, isHalf ? 0 : 1);
+        this.parent.GetChild(1).GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, isHalf ? 0.5f : 1);     //카드 앞면
+        this.parent.GetChild(2).GetComponent<TMP_Text>().color = new Color(0, 0, 0, isHalf ? 0.5f : 1);     //숫자 텍스트
     }
 }

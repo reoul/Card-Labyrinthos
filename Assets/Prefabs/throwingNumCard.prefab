@@ -91,9 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7962173000661174794}
   - component: {fileID: 4792342033194089779}
-  - component: {fileID: 2796180527177991254}
   - component: {fileID: 2742486556673009769}
-  - component: {fileID: 7342386580379312367}
   m_Layer: 0
   m_Name: Back
   m_TagString: Untagged
@@ -165,24 +163,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2796180527177991254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5870003513153089970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adea7b2a477b46e4ea35077b1515976c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  backRenderers:
-  - {fileID: 4792342033194089779}
-  - {fileID: 1548426173538858408}
-  middleRenderers:
-  - {fileID: 4142889306799338227}
-  sortingLayerName: Default
 --- !u!114 &2742486556673009769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,49 +182,6 @@ MonoBehaviour:
     scale: {x: 0, y: 0, z: 0}
   parent: {fileID: 7041108812818045204}
   isFinish: 0
---- !u!60 &7342386580379312367
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5870003513153089970}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9.65, y: 14.39}
-    newSize: {x: 9.65, y: 14.39}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 4.555, y: -7.1349998}
-      - {x: 4.7149997, y: -6.9449997}
-      - {x: 4.765, y: -6.855}
-      - {x: 4.825, y: -6.725}
-      - {x: 4.825, y: 6.795}
-      - {x: 4.605, y: 7.145}
-      - {x: 4.3849998, y: 7.1949997}
-      - {x: -4.515, y: 7.1949997}
-      - {x: -4.825, y: 6.8849998}
-      - {x: -4.825, y: -6.765}
-      - {x: -4.765, y: -6.915}
-      - {x: -4.605, y: -7.095}
-      - {x: -4.485, y: -7.1949997}
-      - {x: -3.5493863, y: -7.194999}
-      - {x: -3.1069674, y: -10.09793}
-      - {x: 2.9680161, y: -10.116592}
-      - {x: 3.342579, y: -7.194999}
-      - {x: 4.375, y: -7.1949997}
 --- !u!1 &7456635564906701526
 GameObject:
   m_ObjectHideFlags: 0

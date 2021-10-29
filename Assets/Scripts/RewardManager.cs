@@ -14,8 +14,11 @@ public class RewardManager : MonoBehaviour
     public TMP_Text titleTMP;
 
     public List<Reward> rewards;
+    public List<GameObject> throwingRewardObj;
 
-    public bool isGetAllReward = false;
+    public int moveThrowingReward { get { return throwingRewardObj.Count; } }
+
+    public bool isGetAllReward = true;
     public bool isChoice = false;
 
     private void Awake()
@@ -34,6 +37,8 @@ public class RewardManager : MonoBehaviour
     private void Start()
     {
         activeRewardWindow = false;
+        isGetAllReward = true;
+        throwingRewardObj = new List<GameObject>();
         Reward[] rewards = this.GetComponentsInChildren<Reward>(true);
         for (int i = 0; i < rewards.Length; i++)
         {
@@ -100,7 +105,6 @@ public class RewardManager : MonoBehaviour
         {
             if (isGetAllReward)
             {
-                isGetAllReward = false;
                 break;
             }
             yield return new WaitForSeconds(0.1f);
@@ -177,7 +181,7 @@ public class RewardManager : MonoBehaviour
                     count++;
                 }
             }
-            if (count == 0)
+            if (count == 0 && throwingRewardObj.Count == 0)
             {
                 isGetAllReward = true;
                 break;
@@ -205,9 +209,11 @@ public class RewardManager : MonoBehaviour
                 {
                     case EVENT_REWARD_TYPE.CARD:
                         CardManager.Inst.AddCardDeck(reward.rewardData.index);
+                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.NUM_CARD, reward.transform.position, TopBar.Inst.GetIcon(TOPBAR_TYPE.BAG).transform.position, null, 1, 1, reward.rewardData.index);
                         break;
                     case EVENT_REWARD_TYPE.CARD_PIECE:
-                        PlayerManager.Inst.card_piece += reward.rewardData.index;
+                        //PlayerManager.Inst.card_piece += reward.rewardData.index;
+                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.CARD_PIECE, reward.transform.position, TopBar.Inst.GetIcon(TOPBAR_TYPE.CARDPIECE).transform.position, null, 1, 1, reward.rewardData.index);
                         break;
                     case EVENT_REWARD_TYPE.HP:
                         PlayerManager.Inst.hp += reward.rewardData.index;
@@ -215,7 +221,8 @@ public class RewardManager : MonoBehaviour
                     case EVENT_REWARD_TYPE.DRAW:
                         break;
                     case EVENT_REWARD_TYPE.QUESTION_CARD:
-                        PlayerManager.Inst.question_card += reward.rewardData.index;
+                        //PlayerManager.Inst.question_card += reward.rewardData.index;
+                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.QUESTION_CARD, reward.transform.position, TopBar.Inst.GetIcon(TOPBAR_TYPE.QUESTION).transform.position, null, 1, 1, reward.rewardData.index);
                         break;
                 }
                 break;

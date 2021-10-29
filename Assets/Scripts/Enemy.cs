@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -17,6 +15,7 @@ public class Enemy : MonoBehaviour
     public bool isVampire;
     public bool isWeaknessHidden;
     public bool isPattenHidden;
+    public Transform hitPos;        //전투 중 카드가 날아갈 곳
 
     [SerializeField] SpriteRenderer patten_sprite;
     [SerializeField] TMP_Text pattenIndexTMP;        //데미지 텍스트

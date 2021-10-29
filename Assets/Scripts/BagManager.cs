@@ -27,7 +27,7 @@ public class BagManager : MonoBehaviour
 
     public void Init()
     {
-        this.transform.position = new Vector3(0, 0, -2);
+        this.transform.position = new Vector3(0, 0, -4);
     }
 
     public void Open()

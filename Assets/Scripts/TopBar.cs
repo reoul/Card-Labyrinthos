@@ -8,6 +8,9 @@ public enum TOPBAR_TYPE { HP, QUESTION, CARDPIECE, SCENENAME, BAG, SETTING };
 public class TopBar : MonoBehaviour
 {
     public static TopBar Inst = null;
+
+    public List<TopBarIcon> icons;
+
     private void Awake()
     {
         if (Inst == null)
@@ -68,5 +71,15 @@ public class TopBar : MonoBehaviour
             case TOPBAR_TYPE.SETTING:
                 break;
         }
+    }
+
+    public TopBarIcon GetIcon(TOPBAR_TYPE type)
+    {
+        for (int i = 0; i < icons.Count; i++)
+        {
+            if (icons[i].type == type)
+                return icons[i];
+        }
+        return icons[0];
     }
 }

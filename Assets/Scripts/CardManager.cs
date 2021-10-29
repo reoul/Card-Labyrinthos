@@ -3,7 +3,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public enum THROWING_OBJ_TYPE { CARDBACK, CARD_PIECE, NUM_CARD, QUESTION_CARD }
@@ -376,9 +375,20 @@ public class CardManager : MonoBehaviour
     {
         isMyCardDrag = false;
         RaycastHit2D[] hits = Physics2D.RaycastAll(Utils.MousePos, Vector3.forward);
-        int layer = LayerMask.NameToLayer("Player");
+
+        int layer = LayerMask.NameToLayer("SkillBookCard");
+        for (int i = 0; i < hits.Length; i++)
+        {
+            if (hits[i].collider.gameObject.layer == layer)
+            {
+                hits[i].collider.GetComponent<SkillBookCard>().SetCard(selectCard);
+                EnlargeCard(false, selectCard, false);
+            }
+        }
+
+        layer = LayerMask.NameToLayer("Player");
         bool isUse = false;
-        if (Array.Exists(hits, x => x.collider.gameObject.layer == layer))      //만약 플레이어라면
+        if (Array.Exists(hits, x => x.collider.gameObject.layer == layer) && hits.Length <= 2)      //만약 플레이어라면
         {
             EnlargeCard(false, selectCard, true);
             isUse = true;
@@ -389,7 +399,7 @@ public class CardManager : MonoBehaviour
         else
         {
             layer = LayerMask.NameToLayer("Enemy");
-            if (Array.Exists(hits, x => x.collider.gameObject.layer == layer))      //만약 적이라면
+            if (Array.Exists(hits, x => x.collider.gameObject.layer == layer) && hits.Length <= 2)      //만약 적이라면
             {
                 EnlargeCard(false, selectCard, true);
                 isUse = true;

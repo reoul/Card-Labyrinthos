@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class ShopManager : MonoBehaviour
@@ -23,22 +22,23 @@ public class ShopManager : MonoBehaviour
         CheckItemMax();
     }
 
-    public void Click(Item item)        //상점에서 해당 아이템 클릭했을때 보상 지급
+    public void Click(ShopItem shopItem)        //상점에서 해당 아이템 클릭했을때 보상 지급
     {
-        switch (item.type)
+        switch (shopItem.item.type)
         {
             case SHOPITEM_TYPE.CARD:
-                CardManager.Inst.AddCardDeck(item.index);
+                CardManager.Inst.AddCardDeck(shopItem.item.index);
                 if (PlayerManager.Inst.question_card > 0)
                     PlayerManager.Inst.question_card -= 1;
                 else
-                    PlayerManager.Inst.card_piece -= item.price;
+                    PlayerManager.Inst.card_piece -= shopItem.item.price;
+                ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.NUM_CARD, shopItem.transform.position, TopBar.Inst.GetIcon(TOPBAR_TYPE.BAG).transform.position, null, 1, 1, shopItem.item.index);
                 break;
             case SHOPITEM_TYPE.ADD_DRAW:
-                if (PlayerManager.Inst.card_piece >= item.price)
+                if (PlayerManager.Inst.card_piece >= shopItem.item.price)
                 {
                     TurnManager.Inst.AddStartTurnCard();
-                    PlayerManager.Inst.card_piece -= item.price;
+                    PlayerManager.Inst.card_piece -= shopItem.item.price;
                 }
                 break;
         }

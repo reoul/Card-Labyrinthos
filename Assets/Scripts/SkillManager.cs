@@ -7,6 +7,8 @@ public class SkillManager : MonoBehaviour
     public static SkillManager Inst = null;
     bool isOpen = false;
 
+    public List<SkillBookCard> skillBookCards;
+
     private void Awake()
     {
         if (Inst == null)
@@ -22,7 +24,7 @@ public class SkillManager : MonoBehaviour
 
     public void Init()
     {
-        this.transform.position = new Vector3(0, 0, -1);
+        this.transform.position = new Vector3(0, 0, -2);
     }
 
     public void Open()      //스킬창 여는 것
