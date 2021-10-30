@@ -61,7 +61,13 @@ public class Card : MonoBehaviour
     public void FinishCard()
     {
         parent.localScale = Vector3.one * 0.1f;
-        //SetActiveChildObj(false);
+        SetActiveChildObj(false);
+    }
+
+    public void SetActiveChildObj(bool isActive)
+    {
+        this.parent.GetChild(1).gameObject.SetActive(isActive);
+        this.parent.GetChild(2).gameObject.SetActive(isActive);
     }
 
     void OnMouseOver()

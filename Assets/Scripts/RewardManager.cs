@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 
 public enum REWARD_TYPE { REWARD, DEBUFF }
-public enum DEBUFF_TYPE { DEBUFF1, DEBUFF2, DEBUFF3, DEBUFF4, DEBUFF5, DEBUFF6, DEBUFF7 }
+public enum DEBUFF_TYPE { DEBUFF1, DEBUFF2, DEBUFF3, DEBUFF4, DEBUFF5, DEBUFF6, DEBUFF7, TUTORIAL }
 
 public class RewardManager : MonoBehaviour
 {
@@ -62,8 +62,7 @@ public class RewardManager : MonoBehaviour
 
         if (MapManager.Inst.CurrentSceneName != "지도" && MapManager.Inst.CurrentSceneName != "휴식")
             CardManager.Inst.FinishSceneAllMyHand();
-
-        while (true)
+        while (true)        //보상창
         {
             windowRenderer.color += Color.black * Time.deltaTime * 2;
             titleTMP.color += Color.black * Time.deltaTime * 2;
@@ -71,7 +70,7 @@ public class RewardManager : MonoBehaviour
                 break;
             yield return new WaitForEndOfFrame();
         }
-        for (int i = 0; i < rewards.Count; i++)
+        for (int i = 0; i < rewards.Count; i++)         //보상 선택지
         {
             if (rewards[i].isRewardOn)
                 yield return StartCoroutine(rewards[i].FadeCorutine(true));
@@ -157,6 +156,7 @@ public class RewardManager : MonoBehaviour
             } while (choices[0] == randomDebuff || choices[1] == randomDebuff || choices[2] == randomDebuff);
             choices[i] = randomDebuff;
             AddReward(REWARD_TYPE.DEBUFF, choices[i], 0);
+            Debug.Log("asdsa");
         }
     }
 

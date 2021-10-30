@@ -85,6 +85,8 @@ public class MapManager : MonoBehaviour
                     return "보스";
                 case "Rest":
                     return "휴식";
+                case "Tutorial":
+                    return "알 수 없는 공간";
             }
             return "지도";
         }
@@ -92,8 +94,8 @@ public class MapManager : MonoBehaviour
 
     private void Start()
     {
-        fieldParent = GameObject.Find("FieldParent");
-        StartCoroutine(FieldClearCheckCorutine());
+        //fieldParent = GameObject.Find("FieldParent");
+        //StartCoroutine(FieldClearCheckCorutine());
     }
 
     public void IconMouseUp(Field field)
@@ -115,7 +117,8 @@ public class MapManager : MonoBehaviour
 
     public void LoadMapScene(bool clear)
     {
-        isClear[selectFieldIndex] = clear;
+        if (isClear.Length != 0)
+            isClear[selectFieldIndex] = clear;
         TurnManager.Inst.isFinish = false;
         fieldData.field_type = FIELD_TYPE.MAP;
         FadeManager.FadeEvent += new EventHandler(LoadScene);

@@ -25,6 +25,7 @@ public class DebuffManager : MonoBehaviour
                 case DEBUFF_TYPE.DEBUFF5: return "2턴마다 몬스터의 데미지가 1만큼 증가합니다";
                 case DEBUFF_TYPE.DEBUFF6: return "몬스터가 플레이어에게 넣은 피해만큼 회복합니다";
                 case DEBUFF_TYPE.DEBUFF7: return "매턴마다 몬스터의 방어도가 3씩 쌓입니다";
+                case DEBUFF_TYPE.TUTORIAL: return "아무런 저주가 없습니다";
             }
             debuff_type = DEBUFF_TYPE.DEBUFF1;
             return "매턴마다 데미지 1이상 못넣었을때 플레이어에게 데미지를 2만큼 입힙니다";

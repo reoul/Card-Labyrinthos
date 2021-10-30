@@ -25,7 +25,8 @@ public class Map : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 isMoveCamera = true;
-                lastMousePos = Input.mousePosition * 0.01f;
+                lastMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                //lastMousePos = Input.mousePosition * 0.01f;
             }
             else if (Input.GetMouseButtonUp(0))
             {
@@ -34,7 +35,7 @@ public class Map : MonoBehaviour
             }
             if (isMoveCamera)
             {
-                Vector3 movePos = Input.mousePosition * 0.01f - lastMousePos;
+                Vector3 movePos = Camera.main.ScreenToWorldPoint(Input.mousePosition) - lastMousePos;
                 if (movePos != Vector3.zero)
                 {
                     if (Camera.main.transform.position.x - movePos.x < -23.57998f)
@@ -58,7 +59,7 @@ public class Map : MonoBehaviour
                         movePos.y += _y;
                     }
                     MoveUI(movePos);
-                    lastMousePos = Input.mousePosition * 0.01f;
+                    lastMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 }
             }
         }

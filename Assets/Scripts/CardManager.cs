@@ -235,6 +235,7 @@ public class CardManager : MonoBehaviour
     {
         Card card = PopItem();
         card.parent.gameObject.SetActive(true);
+        card.SetActiveChildObj(true);
         MyHandCards.Add(card);
 
         SetOriginOrder();
@@ -420,7 +421,7 @@ public class CardManager : MonoBehaviour
         tombItemBuffer.Add(selectCard);
         MyHandCards.Remove(selectCard);
         CardAlignment();
-        selectCard.parent.position = new Vector3(selectCard.parent.position.x, selectCard.parent.position.y, 0);
+        selectCard.parent.position = new Vector3(selectCard.parent.position.x, selectCard.parent.position.y, -3);
         selectCard.originPRS.pos = selectCard.parent.position;
         selectCard.originPRS.scale = Vector3.one * 0.1f;
         selectCard.Use(obj);
@@ -455,13 +456,13 @@ public class CardManager : MonoBehaviour
     public void CardFinishMove()            //카드 사용 후 버린 카드 더미로 이동
     {
         selectCard.FinishCard();
-        waypoints = new Vector3[3];
+        waypoints = new Vector3[2];
         waypoints.SetValue(selectCard.parent.position, 0);
-        waypoints.SetValue(waypoint2.position, 1);
-        waypoints.SetValue(cardEndPoint.position, 2);
+        waypoints.SetValue(waypoint2.position, 0);
+        waypoints.SetValue(cardEndPoint.position, 1);
         GameObject target = selectCard.parent.gameObject;
-        selectCard.parent.DOPath(waypoints, 1, PathType.CatmullRom).
-            SetLookAt(new Vector3(0, 0, 0)).SetEase(ease).OnComplete(() =>
+        target.transform.DOPath(waypoints, 1, PathType.CatmullRom).
+            SetLookAt(cardEndPoint).SetEase(ease).OnComplete(() =>
             {
                 target.SetActive(false);
             });

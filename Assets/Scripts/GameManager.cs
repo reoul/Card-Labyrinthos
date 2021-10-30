@@ -15,8 +15,15 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        Inst = this;
-        DontDestroyOnLoad(this.gameObject);
+        if (Inst == null)
+        {
+            Inst = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     void Start()
