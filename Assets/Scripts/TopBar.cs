@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public enum TOPBAR_TYPE { HP, QUESTION, CARDPIECE, SCENENAME, BAG, SETTING };
+public enum TOPBAR_TYPE { HP, QUESTION, CARDPIECE, SCENENAME, BAG, SETTING, SKILL };
 
 public class TopBar : MonoBehaviour
 {
@@ -69,6 +69,9 @@ public class TopBar : MonoBehaviour
                 BagManager.Inst.Open();
                 break;
             case TOPBAR_TYPE.SETTING:
+                break;
+            case TOPBAR_TYPE.SKILL:
+                SkillManager.Inst.Open();
                 break;
         }
     }

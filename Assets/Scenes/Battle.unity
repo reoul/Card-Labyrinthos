@@ -357,6 +357,7 @@ MonoBehaviour:
   attackSprite: {fileID: 21300000, guid: 4235a269bfc99e540a3a27a12738592e, type: 3}
   healSprite: {fileID: 21300000, guid: 848c64b0e55ef0f428b5813ac9cedca4, type: 3}
   debuffTMP: {fileID: 639533119}
+  isTutorial: 0
 --- !u!4 &497338796
 Transform:
   m_ObjectHideFlags: 0
@@ -2409,6 +2410,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1700682444}
   - component: {fileID: 1700682443}
+  - component: {fileID: 1700682446}
+  - component: {fileID: 1700682445}
   m_Layer: 0
   m_Name: debuffwindowButtonBEX
   m_TagString: Untagged
@@ -2480,6 +2483,44 @@ Transform:
   m_Father: {fileID: 1991191324}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1700682445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700682442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1a533d4960ebf9458372b253aab6830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &1700682446
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700682442}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.24, y: 0.24}
+    newSize: {x: 0.24, y: 0.24}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.24, y: 0.24}
+  m_EdgeRadius: 0
 --- !u!1 &1991191322
 GameObject:
   m_ObjectHideFlags: 0
@@ -2490,6 +2531,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1991191324}
   - component: {fileID: 1991191323}
+  - component: {fileID: 1991191325}
   m_Layer: 0
   m_Name: debuffWindow (1)
   m_TagString: Untagged
@@ -2563,6 +2605,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1991191325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991191322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0acd2c48d9cc89459e1c2d4475fae08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2022119458
 GameObject:
   m_ObjectHideFlags: 0

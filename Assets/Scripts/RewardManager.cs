@@ -79,20 +79,20 @@ public class RewardManager : MonoBehaviour
             StartCoroutine(RewardCorutine());
     }
 
-    public void AddReward(REWARD_TYPE type, int reward_type, int index)
+    public void AddReward(REWARD_TYPE type, int reward_type, int index, int index2 = 0)
     {
         for (int i = 0; i < rewards.Count; i++)
         {
             if (!rewards[i].isRewardOn)
             {
-                rewards[i].SetReward(type, reward_type, index);
+                rewards[i].SetReward(type, reward_type, index, index2);
                 rewards[i].gameObject.SetActive(true);
                 break;
             }
         }
     }
 
-    public IEnumerator RewardCorutine()
+    public IEnumerator RewardCorutine(bool isLoadMap = true)
     {
         isGetAllReward = false;
         StartCoroutine(CheckGetAllReward());
@@ -108,7 +108,8 @@ public class RewardManager : MonoBehaviour
         rewardWindow.SetActive(false);
         if (MapManager.Inst.CurrentSceneName != "휴식" && MapManager.Inst.CurrentSceneName != "지도")
             CardManager.Inst.Init();
-        MapManager.Inst.LoadMapScene(true);
+        if (isLoadMap)
+            MapManager.Inst.LoadMapScene(true);
     }
 
     public IEnumerator RewardStartBattleCorutine()
@@ -156,7 +157,6 @@ public class RewardManager : MonoBehaviour
             } while (choices[0] == randomDebuff || choices[1] == randomDebuff || choices[2] == randomDebuff);
             choices[i] = randomDebuff;
             AddReward(REWARD_TYPE.DEBUFF, choices[i], 0);
-            Debug.Log("asdsa");
         }
     }
 
@@ -204,7 +204,7 @@ public class RewardManager : MonoBehaviour
                 switch (reward.rewardData.reward_type)
                 {
                     case EVENT_REWARD_TYPE.CARD:
-                        CardManager.Inst.AddCardDeck(reward.rewardData.index);
+                        CardManager.Inst.AddCardDeck(reward.rewardData.index, reward.rewardData.index2);
                         ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.NUM_CARD, reward.transform.position, TopBar.Inst.GetIcon(TOPBAR_TYPE.BAG).transform.position, null, 1, 1, reward.rewardData.index);
                         break;
                     case EVENT_REWARD_TYPE.CARD_PIECE:

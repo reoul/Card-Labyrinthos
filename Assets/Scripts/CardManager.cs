@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public enum THROWING_OBJ_TYPE { CARDBACK, CARD_PIECE, NUM_CARD, QUESTION_CARD }
+public enum THROWING_OBJ_TYPE { CARDBACK, CARD_PIECE, NUM_CARD, QUESTION_CARD, SKILL_BOOK }
 
 public class CardManager : MonoBehaviour
 {
@@ -509,10 +509,10 @@ public class CardManager : MonoBehaviour
         cardDeck[card.original_Num]++;
     }
 
-    public void AddCardDeck(int card)      //플레이어 카드 덱에 카드 추가, 상점이나 보상에서 카드 획득할 때
+    public void AddCardDeck(int card, int index = 1)      //플레이어 카드 덱에 카드 추가, 상점이나 보상에서 카드 획득할 때
     {
         if (!isCardDeckMax()[card])
-            cardDeck[card]++;
+            cardDeck[card] += index;
     }
 
     public bool[] isCardDeckMax()       //카드덱에 최대치가 된 카드가 있는지

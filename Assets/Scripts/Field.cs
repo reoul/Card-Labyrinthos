@@ -71,6 +71,30 @@ public class FieldInspector : Editor
                 break;
         }
         field.transform.GetChild(0).GetComponent<TextMeshPro>().text = text;
+        if (GUILayout.Button("이미지 변경"))
+        {
+            switch (propertyfield)
+            {
+                case (int)FIELD_TYPE.BATTLE:
+                    field.spriteRenderer.sprite = fieldIcon[1];
+                    break;
+                case (int)FIELD_TYPE.EVENT:
+                    field.spriteRenderer.sprite = fieldIcon[2];
+                    break;
+                case (int)FIELD_TYPE.REST:
+                    field.spriteRenderer.sprite = fieldIcon[3];
+                    break;
+                case (int)FIELD_TYPE.SHOP:
+                    field.spriteRenderer.sprite = fieldIcon[4];
+                    break;
+                case (int)FIELD_TYPE.BOSS:
+                    field.spriteRenderer.sprite = fieldIcon[0];
+                    break;
+                default:
+                    field.spriteRenderer.sprite = fieldIcon[1];
+                    break;
+            }
+        }
         EditorGUILayout.PropertyField(serializedObject.FindProperty("isClear"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("clearObj"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("surroundingObj"));

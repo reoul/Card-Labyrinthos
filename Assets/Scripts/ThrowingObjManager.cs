@@ -15,6 +15,7 @@ public class ThrowingObjManager : MonoBehaviour
     public GameObject CardPiecePrefab;
     public GameObject NumCardPrefab;
     public GameObject QuestionCardPrefab;
+    public GameObject SkillBookPrefab;
 
     void Awake()
     {
@@ -85,6 +86,8 @@ public class ThrowingObjManager : MonoBehaviour
                 return NumCardPrefab;
             case THROWING_OBJ_TYPE.QUESTION_CARD:
                 return QuestionCardPrefab;
+            case THROWING_OBJ_TYPE.SKILL_BOOK:
+                return SkillBookPrefab;
         }
         return CardBackPrefab;
     }

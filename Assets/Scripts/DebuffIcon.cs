@@ -17,7 +17,7 @@ public class DebuffIcon : MonoBehaviour
     {
         if (onDebuffIcon)
         {
-            //TopBar.Inst.Click(this);
+            this.transform.parent.GetComponent<DebuffBar>().Open();
         }
     }
 }
