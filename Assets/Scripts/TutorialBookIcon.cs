@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public enum TutorialBookIconType { CARDS, SKILL }
+public enum TutorialBookIconType { CARDS, SKILL, STARTBATTLE }
 
 public class TutorialBookIcon : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class TutorialBookIcon : MonoBehaviour
         if (onIcon && !isGet && !isFade)
         {
             TutorialManager.Inst.Click(this);
+            isFade = true;
         }
     }
 
@@ -33,7 +35,11 @@ public class TutorialBookIcon : MonoBehaviour
     {
         while (true)
         {
-            this.GetComponent<SpriteRenderer>().color += Color.black * 0.5f * Time.deltaTime;
+            this.GetComponent<SpriteRenderer>().color += Color.black * Time.deltaTime;
+            if (this.transform.childCount > 0)
+            {
+                this.transform.GetChild(0).GetComponent<TMP_Text>().color += Color.black * Time.deltaTime;
+            }
             if (this.GetComponent<SpriteRenderer>().color.a >= 1)
                 break;
             yield return new WaitForEndOfFrame();

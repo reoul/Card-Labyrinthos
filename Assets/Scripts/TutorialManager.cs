@@ -9,6 +9,7 @@ public class TutorialManager : MonoBehaviour
 
     bool isGetCard = false;
     bool isGetSkillBook = false;
+    bool isStartBattle = false;
 
     public static TutorialManager Inst = null;
 
@@ -56,6 +57,8 @@ public class TutorialManager : MonoBehaviour
         yield return StartCoroutine(tutorialBook.icons[1].GetComponent<TutorialBookIcon>().SetLook());
         yield return StartCoroutine(CheckGetSkillBookCorutine());
         yield return StartCoroutine(tutorialBook.LoadTextTyping(3));
+        yield return StartCoroutine(tutorialBook.icons[2].GetComponent<TutorialBookIcon>().SetLook());
+        yield return StartCoroutine(CheckStartBattleCorutine());
     }
 
     public IEnumerator GetCardCorutine()
@@ -88,12 +91,16 @@ public class TutorialManager : MonoBehaviour
             case TutorialBookIconType.SKILL:
                 ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.SKILL_BOOK, icon.transform.position, TopBar.Inst.GetIcon(TOPBAR_TYPE.SKILL).transform.position, SetActiveTrueTopBarSkillBook());
                 break;
+            case TutorialBookIconType.STARTBATTLE:
+                isStartBattle = true;
+                break;
         }
     }
 
     IEnumerator SetActiveTrueTopBarSkillBook()
     {
         TopBar.Inst.GetIcon(TOPBAR_TYPE.SKILL).gameObject.SetActive(true);
+        isGetSkillBook = true;
         yield return null;
     }
 
@@ -115,7 +122,23 @@ public class TutorialManager : MonoBehaviour
         while (true)
         {
             if (isGetSkillBook)
+            {
+                tutorialBook.icons[1].GetComponent<TutorialBookIcon>().GetItem();
                 break;
+            }
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+    IEnumerator CheckStartBattleCorutine()
+    {
+        while (true)
+        {
+            if (isStartBattle)
+            {
+                tutorialBook.gameObject.SetActive(false);
+                break;
+            }
             yield return new WaitForEndOfFrame();
         }
     }
