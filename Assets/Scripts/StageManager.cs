@@ -32,6 +32,7 @@ public class StageManager : MonoBehaviour
 
     public void CreateStage()
     {
+        SoundManager.Inst.BackGroundPlay(BACKGROUNDSOUND.BATTLE);
         if (MapManager.Inst.CurrentSceneName == "전투")
         {
             for (int i = 0; i < monsterSO.monsters.Length; i++)

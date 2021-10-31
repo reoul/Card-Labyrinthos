@@ -26,6 +26,7 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator TutorialCorutine()
     {
+        SoundManager.Inst.BackGroundPlay(BACKGROUNDSOUND.TUTORIAL);
         playerHpBar.SetHP(80);
         //
         yield return new WaitForSeconds(1);
@@ -34,6 +35,7 @@ public class TutorialManager : MonoBehaviour
         //스킬페이지 획득
         yield return StartCoroutine(GetSkillPageCorutine());
         //전투시작
+        SoundManager.Inst.BackGroundPlay(BACKGROUNDSOUND.BATTLE);
         yield return StartCoroutine(CardManager.Inst.InitCorutine());
         yield return StartCoroutine(TurnManager.Inst.StartGameCorutine());
         yield return StartCoroutine(StageManager.Inst.CreateStageInTutorial());
@@ -49,6 +51,8 @@ public class TutorialManager : MonoBehaviour
     IEnumerator BookCorutine()
     {
         tutorialBook.gameObject.SetActive(true);
+        yield return StartCoroutine(tutorialBook.ShowBook());
+        yield return new WaitForSeconds(0.5f);
         yield return StartCoroutine(tutorialBook.LoadTextTyping(0));
         yield return StartCoroutine(tutorialBook.icons[0].GetComponent<TutorialBookIcon>().SetLook());
         yield return StartCoroutine(CheckGetCardCorutine());

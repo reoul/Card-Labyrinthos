@@ -84,6 +84,7 @@ public class EventManager : MonoBehaviour
 
     public IEnumerator RandomEventCorutine()
     {
+        SoundManager.Inst.BackGroundPlay(BACKGROUNDSOUND.EVENT);
         FindEvents();
         int rand = Random.Range(0, events.Count);
         events[rand].Init();

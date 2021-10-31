@@ -159,6 +159,7 @@ public class MapManager : MonoBehaviour
 
     public IEnumerator FieldClearCheckCorutine()
     {
+        SoundManager.Inst.BackGroundPlay(BACKGROUNDSOUND.MAP);
         if (fieldParent == null)
             fieldParent = GameObject.Find("FieldParent");
         fields = fieldParent.GetComponentsInChildren<Field>(true);

@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         //    ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.CARDBACK, Vector3.zero, new Vector3(5, 0), null, 0.5f);
         if (Input.GetKeyDown(KeyCode.I))
             BagManager.Inst.Open();
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.K) && TopBar.Inst.GetIcon(TOPBAR_TYPE.SKILL).gameObject.activeInHierarchy)
             SkillManager.Inst.Open();
         if (Input.GetKeyDown(KeyCode.P))
             if (EnemyManager.Inst.enemys.Count > 0)

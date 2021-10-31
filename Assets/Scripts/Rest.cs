@@ -6,6 +6,11 @@ public class Rest : MonoBehaviour
 {
     bool onRestButton = false;   //마우스가 필드 위에 있는지
 
+    private void Start()
+    {
+        SoundManager.Inst.BackGroundPlay(BACKGROUNDSOUND.REST);
+    }
+
     void OnMouseEnter()
     {
         onRestButton = true;

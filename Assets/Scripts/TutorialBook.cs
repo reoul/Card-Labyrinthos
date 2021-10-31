@@ -18,6 +18,17 @@ public class TutorialBook : MonoBehaviour
         }
     }
 
+    public IEnumerator ShowBook()
+    {
+        while (true)
+        {
+            this.GetComponent<SpriteRenderer>().color += Color.black * Time.deltaTime;
+            if (this.GetComponent<SpriteRenderer>().color.a >= 1)
+                break;
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
     public IEnumerator LoadTextTyping(int index)
     {
         for (int i = 0; i < contents[index].Length; i++)
