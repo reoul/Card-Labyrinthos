@@ -43,6 +43,7 @@ public class SkillManager : MonoBehaviour
 
     public void Close()      //스킬창 여는 것
     {
+        InitCard();
         transform.GetChild(0).gameObject.SetActive(false);
         isOpen = false;
     }
@@ -85,6 +86,23 @@ public class SkillManager : MonoBehaviour
         {
             if (applyCards[i].gameObject.activeInHierarchy)
                 applyCards[i].curSelectCard.SetFinalNum(applyCards[i].curNum);
+        }
+        InitCard();
+    }
+
+    public void InitCard()
+    {
+        for (int i = 0; i < applyCards.Count; i++)
+        {
+            if (applyCards[i].gameObject.activeInHierarchy)
+                applyCards[i].curSelectCard.SetColorAlpha(false);
+        }
+        for (int i = 0; i < skillBookCards.Count; i++)
+        {
+            skillBookCards[i].curSelectCard = null;
+            skillBookCards[i].HideCard();
+            skillBookCards[i].SetColorAlpha(true);
+            skillBookCards[i].GetComponentInChildren<TMP_Text>().text = "+";
         }
     }
 }

@@ -25,7 +25,7 @@ public class FieldData
     }
 }
 
-public enum FIELD_TYPE { BATTLE, EVENT, REST, SHOP, MAP, BOSS, TEST2 }
+public enum FIELD_TYPE { BATTLE, EVENT, REST, SHOP, MAP, BOSS, TUTORIAL }
 public enum EVENT_TYPE { EVENT1, EVENT2, EVENT3 };
 
 public class SceneEventArgs : EventArgs
@@ -125,6 +125,13 @@ public class MapManager : MonoBehaviour
         StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null, FieldClearCheckCorutine()));
     }
 
+    public void LoadTutorialScene()
+    {
+        fieldData.field_type = FIELD_TYPE.TUTORIAL;
+        FadeManager.FadeEvent += new EventHandler(LoadScene);
+        StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null, null, null, null));
+    }
+
     void StartEvent()
     {
         switch (fieldData.field_type)
@@ -153,6 +160,11 @@ public class MapManager : MonoBehaviour
                 StartCoroutine(FadeManager.Inst.FadeInOut(TurnManager.Inst.ShowDebuffCorutine(), null, null,
                     PlayerManager.Inst.SetupGameCorutine(), null, null,
                         CardManager.Inst.InitCorutine(), TurnManager.Inst.StartGameCorutine()));
+                break;
+            case FIELD_TYPE.TUTORIAL:
+                StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null,
+                    null, null, null,
+                        TutorialManager.Inst.TutorialCorutine()));
                 break;
         }
     }

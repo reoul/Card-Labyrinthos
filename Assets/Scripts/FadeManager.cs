@@ -60,6 +60,7 @@ public class FadeManager : MonoBehaviour
             FadeEvent(this, EventArgs.Empty);           //실행 후 이벤트 실행
             FadeEvent = null;
         }
+        yield return new WaitForSeconds(0.1f);
         TopBar.Inst.InitPosition();
         RewardManager.Inst.Init();
         BagManager.Inst.Init();

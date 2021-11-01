@@ -2533,7 +2533,7 @@ GameObject:
   - component: {fileID: 1991191323}
   - component: {fileID: 1991191325}
   m_Layer: 0
-  m_Name: debuffWindow (1)
+  m_Name: debuffWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2597,7 +2597,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1991191322}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.94, y: 3.65, z: 0}
+  m_LocalPosition: {x: 6.94, y: 3.65, z: -0.5}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 639533118}

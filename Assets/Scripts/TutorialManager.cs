@@ -24,12 +24,12 @@ public class TutorialManager : MonoBehaviour
         StartCoroutine(TutorialCorutine());
     }
 
-    IEnumerator TutorialCorutine()
+    public IEnumerator TutorialCorutine()
     {
         SoundManager.Inst.BackGroundPlay(BACKGROUNDSOUND.TUTORIAL);
         playerHpBar.SetHP(80);
         //
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         //카드획득
         yield return StartCoroutine(BookCorutine());
         //스킬페이지 획득

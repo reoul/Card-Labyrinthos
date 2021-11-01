@@ -35,7 +35,7 @@ public class TutorialBook : MonoBehaviour
         {
             texts[index].text = contents[index].Substring(0, i + 1);
             //texts[index].text = texts[index].text.Replace("\\n", "\n");
-            yield return new WaitForSeconds(0.03f);
+            yield return new WaitForSeconds(0.01f);
         }
     }
 }

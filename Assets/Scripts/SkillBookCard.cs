@@ -47,15 +47,11 @@ public class SkillBookCard : MonoBehaviour
 
     public void Up(int index = 1)
     {
-        Debug.Log("올리기전 : " + (curNum + 1));
         curNum += index;
-        Debug.Log("올리기후 : " + (curNum + 1));
     }
     public void Down(int index = 1)
     {
-        Debug.Log("내리기전 : " + (curNum + 1));
         curNum -= index;
-        Debug.Log("내리기후 : " + (curNum + 1));
     }
 
     public void HideCard()
