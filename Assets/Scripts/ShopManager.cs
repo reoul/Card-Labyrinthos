@@ -14,7 +14,7 @@ public class ShopManager : MonoBehaviour
 
     private void Start()
     {
-        SoundManager.Inst.BackGroundPlay(BACKGROUNDSOUND.SHOP);
+        SoundManager.Inst.Play(BACKGROUNDSOUND.SHOP);
         for (int i = 0; i < items.Count; i++)
         {
             items[i].Start();
