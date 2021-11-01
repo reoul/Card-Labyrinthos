@@ -2987,10 +2987,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7a4ae9f22e48745ac3ae81adf41d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  choiceCards: []
-  applyCards: []
-  TextTMP: []
-  renderers: []
+  choiceCards:
+  - {fileID: 1226860995}
+  - {fileID: 1235616737}
+  applyCards:
+  - {fileID: 1580620784}
+  - {fileID: 64486809}
+  TextTMP:
+  - {fileID: 1949621227}
+  - {fileID: 2076801556}
+  - {fileID: 270708472}
+  - {fileID: 177932878}
+  renderers:
+  - {fileID: 2102450044}
+  - {fileID: 363641800}
 --- !u!1 &129400429
 GameObject:
   m_ObjectHideFlags: 0
@@ -17662,7 +17672,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1040393271
 Transform:
   m_ObjectHideFlags: 0
@@ -17699,10 +17709,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7a4ae9f22e48745ac3ae81adf41d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  choiceCards: []
-  applyCards: []
-  TextTMP: []
-  renderers: []
+  choiceCards:
+  - {fileID: 1250520446}
+  - {fileID: 448736431}
+  - {fileID: 314356613}
+  applyCards:
+  - {fileID: 1252529926}
+  - {fileID: 561772416}
+  - {fileID: 449846543}
+  TextTMP:
+  - {fileID: 290141521}
+  - {fileID: 784024821}
+  - {fileID: 480918212}
+  - {fileID: 2064702179}
+  renderers:
+  - {fileID: 1478440879}
+  - {fileID: 1398722748}
 --- !u!1 &1049862908
 GameObject:
   m_ObjectHideFlags: 0
@@ -22826,10 +22848,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7a4ae9f22e48745ac3ae81adf41d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  choiceCards: []
-  applyCards: []
-  TextTMP: []
-  renderers: []
+  choiceCards:
+  - {fileID: 1529701396}
+  - {fileID: 1402446267}
+  applyCards:
+  - {fileID: 88976728}
+  - {fileID: 633023138}
+  TextTMP:
+  - {fileID: 119092773}
+  - {fileID: 290299803}
+  - {fileID: 2046601548}
+  - {fileID: 1844765974}
+  renderers:
+  - {fileID: 728038145}
+  - {fileID: 1934487464}
 --- !u!1 &1324305268
 GameObject:
   m_ObjectHideFlags: 0
@@ -23055,10 +23087,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7a4ae9f22e48745ac3ae81adf41d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  choiceCards: []
-  applyCards: []
-  TextTMP: []
-  renderers: []
+  choiceCards:
+  - {fileID: 132114899}
+  applyCards:
+  - {fileID: 2102395807}
+  TextTMP:
+  - {fileID: 1663546496}
+  - {fileID: 1988081123}
+  - {fileID: 1275780212}
+  - {fileID: 1379016228}
+  renderers:
+  - {fileID: 72564375}
+  - {fileID: 2104168912}
 --- !u!1 &1337494797
 GameObject:
   m_ObjectHideFlags: 0
@@ -24192,10 +24232,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7a4ae9f22e48745ac3ae81adf41d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  choiceCards: []
-  applyCards: []
-  TextTMP: []
-  renderers: []
+  choiceCards:
+  - {fileID: 5937389}
+  - {fileID: 275494574}
+  - {fileID: 1631461062}
+  applyCards:
+  - {fileID: 2053094064}
+  - {fileID: 1660412322}
+  - {fileID: 460593192}
+  TextTMP:
+  - {fileID: 125355762}
+  - {fileID: 1735140869}
+  - {fileID: 1297507753}
+  - {fileID: 665353646}
+  renderers:
+  - {fileID: 191688511}
+  - {fileID: 1413497715}
 --- !u!1 &1379016226
 GameObject:
   m_ObjectHideFlags: 0
@@ -30793,10 +30845,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7a4ae9f22e48745ac3ae81adf41d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  choiceCards: []
-  applyCards: []
-  TextTMP: []
-  renderers: []
+  choiceCards:
+  - {fileID: 52344535}
+  applyCards:
+  - {fileID: 1476409827}
+  TextTMP:
+  - {fileID: 930146596}
+  - {fileID: 1343332953}
+  - {fileID: 2062849743}
+  - {fileID: 1494173929}
+  renderers:
+  - {fileID: 1679760162}
+  - {fileID: 1569835693}
 --- !u!1 &1735140867
 GameObject:
   m_ObjectHideFlags: 0

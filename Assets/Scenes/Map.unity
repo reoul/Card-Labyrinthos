@@ -3195,6 +3195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 1777874377}
   onButton: 0
+  index: 0
   type: 0
 --- !u!212 &96980883
 SpriteRenderer:
@@ -8637,6 +8638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 1178113434}
   onButton: 0
+  index: 0
   type: 1
 --- !u!212 &280430814
 SpriteRenderer:
@@ -11500,6 +11502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
   onButton: 0
+  index: 0
   type: 2
 --- !u!61 &429825232
 BoxCollider2D:
@@ -12014,6 +12017,7 @@ MonoBehaviour:
     type: 0
     reward_type: 0
     index: 0
+    index2: 0
   debuff_type: 0
   isRewardOn: 0
   windowRenderer: {fileID: 452875006}
@@ -15586,6 +15590,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 1178113434}
   onButton: 0
+  index: 0
   type: 0
 --- !u!212 &593964282
 SpriteRenderer:
@@ -17760,6 +17765,7 @@ MonoBehaviour:
     type: 0
     reward_type: 0
     index: 0
+    index2: 0
   debuff_type: 0
   isRewardOn: 0
   windowRenderer: {fileID: 692155607}
@@ -21051,6 +21057,7 @@ MonoBehaviour:
     type: 3}
   QuestionCardPrefab: {fileID: 1792940664494003713, guid: 0658e32039583a048b6f98cf5aa21194,
     type: 3}
+  SkillBookPrefab: {fileID: 0}
 --- !u!4 &889312698
 Transform:
   m_ObjectHideFlags: 0
@@ -22652,6 +22659,7 @@ MonoBehaviour:
     type: 0
     reward_type: 0
     index: 0
+    index2: 0
   debuff_type: 0
   isRewardOn: 0
   windowRenderer: {fileID: 960260976}
@@ -26771,6 +26779,7 @@ MonoBehaviour:
     type: 0
     reward_type: 0
     index: 0
+    index2: 0
   debuff_type: 0
   isRewardOn: 0
   windowRenderer: {fileID: 1163939817}
@@ -27158,6 +27167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 859643729}
   onButton: 0
+  index: 0
   type: 0
 --- !u!212 &1175720917
 SpriteRenderer:
@@ -27835,6 +27845,7 @@ MonoBehaviour:
     type: 0
     reward_type: 0
     index: 0
+    index2: 0
   debuff_type: 0
   isRewardOn: 0
   windowRenderer: {fileID: 1207200697}
@@ -28040,10 +28051,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f77eedfbe42c0440a888fd327c85938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillBookCards:
-  - {fileID: 776725838}
-  - {fileID: 2087393642}
-  - {fileID: 1912152377}
+  pages: []
+  choiceCards: []
   applyCards:
   - {fileID: 1777874377}
   - {fileID: 859643729}
@@ -30941,6 +30950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 1777874377}
   onButton: 0
+  index: 0
   type: 1
 --- !u!212 &1372695353
 SpriteRenderer:
@@ -43392,6 +43402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 859643729}
   onButton: 0
+  index: 0
   type: 1
 --- !u!212 &1857375133
 SpriteRenderer:
@@ -43907,6 +43918,7 @@ MonoBehaviour:
     type: 0
     reward_type: 0
     index: 0
+    index2: 0
   debuff_type: 0
   isRewardOn: 0
   windowRenderer: {fileID: 1878214079}
