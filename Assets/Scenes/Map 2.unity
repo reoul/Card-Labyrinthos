@@ -170,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   field_type: 0
   event_type: 0
-  monster_difficulty: 0
+  monster_difficulty: 1
   surroundingObj: []
   isReady: 0
   isClear: 0
@@ -308,7 +308,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "\uD734\uC2DD"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -331,7 +331,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -639,7 +639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   field_type: 0
   event_type: 0
-  monster_difficulty: 0
+  monster_difficulty: 1
   surroundingObj: []
   isReady: 0
   isClear: 0
@@ -1764,7 +1764,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uC9C0"
+  m_text: "\uC774\uBCA4\uD2B8"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -2106,7 +2106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9bd9349b0400904095b7441e67a99a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  field_type: 0
+  field_type: 1
   event_type: 0
   monster_difficulty: 0
   surroundingObj: []
@@ -2238,7 +2238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   field_type: 0
   event_type: 0
-  monster_difficulty: 0
+  monster_difficulty: 1
   surroundingObj: []
   isReady: 0
   isClear: 0
@@ -3101,7 +3101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   field_type: 0
   event_type: 0
-  monster_difficulty: 0
+  monster_difficulty: 2
   surroundingObj: []
   isReady: 0
   isClear: 0
@@ -3628,7 +3628,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uC9C0"
+  m_text: "\uB178\uB9D0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -4106,7 +4106,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uC9C0"
+  m_text: "\uD558\uB4DC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -4707,7 +4707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   field_type: 0
   event_type: 0
-  monster_difficulty: 0
+  monster_difficulty: 1
   surroundingObj: []
   isReady: 0
   isClear: 0
@@ -4845,7 +4845,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uC9C0"
+  m_text: "\uD558\uB4DC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -5400,6 +5400,7 @@ MonoBehaviour:
     type: 0
     reward_type: 0
     index: 0
+    index2: 0
   debuff_type: 0
   isRewardOn: 0
   windowRenderer: {fileID: 452875006}
@@ -5529,7 +5530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   field_type: 0
   event_type: 0
-  monster_difficulty: 0
+  monster_difficulty: 1
   surroundingObj: []
   isReady: 0
   isClear: 0
@@ -6181,7 +6182,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uC9C0"
+  m_text: "\uC774\uBCA4\uD2B8"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -6357,7 +6358,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uC9C0"
+  m_text: "\uD558\uB4DC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -6709,7 +6710,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uC9C0"
+  m_text: "\uB178\uB9D0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -7132,7 +7133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9bd9349b0400904095b7441e67a99a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  field_type: 0
+  field_type: 2
   event_type: 0
   monster_difficulty: 0
   surroundingObj: []
@@ -7482,7 +7483,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uC9C0"
+  m_text: "\uD558\uB4DC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -7891,6 +7892,7 @@ MonoBehaviour:
     type: 0
     reward_type: 0
     index: 0
+    index2: 0
   debuff_type: 0
   isRewardOn: 0
   windowRenderer: {fileID: 692155607}
@@ -7944,7 +7946,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   field_type: 0
   event_type: 0
-  monster_difficulty: 0
+  monster_difficulty: 1
   surroundingObj: []
   isReady: 0
   isClear: 0
@@ -8339,7 +8341,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uC9C0"
+  m_text: "\uB178\uB9D0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -9226,7 +9228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9bd9349b0400904095b7441e67a99a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  field_type: 0
+  field_type: 1
   event_type: 0
   monster_difficulty: 0
   surroundingObj: []
@@ -9358,7 +9360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   field_type: 0
   event_type: 0
-  monster_difficulty: 0
+  monster_difficulty: 1
   surroundingObj: []
   isReady: 0
   isClear: 0
@@ -9734,6 +9736,7 @@ MonoBehaviour:
     type: 3}
   QuestionCardPrefab: {fileID: 1792940664494003713, guid: 0658e32039583a048b6f98cf5aa21194,
     type: 3}
+  SkillBookPrefab: {fileID: 0}
 --- !u!4 &889312698
 Transform:
   m_ObjectHideFlags: 0
@@ -10688,6 +10691,7 @@ MonoBehaviour:
     type: 0
     reward_type: 0
     index: 0
+    index2: 0
   debuff_type: 0
   isRewardOn: 0
   windowRenderer: {fileID: 960260976}
@@ -10825,7 +10829,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uC9C0"
+  m_text: "\uB178\uB9D0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -11082,7 +11086,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uC9C0"
+  m_text: "\uD558\uB4DC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -11789,7 +11793,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uC9C0"
+  m_text: "\uB178\uB9D0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -12255,7 +12259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   field_type: 0
   event_type: 0
-  monster_difficulty: 0
+  monster_difficulty: 1
   surroundingObj: []
   isReady: 0
   isClear: 0
@@ -12967,7 +12971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   field_type: 0
   event_type: 0
-  monster_difficulty: 0
+  monster_difficulty: 2
   surroundingObj: []
   isReady: 0
   isClear: 0
@@ -13357,6 +13361,7 @@ MonoBehaviour:
     type: 0
     reward_type: 0
     index: 0
+    index2: 0
   debuff_type: 0
   isRewardOn: 0
   windowRenderer: {fileID: 1163939817}
@@ -13532,7 +13537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   field_type: 0
   event_type: 0
-  monster_difficulty: 0
+  monster_difficulty: 1
   surroundingObj: []
   isReady: 0
   isClear: 0
@@ -13664,6 +13669,7 @@ MonoBehaviour:
     type: 0
     reward_type: 0
     index: 0
+    index2: 0
   debuff_type: 0
   isRewardOn: 0
   windowRenderer: {fileID: 1207200697}
@@ -13849,7 +13855,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uC9C0"
+  m_text: "\uB178\uB9D0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -14025,7 +14031,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uC9C0"
+  m_text: "\uC774\uBCA4\uD2B8"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -17078,7 +17084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   field_type: 0
   event_type: 0
-  monster_difficulty: 0
+  monster_difficulty: 1
   surroundingObj: []
   isReady: 0
   isClear: 0
@@ -17964,7 +17970,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uC9C0"
+  m_text: "\uB178\uB9D0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -18837,7 +18843,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   field_type: 0
   event_type: 0
-  monster_difficulty: 0
+  monster_difficulty: 2
   surroundingObj: []
   isReady: 0
   isClear: 0
@@ -19673,7 +19679,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   field_type: 0
   event_type: 0
-  monster_difficulty: 0
+  monster_difficulty: 2
   surroundingObj: []
   isReady: 0
   isClear: 0
@@ -19803,7 +19809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   field_type: 0
   event_type: 0
-  monster_difficulty: 0
+  monster_difficulty: 2
   surroundingObj: []
   isReady: 0
   isClear: 0
@@ -20370,7 +20376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   field_type: 0
   event_type: 0
-  monster_difficulty: 0
+  monster_difficulty: 1
   surroundingObj: []
   isReady: 0
   isClear: 0
@@ -20590,7 +20596,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uC9C0"
+  m_text: "\uB178\uB9D0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -20766,7 +20772,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uC9C0"
+  m_text: "\uB178\uB9D0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -20936,6 +20942,7 @@ MonoBehaviour:
     type: 0
     reward_type: 0
     index: 0
+    index2: 0
   debuff_type: 0
   isRewardOn: 0
   windowRenderer: {fileID: 1878214079}
@@ -21073,7 +21080,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uC9C0"
+  m_text: "\uB178\uB9D0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -22699,7 +22706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9bd9349b0400904095b7441e67a99a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  field_type: 0
+  field_type: 1
   event_type: 0
   monster_difficulty: 0
   surroundingObj: []
@@ -23137,7 +23144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   field_type: 0
   event_type: 0
-  monster_difficulty: 0
+  monster_difficulty: 2
   surroundingObj: []
   isReady: 0
   isClear: 0
@@ -23694,7 +23701,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uC9C0"
+  m_text: "\uD558\uB4DC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -24231,7 +24238,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uC9C0"
+  m_text: "\uB178\uB9D0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
