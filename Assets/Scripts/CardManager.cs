@@ -456,6 +456,7 @@ public class CardManager : MonoBehaviour
     public void CardFinishMove()            //카드 사용 후 버린 카드 더미로 이동
     {
         selectCard.FinishCard();
+        selectCard.GetComponent<Order>().SetOriginOrder(3700);
         waypoints = new Vector3[2];
         waypoints.SetValue(selectCard.parent.position, 0);
         waypoints.SetValue(waypoint2.position, 0);

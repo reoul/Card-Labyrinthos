@@ -8,7 +8,8 @@ public class SkillBookCardButton : MonoBehaviour
 
     [SerializeField] bool onButton = false;
 
-    enum TYPE { UP, DOWN, APPLY }
+    enum TYPE { UP, DOWN, APPLY, BOOKMARK }
+    public int index;
 
     [SerializeField] TYPE type;
 
@@ -25,6 +26,9 @@ public class SkillBookCardButton : MonoBehaviour
                     break;
                 case TYPE.APPLY:
                     SkillManager.Inst.ApplyCardAll();
+                    break;
+                case TYPE.BOOKMARK:
+                    SkillManager.Inst.SelectPage(index);
                     break;
             }
     }

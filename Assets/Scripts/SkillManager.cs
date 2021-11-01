@@ -8,7 +8,8 @@ public class SkillManager : MonoBehaviour
     public static SkillManager Inst = null;
     bool isOpen = false;
 
-    public List<SkillBookCard> skillBookCards;
+    public List<SkillBookPage> pages;
+    public List<SkillBookCard> choiceCards;
     public List<SkillBookCard> applyCards;
 
     private void Awake()
@@ -50,14 +51,14 @@ public class SkillManager : MonoBehaviour
 
     public void SetCard(SkillBookCard skillBookCard, Card card)
     {
-        for (int i = 0; i < skillBookCards.Count; i++)
+        for (int i = 0; i < choiceCards.Count; i++)
         {
-            if (skillBookCards[i].curSelectCard == card)
+            if (choiceCards[i].curSelectCard == card)
             {
-                skillBookCards[i].curSelectCard = null;
-                skillBookCards[i].HideCard();
-                skillBookCards[i].SetColorAlpha(true);
-                skillBookCards[i].GetComponentInChildren<TMP_Text>().text = "+";
+                choiceCards[i].curSelectCard = null;
+                choiceCards[i].HideCard();
+                choiceCards[i].SetColorAlpha(true);
+                choiceCards[i].GetComponentInChildren<TMP_Text>().text = "+";
             }
         }
         skillBookCard.frontCard.SetActive(true);
@@ -90,6 +91,12 @@ public class SkillManager : MonoBehaviour
         InitCard();
     }
 
+    public void SelectPage(int index)
+    {
+        pages[index].gameObject.SetActive(true);
+        pages[index].Show();
+    }
+
     public void InitCard()
     {
         for (int i = 0; i < applyCards.Count; i++)
@@ -97,12 +104,12 @@ public class SkillManager : MonoBehaviour
             if (applyCards[i].gameObject.activeInHierarchy)
                 applyCards[i].curSelectCard.SetColorAlpha(false);
         }
-        for (int i = 0; i < skillBookCards.Count; i++)
+        for (int i = 0; i < choiceCards.Count; i++)
         {
-            skillBookCards[i].curSelectCard = null;
-            skillBookCards[i].HideCard();
-            skillBookCards[i].SetColorAlpha(true);
-            skillBookCards[i].GetComponentInChildren<TMP_Text>().text = "+";
+            choiceCards[i].curSelectCard = null;
+            choiceCards[i].HideCard();
+            choiceCards[i].SetColorAlpha(true);
+            choiceCards[i].GetComponentInChildren<TMP_Text>().text = "+";
         }
     }
 }

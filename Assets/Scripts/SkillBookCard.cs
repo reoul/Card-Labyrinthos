@@ -64,4 +64,17 @@ public class SkillBookCard : MonoBehaviour
         this.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, isHalf ? 0.5f : 1);
         this.transform.GetChild(0).GetComponent<TMP_Text>().color = new Color(0, 0, 0, isHalf ? 0.5f : 1);     //숫자 텍스트
     }
+
+    private void OnMouseOver()
+    {
+        if (curSelectCard != null)
+            if (Input.GetMouseButtonUp(1))
+            {
+                HideCard();
+                curSelectCard.SetColorAlpha(false);
+                curSelectCard = null;
+                SetColorAlpha(true);
+                this.GetComponentInChildren<TMP_Text>().text = "+";
+            }
+    }
 }
