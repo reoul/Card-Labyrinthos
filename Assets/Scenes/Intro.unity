@@ -1094,6 +1094,8 @@ MonoBehaviour:
     card_goback: {fileID: 0}
     card_shuffling: {fileID: 8300000, guid: 2cbfa6cd75ccc2440aced5848446d0c9, type: 3}
     rest_heal: {fileID: 8300000, guid: 4f38f08b558ee9d48b7363ebb5e9b692, type: 3}
+    debuff_openbar: {fileID: 8300000, guid: 9484ac869b292f649b6994c92036e3af, type: 3}
+    debuff_closebar: {fileID: 8300000, guid: 6fe13bd34d83f5c4fba406cc4d641868, type: 3}
   BackGroundAudio:
   - {fileID: 8300000, guid: b61c4806f00e3d94eae199c4104b634b, type: 3}
   - {fileID: 8300000, guid: 5e53fefb338e3f44691eb4c81956ff73, type: 3}

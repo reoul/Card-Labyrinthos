@@ -117,6 +117,7 @@ public class Enemy : MonoBehaviour
 
     public void Damage(int damage)          //적이 공격 당할때 호출
     {
+        SoundManager.Inst.Play(BATTLESOUND.HIT);
         hpbar.Damage(damage);
         DebuffManager.Inst.turnDamage += damage;
     }

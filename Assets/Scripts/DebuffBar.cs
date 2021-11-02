@@ -8,6 +8,10 @@ public class DebuffBar : MonoBehaviour
     bool isOpen = true;
     bool isMove = false;
 
+    [SerializeField] SpriteRenderer button;
+    public Sprite open;
+    public Sprite close;
+
     public void Open()
     {
         if (isMove)
@@ -18,8 +22,10 @@ public class DebuffBar : MonoBehaviour
             Close();
             return;
         }
+        SoundManager.Inst.Play(DEBUFFSOUND.OPEN_BAR);
         this.transform.DOMove(new Vector3(6.94f, 3.65f, 0), 1).OnComplete(() =>
         {
+            button.sprite = close;
             isMove = false;
         });
         isOpen = true;
@@ -27,8 +33,10 @@ public class DebuffBar : MonoBehaviour
 
     public void Close()
     {
+        SoundManager.Inst.Play(DEBUFFSOUND.CLOSE_BAR);
         this.transform.DOMove(new Vector3(10.89f, 3.65f, 0), 1).OnComplete(() =>
         {
+            button.sprite = open;
             isMove = false;
         }); ;
         isOpen = false;

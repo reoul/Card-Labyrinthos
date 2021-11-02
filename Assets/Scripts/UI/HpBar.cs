@@ -54,7 +54,6 @@ public class HpBar : MonoBehaviour
 
     public void Damage(int damage)      //데미지를 주고 싶을 때 매개변수로 해당 수를 넣어주면 체력이 깍인다
     {
-        SoundManager.Inst.Play(BATTLESOUND.HIT);
         if (sheld > 0)
         {
             sheld -= damage;

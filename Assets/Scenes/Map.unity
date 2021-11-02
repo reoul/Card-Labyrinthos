@@ -8945,6 +8945,8 @@ MonoBehaviour:
   isHideButton: 0
   isQuestionMark: 0
   isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!1 &786261940
 GameObject:
   m_ObjectHideFlags: 0
@@ -9782,6 +9784,8 @@ MonoBehaviour:
   isHideButton: 0
   isQuestionMark: 0
   isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!222 &859643731
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14129,6 +14133,8 @@ MonoBehaviour:
   isHideButton: 0
   isQuestionMark: 0
   isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!222 &1178113436
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15039,6 +15045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f77eedfbe42c0440a888fd327c85938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  page: 0
   pages: []
   bookmarks: []
   choiceCards: []
@@ -16540,6 +16547,7 @@ MonoBehaviour:
   - {fileID: 185975522}
   - {fileID: 919804564}
   - {fileID: 786261941}
+  unlockObjs: []
 --- !u!4 &1342217373
 Transform:
   m_ObjectHideFlags: 0
@@ -19842,7 +19850,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBCF4\uC2A4"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -20891,6 +20899,8 @@ MonoBehaviour:
   isHideButton: 0
   isQuestionMark: 0
   isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!222 &1777874379
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -23150,6 +23160,8 @@ MonoBehaviour:
   isHideButton: 0
   isQuestionMark: 0
   isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!61 &1912152378
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25173,6 +25185,8 @@ MonoBehaviour:
   isHideButton: 0
   isQuestionMark: 0
   isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!1 &2099234737
 GameObject:
   m_ObjectHideFlags: 0
@@ -25521,9 +25535,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9bd9349b0400904095b7441e67a99a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  field_type: 5
+  field_type: 0
   event_type: 0
-  monster_difficulty: 0
+  monster_difficulty: 3
   surroundingObj: []
   isReady: 0
   isClear: 0

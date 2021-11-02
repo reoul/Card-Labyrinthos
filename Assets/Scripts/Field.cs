@@ -149,6 +149,7 @@ public class Field : MonoBehaviour
 
     void OnMouseEnter()
     {
+        SoundManager.Inst.Play(EVENTSOUND.CHOICE_MOUSEUP);
         onField = true;
     }
 
@@ -235,6 +236,8 @@ public class Field : MonoBehaviour
                         return MONSTER_TYPE.PHANTOM_KNIGHT;
                 }
                 break;
+            case MONSTER_DIFFICULTY.BOSS:
+                return MONSTER_TYPE.BOSS;
         }
         return MONSTER_TYPE.IMP;
     }

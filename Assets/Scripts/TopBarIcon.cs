@@ -9,6 +9,7 @@ public class TopBarIcon : MonoBehaviour
 
     void OnMouseEnter()
     {
+        SoundManager.Inst.Play(EVENTSOUND.CHOICE_MOUSEUP);
         onTopBarIcon = true;
     }
     void OnMouseExit()
