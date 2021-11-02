@@ -438,6 +438,7 @@ public class CardManager : MonoBehaviour
                 UseCard(EnemyManager.Inst.enemys[0].gameObject);
                 ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.CARDBACK,
                     Player.Inst.gameObject.transform.position + Vector3.up * 3.5f, EnemyManager.Inst.enemys[0].hitPos.position, null, 0.5f, damage);
+                GameManager.Inst.CreateHitObj(EnemyManager.Inst.enemys[0].hitPos.position, 0.2f, damage);
                 if (MyHandCards.Count == 0)
                     TurnManager.Inst.EndTurn();
             }

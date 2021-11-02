@@ -541,19 +541,19 @@ MonoBehaviour:
       pattern_type: 1
       index: 5
   - name: Boss
-    hp: 100
+    hp: 70
     type: 31
     prefab: {fileID: 3697588050848563889, guid: 02ae7d71b02e68e4e9457efdc5e5d30d,
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 15
+      index: 10
     pattern_2:
       pattern_type: 0
-      index: 17
+      index: 14
     pattern_3:
       pattern_type: 0
-      index: 20
+      index: 17
     pattern_4:
       pattern_type: 1
-      index: 10
+      index: 7
