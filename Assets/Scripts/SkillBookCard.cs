@@ -8,6 +8,19 @@ public class SkillBookCard : MonoBehaviour
     public GameObject frontCard;
     public Card curSelectCard = null;
     [SerializeField] List<SkillBookCardButton> cardButtons;
+    int _originNum;
+    public int originNum
+    {
+        get
+        {
+            return _originNum;
+        }
+        set
+        {
+            _originNum = value;
+            curNum = _originNum;
+        }
+    }
     int _curNum;
     public int curNum
     {
@@ -23,9 +36,9 @@ public class SkillBookCard : MonoBehaviour
                 frontCard.GetComponentInChildren<TMP_Text>().text = (_curNum + 1).ToString();
             if (cardButtons.Count == 2)
             {
-                if (_curNum == 0)
+                if (_curNum == (limitNum == 0 ? 0 : _originNum - limitNum))
                     cardButtons[1].gameObject.SetActive(false);
-                else if (_curNum == 5)
+                else if (_curNum == (limitNum == 0 ? 5 : _originNum + limitNum))
                     cardButtons[0].gameObject.SetActive(false);
                 else
                 {
@@ -35,6 +48,7 @@ public class SkillBookCard : MonoBehaviour
             }
         }
     }
+    public int limitNum;    //+1을 하거나 특정 숫자만큼만 올리게 제한을 두는 변수
 
     public void SetCard(Card card)
     {

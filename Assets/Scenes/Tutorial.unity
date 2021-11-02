@@ -11398,7 +11398,7 @@ MonoBehaviour:
   curSelectCard: {fileID: 0}
   cardButtons:
   - {fileID: 872330454}
-  - {fileID: 1271611505}
+  - {fileID: 38374816}
 --- !u!222 &633023139
 CanvasRenderer:
   m_ObjectHideFlags: 0
