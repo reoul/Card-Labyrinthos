@@ -38,10 +38,6 @@ public class SkillManager : MonoBehaviour
     public void Init()
     {
         this.transform.position = new Vector3(0, 0, -2);
-        for (int i = 0; i < skillXObjs.Count; i++)
-        {
-
-        }
     }
 
     public void Open()      //스킬창 여는 것
@@ -133,6 +129,10 @@ public class SkillManager : MonoBehaviour
                 break;
             }
         }
+        for (int i = 0; i < bookmarks.Count; i++)
+        {
+            bookmarks[i].gameObject.SetActive(CardManager.Inst.cardDeck[0] >= (i * 2 + 1) ? true : false);
+        }
         bookmarks[page].transform.localPosition += new Vector3(-0.09158f, 0, 0);
         page = index;
         bookmarks[page].transform.localPosition += new Vector3(0.09158f, 0, 0);
@@ -153,6 +153,15 @@ public class SkillManager : MonoBehaviour
             choiceCards[i].HideCard();
             choiceCards[i].SetColorAlpha(true);
             choiceCards[i].GetComponentInChildren<TMP_Text>().text = "+";
+        }
+    }
+
+    public void InitSkillTime()
+    {
+        for (int i = 0; i < isUseSkill.Length; i++)
+        {
+            isUseSkill[i] = false;
+            skillXObjs[i].SetActive(false);
         }
     }
 

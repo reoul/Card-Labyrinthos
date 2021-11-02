@@ -36,7 +36,6 @@ public class Map : MonoBehaviour
             if (isMoveCamera)
             {
                 Vector3 movePos = Camera.main.ScreenToWorldPoint(Input.mousePosition) - lastMousePos;
-                Debug.Log(movePos);
                 if (movePos != Vector3.zero)
                 {
                     this.transform.parent.position += movePos;

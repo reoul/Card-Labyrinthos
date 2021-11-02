@@ -133,7 +133,7 @@ public class MapManager : MonoBehaviour
         TurnManager.Inst.isFinish = false;
         fieldData.field_type = FIELD_TYPE.MAP;
         FadeManager.FadeEvent += new EventHandler(LoadScene);
-        StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null, FieldClearCheckCorutine()));
+        StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null, FieldClearCheckCorutine(), InitSkillTime()));
     }
 
     public void LoadTutorialScene()
@@ -206,10 +206,8 @@ public class MapManager : MonoBehaviour
 
     public IEnumerator InitSkillTime()
     {
-        for (int i = 0; i < SkillManager.Inst.isUseSkill.Length; i++)
-        {
-            SkillManager.Inst.isUseSkill[i] = false;
-        }
+        SkillManager.Inst.InitSkillTime();
+        Debug.Log("adsfdsfa");
         yield return null;
     }
 }
