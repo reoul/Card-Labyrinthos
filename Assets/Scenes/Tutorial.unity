@@ -1343,8 +1343,8 @@ MonoBehaviour:
   frontCard: {fileID: 0}
   curSelectCard: {fileID: 0}
   cardButtons:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1407561988}
+  - {fileID: 1394780599}
 --- !u!222 &64486810
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2016,8 +2016,8 @@ MonoBehaviour:
   frontCard: {fileID: 0}
   curSelectCard: {fileID: 0}
   cardButtons:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2134827799}
+  - {fileID: 1271611505}
 --- !u!222 &88976729
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8970,8 +8970,8 @@ MonoBehaviour:
   frontCard: {fileID: 0}
   curSelectCard: {fileID: 0}
   cardButtons:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2081490582}
+  - {fileID: 1759886427}
 --- !u!222 &449846544
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9262,8 +9262,8 @@ MonoBehaviour:
   frontCard: {fileID: 0}
   curSelectCard: {fileID: 0}
   cardButtons:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 343137426}
+  - {fileID: 2128786321}
 --- !u!222 &460593193
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10481,8 +10481,8 @@ MonoBehaviour:
   frontCard: {fileID: 0}
   curSelectCard: {fileID: 0}
   cardButtons:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 893646904}
+  - {fileID: 9761885}
 --- !u!222 &561772417
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11397,8 +11397,8 @@ MonoBehaviour:
   frontCard: {fileID: 0}
   curSelectCard: {fileID: 0}
   cardButtons:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 872330454}
+  - {fileID: 1271611505}
 --- !u!222 &633023139
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15425,7 +15425,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &890455645
 Transform:
   m_ObjectHideFlags: 0
@@ -20973,8 +20973,8 @@ MonoBehaviour:
   frontCard: {fileID: 0}
   curSelectCard: {fileID: 0}
   cardButtons:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1640255346}
+  - {fileID: 1526998008}
 --- !u!222 &1252529927
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28360,8 +28360,8 @@ MonoBehaviour:
   frontCard: {fileID: 0}
   curSelectCard: {fileID: 0}
   cardButtons:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1363959680}
+  - {fileID: 1152376387}
 --- !u!222 &1580620785
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -29235,8 +29235,8 @@ MonoBehaviour:
   frontCard: {fileID: 0}
   curSelectCard: {fileID: 0}
   cardButtons:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 109864758}
+  - {fileID: 738372140}
 --- !u!222 &1660412323
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -32770,7 +32770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
   onButton: 0
-  index: 0
+  index: 2
   type: 2
 --- !u!61 &1934487463
 BoxCollider2D:
@@ -34304,8 +34304,8 @@ MonoBehaviour:
   frontCard: {fileID: 0}
   curSelectCard: {fileID: 0}
   cardButtons:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2142992107}
+  - {fileID: 1529440982}
 --- !u!222 &2053094065
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -35284,8 +35284,8 @@ MonoBehaviour:
   frontCard: {fileID: 0}
   curSelectCard: {fileID: 0}
   cardButtons:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1150420272}
+  - {fileID: 371216650}
 --- !u!222 &2102395808
 CanvasRenderer:
   m_ObjectHideFlags: 0
