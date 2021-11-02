@@ -9,7 +9,7 @@ public enum BATTLESOUND { HEAL, CARD_DRAW, SHELD, HIT, TURN_START, TURN_END, GAM
 public enum EVENTSOUND { CHOICE_MOUSEUP, CHOICE_BUTTON }
 public enum SHOPSOUND { BUY, SOLDOUT, THROWINGOBJ, IN_TOPBAR_ICON }
 public enum REWARDSOUND { SHOW_REWARD_WINDOW, GETQUESTION, GETCARDPIECE, LOSTHEAL, SHOW_REWARD_BUTTON }
-public enum CARDSOUND { UP_CARD, GO_BACK }
+public enum CARDSOUND { UP_CARD, GO_BACK, Shuffling }
 public enum RESTSOUND { HEAL }
 
 [System.Serializable]
@@ -53,6 +53,7 @@ public class Sounds
     [Header("카드")]
     public AudioClip card_upCard;
     public AudioClip card_goback;
+    public AudioClip card_shuffling;
     [Header("휴식방")]
     public AudioClip rest_heal;
 }
@@ -295,6 +296,9 @@ public class SoundManager : MonoBehaviour
                 break;
             case CARDSOUND.GO_BACK:
                 clip = sounds.card_goback;
+                break;
+            case CARDSOUND.Shuffling:
+                clip = sounds.card_shuffling;
                 break;
             default:
                 clip = sounds.card_upCard;

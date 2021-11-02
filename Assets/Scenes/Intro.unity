@@ -1092,6 +1092,7 @@ MonoBehaviour:
       type: 3}
     card_upCard: {fileID: 8300000, guid: fec7509a762fdbf49950eaf1cbf20e1e, type: 3}
     card_goback: {fileID: 0}
+    card_shuffling: {fileID: 8300000, guid: 2cbfa6cd75ccc2440aced5848446d0c9, type: 3}
     rest_heal: {fileID: 8300000, guid: 4f38f08b558ee9d48b7363ebb5e9b692, type: 3}
   BackGroundAudio:
   - {fileID: 8300000, guid: b61c4806f00e3d94eae199c4104b634b, type: 3}

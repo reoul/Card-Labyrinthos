@@ -117,6 +117,7 @@ public class CardManager : MonoBehaviour
 
     void ShuffleCard()      //버린 카드 더미를 섞는다
     {
+        SoundManager.Inst.Play(CARDSOUND.Shuffling);
         for (int i = 0; i < tombItemBuffer.Count; i++)
         {
             int rand = Random.Range(i, tombItemBuffer.Count);
