@@ -16,7 +16,11 @@ public class SkillManager : MonoBehaviour
     public List<SkillBookCard> choiceCards;
     public List<SkillBookCard> applyCards;
 
+    public List<GameObject> skillXObjs;
     public bool[] isUseSkill;
+
+    public SkillBookPage ActivePage { get { return pages[page]; } }
+    public int ActivePageIndex { get { return page; } }
 
     private void Awake()
     {
@@ -34,6 +38,10 @@ public class SkillManager : MonoBehaviour
     public void Init()
     {
         this.transform.position = new Vector3(0, 0, -2);
+        for (int i = 0; i < skillXObjs.Count; i++)
+        {
+
+        }
     }
 
     public void Open()      //스킬창 여는 것
@@ -70,7 +78,7 @@ public class SkillManager : MonoBehaviour
         }
         skillBookCard.frontCard.SetActive(true);
         skillBookCard.originNum = card.final_Num;
-        skillBookCard.frontCard.GetComponent<SkillBookCard>().originNum = card.final_Num;
+        skillBookCard.frontCard.GetComponent<SkillBookCard>().originNum = skillBookCard.frontCard.GetComponent<SkillBookCard>().isQuestionMark ? RandomNum(card.final_Num) : card.final_Num;
         skillBookCard.SetColorAlpha(false);
         skillBookCard.GetComponentInChildren<TMP_Text>().text = (card.final_Num + 1).ToString();
         if (skillBookCard.curSelectCard == null)
@@ -88,6 +96,16 @@ public class SkillManager : MonoBehaviour
         }
     }
 
+    int RandomNum(int num)
+    {
+        int result = 0;
+        do
+        {
+            result = Random.Range(0, 6);
+        } while (num == result);
+        return result;
+    }
+
     public void ApplyCardAll()
     {
         for (int i = 0; i < applyCards.Count; i++)
@@ -95,6 +113,7 @@ public class SkillManager : MonoBehaviour
             if (applyCards[i].gameObject.activeInHierarchy)
                 applyCards[i].curSelectCard.SetFinalNum(applyCards[i].curNum);
         }
+        UseSkill(true);
         InitCard();
     }
 
@@ -134,8 +153,9 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    public void UseSkill()
+    public void UseSkill(bool use)
     {
-        isUseSkill[page] = true;
+        isUseSkill[page] = use;
+        skillXObjs[page].SetActive(use);
     }
 }

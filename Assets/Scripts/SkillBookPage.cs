@@ -11,6 +11,9 @@ public class SkillBookPage : MonoBehaviour
 
     [SerializeField] List<TMP_Text> TextTMP;
     [SerializeField] List<SpriteRenderer> renderers;
+
+    public SkillBookCardButton applyButton;
+
     public void Init()
     {
         for (int i = 0; i < choiceCards.Count; i++)
@@ -24,6 +27,7 @@ public class SkillBookPage : MonoBehaviour
                 choiceCards[i].GetComponentInChildren<TMP_Text>().text = "+";
             }
         }
+        applyButton.isActive = false;
     }
     public void Show()
     {
@@ -46,23 +50,38 @@ public class SkillBookPage : MonoBehaviour
         switch (skill_type)
         {
             case SKILL_TYPE.SKILL1:     //한장의 카드에 +1 or -1
+                for (int i = 0; i < applyCards.Count; i++)
+                {
+                    applyCards[i].limitNum = 1;
+                }
                 break;
             case SKILL_TYPE.SKILL2:     //-n +n
+                applyCards[1].isHideButton = true;
                 break;
             case SKILL_TYPE.SKILL3:     //원하는 숫자로 카드 한장 바꾸기
                 break;
             case SKILL_TYPE.SKILL4:     //최대 3장 선택 후 전부 +1 -1
+                for (int i = 0; i < applyCards.Count; i++)
+                    applyCards[i].isHideButton = true;
                 break;
             case SKILL_TYPE.SKILL5:     //손패에 있는 카드 한장을 다른 카드에 복제
+                for (int i = 0; i < applyCards.Count; i++)
+                {
+                    applyCards[i].isHideButton = true;
+                    applyCards[i].isApplyButtonOn = true;
+                }
+                break;
             case SKILL_TYPE.SKILL6:     //최대 3장 선택후 랜덤 숫자로 변경
                 for (int i = 0; i < applyCards.Count; i++)
                 {
                     applyCards[i].isHideButton = true;
+                    applyCards[i].isQuestionMark = true;
                 }
                 break;
             default:
                 break;
         }
+        //applyButton.SetButtonActive(false);
         StartCoroutine(ColorAlphaCorutine(false));
     }
     public void Hide()
@@ -83,6 +102,8 @@ public class SkillBookPage : MonoBehaviour
             {
                 renderers[i].color += Color.black * alpha;
             }
+            applyButton.GetComponent<SpriteRenderer>().color -= Color.black * alpha * 0.5f;
+            applyButton.GetComponentInChildren<TMP_Text>().color -= Color.black * alpha * 0.5f;
             for (int i = 0; i < choiceCards.Count; i++)
             {
                 choiceCards[i].GetComponent<SpriteRenderer>().color += Color.black * alpha * (choiceCards[i].curSelectCard == null ? 0.5f : 1);
@@ -107,6 +128,8 @@ public class SkillBookPage : MonoBehaviour
         }
         if (isHide)
             this.gameObject.SetActive(false);
+        else
+            applyButton.SetButtonActive(false);
     }
 
 }
