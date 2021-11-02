@@ -130,6 +130,7 @@ public class RewardManager : MonoBehaviour
         SetTitleText("보상");
         int questionCard = Random.Range(0, 2) == 0 ? 1 : 0;
         int cardPiece = Random.Range(20, 40);
+        cardPiece += 4 - ((cardPiece % 4) == 0 ? 4 : (cardPiece % 4));
         if (questionCard == 1)
             AddReward(REWARD_TYPE.REWARD, (int)EVENT_REWARD_TYPE.QUESTION_CARD, questionCard);
         AddReward(REWARD_TYPE.REWARD, (int)EVENT_REWARD_TYPE.CARD_PIECE, cardPiece);
@@ -205,11 +206,10 @@ public class RewardManager : MonoBehaviour
                 {
                     case EVENT_REWARD_TYPE.CARD:
                         CardManager.Inst.AddCardDeck(reward.rewardData.index, reward.rewardData.index2);
-                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.NUM_CARD, reward.transform.position, TopBar.Inst.GetIcon(TOPBAR_TYPE.BAG).transform.position, null, 1, 1, reward.rewardData.index);
+                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.NUM_CARD, reward.transform.position, TopBar.Inst.GetIcon(TOPBAR_TYPE.BAG).transform.position, null, 1, reward.rewardData.index2, reward.rewardData.index);
                         break;
                     case EVENT_REWARD_TYPE.CARD_PIECE:
-                        //PlayerManager.Inst.card_piece += reward.rewardData.index;
-                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.CARD_PIECE, reward.transform.position, TopBar.Inst.GetIcon(TOPBAR_TYPE.CARDPIECE).transform.position, null, 1, 1, reward.rewardData.index);
+                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.CARD_PIECE, reward.transform.position, TopBar.Inst.GetIcon(TOPBAR_TYPE.CARDPIECE).transform.position, null, 1, reward.rewardData.index / 4, 4);
                         break;
                     case EVENT_REWARD_TYPE.HP:
                         PlayerManager.Inst.hp += reward.rewardData.index;
@@ -217,7 +217,6 @@ public class RewardManager : MonoBehaviour
                     case EVENT_REWARD_TYPE.DRAW:
                         break;
                     case EVENT_REWARD_TYPE.QUESTION_CARD:
-                        //PlayerManager.Inst.question_card += reward.rewardData.index;
                         ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.QUESTION_CARD, reward.transform.position, TopBar.Inst.GetIcon(TOPBAR_TYPE.QUESTION).transform.position, null, 1, 1, reward.rewardData.index);
                         break;
                 }

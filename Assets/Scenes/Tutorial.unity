@@ -179,6 +179,9 @@ MonoBehaviour:
   limitNum: 0
   isHideButton: 0
   isQuestionMark: 0
+  isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!61 &5937390
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -979,6 +982,9 @@ MonoBehaviour:
   limitNum: 0
   isHideButton: 0
   isQuestionMark: 0
+  isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!1 &58925466
 GameObject:
   m_ObjectHideFlags: 0
@@ -1356,6 +1362,9 @@ MonoBehaviour:
   limitNum: 0
   isHideButton: 0
   isQuestionMark: 0
+  isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!222 &64486810
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1876,8 +1885,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 82018258}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.55, y: 2.04, z: 0}
-  m_LocalScale: {x: 0.29226658, y: 0.29226658, z: 0.29226658}
+  m_LocalPosition: {x: -4.65, y: 1.97, z: 0}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1350080682}
   m_RootOrder: 2
@@ -1921,7 +1930,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 120
-  m_Sprite: {fileID: 21300000, guid: 8fb4bdd5f1d9a34469983736720944e7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 224c33a896d82894e95a32203e6e7d6c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
@@ -1949,14 +1958,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.09, y: 5.47}
+    oldSize: {x: 0.39, y: 0.5}
     newSize: {x: 6.09, y: 5.47}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.09, y: 5.47}
+  m_Size: {x: 0.39, y: 0.5}
   m_EdgeRadius: 0
 --- !u!114 &82018262
 MonoBehaviour:
@@ -2032,6 +2041,9 @@ MonoBehaviour:
   limitNum: 0
   isHideButton: 0
   isQuestionMark: 0
+  isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!222 &88976729
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3203,6 +3215,9 @@ MonoBehaviour:
   limitNum: 0
   isHideButton: 0
   isQuestionMark: 0
+  isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!61 &132114900
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5784,6 +5799,9 @@ MonoBehaviour:
   limitNum: 0
   isHideButton: 0
   isQuestionMark: 0
+  isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!61 &275494575
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6153,13 +6171,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: " 2\uAC1C\uC758 \uCE74\uB4DC\uB97C \uC120\uD0DD\uD558\uC5EC \uCCAB \uBC88\uC9F8
-    \uCE74\uB4DC\uC758 \uC22B\uC790\uB97C N\uB9CC\uD07C \uC99D\uAC00\uC2DC\uD0A4\uBA74
-    \uB450\uBC88\uC9F8 \uCE74\uB4DC\uC758 \uC22B\uC790\uB294 N\uB9CC\uD07C \uAC10\uC18C\uB41C\uB2E4.
-    \n \uB9CC\uC57D \uCCAB \uBC88\uC9F8 \uCE74\uB4DC\uC758 \uC22B\uC790\uB97C N\uB9CC\uD07C
-    \uAC10\uC18C\uC2DC\uD0A4\uBA74 \uB450\uBC88\uC9F8 \uCE74\uB4DC\uC758 \uC22B\uC790\uAC00
-    N\uB9CC\uD07C \uC99D\uAC00\uD55C\uB2E4.\n\n\uC8FC\uC758\uC0AC\uD56D : \uCE74\uB4DC\uC758
-    \uC22B\uC790\uB294 1\uBCF4\uB2E4 \uC791\uC544\uC9C0\uB358\uAC00 6\uBCF4\uB2E4
-    \uCEE4\uC9C8 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4."
+    \uCE74\uB4DC\uC758 \uC22B\uC790\uB97C N\uB9CC\uD07C \uAC10\uC18C\uC2DC\uD0A4\uBA74
+    \uB450 \uBC88\uC9F8 \uCE74\uB4DC\uC758 \uC22B\uC790\uB294 N\uB9CC\uD07C \uC99D\uAC00\uD55C\uB2E4.
+    \n \uB9CC\uC57D \uB450 \uBC88\uC9F8 \uCE74\uB4DC\uC758 \uC22B\uC790\uAC00 6\uC5D0
+    \uB3C4\uB2EC\uD558\uAC8C \uB418\uBA74 \uB354\uB294 \uCCAB \uBC88\uC9F8 \uCE74\uB4DC\uC758
+    \uC22B\uC790\uB97C \uB0B4\uB9B4\uC218\uAC00 \uC5C6\uB2E4.\n\n\uC8FC\uC758\uC0AC\uD56D
+    : \uCE74\uB4DC\uC758 \uC22B\uC790\uB294 1\uBCF4\uB2E4 \uC791\uC544\uC9C0\uB358\uAC00
+    6\uBCF4\uB2E4 \uCEE4\uC9C8 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4. \uCE74\uB4DC\uB97C
+    \uD574\uC81C\uD558\uBA74 \uB2E4\uB978 \uCE74\uB4DC\uB3C4 \uAC19\uC774 \uD574\uC81C\uB429\uB2C8\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -6640,6 +6659,9 @@ MonoBehaviour:
   limitNum: 0
   isHideButton: 0
   isQuestionMark: 0
+  isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!61 &314356614
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8871,6 +8893,9 @@ MonoBehaviour:
   limitNum: 0
   isHideButton: 0
   isQuestionMark: 0
+  isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!61 &448736432
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9016,6 +9041,9 @@ MonoBehaviour:
   limitNum: 0
   isHideButton: 0
   isQuestionMark: 0
+  isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!222 &449846544
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9311,6 +9339,9 @@ MonoBehaviour:
   limitNum: 0
   isHideButton: 0
   isQuestionMark: 0
+  isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!222 &460593193
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10533,6 +10564,9 @@ MonoBehaviour:
   limitNum: 0
   isHideButton: 0
   isQuestionMark: 0
+  isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!222 &561772417
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11452,6 +11486,9 @@ MonoBehaviour:
   limitNum: 0
   isHideButton: 0
   isQuestionMark: 0
+  isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!222 &633023139
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20514,6 +20551,9 @@ MonoBehaviour:
   limitNum: 0
   isHideButton: 0
   isQuestionMark: 0
+  isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!61 &1226860996
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20832,6 +20872,9 @@ MonoBehaviour:
   limitNum: 0
   isHideButton: 0
   isQuestionMark: 0
+  isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!61 &1235616738
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21150,6 +21193,9 @@ MonoBehaviour:
   limitNum: 0
   isHideButton: 0
   isQuestionMark: 0
+  isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!61 &1250520447
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21295,6 +21341,9 @@ MonoBehaviour:
   limitNum: 0
   isHideButton: 0
   isQuestionMark: 0
+  isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!222 &1252529927
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -25474,6 +25523,9 @@ MonoBehaviour:
   limitNum: 0
   isHideButton: 0
   isQuestionMark: 0
+  isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!61 &1402446268
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26677,6 +26729,9 @@ MonoBehaviour:
   limitNum: 0
   isHideButton: 0
   isQuestionMark: 0
+  isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!1 &1478440877
 GameObject:
   m_ObjectHideFlags: 0
@@ -27468,6 +27523,9 @@ MonoBehaviour:
   limitNum: 0
   isHideButton: 0
   isQuestionMark: 0
+  isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!61 &1529701397
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28805,6 +28863,9 @@ MonoBehaviour:
   limitNum: 0
   isHideButton: 0
   isQuestionMark: 0
+  isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!222 &1580620785
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -29283,6 +29344,9 @@ MonoBehaviour:
   limitNum: 0
   isHideButton: 0
   isQuestionMark: 0
+  isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!61 &1631461063
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29849,6 +29913,9 @@ MonoBehaviour:
   limitNum: 0
   isHideButton: 0
   isQuestionMark: 0
+  isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!222 &1660412323
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -31462,8 +31529,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\uCD5C\uB300 3\uAC1C\uC758 \uCE74\uB4DC\uB97C \uC120\uD0DD\uD558\uC5EC
-    \uC120\uD0DD\uD55C \uBAA8\uB4E0 \uCE74\uB4DC\uC758 \uC22B\uC790\uB97C 1 \uB9CC\uD07C
-    \uC99D\uAC00\uC2DC\uD0A4\uAC70\uB098 \uAC10\uC18C\uC2DC\uD0AC \uC218 \uC788\uC2B5\uB2C8\uB2E4.\n\n\uC8FC\uC758\uC0AC\uD56D
+    \uC120\uD0DD\uD55C \uCE74\uB4DC\uC758 \uC22B\uC790\uB97C 1 \uB9CC\uD07C \uC99D\uAC00\uC2DC\uD0A4\uAC70\uB098
+    \uAC10\uC18C\uC2DC\uD0AC \uC218 \uC788\uC2B5\uB2C8\uB2E4.\n\n\uC8FC\uC758\uC0AC\uD56D
     : \uCE74\uB4DC\uC758 \uC22B\uC790\uB294 1\uBCF4\uB2E4 \uC791\uC544\uC9C0\uB358\uAC00
     6\uBCF4\uB2E4 \uCEE4\uC9C8 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4."
   m_isRightToLeft: 0
@@ -34925,6 +34992,9 @@ MonoBehaviour:
   limitNum: 0
   isHideButton: 0
   isQuestionMark: 0
+  isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!222 &2053094065
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -35572,7 +35642,8 @@ MonoBehaviour:
     \uCE74\uB4DC\uC758 \uC22B\uC790\uB97C \uB450 \uBC88\uC9F8\uC758 \uCE74\uB4DC
     \uC22B\uC790\uC5D0 \uBCF5\uC0AC\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.\n\n\uC8FC\uC758\uC0AC\uD56D
     : \uCE74\uB4DC\uC758 \uC22B\uC790\uB294 1\uBCF4\uB2E4 \uC791\uC544\uC9C0\uB358\uAC00
-    6\uBCF4\uB2E4 \uCEE4\uC9C8 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4."
+    6\uBCF4\uB2E4 \uCEE4\uC9C8 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4. \uCE74\uB4DC\uB97C
+    \uD574\uC81C\uD558\uBA74 \uB2E4\uB978 \uCE74\uB4DC\uB3C4 \uAC19\uC774 \uD574\uC81C\uB429\uB2C8\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -35909,6 +35980,9 @@ MonoBehaviour:
   limitNum: 0
   isHideButton: 0
   isQuestionMark: 0
+  isApplyButtonOn: 0
+  isShowDownButton: 0
+  isSecondMaxNum: 0
 --- !u!222 &2102395808
 CanvasRenderer:
   m_ObjectHideFlags: 0

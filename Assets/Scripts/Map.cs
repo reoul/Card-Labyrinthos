@@ -36,29 +36,32 @@ public class Map : MonoBehaviour
             if (isMoveCamera)
             {
                 Vector3 movePos = Camera.main.ScreenToWorldPoint(Input.mousePosition) - lastMousePos;
+                Debug.Log(movePos);
                 if (movePos != Vector3.zero)
                 {
-                    if (Camera.main.transform.position.x - movePos.x < -23.57998f)
+                    this.transform.parent.position += movePos;
+                    movePos = Vector3.zero;
+                    if (this.transform.parent.position.x > 25.59731f)
                     {
-                        float _x = Camera.main.transform.position.x - movePos.x + 23.57998f;
-                        movePos.x += _x;
+                        float _x = this.transform.parent.position.x - 25.59731f;
+                        movePos.x -= _x;
                     }
-                    if (Camera.main.transform.position.x - movePos.x > 20.03997f)
+                    if (this.transform.parent.position.x < -20.29902f)
                     {
-                        float _x = Camera.main.transform.position.x - movePos.x - 20.03997f;
-                        movePos.x += _x;
+                        float _x = this.transform.parent.position.x + 20.29902f;
+                        movePos.x -= _x;
                     }
-                    if (Camera.main.transform.position.y - movePos.y > 18.55997f)
+                    if (this.transform.parent.position.y > 19.7925f)
                     {
-                        float _y = Camera.main.transform.position.y - movePos.y - 18.55997f;
-                        movePos.y += _y;
+                        float _y = this.transform.parent.position.y - 19.7925f;
+                        movePos.y -= _y;
                     }
-                    if (Camera.main.transform.position.y - movePos.y < -18.05999f)
+                    if (this.transform.parent.position.y < -19.6774f)
                     {
-                        float _y = Camera.main.transform.position.y - movePos.y + 18.05999f;
-                        movePos.y += _y;
+                        float _y = this.transform.parent.position.y + 19.6774f;
+                        movePos.y -= _y;
                     }
-                    MoveUI(movePos);
+                    this.transform.parent.position += movePos;
                     lastMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 }
             }

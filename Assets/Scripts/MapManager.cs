@@ -154,7 +154,7 @@ public class MapManager : MonoBehaviour
                 break;
             case FIELD_TYPE.MAP:
                 StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null,
-                    FieldClearCheckCorutine()));
+                    FieldClearCheckCorutine(), InitSkillTime()));
                 break;
             case FIELD_TYPE.BOSS:
                 StartCoroutine(FadeManager.Inst.FadeInOut(TurnManager.Inst.ShowDebuffCorutine(), null, null,
@@ -189,6 +189,15 @@ public class MapManager : MonoBehaviour
                     fields[i].surroundingObj.Add(fields[j].gameObject);
             }
             fields[i].UpdateClearImage();
+        }
+        yield return null;
+    }
+
+    public IEnumerator InitSkillTime()
+    {
+        for (int i = 0; i < SkillManager.Inst.isUseSkill.Length; i++)
+        {
+            SkillManager.Inst.isUseSkill[i] = false;
         }
         yield return null;
     }

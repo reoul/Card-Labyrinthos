@@ -15,6 +15,8 @@ public class SkillBookCardButton : MonoBehaviour
 
     [SerializeField] TYPE type;
 
+    int flag = 0;
+
     private void OnMouseUp()
     {
         if (onButton && isActive)

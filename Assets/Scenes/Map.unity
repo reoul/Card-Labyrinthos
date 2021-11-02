@@ -635,6 +635,7 @@ MonoBehaviour:
   parent: {fileID: 1777874377}
   onButton: 0
   index: 0
+  isActive: 1
   type: 0
 --- !u!212 &96980883
 SpriteRenderer:
@@ -3031,6 +3032,7 @@ MonoBehaviour:
   parent: {fileID: 1178113434}
   onButton: 0
   index: 0
+  isActive: 1
   type: 1
 --- !u!212 &280430814
 SpriteRenderer:
@@ -4783,6 +4785,7 @@ MonoBehaviour:
   parent: {fileID: 0}
   onButton: 0
   index: 0
+  isActive: 1
   type: 2
 --- !u!61 &429825232
 BoxCollider2D:
@@ -7464,6 +7467,7 @@ MonoBehaviour:
   parent: {fileID: 1178113434}
   onButton: 0
   index: 0
+  isActive: 1
   type: 0
 --- !u!212 &593964282
 SpriteRenderer:
@@ -8082,8 +8086,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 684804332}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalPosition: {x: -0.2949328, y: 0.6591674, z: 297.88974}
+  m_LocalScale: {x: 0.06666667, y: 0.06666667, z: 1}
   m_Children:
   - {fileID: 372542290}
   - {fileID: 267222885}
@@ -8115,8 +8119,8 @@ Transform:
   - {fileID: 264632897}
   - {fileID: 825940109}
   - {fileID: 129177221}
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_Father: {fileID: 1324392123}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &687810299
 GameObject:
@@ -8937,6 +8941,10 @@ MonoBehaviour:
   frontCard: {fileID: 1777874375}
   curSelectCard: {fileID: 0}
   cardButtons: []
+  limitNum: 0
+  isHideButton: 0
+  isQuestionMark: 0
+  isApplyButtonOn: 0
 --- !u!1 &786261940
 GameObject:
   m_ObjectHideFlags: 0
@@ -9770,6 +9778,10 @@ MonoBehaviour:
   cardButtons:
   - {fileID: 1175720916}
   - {fileID: 1857375132}
+  limitNum: 0
+  isHideButton: 0
+  isQuestionMark: 0
+  isApplyButtonOn: 0
 --- !u!222 &859643731
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13977,6 +13989,7 @@ MonoBehaviour:
   parent: {fileID: 859643729}
   onButton: 0
   index: 0
+  isActive: 1
   type: 0
 --- !u!212 &1175720917
 SpriteRenderer:
@@ -14112,6 +14125,10 @@ MonoBehaviour:
   cardButtons:
   - {fileID: 593964281}
   - {fileID: 280430813}
+  limitNum: 0
+  isHideButton: 0
+  isQuestionMark: 0
+  isApplyButtonOn: 0
 --- !u!222 &1178113436
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15023,11 +15040,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pages: []
+  bookmarks: []
   choiceCards: []
   applyCards:
   - {fileID: 1777874377}
   - {fileID: 859643729}
   - {fileID: 1178113434}
+  skillXObjs: []
+  isUseSkill: 
 --- !u!1 &1252053031
 GameObject:
   m_ObjectHideFlags: 0
@@ -16293,6 +16313,7 @@ Transform:
   - {fileID: 1941270515}
   - {fileID: 1654166895}
   - {fileID: 622092144}
+  - {fileID: 684804333}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16582,6 +16603,7 @@ MonoBehaviour:
   parent: {fileID: 1777874377}
   onButton: 0
   index: 0
+  isActive: 1
   type: 1
 --- !u!212 &1372695353
 SpriteRenderer:
@@ -20865,6 +20887,10 @@ MonoBehaviour:
   cardButtons:
   - {fileID: 96980882}
   - {fileID: 1372695352}
+  limitNum: 0
+  isHideButton: 0
+  isQuestionMark: 0
+  isApplyButtonOn: 0
 --- !u!222 &1777874379
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21840,6 +21866,7 @@ MonoBehaviour:
   parent: {fileID: 859643729}
   onButton: 0
   index: 0
+  isActive: 1
   type: 1
 --- !u!212 &1857375133
 SpriteRenderer:
@@ -23119,6 +23146,10 @@ MonoBehaviour:
   frontCard: {fileID: 1178113432}
   curSelectCard: {fileID: 0}
   cardButtons: []
+  limitNum: 0
+  isHideButton: 0
+  isQuestionMark: 0
+  isApplyButtonOn: 0
 --- !u!61 &1912152378
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25138,6 +25169,10 @@ MonoBehaviour:
   frontCard: {fileID: 859643727}
   curSelectCard: {fileID: 0}
   cardButtons: []
+  limitNum: 0
+  isHideButton: 0
+  isQuestionMark: 0
+  isApplyButtonOn: 0
 --- !u!1 &2099234737
 GameObject:
   m_ObjectHideFlags: 0

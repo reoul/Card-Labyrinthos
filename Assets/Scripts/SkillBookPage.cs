@@ -57,18 +57,21 @@ public class SkillBookPage : MonoBehaviour
                 break;
             case SKILL_TYPE.SKILL2:     //-n +n
                 applyCards[1].isHideButton = true;
+                applyCards[0].isShowDownButton = true;
                 break;
             case SKILL_TYPE.SKILL3:     //원하는 숫자로 카드 한장 바꾸기
                 break;
-            case SKILL_TYPE.SKILL4:     //최대 3장 선택 후 전부 +1 -1
+            case SKILL_TYPE.SKILL4:     //최대 3장 선택 후 +1 -1
                 for (int i = 0; i < applyCards.Count; i++)
-                    applyCards[i].isHideButton = true;
+                {
+                    applyCards[i].limitNum = 1;
+                }
                 break;
             case SKILL_TYPE.SKILL5:     //손패에 있는 카드 한장을 다른 카드에 복제
                 for (int i = 0; i < applyCards.Count; i++)
                 {
                     applyCards[i].isHideButton = true;
-                    applyCards[i].isApplyButtonOn = true;
+                    //applyCards[i].isApplyButtonOn = true;
                 }
                 break;
             case SKILL_TYPE.SKILL6:     //최대 3장 선택후 랜덤 숫자로 변경
@@ -131,5 +134,4 @@ public class SkillBookPage : MonoBehaviour
         else
             applyButton.SetButtonActive(false);
     }
-
 }

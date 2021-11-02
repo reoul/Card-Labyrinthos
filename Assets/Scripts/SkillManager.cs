@@ -9,7 +9,7 @@ public class SkillManager : MonoBehaviour
 
     public static SkillManager Inst = null;
     bool isOpen = false;
-    int page = 0;
+    [SerializeField] int page = 0;
 
     public List<SkillBookPage> pages;
     public List<SkillBookCardButton> bookmarks;
@@ -60,12 +60,15 @@ public class SkillManager : MonoBehaviour
     public void Close()      //스킬창 여는 것
     {
         InitCard();
+        pages[page].gameObject.SetActive(false);
         transform.GetChild(0).gameObject.SetActive(false);
         isOpen = false;
     }
 
     public void SetCard(SkillBookCard skillBookCard, Card card)
     {
+        if (isUseSkill[page])
+            return;
         for (int i = 0; i < choiceCards.Count; i++)
         {
             if (choiceCards[i].curSelectCard == card)
