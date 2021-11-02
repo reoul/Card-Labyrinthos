@@ -29,7 +29,7 @@ public class ShopItem : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (onItem && !FadeManager.Inst.isActiveFade)
+        if (onItem && !FadeManager.Inst.isActiveFade && !isMax)
             if (PlayerManager.Inst.card_piece >= item.price || PlayerManager.Inst.question_card > 0)
                 ShopManager.Inst.Click(this);
     }

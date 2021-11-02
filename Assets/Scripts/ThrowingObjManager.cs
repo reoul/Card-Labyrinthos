@@ -73,7 +73,7 @@ public class ThrowingObjManager : MonoBehaviour
                 throwingRewardObj.Remove(throwingObj);
                 Destroy(throwingObj);
             });
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.07f);
         }
     }
 

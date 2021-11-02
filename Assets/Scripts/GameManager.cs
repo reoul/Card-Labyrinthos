@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
         {
             GameObject obj = GameObject.Instantiate(hitObj, pos + new Vector3(0, 0, -15), Quaternion.identity);
             Destroy(obj, 1);
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.07f);
         }
     }
 
