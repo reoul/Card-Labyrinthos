@@ -1057,7 +1057,7 @@ MonoBehaviour:
       type: 3}
     skillbook_cardNumUpDown: {fileID: 8300000, guid: a43aaa539ae201e418e88f6a39c49279,
       type: 3}
-    skillbook_turnPage: {fileID: 8300000, guid: 3fab98eb63d5ff84595fc4157fe400be,
+    skillbook_turnPage: {fileID: 8300000, guid: 7efba82c4ab2dfb418944cf1e584254f,
       type: 3}
     map_choiceField: {fileID: 8300000, guid: 98fd764aa366edc45b6796ae65819dcf, type: 3}
     map_openDebuffWindow: {fileID: 8300000, guid: 6eff6399388621442828caeee21406e1,
@@ -1073,27 +1073,27 @@ MonoBehaviour:
     battle_turnEnd: {fileID: 0}
     battle_gameWin: {fileID: 8300000, guid: 5dfb138adc8e5d54ba836d36142f8327, type: 3}
     battle_gameFaild: {fileID: 8300000, guid: d8c5d7ea8fed79245a7156a840d64df9, type: 3}
-    event_choiceMouseUp: {fileID: 8300000, guid: 6b5fff80991639c4285eefda829ebbf4,
+    event_choiceMouseUp: {fileID: 8300000, guid: b7bed338662d7b441ac4899d494eec0c,
       type: 3}
     event_choiceButton: {fileID: 8300000, guid: 98fd764aa366edc45b6796ae65819dcf,
       type: 3}
     shop_buyitem: {fileID: 8300000, guid: cbbb57d57eb9d7d46abf1599836ffe17, type: 3}
-    shop_soldOut: {fileID: 8300000, guid: 5f4290e552f76f34d87a64fa1815aa37, type: 3}
+    shop_soldOut: {fileID: 8300000, guid: c87b8ab418073804ca59edcab1f6eea2, type: 3}
     shop_throwingObj: {fileID: 8300000, guid: 83570876cf494f847b76888bbe445145, type: 3}
     shop_inTopBarIcon: {fileID: 8300000, guid: 6ec9621e1603ffa498296ae02ba317d0, type: 3}
     reward_showRewardWindow: {fileID: 8300000, guid: 3adbdae45983f0847877ce14f37835c1,
       type: 3}
-    reward_getQuestion: {fileID: 8300000, guid: 9b0619c0342376748bfc567f1f66c522,
+    reward_getQuestion: {fileID: 8300000, guid: b0b869c162cf4144e8d0e512bb1e368f,
       type: 3}
     reward_getCardPiece: {fileID: 8300000, guid: f6dde864535a84742966eb3280be4dca,
       type: 3}
     reward_lostHeal: {fileID: 8300000, guid: 3aa4170be92e2e448a106275f8f5b440, type: 3}
-    reward_showRewardButton: {fileID: 8300000, guid: c8b44a424470d7c438972ad2a07b1db5,
+    reward_showRewardButton: {fileID: 8300000, guid: 546f0518a5802a441bb1773940404e4e,
       type: 3}
     card_upCard: {fileID: 8300000, guid: fec7509a762fdbf49950eaf1cbf20e1e, type: 3}
     card_goback: {fileID: 0}
     card_shuffling: {fileID: 8300000, guid: 2cbfa6cd75ccc2440aced5848446d0c9, type: 3}
-    rest_heal: {fileID: 8300000, guid: 4f38f08b558ee9d48b7363ebb5e9b692, type: 3}
+    rest_heal: {fileID: 8300000, guid: 1ad19e42f5b162046a854c104a9c066a, type: 3}
     debuff_openbar: {fileID: 8300000, guid: 9484ac869b292f649b6994c92036e3af, type: 3}
     debuff_closebar: {fileID: 8300000, guid: 6fe13bd34d83f5c4fba406cc4d641868, type: 3}
   BackGroundAudio:
