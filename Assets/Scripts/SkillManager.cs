@@ -10,6 +10,7 @@ public class SkillManager : MonoBehaviour
     int page = 0;
 
     public List<SkillBookPage> pages;
+    public List<SkillBookCardButton> bookmarks;
     public List<SkillBookCard> choiceCards;
     public List<SkillBookCard> applyCards;
 
@@ -99,13 +100,18 @@ public class SkillManager : MonoBehaviour
         {
             if (pages[i].gameObject.activeInHierarchy)
             {
+                if (i == index)
+                    return;
                 pages[i].Init();
                 pages[i].gameObject.SetActive(false);
                 break;
             }
         }
-        pages[index].gameObject.SetActive(true);
-        pages[index].Show();
+        bookmarks[page].transform.localPosition += new Vector3(-0.09158f, 0, 0);
+        page = index;
+        bookmarks[page].transform.localPosition += new Vector3(0.09158f, 0, 0);
+        pages[page].gameObject.SetActive(true);
+        pages[page].Show();
     }
 
     public void InitCard()

@@ -13808,7 +13808,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\uBBF8\uAD81\uC5D0\uC11C \uAE68\uC5B4\uB09C \uD50C\uB808\uC774\uC5B4.
-    \uC8FC\uBCC0\uC5D0\uB294 \uC8FD\uC740 \uC624\uB798\uB418\uC5B4 \uBCF4\uC774\uB294
+    \uC8FC\uBCC0\uC5D0\uB294 \uC8FD\uC740\uC9C0 \uC624\uB798\uB418\uC5B4 \uBCF4\uC774\uB294
     \uD574\uACE8\uC774 \uC788\uC5C8\uB2E4. \uADF8 \uC606\uC5D0\uB294 \uCE74\uB4DC
     \uBB49\uCE58\uC640 \uC218\uCCA9 \uD558\uB098\uAC00 \uC788\uC5C8\uB2E4."
   m_isRightToLeft: 0
@@ -28111,6 +28111,13 @@ MonoBehaviour:
   - {fileID: 1378894348}
   - {fileID: 128954853}
   - {fileID: 1040393272}
+  bookmarks:
+  - {fileID: 1083399344}
+  - {fileID: 866029075}
+  - {fileID: 301515951}
+  - {fileID: 158407089}
+  - {fileID: 188316916}
+  - {fileID: 167778611}
   choiceCards: []
   applyCards: []
 --- !u!4 &1576698070
