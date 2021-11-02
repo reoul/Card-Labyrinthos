@@ -76,6 +76,9 @@ public class CardManager : MonoBehaviour
                 CardDrag();
             DetectCardArea();
         }
+
+        if (Input.GetKeyDown(KeyCode.A))
+            SoundManager.Inst.Play(BATTLESOUND.HIT);
     }
 
     public Card PopItem()   //카드 뽑기
@@ -233,6 +236,7 @@ public class CardManager : MonoBehaviour
 
     public void AddCard()           //카드 추가(카드 드로우시 사용)
     {
+        SoundManager.Inst.Play(BATTLESOUND.CARD_DRAW);
         Card card = PopItem();
         card.parent.gameObject.SetActive(true);
         card.SetActiveChildObj(true);

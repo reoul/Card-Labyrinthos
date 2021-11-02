@@ -8,7 +8,7 @@ public class IntroManager : MonoBehaviour
 
     private void Start()
     {
-        SoundManager.Inst.BackGroundPlay(BACKGROUNDSOUND.INTRO);
+        SoundManager.Inst.Play(BACKGROUNDSOUND.INTRO);
     }
 
     void OnMouseEnter()

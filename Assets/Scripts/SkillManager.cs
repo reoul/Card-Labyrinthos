@@ -3,14 +3,24 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+public enum SKILL_TYPE { SKILL1, SKILL2, SKILL3, SKILL4, SKILL5, SKILL6 }
 public class SkillManager : MonoBehaviour
 {
+
     public static SkillManager Inst = null;
     bool isOpen = false;
+    int page = 0;
 
     public List<SkillBookPage> pages;
+    public List<SkillBookCardButton> bookmarks;
     public List<SkillBookCard> choiceCards;
     public List<SkillBookCard> applyCards;
+
+    public List<GameObject> skillXObjs;
+    public bool[] isUseSkill;
+
+    public SkillBookPage ActivePage { get { return pages[page]; } }
+    public int ActivePageIndex { get { return page; } }
 
     private void Awake()
     {
@@ -28,6 +38,10 @@ public class SkillManager : MonoBehaviour
     public void Init()
     {
         this.transform.position = new Vector3(0, 0, -2);
+        for (int i = 0; i < skillXObjs.Count; i++)
+        {
+
+        }
     }
 
     public void Open()      //스킬창 여는 것
@@ -40,6 +54,7 @@ public class SkillManager : MonoBehaviour
         GameManager.Inst.CloseAllUI();
         isOpen = true;
         transform.GetChild(0).gameObject.SetActive(true);
+        SelectPage(page);
     }
 
     public void Close()      //스킬창 여는 것
@@ -62,8 +77,8 @@ public class SkillManager : MonoBehaviour
             }
         }
         skillBookCard.frontCard.SetActive(true);
-        skillBookCard.curNum = card.final_Num;
-        skillBookCard.frontCard.GetComponent<SkillBookCard>().curNum = card.final_Num;
+        skillBookCard.originNum = card.final_Num;
+        skillBookCard.frontCard.GetComponent<SkillBookCard>().originNum = skillBookCard.frontCard.GetComponent<SkillBookCard>().isQuestionMark ? RandomNum(card.final_Num) : card.final_Num;
         skillBookCard.SetColorAlpha(false);
         skillBookCard.GetComponentInChildren<TMP_Text>().text = (card.final_Num + 1).ToString();
         if (skillBookCard.curSelectCard == null)
@@ -81,6 +96,16 @@ public class SkillManager : MonoBehaviour
         }
     }
 
+    int RandomNum(int num)
+    {
+        int result = 0;
+        do
+        {
+            result = Random.Range(0, 6);
+        } while (num == result);
+        return result;
+    }
+
     public void ApplyCardAll()
     {
         for (int i = 0; i < applyCards.Count; i++)
@@ -88,13 +113,28 @@ public class SkillManager : MonoBehaviour
             if (applyCards[i].gameObject.activeInHierarchy)
                 applyCards[i].curSelectCard.SetFinalNum(applyCards[i].curNum);
         }
+        UseSkill(true);
         InitCard();
     }
 
     public void SelectPage(int index)
     {
-        pages[index].gameObject.SetActive(true);
-        pages[index].Show();
+        for (int i = 0; i < pages.Count; i++)
+        {
+            if (pages[i].gameObject.activeInHierarchy)
+            {
+                if (i == index)
+                    return;
+                pages[i].Init();
+                pages[i].gameObject.SetActive(false);
+                break;
+            }
+        }
+        bookmarks[page].transform.localPosition += new Vector3(-0.09158f, 0, 0);
+        page = index;
+        bookmarks[page].transform.localPosition += new Vector3(0.09158f, 0, 0);
+        pages[page].gameObject.SetActive(true);
+        pages[page].Show();
     }
 
     public void InitCard()
@@ -111,5 +151,11 @@ public class SkillManager : MonoBehaviour
             choiceCards[i].SetColorAlpha(true);
             choiceCards[i].GetComponentInChildren<TMP_Text>().text = "+";
         }
+    }
+
+    public void UseSkill(bool use)
+    {
+        isUseSkill[page] = use;
+        skillXObjs[page].SetActive(use);
     }
 }

@@ -8,7 +8,7 @@ public class Rest : MonoBehaviour
 
     private void Start()
     {
-        SoundManager.Inst.BackGroundPlay(BACKGROUNDSOUND.REST);
+        SoundManager.Inst.Play(BACKGROUNDSOUND.REST);
     }
 
     void OnMouseEnter()
