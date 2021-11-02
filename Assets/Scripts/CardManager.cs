@@ -130,6 +130,7 @@ public class CardManager : MonoBehaviour
             Card temp = tombItemBuffer[i];
             tombItemBuffer[i] = tombItemBuffer[rand];
             tombItemBuffer[rand] = temp;
+            tombItemBuffer[i].RevertOriginNum();
         }
     }
 

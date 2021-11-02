@@ -33,6 +33,11 @@ public class Card : MonoBehaviour
         UpdateNumTMP();
     }
 
+    public void RevertOriginNum()
+    {
+        final_Num = original_Num;
+    }
+
     public void UpdateNumTMP()
     {
         num_TMP.text = (final_Num + 1).ToString();

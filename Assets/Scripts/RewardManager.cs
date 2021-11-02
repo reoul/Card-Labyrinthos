@@ -139,6 +139,7 @@ public class RewardManager : MonoBehaviour
 
     public void SetRandomBattleDebuff()
     {
+        HelpManager.Inst.ShowHelp(HELP_TYPE.DEBUFFE);
         SoundManager.Inst.Play(MAPSOUND.OPEN_DEBUFFWINDOW);
         SetTitleText("저주");
         int[] choices = new int[3];      //랜덤으로 선택된 3개의 디버프

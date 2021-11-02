@@ -39,6 +39,7 @@ public class TutorialManager : MonoBehaviour
         yield return StartCoroutine(CardManager.Inst.InitCorutine());
         yield return StartCoroutine(TurnManager.Inst.StartGameCorutine());
         yield return StartCoroutine(StageManager.Inst.CreateStageInTutorial());
+        HelpManager.Inst.ShowHelp(HELP_TYPE.BATTLE);
         //RewardManager.Inst.SetFinishBattleReward();
         //yield return StartCoroutine(RewardManager.Inst.ShowRewardWindowCorutine(false));
         //yield return StartCoroutine(RewardManager.Inst.RewardCorutine());

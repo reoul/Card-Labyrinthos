@@ -47,6 +47,7 @@ public class SkillManager : MonoBehaviour
             Close();
             return;
         }
+        HelpManager.Inst.ShowHelp(HELP_TYPE.SKILL);
         SoundManager.Inst.Play(SKILLBOOKSOUND.OPEN_BOOK);
         GameManager.Inst.CloseAllUI();
         isOpen = true;

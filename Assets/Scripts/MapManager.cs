@@ -209,6 +209,7 @@ public class MapManager : MonoBehaviour
 
     public IEnumerator InitSkillTime()
     {
+        HelpManager.Inst.ShowHelp(HELP_TYPE.MAP);
         SkillManager.Inst.InitSkillTime();
         Debug.Log("adsfdsfa");
         yield return null;

@@ -14,6 +14,7 @@ public class ShopManager : MonoBehaviour
 
     private void Start()
     {
+        HelpManager.Inst.ShowHelp(HELP_TYPE.SHOP);
         SoundManager.Inst.Play(BACKGROUNDSOUND.SHOP);
         for (int i = 0; i < items.Count; i++)
         {

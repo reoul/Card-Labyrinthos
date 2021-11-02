@@ -90,6 +90,7 @@ public class EventManager : MonoBehaviour
         int rand = Random.Range(0, events.Count);
         events[rand].Init();
         events[rand].gameObject.SetActive(true);
+        HelpManager.Inst.ShowHelp(HELP_TYPE.EVENT);
         yield return null;
     }
 }
