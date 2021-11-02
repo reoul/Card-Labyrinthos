@@ -44,6 +44,7 @@ public class ThrowingObjManager : MonoBehaviour
     {
         for (int i = 0; i < cnt; i++)
         {
+            SoundManager.Inst.Play(SHOPSOUND.THROWINGOBJ);
             var throwingObj = Instantiate(GetThrowingObjPrefab(type), startPos, type == THROWING_OBJ_TYPE.NUM_CARD ? Utils.CardRotate : Quaternion.identity);
             throwingRewardObj.Add(throwingObj);
             if (type == THROWING_OBJ_TYPE.NUM_CARD)
@@ -57,11 +58,13 @@ public class ThrowingObjManager : MonoBehaviour
                     case THROWING_OBJ_TYPE.CARDBACK:
                         break;
                     case THROWING_OBJ_TYPE.CARD_PIECE:
+                        SoundManager.Inst.Play(REWARDSOUND.GETCARDPIECE);
                         PlayerManager.Inst.card_piece += index;
                         break;
                     case THROWING_OBJ_TYPE.NUM_CARD:
                         break;
                     case THROWING_OBJ_TYPE.QUESTION_CARD:
+                        SoundManager.Inst.Play(REWARDSOUND.GETQUESTION);
                         PlayerManager.Inst.question_card += index;
                         break;
                 }

@@ -24,18 +24,18 @@ public class Shop : MonoBehaviour
     }
 
 
-            public void OpenShop(bool isOpen)
-            {
-                shop.SetActive(isOpen);
-            }
+    public void OpenShop(bool isOpen)
+    {
+        shop.SetActive(isOpen);
+    }
 
-            public void CloseShop()
-            {
-                shop.SetActive(false);
-            }
+    public void CloseShop()
+    {
+        shop.SetActive(false);
+    }
 
-            // Start is called before the first frame update
-            void Start()
+    // Start is called before the first frame update
+    void Start()
     {
         closeShop.onClick.AddListener(CloseShop);
     }
@@ -43,9 +43,9 @@ public class Shop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-                if (Input.GetMouseButtonUp(0))
-                {
-                    RayShop();
-                }
-            }
+        if (Input.GetMouseButtonUp(0))
+        {
+            RayShop();
+        }
+    }
 }

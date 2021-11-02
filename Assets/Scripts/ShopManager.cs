@@ -25,6 +25,7 @@ public class ShopManager : MonoBehaviour
 
     public void Click(ShopItem shopItem)        //상점에서 해당 아이템 클릭했을때 보상 지급
     {
+        SoundManager.Inst.Play(SHOPSOUND.BUY);
         switch (shopItem.item.type)
         {
             case SHOPITEM_TYPE.CARD:

@@ -38,6 +38,7 @@ public class ShopItem : MonoBehaviour
     {
         if (!isMax && !FadeManager.Inst.isActiveFade)
         {
+            SoundManager.Inst.Play(EVENTSOUND.CHOICE_MOUSEUP);
             onItem = true;
             transform.localScale = originalScale + Vector3.one * 0.02f;
         }

@@ -72,8 +72,12 @@ public class TurnManager : MonoBehaviour
                 OnAddCard.Invoke();
                 yield return delay01;
             }
-            if (SceneManager.GetActiveScene().name == "Battle")
+            if (MapManager.Inst.CurrentSceneName == "전투" || MapManager.Inst.CurrentSceneName == "보스" || MapManager.Inst.CurrentSceneName == "알 수 없는 공간")
+            {
+                SoundManager.Inst.Play(BATTLESOUND.TURN_START);
                 GameManager.Inst.Notification("내 턴");
+            }
+
         }
         yield return delay07;
         isLoading = false;

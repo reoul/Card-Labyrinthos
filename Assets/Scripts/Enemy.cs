@@ -82,7 +82,6 @@ public class Enemy : MonoBehaviour
 
     public void Heal()
     {
-        SoundManager.Inst.Play(BATTLESOUND.HEAL);
         hpbar.Heal(pattenIndex);
     }
 
@@ -93,6 +92,7 @@ public class Enemy : MonoBehaviour
             int damage = Player.Inst.hpbar.sheld - pattenIndex + force;
             hpbar.Heal(damage < 0 ? Mathf.Abs(damage) : 0);
         }
+        SoundManager.Inst.Play(BATTLESOUND.HIT);
         Player.Inst.Damage(pattenIndex + force);
         pattenIndex = 0;
     }
@@ -136,6 +136,7 @@ public class Enemy : MonoBehaviour
         TurnManager.Inst.isFinish = true;
         if (EnemyManager.Inst.enemys.Count == 0)
         {
+            SoundManager.Inst.Play(BATTLESOUND.GAME_WIN);
             StartCoroutine(TurnManager.Inst.ShowReward());
             //CardManager.Inst.FinishBattle();
         }

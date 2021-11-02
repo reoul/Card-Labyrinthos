@@ -70,6 +70,11 @@ public class Card : MonoBehaviour
         this.parent.GetChild(2).gameObject.SetActive(isActive);
     }
 
+    private void OnMouseEnter()
+    {
+        SoundManager.Inst.Play(EVENTSOUND.CHOICE_MOUSEUP);
+    }
+
     void OnMouseOver()
     {
         CardManager.Inst.CardMouseOver(this);
