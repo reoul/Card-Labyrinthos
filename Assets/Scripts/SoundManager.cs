@@ -10,6 +10,7 @@ public enum EVENTSOUND { CHOICE_MOUSEUP, CHOICE_BUTTON }
 public enum SHOPSOUND { BUY, SOLDOUT, THROWINGOBJ, IN_TOPBAR_ICON }
 public enum REWARDSOUND { SHOW_REWARD_WINDOW, GETQUESTION, GETCARDPIECE, LOSTHEAL, SHOW_REWARD_BUTTON }
 public enum CARDSOUND { UP_CARD, GO_BACK }
+public enum RESTSOUND { HEAL }
 
 [System.Serializable]
 public class Sounds
@@ -52,6 +53,8 @@ public class Sounds
     [Header("카드")]
     public AudioClip card_upCard;
     public AudioClip card_goback;
+    [Header("휴식방")]
+    public AudioClip rest_heal;
 }
 public class SoundManager : MonoBehaviour
 {
@@ -108,6 +111,11 @@ public class SoundManager : MonoBehaviour
         SFXPlay(GetAudio(sound));
     }
     public void Play(CARDSOUND sound)
+    {
+        SFXPlay(GetAudio(sound));
+    }
+
+    public void Play(RESTSOUND sound)
     {
         SFXPlay(GetAudio(sound));
     }
@@ -290,6 +298,20 @@ public class SoundManager : MonoBehaviour
                 break;
             default:
                 clip = sounds.card_upCard;
+                break;
+        }
+        return clip;
+    }
+    public AudioClip GetAudio(RESTSOUND sound)
+    {
+        AudioClip clip;
+        switch (sound)
+        {
+            case RESTSOUND.HEAL:
+                clip = sounds.rest_heal;
+                break;
+            default:
+                clip = sounds.rest_heal;
                 break;
         }
         return clip;

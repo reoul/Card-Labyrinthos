@@ -1059,10 +1059,11 @@ MonoBehaviour:
     skillbook_turnPage: {fileID: 8300000, guid: 3fab98eb63d5ff84595fc4157fe400be,
       type: 3}
     map_choiceField: {fileID: 0}
-    map_openDebuffWindow: {fileID: 0}
+    map_openDebuffWindow: {fileID: 8300000, guid: 6eff6399388621442828caeee21406e1,
+      type: 3}
     map_choiceDebuff: {fileID: 8300000, guid: 94cae51fdaa9be040a8c405d2ef1bef7, type: 3}
     map_showDebuffButton: {fileID: 0}
-    battle_heal: {fileID: 0}
+    battle_heal: {fileID: 8300000, guid: 4f38f08b558ee9d48b7363ebb5e9b692, type: 3}
     battle_cardDraw: {fileID: 8300000, guid: 564a6ff0182a46549a380c96715defbe, type: 3}
     battle_sheld: {fileID: 8300000, guid: 0656574b4eff8844489d7845e8edabbc, type: 3}
     battle_hit: {fileID: 8300000, guid: 1ece262fff6119743acc6f9e1699eb74, type: 3}
@@ -1088,6 +1089,7 @@ MonoBehaviour:
     reward_showRewardButton: {fileID: 0}
     card_upCard: {fileID: 8300000, guid: fec7509a762fdbf49950eaf1cbf20e1e, type: 3}
     card_goback: {fileID: 0}
+    rest_heal: {fileID: 0}
   BackGroundAudio:
   - {fileID: 8300000, guid: b61c4806f00e3d94eae199c4104b634b, type: 3}
   - {fileID: 8300000, guid: 10cdba7fff527fa49b32bb8f08c384e9, type: 3}

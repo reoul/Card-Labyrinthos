@@ -98,6 +98,17 @@ public class MapManager : MonoBehaviour
         //StartCoroutine(FieldClearCheckCorutine());
     }
 
+    public void Init()
+    {
+        fieldData.field_type = FIELD_TYPE.BATTLE;
+        fieldData.event_type = EVENT_TYPE.EVENT1;
+        fieldData.monster_type = MONSTER_TYPE.RAT;
+        selectFieldIndex = 0;
+        isClear = new bool[0];
+        fieldParent = null;
+        fields = new Field[0];
+    }
+
     public void IconMouseUp(Field field)
     {
         this.fieldData = field.fieldData;
