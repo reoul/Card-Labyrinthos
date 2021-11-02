@@ -47,6 +47,7 @@ public class SkillManager : MonoBehaviour
             Close();
             return;
         }
+        SoundManager.Inst.Play(SKILLBOOKSOUND.OPEN_BOOK);
         GameManager.Inst.CloseAllUI();
         isOpen = true;
         transform.GetChild(0).gameObject.SetActive(true);
@@ -55,6 +56,7 @@ public class SkillManager : MonoBehaviour
 
     public void Close()      //스킬창 여는 것
     {
+        SoundManager.Inst.Play(SKILLBOOKSOUND.CLOSE_BOOK);
         InitCard();
         pages[page].gameObject.SetActive(false);
         transform.GetChild(0).gameObject.SetActive(false);
@@ -75,6 +77,7 @@ public class SkillManager : MonoBehaviour
                 choiceCards[i].GetComponentInChildren<TMP_Text>().text = "+";
             }
         }
+        SoundManager.Inst.Play(SKILLBOOKSOUND.CARD_ON_BOOK);
         skillBookCard.frontCard.SetActive(true);
         skillBookCard.originNum = card.final_Num;
         skillBookCard.frontCard.GetComponent<SkillBookCard>().originNum = skillBookCard.frontCard.GetComponent<SkillBookCard>().isQuestionMark ? RandomNum(card.final_Num) : card.final_Num;
@@ -129,6 +132,7 @@ public class SkillManager : MonoBehaviour
                 break;
             }
         }
+        SoundManager.Inst.Play(SKILLBOOKSOUND.TURN_PAGE);
         for (int i = 0; i < bookmarks.Count; i++)
         {
             bookmarks[i].gameObject.SetActive(CardManager.Inst.cardDeck[0] >= (i * 2 + 1) ? true : false);

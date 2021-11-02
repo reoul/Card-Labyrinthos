@@ -73,6 +73,7 @@ public class Reward : MonoBehaviour
                 resultTMP.text = reward_string;
                 break;
             case REWARD_TYPE.DEBUFF:
+                SoundManager.Inst.Play(MAPSOUND.SHOW_DEBUFF_BUTTON);
                 debuff_type = (DEBUFF_TYPE)reward_type;
                 DebuffManager.Inst.debuff_type = debuff_type;
                 resultTMP.text = DebuffManager.Inst.DebuffString;

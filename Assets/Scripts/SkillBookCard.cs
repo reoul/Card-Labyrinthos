@@ -158,6 +158,7 @@ public class SkillBookCard : MonoBehaviour
 
     public void Up(int index = 1)
     {
+        SoundManager.Inst.Play(SKILLBOOKSOUND.CARD_NUM_UP_DOWN);
         curNum += index;
         if (SkillManager.Inst.ActivePage.skill_type == SKILL_TYPE.SKILL2)
         {
@@ -169,6 +170,7 @@ public class SkillBookCard : MonoBehaviour
     }
     public void Down(int index = 1)
     {
+        SoundManager.Inst.Play(SKILLBOOKSOUND.CARD_NUM_UP_DOWN);
         curNum -= index;
         if (SkillManager.Inst.ActivePage.skill_type == SKILL_TYPE.SKILL2)
         {

@@ -111,6 +111,7 @@ public class MapManager : MonoBehaviour
 
     public void IconMouseUp(Field field)
     {
+        SoundManager.Inst.Play(MAPSOUND.CHOICE_FIELD);
         this.fieldData = field.fieldData;
         for (int i = 0; i < fields.Length; i++)
         {

@@ -138,6 +138,7 @@ public class RewardManager : MonoBehaviour
 
     public void SetRandomBattleDebuff()
     {
+        SoundManager.Inst.Play(MAPSOUND.OPEN_DEBUFFWINDOW);
         SetTitleText("저주");
         int[] choices = new int[3];      //랜덤으로 선택된 3개의 디버프
         int[] Debuffs = new int[7];
@@ -222,6 +223,7 @@ public class RewardManager : MonoBehaviour
                 }
                 break;
             case REWARD_TYPE.DEBUFF:
+                SoundManager.Inst.Play(MAPSOUND.CHOICE_DEBUFF);
                 isChoice = true;
                 DebuffManager.Inst.debuff_type = reward.debuff_type;
                 break;

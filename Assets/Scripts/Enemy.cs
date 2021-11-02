@@ -82,6 +82,7 @@ public class Enemy : MonoBehaviour
 
     public void Heal()
     {
+        SoundManager.Inst.Play(BATTLESOUND.HEAL);
         hpbar.Heal(pattenIndex);
     }
 
