@@ -20,7 +20,7 @@ public class Card : MonoBehaviour
             UpdateNumTMP();
         }
     }
-    [SerializeField] TMP_Text num_TMP;
+    public TMP_Text num_TMP;
 
     public PRS originPRS;
     public Transform parent;

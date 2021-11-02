@@ -9,6 +9,7 @@ public class IntroManager : MonoBehaviour
     private void Start()
     {
         SoundManager.Inst.Play(BACKGROUNDSOUND.INTRO);
+        StartCoroutine(CardManager.Inst.StartIntroCard());
     }
 
     void OnMouseEnter()

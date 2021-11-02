@@ -67,6 +67,12 @@ public class SkillManager : MonoBehaviour
     {
         if (isUseSkill[page])
             return;
+        if (page == 1)
+        {
+            if (choiceCards[1].Equals(skillBookCard))
+                if (card.final_Num == 5)
+                    return;
+        }
         for (int i = 0; i < choiceCards.Count; i++)
         {
             if (choiceCards[i].curSelectCard == card)

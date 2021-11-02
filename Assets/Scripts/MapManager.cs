@@ -87,6 +87,8 @@ public class MapManager : MonoBehaviour
                     return "휴식";
                 case "Tutorial":
                     return "알 수 없는 공간";
+                case "Intro":
+                    return "인트로";
             }
             return "지도";
         }

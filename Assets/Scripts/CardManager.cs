@@ -9,13 +9,17 @@ public enum THROWING_OBJ_TYPE { CARDBACK, CARD_PIECE, NUM_CARD, QUESTION_CARD, S
 
 public class CardManager : MonoBehaviour
 {
+    public bool isIntro;
     public static CardManager Inst = null;
     void Awake()
     {
         if (Inst == null)
         {
             Inst = this;
-            DontDestroyOnLoad(this.gameObject);
+            if (!isIntro)
+            {
+                DontDestroyOnLoad(this.gameObject);
+            }
         }
         else
         {
@@ -33,6 +37,8 @@ public class CardManager : MonoBehaviour
     [SerializeField] Transform CardCenterPoint;
 
     public int[] cardDeck;        //현재 플레이어 카드 덱, 1~6
+
+    public GameObject IntroCardPrefab;
 
     public List<Card> MyHandCards;    //내 손에 들고 있는 카드 리스트
     [SerializeField] List<Card> itemBuffer;  //뽑을 카드 더미
@@ -379,6 +385,25 @@ public class CardManager : MonoBehaviour
 
     public void CardMouseUp()
     {
+        if (isIntro)
+        {
+            isMyCardDrag = false;
+            EnlargeCard(false, selectCard);
+            switch (selectCard.final_Num)
+            {
+                case 0:
+                    MapManager.Inst.LoadTutorialScene();
+                    break;
+                case 1: //옵션창
+                    break;
+                case 2:     //게임 종료
+                    Application.Quit();
+                    break;
+                default:
+                    break;
+            }
+            return;
+        }
         isMyCardDrag = false;
         RaycastHit2D[] hits = Physics2D.RaycastAll(Utils.MousePos, Vector3.forward);
 
@@ -529,6 +554,38 @@ public class CardManager : MonoBehaviour
             check[i] = cardDeck[i] >= (18 - 3 * i);
         }
         return check;
+    }
+
+    public IEnumerator StartIntroCard()
+    {
+        yield return new WaitForSeconds(1);
+        for (int i = 0; i < 3; i++)
+        {
+            Card card = Instantiate(IntroCardPrefab, cardSpawnPoint.position, Utils.CardRotate).GetComponentInChildren<Card>();
+            card.transform.parent.localScale = Vector3.zero;
+            switch (i)
+            {
+                case 0:
+                    card.Setup(i);
+                    card.num_TMP.text = "게임시작";
+                    break;
+                case 1:
+                    card.Setup(i);
+                    card.num_TMP.text = "옵션";
+                    break;
+                case 2:
+                    card.Setup(i);
+                    card.num_TMP.text = "게임종료";
+                    break;
+                default:
+                    break;
+            }
+            MyHandCards.Add(card.GetComponentInChildren<Card>());
+            SetOriginOrder();
+            CardAlignment();
+            yield return new WaitForSeconds(0.1f);
+        }
+        yield return null;
     }
 
 }
