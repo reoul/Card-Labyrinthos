@@ -176,6 +176,8 @@ MonoBehaviour:
   frontCard: {fileID: 2053094062}
   curSelectCard: {fileID: 0}
   cardButtons: []
+  limitNum: 0
+  isHideButton: 0
 --- !u!61 &5937390
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -971,6 +973,8 @@ MonoBehaviour:
   frontCard: {fileID: 1476409823}
   curSelectCard: {fileID: 0}
   cardButtons: []
+  limitNum: 0
+  isHideButton: 0
 --- !u!1 &58925466
 GameObject:
   m_ObjectHideFlags: 0
@@ -1345,6 +1349,8 @@ MonoBehaviour:
   cardButtons:
   - {fileID: 1407561988}
   - {fileID: 1394780599}
+  limitNum: 0
+  isHideButton: 0
 --- !u!222 &64486810
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2018,6 +2024,8 @@ MonoBehaviour:
   cardButtons:
   - {fileID: 2134827799}
   - {fileID: 1271611505}
+  limitNum: 0
+  isHideButton: 0
 --- !u!222 &88976729
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2987,6 +2995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7a4ae9f22e48745ac3ae81adf41d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skill_type: 4
   choiceCards:
   - {fileID: 1226860995}
   - {fileID: 1235616737}
@@ -3182,6 +3191,8 @@ MonoBehaviour:
   frontCard: {fileID: 2102395805}
   curSelectCard: {fileID: 0}
   cardButtons: []
+  limitNum: 0
+  isHideButton: 0
 --- !u!61 &132114900
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5754,6 +5765,8 @@ MonoBehaviour:
   frontCard: {fileID: 1660412320}
   curSelectCard: {fileID: 0}
   cardButtons: []
+  limitNum: 0
+  isHideButton: 0
 --- !u!61 &275494575
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6605,6 +6618,8 @@ MonoBehaviour:
   frontCard: {fileID: 449846541}
   curSelectCard: {fileID: 0}
   cardButtons: []
+  limitNum: 0
+  isHideButton: 0
 --- !u!61 &314356614
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8830,6 +8845,8 @@ MonoBehaviour:
   frontCard: {fileID: 561772414}
   curSelectCard: {fileID: 0}
   cardButtons: []
+  limitNum: 0
+  isHideButton: 0
 --- !u!61 &448736432
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8972,6 +8989,8 @@ MonoBehaviour:
   cardButtons:
   - {fileID: 2081490582}
   - {fileID: 1759886427}
+  limitNum: 0
+  isHideButton: 0
 --- !u!222 &449846544
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9264,6 +9283,8 @@ MonoBehaviour:
   cardButtons:
   - {fileID: 343137426}
   - {fileID: 2128786321}
+  limitNum: 0
+  isHideButton: 0
 --- !u!222 &460593193
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10483,6 +10504,8 @@ MonoBehaviour:
   cardButtons:
   - {fileID: 893646904}
   - {fileID: 9761885}
+  limitNum: 0
+  isHideButton: 0
 --- !u!222 &561772417
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11399,6 +11422,8 @@ MonoBehaviour:
   cardButtons:
   - {fileID: 872330454}
   - {fileID: 38374816}
+  limitNum: 0
+  isHideButton: 0
 --- !u!222 &633023139
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17608,6 +17633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7a4ae9f22e48745ac3ae81adf41d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skill_type: 5
   choiceCards:
   - {fileID: 1250520446}
   - {fileID: 448736431}
@@ -20203,6 +20229,8 @@ MonoBehaviour:
   frontCard: {fileID: 1580620782}
   curSelectCard: {fileID: 0}
   cardButtons: []
+  limitNum: 0
+  isHideButton: 0
 --- !u!61 &1226860996
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20518,6 +20546,8 @@ MonoBehaviour:
   frontCard: {fileID: 64486807}
   curSelectCard: {fileID: 0}
   cardButtons: []
+  limitNum: 0
+  isHideButton: 0
 --- !u!61 &1235616738
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20833,6 +20863,8 @@ MonoBehaviour:
   frontCard: {fileID: 1252529924}
   curSelectCard: {fileID: 0}
   cardButtons: []
+  limitNum: 0
+  isHideButton: 0
 --- !u!61 &1250520447
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20975,6 +21007,8 @@ MonoBehaviour:
   cardButtons:
   - {fileID: 1640255346}
   - {fileID: 1526998008}
+  limitNum: 0
+  isHideButton: 0
 --- !u!222 &1252529927
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22747,6 +22781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7a4ae9f22e48745ac3ae81adf41d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skill_type: 1
   choiceCards:
   - {fileID: 1529701396}
   - {fileID: 1402446267}
@@ -22986,6 +23021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7a4ae9f22e48745ac3ae81adf41d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skill_type: 2
   choiceCards:
   - {fileID: 132114899}
   applyCards:
@@ -24131,6 +24167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7a4ae9f22e48745ac3ae81adf41d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skill_type: 3
   choiceCards:
   - {fileID: 5937389}
   - {fileID: 275494574}
@@ -25060,6 +25097,8 @@ MonoBehaviour:
   frontCard: {fileID: 633023136}
   curSelectCard: {fileID: 0}
   cardButtons: []
+  limitNum: 0
+  isHideButton: 0
 --- !u!61 &1402446268
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26258,6 +26297,8 @@ MonoBehaviour:
   cardButtons:
   - {fileID: 129400432}
   - {fileID: 1012763279}
+  limitNum: 0
+  isHideButton: 0
 --- !u!1 &1478440877
 GameObject:
   m_ObjectHideFlags: 0
@@ -27044,6 +27085,8 @@ MonoBehaviour:
   frontCard: {fileID: 88976726}
   curSelectCard: {fileID: 0}
   cardButtons: []
+  limitNum: 0
+  isHideButton: 0
 --- !u!61 &1529701397
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28120,6 +28163,7 @@ MonoBehaviour:
   - {fileID: 167778611}
   choiceCards: []
   applyCards: []
+  isUseSkill: 000000000000
 --- !u!4 &1576698070
 Transform:
   m_ObjectHideFlags: 0
@@ -28369,6 +28413,8 @@ MonoBehaviour:
   cardButtons:
   - {fileID: 1363959680}
   - {fileID: 1152376387}
+  limitNum: 0
+  isHideButton: 0
 --- !u!222 &1580620785
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28844,6 +28890,8 @@ MonoBehaviour:
   frontCard: {fileID: 460593190}
   curSelectCard: {fileID: 0}
   cardButtons: []
+  limitNum: 0
+  isHideButton: 0
 --- !u!61 &1631461063
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29244,6 +29292,8 @@ MonoBehaviour:
   cardButtons:
   - {fileID: 109864758}
   - {fileID: 738372140}
+  limitNum: 0
+  isHideButton: 0
 --- !u!222 &1660412323
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -30785,6 +30835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7a4ae9f22e48745ac3ae81adf41d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skill_type: 0
   choiceCards:
   - {fileID: 52344535}
   applyCards:
@@ -34313,6 +34364,8 @@ MonoBehaviour:
   cardButtons:
   - {fileID: 2142992107}
   - {fileID: 1529440982}
+  limitNum: 0
+  isHideButton: 0
 --- !u!222 &2053094065
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -35293,6 +35346,8 @@ MonoBehaviour:
   cardButtons:
   - {fileID: 1150420272}
   - {fileID: 371216650}
+  limitNum: 0
+  isHideButton: 0
 --- !u!222 &2102395808
 CanvasRenderer:
   m_ObjectHideFlags: 0

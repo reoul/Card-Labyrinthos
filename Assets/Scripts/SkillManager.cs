@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+public enum SKILL_TYPE { SKILL1, SKILL2, SKILL3, SKILL4, SKILL5, SKILL6 }
 public class SkillManager : MonoBehaviour
 {
+
     public static SkillManager Inst = null;
     bool isOpen = false;
     int page = 0;
@@ -13,6 +15,8 @@ public class SkillManager : MonoBehaviour
     public List<SkillBookCardButton> bookmarks;
     public List<SkillBookCard> choiceCards;
     public List<SkillBookCard> applyCards;
+
+    public bool[] isUseSkill;
 
     private void Awake()
     {
@@ -65,8 +69,8 @@ public class SkillManager : MonoBehaviour
             }
         }
         skillBookCard.frontCard.SetActive(true);
-        skillBookCard.curNum = card.final_Num;
-        skillBookCard.frontCard.GetComponent<SkillBookCard>().curNum = card.final_Num;
+        skillBookCard.originNum = card.final_Num;
+        skillBookCard.frontCard.GetComponent<SkillBookCard>().originNum = card.final_Num;
         skillBookCard.SetColorAlpha(false);
         skillBookCard.GetComponentInChildren<TMP_Text>().text = (card.final_Num + 1).ToString();
         if (skillBookCard.curSelectCard == null)
@@ -128,5 +132,10 @@ public class SkillManager : MonoBehaviour
             choiceCards[i].SetColorAlpha(true);
             choiceCards[i].GetComponentInChildren<TMP_Text>().text = "+";
         }
+    }
+
+    public void UseSkill()
+    {
+        isUseSkill[page] = true;
     }
 }

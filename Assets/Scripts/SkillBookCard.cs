@@ -34,21 +34,23 @@ public class SkillBookCard : MonoBehaviour
             this.transform.GetComponentInChildren<TMP_Text>().text = (_curNum + 1).ToString();
             if (frontCard != null)
                 frontCard.GetComponentInChildren<TMP_Text>().text = (_curNum + 1).ToString();
-            if (cardButtons.Count == 2)
-            {
-                if (_curNum == (limitNum == 0 ? 0 : _originNum - limitNum))
-                    cardButtons[1].gameObject.SetActive(false);
-                else if (_curNum == (limitNum == 0 ? 5 : _originNum + limitNum))
-                    cardButtons[0].gameObject.SetActive(false);
-                else
+            if (!isHideButton)
+                if (cardButtons.Count == 2)
                 {
-                    cardButtons[0].gameObject.SetActive(true);
-                    cardButtons[1].gameObject.SetActive(true);
+                    if (_curNum == (limitNum == 0 ? 0 : _originNum - limitNum))
+                        cardButtons[1].gameObject.SetActive(false);
+                    else if (_curNum == (limitNum == 0 ? 5 : _originNum + limitNum))
+                        cardButtons[0].gameObject.SetActive(false);
+                    else
+                    {
+                        cardButtons[0].gameObject.SetActive(true);
+                        cardButtons[1].gameObject.SetActive(true);
+                    }
                 }
-            }
         }
     }
     public int limitNum;    //+1을 하거나 특정 숫자만큼만 올리게 제한을 두는 변수
+    public bool isHideButton;
 
     public void SetCard(Card card)
     {
@@ -70,6 +72,7 @@ public class SkillBookCard : MonoBehaviour
 
     public void HideCard()
     {
+        frontCard.GetComponent<SkillBookCard>().limitNum = 0;
         frontCard.SetActive(false);
     }
 
