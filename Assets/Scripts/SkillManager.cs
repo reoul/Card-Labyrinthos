@@ -7,6 +7,7 @@ public class SkillManager : MonoBehaviour
 {
     public static SkillManager Inst = null;
     bool isOpen = false;
+    int page = 0;
 
     public List<SkillBookPage> pages;
     public List<SkillBookCard> choiceCards;
@@ -40,6 +41,7 @@ public class SkillManager : MonoBehaviour
         GameManager.Inst.CloseAllUI();
         isOpen = true;
         transform.GetChild(0).gameObject.SetActive(true);
+        SelectPage(page);
     }
 
     public void Close()      //스킬창 여는 것
@@ -93,6 +95,15 @@ public class SkillManager : MonoBehaviour
 
     public void SelectPage(int index)
     {
+        for (int i = 0; i < pages.Count; i++)
+        {
+            if (pages[i].gameObject.activeInHierarchy)
+            {
+                pages[i].Init();
+                pages[i].gameObject.SetActive(false);
+                break;
+            }
+        }
         pages[index].gameObject.SetActive(true);
         pages[index].Show();
     }
