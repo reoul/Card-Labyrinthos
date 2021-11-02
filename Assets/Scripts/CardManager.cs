@@ -370,7 +370,10 @@ public class CardManager : MonoBehaviour
     public void CardMouseDown()
     {
         if (onMyCardArea)
+        {
+            SoundManager.Inst.Play(CARDSOUND.UP_CARD);
             isMyCardDrag = true;
+        }
     }
 
     public void CardMouseUp()

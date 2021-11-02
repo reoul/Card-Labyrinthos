@@ -87,6 +87,9 @@ public class Reward : MonoBehaviour
     {
         ColorAlpha01(isOut);
 
+        if(isOut)
+            SoundManager.Inst.Play(REWARDSOUND.SHOW_REWARD_BUTTON);
+
         while (true)
         {
             windowRenderer.color += Color.black * Time.deltaTime * 2;

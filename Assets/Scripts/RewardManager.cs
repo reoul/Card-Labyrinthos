@@ -52,6 +52,7 @@ public class RewardManager : MonoBehaviour
 
     public IEnumerator ShowRewardWindowCorutine(bool isStartRewardCorutine = true)
     {
+        SoundManager.Inst.Play(REWARDSOUND.SHOW_REWARD_WINDOW);
         activeRewardWindow = true;
         rewardWindow.SetActive(true);
         SpriteRenderer windowRenderer = rewardWindow.GetComponent<SpriteRenderer>();
@@ -213,6 +214,12 @@ public class RewardManager : MonoBehaviour
                         ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.CARD_PIECE, reward.transform.position, TopBar.Inst.GetIcon(TOPBAR_TYPE.CARDPIECE).transform.position, null, 1, reward.rewardData.index / 4, 4);
                         break;
                     case EVENT_REWARD_TYPE.HP:
+                        if (reward.rewardData.index < 0)
+                            SoundManager.Inst.Play(REWARDSOUND.LOSTHEAL);
+                        else
+                        {
+                            SoundManager.Inst.Play(RESTSOUND.HEAL);
+                        }
                         PlayerManager.Inst.hp += reward.rewardData.index;
                         break;
                     case EVENT_REWARD_TYPE.DRAW:

@@ -33,7 +33,8 @@ public class Player : MonoBehaviour
 
     public void DeadAnimationFinish()
     {
-        GameManager.Inst.Notification("게임 종료");
+        SoundManager.Inst.Play(BATTLESOUND.GAME_FAILD);
+        //GameManager.Inst.Notification("게임 종료");
         Destroy(hpbar.gameObject);
         Destroy(this.gameObject);
     }
