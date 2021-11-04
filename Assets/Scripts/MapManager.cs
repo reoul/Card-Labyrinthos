@@ -199,7 +199,7 @@ public class MapManager : MonoBehaviour
             for (int j = 0; j < fields.Length; j++)
             {
                 if (Vector3.Distance(fields[i].transform.position, fields[j].transform.position) < 2.5f &&
-                        Vector3.Distance(fields[i].transform.position, fields[j].transform.position) >= 2)
+                        Vector3.Distance(fields[i].transform.position, fields[j].transform.position) >= 1.8f)
                     fields[i].surroundingObj.Add(fields[j].gameObject);
             }
             fields[i].UpdateClearImage();
