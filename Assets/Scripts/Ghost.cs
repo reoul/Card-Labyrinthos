@@ -8,9 +8,9 @@ public class Ghost : MonoBehaviour
     [SerializeField] TalkWindow talkWindow;
     public void ShowTalk()
     {
+        talkWindow.gameObject.SetActive(true);
         talkWindow.GetComponent<SpriteRenderer>().DOFade(1, 1).OnComplete(() =>
         {
-            Debug.Log("설명창 보이기");
             talkWindow.ShowTalk();
         });
     }
@@ -18,7 +18,7 @@ public class Ghost : MonoBehaviour
     {
         talkWindow.GetComponent<SpriteRenderer>().DOFade(0, 1).OnComplete(() =>
         {
-            Debug.Log("설명창 끄기");
+            talkWindow.gameObject.SetActive(false);
             GhostManager.Inst.HideGhost();
         });
     }
