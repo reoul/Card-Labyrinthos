@@ -63,7 +63,7 @@ public class TurnManager : MonoBehaviour
                 EnemyManager.Inst.enemys[0].hpbar.Damage(EnemyManager.Inst.enemys[0].hpbar.sheld);
 
             if (EnemyManager.Inst.enemys[0].hpbar.turnStartSheld > 0)
-                EnemyManager.Inst.enemys[0].hpbar.Sheld(EnemyManager.Inst.enemys[0].hpbar.turnStartSheld);
+                EnemyManager.Inst.enemys[0].Sheld(EnemyManager.Inst.enemys[0].hpbar.turnStartSheld);
         }
         if (!isFinish)
         {

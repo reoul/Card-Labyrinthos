@@ -20976,6 +20976,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965fcac3066745941ba9e65a5a5a23af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &961997492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 961997494}
+  - component: {fileID: 961997493}
+  m_Layer: 0
+  m_Name: EffectManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &961997493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961997492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4ee54ef0f319ff4682ea0a74d06147a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitObj: {fileID: 1826544702149632, guid: 5147558f73d9f6244b2ec6cd4f995fae, type: 3}
+  sheldObj: {fileID: 597355893834331751, guid: cfc5e08245ee26444858582ebd902fe3, type: 3}
+  healObj: {fileID: 3011256028903002793, guid: 3ecf56f8552ad9742a89efcf4ba470cd, type: 3}
+--- !u!4 &961997494
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961997492}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5532847, y: 0.0018078224, z: -3.5104198}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 35
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &982191637
 GameObject:
   m_ObjectHideFlags: 0

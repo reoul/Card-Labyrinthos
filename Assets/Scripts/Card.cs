@@ -107,7 +107,7 @@ public class Card : MonoBehaviour
     public void Use(GameObject obj = null)
     {
         if (obj.tag == "Player")
-            Player.Inst.hpbar.Sheld(final_Num + 1);
+            Player.Inst.Sheld(final_Num + 1);
         else
         {
             Player.Inst.Attack();

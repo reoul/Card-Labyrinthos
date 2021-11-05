@@ -82,7 +82,14 @@ public class Enemy : MonoBehaviour
 
     public void Heal()
     {
+        EffectManager.Inst.CreateEffectObj(EffectObjType.HEAL, hitPos.position + new Vector3(0, 0, -15), 0, 0.7f);
         hpbar.Heal(pattenIndex);
+    }
+
+    public void Sheld(int _sheld)
+    {
+        EffectManager.Inst.CreateEffectObj(EffectObjType.SHELD, hitPos.position + new Vector3(0, 0, -15), 0, 0.7f);
+        hpbar.Sheld(_sheld);
     }
 
     public void Attack()

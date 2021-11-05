@@ -19,9 +19,15 @@ public class Player : MonoBehaviour
         //this.GetComponent<Animator>().SetTrigger("Attack");
     }
 
+    public void Sheld(int _sheld)
+    {
+        EffectManager.Inst.CreateEffectObj(EffectObjType.SHELD, this.transform.position + new Vector3(0, 2, -15), 0, 0.7f);
+        hpbar.Sheld(_sheld);
+    }
+
     public void Damage(int damage)          //플레이어가 공격 당할때 호출
     {
-        GameManager.Inst.CreateHitObj(this.transform.position + new Vector3(0, 1, 0), 0, 1);
+        EffectManager.Inst.CreateEffectObj(EffectObjType.HIT, this.transform.position + new Vector3(0, 1, -15));
         hpbar.Damage(damage);
     }
 
