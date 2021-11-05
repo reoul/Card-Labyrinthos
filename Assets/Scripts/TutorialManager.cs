@@ -29,7 +29,8 @@ public class TutorialManager : MonoBehaviour
         SoundManager.Inst.Play(BACKGROUNDSOUND.TUTORIAL);
         playerHpBar.SetHP(80);
         //
-        yield return new WaitForSeconds(2);
+        //yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(20);
         //카드획득
         yield return StartCoroutine(BookCorutine());
         //스킬페이지 획득
