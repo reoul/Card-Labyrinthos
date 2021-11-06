@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -10,8 +11,28 @@ public class TalkWindow : MonoBehaviour
     List<List<string>> talks;
     bool isSkip = false;
     bool next = false;
+    bool isFlagFirstIndex = true;    //대화가 계속 진행되지 않도록 거는 플래그
+    bool isFlagSecondIndex = false;    //대화가 계속 진행되지 않도록 거는 플래그
     public int index = 0;
     public int index2 = 0;
+    public string currentTalk
+    {
+        get
+        {
+            return talks[Mathf.Clamp(index, 0, talks.Count - 1)][Mathf.Clamp(index2, 0, talks[index].Count - 1)];
+        }
+    }
+
+    public void ShowText()
+    {
+        talkTMP.text = "";
+        talkTMP.DOFade(1, 1);
+    }
+    public void HideText()
+    {
+        talkTMP.text = "";
+        talkTMP.DOFade(0, 1);
+    }
 
     private void Awake()
     {
@@ -97,8 +118,11 @@ public class TalkWindow : MonoBehaviour
             for (int j = 0; j < talks[i].Count; j++)
             {
                 yield return StartCoroutine(ShowTalkCorutine(i, j));
+                yield return StartCoroutine(CheckFlagSecondIndexCorutine());
                 index2++;
             }
+
+            yield return StartCoroutine(CheckFlagFirstIndexCorutine());
             index++;
         }
         ghost.HideTalk();
@@ -108,6 +132,7 @@ public class TalkWindow : MonoBehaviour
     {
         for (int i = 0; i < talks[index][index2].Length; i++)
         {
+            Debug.Log(talkTMP.textInfo.lineCount);
             if (isSkip)
             {
                 //i = talk[index].Length - 1;
@@ -116,8 +141,8 @@ public class TalkWindow : MonoBehaviour
             }
             talkTMP.text = talks[index][index2].Substring(0, i + 1);
             if (talks[index][index2][i] == ' ')
-                yield return new WaitForSeconds(0.2f);
-            yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.05f);
         }
         while (true)
         {
@@ -131,15 +156,46 @@ public class TalkWindow : MonoBehaviour
         yield return null;
     }
 
+    IEnumerator CheckFlagFirstIndexCorutine()
+    {
+        while (true)
+        {
+            if (!isFlagFirstIndex)
+                break;
+            yield return new WaitForEndOfFrame();
+        }
+        yield return null;
+    }
+    IEnumerator CheckFlagSecondIndexCorutine()
+    {
+        while (true)
+        {
+            if (!isFlagSecondIndex)
+                break;
+            yield return new WaitForEndOfFrame();
+        }
+        yield return null;
+    }
+
+    public void SetFlagFirstIndex(bool flag)
+    {
+        isFlagFirstIndex = flag;
+    }
+
+    public void SetFlagSecondIndex(bool flag)
+    {
+        isFlagSecondIndex = flag;
+    }
+
     private void OnMouseUp()
     {
-        if (talkTMP.text.Length == talks[index][index2].Length)
+        if (talkTMP.text.Length == currentTalk.Length)
         {
             next = true;
         }
         else
         {
-            talkTMP.text = talks[index][index2];
+            talkTMP.text = currentTalk;
             isSkip = true;
         }
     }

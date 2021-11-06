@@ -30,7 +30,7 @@ public class TutorialManager : MonoBehaviour
         playerHpBar.SetHP(80);
         //
         //yield return new WaitForSeconds(2);
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(80);
         //카드획득
         yield return StartCoroutine(BookCorutine());
         //스킬페이지 획득
