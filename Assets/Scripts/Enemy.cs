@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] PATTERN curPatten;
     int lastPatten;
     int lastWeaknessNum;
+    int fixedWeaknessNum = -1;
     public int force;
     public bool isVampire;
     public bool isWeaknessHidden;
@@ -18,12 +19,13 @@ public class Enemy : MonoBehaviour
     public Transform hitPos;        //전투 중 카드가 날아갈 곳
 
     [SerializeField] SpriteRenderer patten_sprite;
-    [SerializeField] TMP_Text pattenIndexTMP;        //데미지 텍스트
-    [SerializeField] TMP_Text weaknessTMP;      //약점카드 테스트
+    public TMP_Text pattenIndexTMP;        //데미지 텍스트
+    public TMP_Text weaknessTMP;      //약점카드 테스트
     public GameObject[] ui;
 
     private void Start()
     {
+        //fixedWeaknessNum = -1;
         pattenIndex = 0;
         weaknessNum = 0;
         lastPatten = 99;
@@ -42,6 +44,13 @@ public class Enemy : MonoBehaviour
             weaknessNum = Random.Range(1, 6);
         } while (weaknessNum == lastWeaknessNum);
         lastWeaknessNum = weaknessNum;
+        if (fixedWeaknessNum != -1)
+        {
+            Debug.Log("약점숫자 고정");
+            weaknessNum = fixedWeaknessNum;
+            lastWeaknessNum = weaknessNum;
+            fixedWeaknessNum = -1;
+        }
         int patten;
         do
         {
@@ -150,5 +159,9 @@ public class Enemy : MonoBehaviour
         }
         Destroy(hpbar.gameObject);
         Destroy(this.gameObject);
+    }
+    public void SetFixedWeaknessNum(int index)
+    {
+        fixedWeaknessNum = index;
     }
 }

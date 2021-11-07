@@ -38,7 +38,6 @@ public class BagManager : MonoBehaviour
             Close();
             return;
         }
-        HelpManager.Inst.ShowHelp(HELP_TYPE.BAG);
         GameManager.Inst.CloseAllUI();
         isOpen = true;
         UpdateText();

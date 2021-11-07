@@ -14,7 +14,7 @@ public class HpBar : MonoBehaviour
     [SerializeField] GameObject sheldObj;       //실드 오브젝트
     [SerializeField] GameObject hpbar;          //체력바 오브젝트
     [SerializeField] TMP_Text hptext;           //체력 텍스트
-    [SerializeField] TMP_Text sheldtext;        //실드 텍스트
+    public TMP_Text sheldtext;        //실드 텍스트
 
     public void Init()          //초기화, 게임 시작할때 실행
     {

@@ -6,14 +6,27 @@ using UnityEngine;
 
 public class TalkWindow : MonoBehaviour
 {
+    public static TalkWindow Inst = null;
+
     [SerializeField] Ghost ghost;
     [SerializeField] TMP_Text talkTMP;
-    List<List<string>> talks;
-    bool isSkip = false;
-    bool isFlagNext = false;
-    bool isFlagIndex = false;    //대화가 계속 진행되지 않도록 거는 플래그
+    public List<List<string>> talks;
+    [SerializeField] bool isSkip = false;
+    [SerializeField] bool isFlagNext = false;
+    [SerializeField] bool isFlagIndex = false;    //대화가 계속 진행되지 않도록 거는 플래그
     public int index = 0;
-    public int index2 = 0;
+    [SerializeField] int _index2;
+    public int index2
+    {
+        get
+        {
+            return _index2;
+        }
+        set
+        {
+            _index2 = Mathf.Clamp(value, 0, talks[index].Count - 1);
+        }
+    }
     public string currentTalk
     {
         get
@@ -24,12 +37,17 @@ public class TalkWindow : MonoBehaviour
 
     private void Awake()
     {
+        if (Inst == null)
+        {
+            Inst = this;
+        }
+
         talks = new List<List<string>>();
         for (int i = 0; i < 14; i++)
         {
             talks.Add(new List<string>());
         }
-        talks[0].Add("일어났군! 기억이 없어서 아주 혼란스러울 거야, 난 이 미궁에서 목숨을 잃은 모험가지");
+        talks[0].Add("일어났군! 기억이 없어서 아주 혼란스러울 거야, 난 이 미궁에서 목숨을 잃은 모험가지.");
         talks[0].Add("난 미궁을 탈출하기 위해 보스한테 도전했지만 결국 실패했어.");
         talks[0].Add("자네가 나의 복수를 해주게. 그렇다면 보스에게 도달하는 데까지 도움을 주지.");
         talks[0].Add("주변에 있는 무덤이 보일 거야. 무덤에 있는 카드, 가방, 스킬북 전부 챙겨보자고");
@@ -101,9 +119,15 @@ public class TalkWindow : MonoBehaviour
     public IEnumerator ShowText(int index)
     {
         talkTMP.text = "";
+        yield return StartCoroutine(ShowTalkWindowCorutine());
+        //StartCoroutine(ShowTalkCorutine(index));
+    }
+
+    public IEnumerator ShowTalkWindowCorutine()
+    {
+        talkTMP.text = "";
         Tween tween = this.GetComponent<SpriteRenderer>().DOFade(1, 1);
         yield return tween.WaitForCompletion();
-        StartCoroutine(ShowTalkCorutine(index));
     }
 
     IEnumerator ShowTalkCorutine(int index)
@@ -117,8 +141,9 @@ public class TalkWindow : MonoBehaviour
         StartCoroutine(HideText());
     }
 
-    IEnumerator TalkTypingCorutine(int index, int index2)       //한 문장 텍스트 타이핑 효과 코루틴
+    public IEnumerator TalkTypingCorutine(int index, int index2)       //한 문장 텍스트 타이핑 효과 코루틴
     {
+        isSkip = false;
         for (int i = 0; i < talks[index][index2].Length; i++)
         {
             if (isSkip)
@@ -135,7 +160,7 @@ public class TalkWindow : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator CheckFlagIndexCorutine()
+    public IEnumerator CheckFlagIndexCorutine()
     {
         while (true)
         {
@@ -146,7 +171,7 @@ public class TalkWindow : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator CheckFlagNextCorutine()
+    public IEnumerator CheckFlagNextCorutine()
     {
         while (true)
         {
@@ -166,7 +191,8 @@ public class TalkWindow : MonoBehaviour
         Tween tween = this.GetComponent<SpriteRenderer>().DOFade(0, 1);
         yield return tween.WaitForCompletion();
         index++;
-        ghost.HideTalk();
+        index2 = 0;
+        yield return StartCoroutine(ghost.HideTalk());
     }
 
     public void SetFlagIndex(bool flag)

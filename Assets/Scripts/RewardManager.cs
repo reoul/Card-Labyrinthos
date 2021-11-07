@@ -139,7 +139,6 @@ public class RewardManager : MonoBehaviour
 
     public void SetRandomBattleDebuff()
     {
-        HelpManager.Inst.ShowHelp(HELP_TYPE.DEBUFFE);
         SoundManager.Inst.Play(MAPSOUND.OPEN_DEBUFFWINDOW);
         SetTitleText("저주");
         int[] choices = new int[3];      //랜덤으로 선택된 3개의 디버프
@@ -227,6 +226,9 @@ public class RewardManager : MonoBehaviour
                         break;
                     case EVENT_REWARD_TYPE.QUESTION_CARD:
                         ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.QUESTION_CARD, reward.transform.position, TopBar.Inst.GetIcon(TOPBAR_TYPE.QUESTION).transform.position, null, 1, 1, reward.rewardData.index);
+                        break;
+                    case EVENT_REWARD_TYPE.SKILL_BOOK:
+                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.SKILL_BOOK, reward.transform.position, TopBar.Inst.GetIcon(TOPBAR_TYPE.SKILL).transform.position, TutorialManager.Inst.SetActiveTrueTopBarSkillBook());
                         break;
                 }
                 break;

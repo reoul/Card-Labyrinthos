@@ -11,7 +11,7 @@ public class Arrow : MonoBehaviour
     }
     public void MoveA()
     {
-        this.transform.DOMove(this.transform.position + transform.up * 0.5f, 0.75f).SetEase(Ease.OutBack).OnComplete(() =>
+        this.transform.DOLocalMove(this.transform.localPosition + transform.up * 0.5f, 0.75f).SetEase(Ease.OutBack).OnComplete(() =>
         {
             MoveB();
         });
@@ -19,7 +19,7 @@ public class Arrow : MonoBehaviour
 
     public void MoveB()
     {
-        this.transform.DOMove(this.transform.position + -transform.up * 0.5f, 0.75f).SetEase(Ease.InBack).OnComplete(() =>
+        this.transform.DOLocalMove(this.transform.localPosition + -transform.up * 0.5f, 0.75f).SetEase(Ease.InBack).OnComplete(() =>
         {
             MoveA();
         });

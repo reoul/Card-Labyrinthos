@@ -25,6 +25,7 @@ public class Card : MonoBehaviour
     public PRS originPRS;
     public Transform parent;
     public bool isFinish = false;
+    public bool isLock = false;
 
     public void Setup(int num)
     {
@@ -92,7 +93,7 @@ public class Card : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (!FadeManager.Inst.isActiveFade && !isFinish)
+        if (!FadeManager.Inst.isActiveFade && !isFinish && !isLock)
         {
             CardManager.Inst.CardMouseDown();
         }
@@ -100,7 +101,7 @@ public class Card : MonoBehaviour
 
     void OnMouseUp()
     {
-        if (!isFinish)
+        if (!isFinish && !isLock)
             CardManager.Inst.CardMouseUp();
     }
 

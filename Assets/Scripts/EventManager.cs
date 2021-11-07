@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum EVENT_REWARD_TYPE { CARD, CARD_PIECE, HP, DRAW, QUESTION_CARD }
+public enum EVENT_REWARD_TYPE { CARD, CARD_PIECE, HP, DRAW, QUESTION_CARD, SKILL_BOOK }
 
 public class EventData
 {
@@ -90,7 +90,6 @@ public class EventManager : MonoBehaviour
         int rand = Random.Range(0, events.Count);
         events[rand].Init();
         events[rand].gameObject.SetActive(true);
-        HelpManager.Inst.ShowHelp(HELP_TYPE.EVENT);
         yield return null;
     }
 }

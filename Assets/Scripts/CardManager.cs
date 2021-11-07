@@ -37,6 +37,7 @@ public class CardManager : MonoBehaviour
     [SerializeField] Transform CardCenterPoint;
 
     public int[] cardDeck;        //현재 플레이어 카드 덱, 1~6
+    public int[] fixedCardNum;      //카드 숫자 고정 시킬때 사용 -1이면 고정 안함
 
     public GameObject IntroCardPrefab;
 
@@ -73,6 +74,14 @@ public class CardManager : MonoBehaviour
 
     //Quaternion cardRotate = Utils.QI;
 
+    private void Start()
+    {
+        fixedCardNum = new int[12];
+        for (int i = 0; i < fixedCardNum.Length; i++)
+        {
+            fixedCardNum[i] = -1;
+        }
+    }
 
     void Update()
     {
@@ -118,6 +127,14 @@ public class CardManager : MonoBehaviour
             Card temp = itemBuffer[i];
             itemBuffer[i] = itemBuffer[rand];
             itemBuffer[rand] = temp;
+        }
+        for (int i = 0; i < fixedCardNum.Length; i++)
+        {
+            if (fixedCardNum[i] != -1)
+            {
+                itemBuffer[i].SetFinalNum(fixedCardNum[i]);
+                fixedCardNum[i] = -1;
+            }
         }
     }
 
@@ -590,4 +607,23 @@ public class CardManager : MonoBehaviour
         yield return null;
     }
 
+    public IEnumerator FixedCardNumToturial2Corutine()
+    {
+        fixedCardNum[0] = 2;
+        fixedCardNum[1] = 5;
+        fixedCardNum[2] = 3;
+
+        fixedCardNum[3] = 0;
+        fixedCardNum[4] = 1;
+        fixedCardNum[5] = 4;
+
+        fixedCardNum[6] = 4;
+        fixedCardNum[7] = 3;
+        fixedCardNum[8] = 2;
+
+        fixedCardNum[9] = 2;
+        fixedCardNum[10] = 1;
+        fixedCardNum[11] = 3;
+        yield return null;
+    }
 }

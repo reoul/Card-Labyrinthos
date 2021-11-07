@@ -28,9 +28,18 @@ public class ArrowManager : MonoBehaviour
 
     public void DestoryAllArrow()
     {
-        for (int i = 0; i < arrows.Count; i++)
+        int arrowCnt = arrows.Count;
+        for (int i = 0; i < arrowCnt; i++)
         {
-            var obj = arrows[i];
+            if (arrows[0] == null || arrows[0].isActiveAndEnabled == false)
+            {
+                Debug.Log("잃어버린 객체 삭제");
+                arrows.RemoveAt(0);
+                i++;
+            }
+            Debug.Log(arrows.Count);
+            Debug.Log("삭제");
+            var obj = arrows[0];
             arrows.RemoveAt(0);
             obj.ArrowDestory();
         }
@@ -42,9 +51,14 @@ public class ArrowManager : MonoBehaviour
             CreateArrowObj(Vector3.zero, ArrowCreateDirection.UP);
     }
 
-    public void CreateArrowObj(Vector3 pos, ArrowCreateDirection direction)
+    public void CreateArrowObj(Vector3 pos, ArrowCreateDirection direction, Transform parent = null)
     {
-        arrows.Add(GameObject.Instantiate(arrowPrefab, pos, GetRotate(direction)).GetComponent<Arrow>());
+        Arrow arrow = GameObject.Instantiate(arrowPrefab, pos, GetRotate(direction)).GetComponent<Arrow>();
+        arrows.Add(arrow);
+        if (parent != null)
+        {
+            arrow.transform.parent = parent;
+        }
     }
 
     Quaternion GetRotate(ArrowCreateDirection direction)

@@ -57,6 +57,7 @@ public class Reward : MonoBehaviour
                 case EVENT_REWARD_TYPE.HP: return string.Format("체력이 {0} {1}합니다", Mathf.Abs(rewardData.index), rewardData.index > 0 ? "회복" : "감소");
                 case EVENT_REWARD_TYPE.DRAW: return string.Format("시작 드로우 개수가 {0}장 증가합니다", Mathf.Abs(rewardData.index));
                 case EVENT_REWARD_TYPE.QUESTION_CARD: return string.Format("물음표카드를 {0}장 획득합니다", Mathf.Abs(rewardData.index));
+                case EVENT_REWARD_TYPE.SKILL_BOOK: return string.Format("스킬북을 획득합니다");
             }
             return "";
         }
@@ -87,7 +88,7 @@ public class Reward : MonoBehaviour
     {
         ColorAlpha01(isOut);
 
-        if(isOut)
+        if (isOut)
             SoundManager.Inst.Play(REWARDSOUND.SHOW_REWARD_BUTTON);
 
         while (true)

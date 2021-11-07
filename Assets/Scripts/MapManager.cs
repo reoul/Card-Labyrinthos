@@ -25,7 +25,7 @@ public class FieldData
     }
 }
 
-public enum FIELD_TYPE { BATTLE, EVENT, REST, SHOP, MAP, BOSS, TUTORIAL }
+public enum FIELD_TYPE { BATTLE, EVENT, REST, SHOP, MAP, BOSS, TUTORIAL, TUTORIAL2 }
 public enum EVENT_TYPE { EVENT1, EVENT2, EVENT3 };
 
 public class SceneEventArgs : EventArgs
@@ -64,8 +64,12 @@ public class MapManager : MonoBehaviour
     GameObject fieldParent;
     public Field[] fields;
 
+    bool isFinishToturial = false;
+
     bool isMoveCamera = false;
     Vector3 lastMousePos;
+
+    public int tutorialIndex = 0;
 
     public string CurrentSceneName      //현재 씬 이름
     {
@@ -76,6 +80,7 @@ public class MapManager : MonoBehaviour
                 case "Map":
                     return "지도";
                 case "Battle":
+                case "Tutorial2":
                     return "전투";
                 case "Event":
                     return "이벤트";
@@ -136,14 +141,14 @@ public class MapManager : MonoBehaviour
         TurnManager.Inst.isFinish = false;
         fieldData.field_type = FIELD_TYPE.MAP;
         FadeManager.FadeEvent += new EventHandler(LoadScene);
-        StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null, FieldClearCheckCorutine(), InitSkillTime()));
+        StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null, FieldClearCheckCorutine(), InitSkillTime(), null, isFinishToturial ? null : MapTutorialCorutine()));
     }
 
     public void LoadTutorialScene()
     {
         fieldData.field_type = FIELD_TYPE.TUTORIAL;
         FadeManager.FadeEvent += new EventHandler(LoadScene);
-        StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null, null, null, null, GhostManager.Inst.ShowGhost()));
+        StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null, null, null, null));
     }
 
     void StartEvent()
@@ -180,6 +185,11 @@ public class MapManager : MonoBehaviour
                     null, null, null,
                         TutorialManager.Inst.TutorialCorutine()));
                 break;
+            case FIELD_TYPE.TUTORIAL2:
+                StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null,
+                    PlayerManager.Inst.SetupGameCorutine(), null, null,
+                        CardManager.Inst.FixedCardNumToturial2Corutine(), CardManager.Inst.InitCorutine(), TurnManager.Inst.StartGameCorutine()));
+                break;
         }
     }
 
@@ -209,9 +219,28 @@ public class MapManager : MonoBehaviour
 
     public IEnumerator InitSkillTime()
     {
-        HelpManager.Inst.ShowHelp(HELP_TYPE.MAP);
         SkillManager.Inst.InitSkillTime();
-        Debug.Log("adsfdsfa");
+        yield return null;
+    }
+
+    public IEnumerator MapTutorialCorutine()
+    {
+        yield return StartCoroutine(GhostManager.Inst.ShowGhost());
+        for (int i = 0; i < TalkWindow.Inst.talks[1].Count; i++)
+        {
+            if (i == 2)
+                ArrowManager.Inst.CreateArrowObj(fields[0].transform.position + -Vector3.right, ArrowCreateDirection.LEFT, fields[0].transform);
+            else if (i == 3)
+            {
+                ArrowManager.Inst.DestoryAllArrow();
+                ArrowManager.Inst.CreateArrowObj(fields[1].transform.position + -Vector3.right, ArrowCreateDirection.LEFT, fields[1].transform);
+            }
+            yield return StartCoroutine(TalkWindow.Inst.TalkTypingCorutine(1, i));
+            yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCorutine());
+            yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCorutine());
+        }
+        yield return StartCoroutine(TalkWindow.Inst.HideText());
+        isFinishToturial = true;
         yield return null;
     }
 }

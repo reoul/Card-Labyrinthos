@@ -6,14 +6,14 @@ using UnityEngine;
 public class Ghost : MonoBehaviour
 {
     [SerializeField] TalkWindow talkWindow;
-    public void ShowTalk()
+    public IEnumerator ShowTalk()
     {
         talkWindow.gameObject.SetActive(true);
-        talkWindow.ShowTalk();
+        yield return StartCoroutine(TalkWindow.Inst.ShowTalkWindowCorutine());
     }
-    public void HideTalk()
+    public IEnumerator HideTalk()
     {
         talkWindow.gameObject.SetActive(false);
-        GhostManager.Inst.HideGhost();
+        yield return StartCoroutine(GhostManager.Inst.HideGhost());
     }
 }
