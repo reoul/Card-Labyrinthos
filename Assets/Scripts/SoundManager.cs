@@ -85,7 +85,20 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] SFXAudio;
 
     public AudioSource BackGroundAudioSource;
-    public SFXSound[] SFXAudioSource;
+    public SFXSound[] SFXAudioSources;
+
+    public void SetBGMVolume(float volume)
+    {
+        BackGroundAudioSource.volume = volume;
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        for (int i = 0; i < SFXAudioSources.Length; i++)
+        {
+            SFXAudioSources[i].SetVolume(volume);
+        }
+    }
 
     public void Play(BACKGROUNDSOUND sound)
     {
@@ -132,11 +145,11 @@ public class SoundManager : MonoBehaviour
     }
     public void SFXPlay(AudioClip clip)
     {
-        for (int i = 0; i < SFXAudioSource.Length; i++)
+        for (int i = 0; i < SFXAudioSources.Length; i++)
         {
-            if (!SFXAudioSource[i].isPlaying)
+            if (!SFXAudioSources[i].isPlaying)
             {
-                SFXAudioSource[i].Play(clip);
+                SFXAudioSources[i].Play(clip);
                 break;
             }
         }

@@ -10,9 +10,8 @@ public class TalkWindow : MonoBehaviour
     [SerializeField] TMP_Text talkTMP;
     List<List<string>> talks;
     bool isSkip = false;
-    bool next = false;
-    bool isFlagFirstIndex = true;    //대화가 계속 진행되지 않도록 거는 플래그
-    bool isFlagSecondIndex = false;    //대화가 계속 진행되지 않도록 거는 플래그
+    bool isFlagNext = false;
+    bool isFlagIndex = false;    //대화가 계속 진행되지 않도록 거는 플래그
     public int index = 0;
     public int index2 = 0;
     public string currentTalk
@@ -23,17 +22,6 @@ public class TalkWindow : MonoBehaviour
         }
     }
 
-    public void ShowText()
-    {
-        talkTMP.text = "";
-        talkTMP.DOFade(1, 1);
-    }
-    public void HideText()
-    {
-        talkTMP.text = "";
-        talkTMP.DOFade(0, 1);
-    }
-
     private void Awake()
     {
         talks = new List<List<string>>();
@@ -42,10 +30,10 @@ public class TalkWindow : MonoBehaviour
             talks.Add(new List<string>());
         }
         talks[0].Add("일어났군! 기억이 없어서 아주 혼란스러울 거야, 난 이 미궁에서 목숨을 잃은 모험가지");
-        talks[0].Add("미궁을 탈출하기 위해 보스한테 도전했지만 결국 실패했어.");
+        talks[0].Add("난 미궁을 탈출하기 위해 보스한테 도전했지만 결국 실패했어.");
         talks[0].Add("자네가 나의 복수를 해주게. 그렇다면 보스에게 도달하는 데까지 도움을 주지.");
         talks[0].Add("주변에 있는 무덤이 보일 거야. 무덤에 있는 카드, 가방, 스킬북 전부 챙겨보자고");
-        talks[0].Add("어떻게 싸우는지 알려줄 테니 일단 다음 필드로 넘어 가보자");
+        talks[0].Add("전부 챙겼으면 어떻게 싸우는지 알려줄 테니 일단 다음 필드로 넘어 가보자");
 
         talks[1].Add("현재 보이는 화면이 맵이라네. 만약에 더 앞을 보고 싶으면 빈 공간을 클릭해서 드래그하면 된다네.");
         talks[1].Add("여기서 아이콘을 클릭하면 해당 필드로 갈 수 있지.");
@@ -104,51 +92,67 @@ public class TalkWindow : MonoBehaviour
         talks[13].Add("드디어 우리가 보스 방까지 도달했군. 부디 나의 복수를 이루어 주게나.");
         talks[13].Add("보스는 생각보다 체력이랑 공격력이 강하네. 조심하게나.");
     }
+
     public void ShowTalk()
     {
-        StartCoroutine(TalkCorutine());
-        //ghost.HideTalk();
+        StartCoroutine(ShowText(index));
     }
 
-    IEnumerator TalkCorutine()
+    public IEnumerator ShowText(int index)
     {
-        for (int i = 0; i < talks.Count; i++)
-        {
-            index2 = 0;
-            for (int j = 0; j < talks[i].Count; j++)
-            {
-                yield return StartCoroutine(ShowTalkCorutine(i, j));
-                yield return StartCoroutine(CheckFlagSecondIndexCorutine());
-                index2++;
-            }
-
-            yield return StartCoroutine(CheckFlagFirstIndexCorutine());
-            index++;
-        }
-        ghost.HideTalk();
+        talkTMP.text = "";
+        Tween tween = this.GetComponent<SpriteRenderer>().DOFade(1, 1);
+        yield return tween.WaitForCompletion();
+        StartCoroutine(ShowTalkCorutine(index));
     }
 
-    IEnumerator ShowTalkCorutine(int index, int index2)
+    IEnumerator ShowTalkCorutine(int index)
+    {
+        for (int i = 0; i < talks[index].Count; i++)
+        {
+            yield return StartCoroutine(TalkTypingCorutine(index, i));
+            yield return StartCoroutine(CheckFlagIndexCorutine());
+            yield return StartCoroutine(CheckFlagNextCorutine());
+        }
+        StartCoroutine(HideText());
+    }
+
+    IEnumerator TalkTypingCorutine(int index, int index2)       //한 문장 텍스트 타이핑 효과 코루틴
     {
         for (int i = 0; i < talks[index][index2].Length; i++)
         {
-            Debug.Log(talkTMP.textInfo.lineCount);
             if (isSkip)
             {
-                //i = talk[index].Length - 1;
                 isSkip = false;
+                talkTMP.text = currentTalk;
                 break;
             }
             talkTMP.text = talks[index][index2].Substring(0, i + 1);
-            if (talks[index][index2][i] == ' ')
-                yield return new WaitForSeconds(0.05f);
-            yield return new WaitForSeconds(0.05f);
+            //if (talks[index][index2][i] == ' ')
+            //    yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.1f);
         }
+        yield return null;
+    }
+
+    IEnumerator CheckFlagIndexCorutine()
+    {
         while (true)
         {
-            if (next)
+            if (!isFlagIndex)
+                break;
+            yield return new WaitForEndOfFrame();
+        }
+        yield return null;
+    }
+
+    IEnumerator CheckFlagNextCorutine()
+    {
+        while (true)
+        {
+            if (isFlagNext)
             {
-                next = false;
+                isFlagNext = false;
                 break;
             }
             yield return new WaitForEndOfFrame();
@@ -156,47 +160,28 @@ public class TalkWindow : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator CheckFlagFirstIndexCorutine()
+    public IEnumerator HideText()
     {
-        while (true)
-        {
-            if (!isFlagFirstIndex)
-                break;
-            yield return new WaitForEndOfFrame();
-        }
-        yield return null;
-    }
-    IEnumerator CheckFlagSecondIndexCorutine()
-    {
-        while (true)
-        {
-            if (!isFlagSecondIndex)
-                break;
-            yield return new WaitForEndOfFrame();
-        }
-        yield return null;
+        talkTMP.text = "";
+        Tween tween = this.GetComponent<SpriteRenderer>().DOFade(0, 1);
+        yield return tween.WaitForCompletion();
+        index++;
+        ghost.HideTalk();
     }
 
-    public void SetFlagFirstIndex(bool flag)
+    public void SetFlagIndex(bool flag)
     {
-        isFlagFirstIndex = flag;
-    }
-
-    public void SetFlagSecondIndex(bool flag)
-    {
-        isFlagSecondIndex = flag;
+        isFlagIndex = flag;
     }
 
     private void OnMouseUp()
     {
         if (talkTMP.text.Length == currentTalk.Length)
         {
-            next = true;
+            isFlagNext = true;
+            index2++;
         }
         else
-        {
-            talkTMP.text = currentTalk;
             isSkip = true;
-        }
     }
 }

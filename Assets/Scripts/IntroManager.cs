@@ -4,25 +4,30 @@ using UnityEngine;
 
 public class IntroManager : MonoBehaviour
 {
-    bool onStartButton = false;   //마우스가 필드 위에 있는지
+    public static IntroManager Inst = null;
+
+    private void Awake()
+    {
+        Inst = this;
+    }
 
     private void Start()
     {
         SoundManager.Inst.Play(BACKGROUNDSOUND.INTRO);
-        StartCoroutine(CardManager.Inst.StartIntroCard());
     }
 
-    void OnMouseEnter()
-    {
-        onStartButton = true;
-    }
-    void OnMouseExit()
-    {
-        onStartButton = false;
-    }
-
-    private void OnMouseUp()
+    public void GameStart()
     {
         MapManager.Inst.LoadTutorialScene();
+    }
+
+    public void Setting()
+    {
+        SettingManager.Inst.Open();
+    }
+
+    public void GameQuit()
+    {
+        Application.Quit();
     }
 }

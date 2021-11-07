@@ -143,7 +143,7 @@ public class MapManager : MonoBehaviour
     {
         fieldData.field_type = FIELD_TYPE.TUTORIAL;
         FadeManager.FadeEvent += new EventHandler(LoadScene);
-        StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null, null, null, null));
+        StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null, null, null, null, GhostManager.Inst.ShowGhost()));
     }
 
     void StartEvent()

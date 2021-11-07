@@ -9,17 +9,11 @@ public class Ghost : MonoBehaviour
     public void ShowTalk()
     {
         talkWindow.gameObject.SetActive(true);
-        talkWindow.GetComponent<SpriteRenderer>().DOFade(1, 1).OnComplete(() =>
-        {
-            talkWindow.ShowTalk();
-        });
+        talkWindow.ShowTalk();
     }
     public void HideTalk()
     {
-        talkWindow.GetComponent<SpriteRenderer>().DOFade(0, 1).OnComplete(() =>
-        {
-            talkWindow.gameObject.SetActive(false);
-            GhostManager.Inst.HideGhost();
-        });
+        talkWindow.gameObject.SetActive(false);
+        GhostManager.Inst.HideGhost();
     }
 }

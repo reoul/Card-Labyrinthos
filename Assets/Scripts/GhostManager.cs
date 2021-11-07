@@ -23,22 +23,21 @@ public class GhostManager : MonoBehaviour
 
     private void Start()
     {
-        ShowGhost();
+        //ShowGhost();
     }
 
-    public void ShowGhost()
+    public IEnumerator ShowGhost()
     {
         this.ghost.GetComponent<SpriteRenderer>().DOFade(1, 1).OnComplete(() =>
         {
-            Debug.Log("유령 보이기");
             ghost.ShowTalk();
         });
+        yield return null;
     }
     public void HideGhost()
     {
         this.ghost.GetComponent<SpriteRenderer>().DOFade(0, 1).OnComplete(() =>
         {
-            Debug.Log("유령 숨기기");
         });
     }
 }

@@ -32,4 +32,9 @@ public class SFXSound : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
     }
+
+    public void SetVolume(float volume)
+    {
+        audioSource.volume = volume;
+    }
 }

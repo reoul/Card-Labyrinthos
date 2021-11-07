@@ -69,6 +69,7 @@ public class TopBar : MonoBehaviour
                 BagManager.Inst.Open();
                 break;
             case TOPBAR_TYPE.SETTING:
+                SettingManager.Inst.Open();
                 break;
             case TOPBAR_TYPE.SKILL:
                 SkillManager.Inst.Open();
