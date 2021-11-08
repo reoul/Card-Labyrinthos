@@ -11750,7 +11750,6 @@ MonoBehaviour:
   isClear: 
   fieldParent: {fileID: 684804332}
   fields: []
-  tutorialIndex: 0
 --- !u!1 &1496325639
 GameObject:
   m_ObjectHideFlags: 0
