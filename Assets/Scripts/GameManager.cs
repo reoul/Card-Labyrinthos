@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        StartCoroutine(TurnManager.Inst.StartGameCorutine());
+        StartCoroutine(TurnManager.Inst.StartGameCoroutine());
     }
     public void Notification(string message)
     {

@@ -24,14 +24,14 @@ public class Rest : MonoBehaviour
     {
         if (onRestButton)
         {
-            StartCoroutine(RestCorutine());
+            StartCoroutine(RestCoroutine());
         }
     }
-    IEnumerator RestCorutine()
+    IEnumerator RestCoroutine()
     {
         RewardManager.Inst.AddReward(REWARD_TYPE.REWARD, (int)EVENT_REWARD_TYPE.HP, 20);
-        yield return StartCoroutine(RewardManager.Inst.ShowRewardWindowCorutine(false));
-        yield return StartCoroutine(RewardManager.Inst.RewardCorutine());
+        yield return StartCoroutine(RewardManager.Inst.ShowRewardWindowCoroutine(false));
+        yield return StartCoroutine(RewardManager.Inst.RewardCoroutine());
         MapManager.Inst.LoadMapScene(true);
     }
 }

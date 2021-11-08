@@ -60,7 +60,7 @@ public class EffectManager : MonoBehaviour
         }
     }
 
-    private IEnumerator CreateSheldCorutine(Vector3 pos, float delay, int cnt)
+    private IEnumerator CreateSheldCoroutine(Vector3 pos, float delay, int cnt)
     {
         yield return new WaitForSeconds(delay);
         for (int i = 0; i < cnt; i++)
@@ -71,7 +71,7 @@ public class EffectManager : MonoBehaviour
         }
     }
 
-    private IEnumerator CreateHealCorutine(Vector3 pos, float delay, int cnt)
+    private IEnumerator CreateHealCoroutine(Vector3 pos, float delay, int cnt)
     {
         yield return new WaitForSeconds(delay);
         for (int i = 0; i < cnt; i++)

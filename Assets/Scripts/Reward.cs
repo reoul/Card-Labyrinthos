@@ -84,7 +84,7 @@ public class Reward : MonoBehaviour
         isRewardOn = true;
         ColorAlpha01(true);
     }
-    public IEnumerator FadeCorutine(bool isOut)
+    public IEnumerator FadeCoroutine(bool isOut)
     {
         ColorAlpha01(isOut);
 

@@ -21,7 +21,7 @@ public class Tomb : MonoBehaviour
     {
         if (onIcon && !isGet && !isFade)
         {
-            StartCoroutine(TutorialManager.Inst.GetCardCorutine());
+            StartCoroutine(TutorialManager.Inst.GetCardCoroutine());
             isFade = true;
         }
     }

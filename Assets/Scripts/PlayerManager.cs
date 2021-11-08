@@ -59,7 +59,7 @@ public class PlayerManager : MonoBehaviour
 
     public string hpString { get { return string.Format($"{hp}/{max_hp}"); } }
 
-    public IEnumerator SetupGameCorutine()
+    public IEnumerator SetupGameCoroutine()
     {
         yield return new WaitForEndOfFrame();
         Player.Inst.hpbar.hp = hp;

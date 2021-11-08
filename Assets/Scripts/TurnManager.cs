@@ -38,18 +38,23 @@ public class TurnManager : MonoBehaviour
     [Header("Properties")]
     public bool isLoading;
 
+    WaitForEndOfFrame delayEndOfFrame = new WaitForEndOfFrame();
     WaitForSeconds delay01 = new WaitForSeconds(0.1f);
     WaitForSeconds delay07 = new WaitForSeconds(0.7f);
 
     public static Action OnAddCard;
 
-    public IEnumerator StartGameCorutine()
+    public bool isContinue;
+    public bool isTutorialLockCard;
+
+    public IEnumerator StartGameCoroutine()
     {
         yield return delay01;
-        StartCoroutine(StartTurnCorutine());
+        isContinue = true;
+        StartCoroutine(StartTurnCoroutine());
     }
 
-    IEnumerator StartTurnCorutine()
+    IEnumerator StartTurnCoroutine()
     {
         isLoading = true;
 
@@ -77,13 +82,21 @@ public class TurnManager : MonoBehaviour
                 SoundManager.Inst.Play(BATTLESOUND.TURN_START);
                 GameManager.Inst.Notification("내 턴");
             }
+            if (isTutorialLockCard)
+            {
+                for (int i = 0; i < CardManager.Inst.MyHandCards.Count; i++)
+                {
+                    CardManager.Inst.MyHandCards[i].isLock = true;
+                }
+                isTutorialLockCard = false;
+            }
 
         }
         yield return delay07;
         isLoading = false;
     }
 
-    IEnumerator EndTurnCorutine()
+    IEnumerator EndTurnCoroutine()
     {
         isLoading = true;
 
@@ -103,11 +116,19 @@ public class TurnManager : MonoBehaviour
     {
         //EndTurnBtn.SetActive(false);
         //CardManager.Inst.FnishCardAllMyHand();
-        StartCoroutine(EnemyTurnCorutine());
+        StartCoroutine(EnemyTurnCoroutine());
     }
 
-    IEnumerator EnemyTurnCorutine()
+    IEnumerator EnemyTurnCoroutine()
     {
+        while (true)
+        {
+            if (isContinue)
+            {
+                break;
+            }
+            yield return delayEndOfFrame;
+        }
         yield return new WaitForSeconds(1f);
         for (int i = 0; i < EnemyManager.Inst.enemys.Count; i++)
         {
@@ -122,7 +143,7 @@ public class TurnManager : MonoBehaviour
         {
             DebuffManager.Inst.CheckDebuff();
             EnemyManager.Inst.UpdateStateTextAllEnemy();
-            StartCoroutine(StartTurnCorutine());
+            StartCoroutine(StartTurnCoroutine());
         }
     }
 
@@ -135,15 +156,15 @@ public class TurnManager : MonoBehaviour
     public IEnumerator ShowReward()    //전투가 끝나거나 이벤트 보상을 얻을때
     {
         RewardManager.Inst.SetFinishBattleReward();
-        yield return StartCoroutine(RewardManager.Inst.ShowRewardWindowCorutine());    //보상 다 받았으면
+        yield return StartCoroutine(RewardManager.Inst.ShowRewardWindowCoroutine());    //보상 다 받았으면
         MapManager.Inst.LoadMapScene(true);
     }
 
-    public IEnumerator ShowDebuffCorutine()    //전투에 들어가기 전에 전투 디버프 설정
+    public IEnumerator ShowDebuffCoroutine()    //전투에 들어가기 전에 전투 디버프 설정
     {
         RewardManager.Inst.SetRandomBattleDebuff();
-        yield return StartCoroutine(RewardManager.Inst.ShowRewardWindowCorutine(false));    //보상 다 받았으면
-        yield return StartCoroutine(RewardManager.Inst.RewardStartBattleCorutine());
+        yield return StartCoroutine(RewardManager.Inst.ShowRewardWindowCoroutine(false));    //보상 다 받았으면
+        yield return StartCoroutine(RewardManager.Inst.RewardStartBattleCoroutine());
     }
 
 }

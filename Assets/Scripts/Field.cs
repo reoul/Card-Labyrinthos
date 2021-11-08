@@ -120,6 +120,7 @@ public class Field : MonoBehaviour
 
     public bool isReady;
     public bool isClear;
+    public bool isDebuffOff;
     public GameObject clearObj;
 
     public FieldData fieldData { get { return new FieldData(field_type, event_type, GetMonster(monster_difficulty)); } }
@@ -181,7 +182,7 @@ public class Field : MonoBehaviour
                     case 6:
                         return MONSTER_TYPE.UNDEAD_WARRIOR;
                     case 7:
-                        return MONSTER_TYPE.WASP;
+                        return MONSTER_TYPE.WATER_WISP;
                     case 8:
                         return MONSTER_TYPE.WATER_WISP;
                     case 9:

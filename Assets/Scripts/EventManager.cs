@@ -69,7 +69,7 @@ public class EventManager : MonoBehaviour
                     RewardManager.Inst.AddReward(REWARD_TYPE.REWARD, (int)eventData.reward_type2, eventData.index2);
                 break;
         }
-        StartCoroutine(RewardManager.Inst.ShowRewardWindowCorutine());
+        StartCoroutine(RewardManager.Inst.ShowRewardWindowCoroutine());
     }
 
     void FindEvents()
@@ -83,7 +83,7 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public IEnumerator RandomEventCorutine()
+    public IEnumerator RandomEventCoroutine()
     {
         SoundManager.Inst.Play(BACKGROUNDSOUND.EVENT);
         FindEvents();

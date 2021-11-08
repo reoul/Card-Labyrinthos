@@ -1239,6 +1239,7 @@ MonoBehaviour:
   surroundingObj: []
   isReady: 0
   isClear: 0
+  isDebuffOff: 0
   clearObj: {fileID: 0}
 --- !u!61 &129177223
 BoxCollider2D:
@@ -2276,6 +2277,7 @@ MonoBehaviour:
   surroundingObj: []
   isReady: 0
   isClear: 0
+  isDebuffOff: 0
   clearObj: {fileID: 0}
 --- !u!61 &267222887
 BoxCollider2D:
@@ -3012,6 +3014,7 @@ MonoBehaviour:
   surroundingObj: []
   isReady: 0
   isClear: 0
+  isDebuffOff: 0
   clearObj: {fileID: 941951552}
 --- !u!61 &372542292
 BoxCollider2D:
@@ -3030,7 +3033,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 5.12}
+    oldSize: {x: 3.72, y: 5.12}
     newSize: {x: 5.12, y: 5.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -3078,7 +3081,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -90
-  m_Sprite: {fileID: 21300000, guid: 304a6c5217b2e5b458ada3df4e95bad4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 18452e3f875c6a74d91a47eb3444fd64, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3142,6 +3145,7 @@ MonoBehaviour:
   surroundingObj: []
   isReady: 0
   isClear: 0
+  isDebuffOff: 0
   clearObj: {fileID: 0}
 --- !u!61 &375041180
 BoxCollider2D:
@@ -5355,6 +5359,7 @@ MonoBehaviour:
   surroundingObj: []
   isReady: 0
   isClear: 0
+  isDebuffOff: 0
   clearObj: {fileID: 0}
 --- !u!61 &671696476
 BoxCollider2D:
@@ -7974,6 +7979,7 @@ MonoBehaviour:
   surroundingObj: []
   isReady: 0
   isClear: 0
+  isDebuffOff: 0
   clearObj: {fileID: 0}
 --- !u!61 &1075097311
 BoxCollider2D:
@@ -9593,6 +9599,7 @@ MonoBehaviour:
   isFinish: 0
   startCardCount: 3
   isLoading: 0
+  isContinue: 0
 --- !u!4 &1187599034
 Transform:
   m_ObjectHideFlags: 0
@@ -9873,6 +9880,7 @@ MonoBehaviour:
   surroundingObj: []
   isReady: 0
   isClear: 0
+  isDebuffOff: 0
   clearObj: {fileID: 488981686}
 --- !u!61 &1216877895
 BoxCollider2D:
@@ -11357,7 +11365,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uC9C0"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -11750,6 +11758,21 @@ MonoBehaviour:
   isClear: 
   fieldParent: {fileID: 684804332}
   fields: []
+  isFinishToturialBattle: 0
+  isFinishToturialBag: 0
+  isFinishToturialDebuff: 0
+  isFinishToturialRest: 0
+  isFinishToturialEvent: 0
+  isFinishToturialShop: 0
+  isFinishToturialBoss: 0
+  isTutorialReadyBag: 0
+  isTutorialReadyDebuff: 0
+  isTutorialReadyRest: 0
+  isTutorialReadyEvent: 0
+  isTutorialReadyShop: 0
+  isTutorialReadyBoss: 0
+  isTutorialOpenBag: 0
+  tutorialIndex: 0
 --- !u!1 &1496325639
 GameObject:
   m_ObjectHideFlags: 0
@@ -13937,6 +13960,7 @@ MonoBehaviour:
   surroundingObj: []
   isReady: 0
   isClear: 0
+  isDebuffOff: 0
   clearObj: {fileID: 0}
 --- !u!61 &1727102902
 BoxCollider2D:
@@ -14678,6 +14702,7 @@ MonoBehaviour:
   surroundingObj: []
   isReady: 0
   isClear: 0
+  isDebuffOff: 0
   clearObj: {fileID: 0}
 --- !u!61 &1754941614
 BoxCollider2D:
@@ -15542,6 +15567,7 @@ MonoBehaviour:
   surroundingObj: []
   isReady: 0
   isClear: 0
+  isDebuffOff: 0
   clearObj: {fileID: 1726385119}
 --- !u!61 &1834781272
 BoxCollider2D:
@@ -18422,12 +18448,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9bd9349b0400904095b7441e67a99a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  field_type: 0
+  field_type: 7
   event_type: 0
   monster_difficulty: 0
   surroundingObj: []
   isReady: 0
   isClear: 0
+  isDebuffOff: 0
   clearObj: {fileID: 1918431934}
 --- !u!61 &2135173470
 BoxCollider2D:
@@ -18558,6 +18585,7 @@ MonoBehaviour:
   surroundingObj: []
   isReady: 0
   isClear: 0
+  isDebuffOff: 0
   clearObj: {fileID: 0}
 --- !u!61 &2136012260
 BoxCollider2D:
@@ -18686,6 +18714,7 @@ MonoBehaviour:
   ease: 0
   waypoint2: {fileID: 0}
   CardMoveSpeed: 0.2
+  isTutorial: 0
 --- !u!4 &2142492249
 Transform:
   m_ObjectHideFlags: 0

@@ -37,10 +37,10 @@ public class ThrowingObjManager : MonoBehaviour
 
     public void CreateThrowingObj(THROWING_OBJ_TYPE type, Vector3 startPos, Vector3 endPos, IEnumerator enumerator = null, float moveTime = 1, int cnt = 1, int index = 0)   //index : 추가적으로 변수를 함수로 넘겨줘야할 경우
     {
-        StartCoroutine(CreateThrowingObjCorutine(type, startPos, endPos, enumerator, moveTime, cnt, index));
+        StartCoroutine(CreateThrowingObjCoroutine(type, startPos, endPos, enumerator, moveTime, cnt, index));
     }
 
-    IEnumerator CreateThrowingObjCorutine(THROWING_OBJ_TYPE type, Vector3 startPos, Vector3 endPos, IEnumerator enumerator123 = null, float moveTime = 1, int cnt = 1, int index = 0)
+    IEnumerator CreateThrowingObjCoroutine(THROWING_OBJ_TYPE type, Vector3 startPos, Vector3 endPos, IEnumerator enumerator123 = null, float moveTime = 1, int cnt = 1, int index = 0)
     {
         for (int i = 0; i < cnt; i++)
         {

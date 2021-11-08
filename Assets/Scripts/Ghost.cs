@@ -9,7 +9,7 @@ public class Ghost : MonoBehaviour
     public IEnumerator ShowTalk()
     {
         talkWindow.gameObject.SetActive(true);
-        yield return StartCoroutine(TalkWindow.Inst.ShowTalkWindowCorutine());
+        yield return StartCoroutine(TalkWindow.Inst.ShowTalkWindowCoroutine());
     }
     public IEnumerator HideTalk()
     {

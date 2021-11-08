@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BagManager : MonoBehaviour
 {
@@ -37,6 +38,13 @@ public class BagManager : MonoBehaviour
         {
             Close();
             return;
+        }
+        if (MapManager.Inst.tutorialIndex == 2)
+        {
+            MapManager.Inst.isTutorialOpenBag = true;
+            TalkWindow.Inst.SetFlagNext(true);
+            TalkWindow.Inst.SetSkip(true);
+            TalkWindow.Inst.index2 = 1;
         }
         GameManager.Inst.CloseAllUI();
         isOpen = true;

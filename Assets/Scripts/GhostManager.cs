@@ -37,4 +37,18 @@ public class GhostManager : MonoBehaviour
         Tween tween = this.ghost.GetComponent<SpriteRenderer>().DOFade(0, 1);
         yield return tween.WaitForCompletion();
     }
+
+    public void MoveOriginPos()
+    {
+        this.transform.position = new Vector3(-7.39f, 2.85f, -5);
+    }
+
+    public void MoveTutorialPos()
+    {
+        this.transform.position = new Vector3(-7.95f, -2.88f, -5);
+    }
+    public void MoveTutorialSkillPos()
+    {
+        this.transform.position = new Vector3(-7.59f, -3.87f, -5);
+    }
 }

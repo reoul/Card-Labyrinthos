@@ -33,22 +33,13 @@ public class ArrowManager : MonoBehaviour
         {
             if (arrows[0] == null || arrows[0].isActiveAndEnabled == false)
             {
-                Debug.Log("잃어버린 객체 삭제");
                 arrows.RemoveAt(0);
                 i++;
             }
-            Debug.Log(arrows.Count);
-            Debug.Log("삭제");
             var obj = arrows[0];
             arrows.RemoveAt(0);
             obj.ArrowDestory();
         }
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.N))
-            CreateArrowObj(Vector3.zero, ArrowCreateDirection.UP);
     }
 
     public void CreateArrowObj(Vector3 pos, ArrowCreateDirection direction, Transform parent = null)

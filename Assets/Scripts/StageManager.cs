@@ -78,7 +78,7 @@ public class StageManager : MonoBehaviour
                 float position_x = enemy_position.x - enemy_spawn.position.x;
                 float position_y = enemy_position.y - enemy_spawn.position.y;
                 enemy.transform.position -= new Vector3(position_x, position_y, 0);
-                enemy.SetFixedWeaknessNum(2);
+                enemy.SetFixedWeaknessNum(MapManager.Inst.tutorialIndex == 1 ? 2 : -1);
                 EnemyManager.Inst.enemys.Add(enemy);
                 enemy.hpbar.SetHP(monsterSO.monsters[i].hp);
                 //enemy.hpbar.hp = 5;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum SKILL_TYPE { SKILL1, SKILL2, SKILL3, SKILL4, SKILL5, SKILL6 }
 public class SkillManager : MonoBehaviour
@@ -52,6 +53,13 @@ public class SkillManager : MonoBehaviour
         isOpen = true;
         transform.GetChild(0).gameObject.SetActive(true);
         SelectPage(page);
+        if (SceneManager.GetActiveScene().name == "Tutorial2")
+        {
+            TutorialManager.Inst.isToturialOpenSkill = true;
+            TalkWindow.Inst.SetFlagNext(true);
+            TalkWindow.Inst.SetSkip(true);
+            TalkWindow.Inst.index2 = 1;
+        }
     }
 
     public void Close()      //스킬창 여는 것

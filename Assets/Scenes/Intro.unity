@@ -1880,7 +1880,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4500
   m_Sprite: {fileID: 21300000, guid: 97515af4cf862804bb43810a69e581e1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
@@ -1939,8 +1939,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ghost: {fileID: 683229374}
   talkTMP: {fileID: 1394739462}
+  isSkip: 0
+  isFlagNext: 0
+  isFlagIndex: 0
   index: 0
-  index2: 0
+  _index2: 0
 --- !u!61 &716748553
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2005,7 +2008,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4500
   m_Sprite: {fileID: 21300000, guid: 6a449f34acf67d6488d237c298bd4072, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
@@ -2673,7 +2676,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b38911f20a665f54bb1d63f0f44db97f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb8054f3f38558e41bde97165c290e84, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3375,6 +3378,21 @@ MonoBehaviour:
   isClear: 
   fieldParent: {fileID: 0}
   fields: []
+  isFinishToturialBattle: 0
+  isFinishToturialBag: 0
+  isFinishToturialDebuff: 0
+  isFinishToturialRest: 0
+  isFinishToturialEvent: 0
+  isFinishToturialShop: 0
+  isFinishToturialBoss: 0
+  isTutorialReadyBag: 0
+  isTutorialReadyDebuff: 0
+  isTutorialReadyRest: 0
+  isTutorialReadyEvent: 0
+  isTutorialReadyShop: 0
+  isTutorialReadyBoss: 0
+  isTutorialOpenBag: 0
+  tutorialIndex: 0
 --- !u!4 &1211824687
 Transform:
   m_ObjectHideFlags: 0
@@ -3763,7 +3781,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b38911f20a665f54bb1d63f0f44db97f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb8054f3f38558e41bde97165c290e84, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4274,7 +4292,7 @@ MonoBehaviour:
   m_renderer: {fileID: 1394739463}
   m_maskType: 0
   _SortingLayerID: 0
-  _SortingOrder: 0
+  _SortingOrder: 4510
 --- !u!23 &1394739463
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4313,7 +4331,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4510
 --- !u!222 &1394739464
 CanvasRenderer:
   m_ObjectHideFlags: 2
@@ -6196,7 +6214,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1864741330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.39, y: 2.85, z: 0}
+  m_LocalPosition: {x: -7.39, y: 2.85, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 716748555}
@@ -6905,7 +6923,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5753675abf24bf74eb8ee6eb97f637bb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb8054f3f38558e41bde97165c290e84, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

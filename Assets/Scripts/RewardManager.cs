@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum REWARD_TYPE { REWARD, DEBUFF }
 public enum DEBUFF_TYPE { DEBUFF1, DEBUFF2, DEBUFF3, DEBUFF4, DEBUFF5, DEBUFF6, DEBUFF7, TUTORIAL }
@@ -50,7 +51,7 @@ public class RewardManager : MonoBehaviour
     public bool getReward;              //
     public bool activeRewardWindow;     //보상 창이 켜져있는지 확인하는 변수
 
-    public IEnumerator ShowRewardWindowCorutine(bool isStartRewardCorutine = true)
+    public IEnumerator ShowRewardWindowCoroutine(bool isStartRewardCoroutine = true)
     {
         SoundManager.Inst.Play(REWARDSOUND.SHOW_REWARD_WINDOW);
         activeRewardWindow = true;
@@ -74,10 +75,10 @@ public class RewardManager : MonoBehaviour
         for (int i = 0; i < rewards.Count; i++)         //보상 선택지
         {
             if (rewards[i].isRewardOn)
-                yield return StartCoroutine(rewards[i].FadeCorutine(true));
+                yield return StartCoroutine(rewards[i].FadeCoroutine(true));
         }
-        if (isStartRewardCorutine)
-            StartCoroutine(RewardCorutine());
+        if (isStartRewardCoroutine)
+            StartCoroutine(RewardCoroutine());
     }
 
     public void AddReward(REWARD_TYPE type, int reward_type, int index, int index2 = 0)
@@ -93,7 +94,7 @@ public class RewardManager : MonoBehaviour
         }
     }
 
-    public IEnumerator RewardCorutine(bool isLoadMap = true)
+    public IEnumerator RewardCoroutine(bool isLoadMap = true)
     {
         isGetAllReward = false;
         StartCoroutine(CheckGetAllReward());
@@ -113,10 +114,10 @@ public class RewardManager : MonoBehaviour
             MapManager.Inst.LoadMapScene(true);
     }
 
-    public IEnumerator RewardStartBattleCorutine()
+    public IEnumerator RewardStartBattleCoroutine()
     {
         isGetAllReward = false;
-        yield return StartCoroutine(WaitChoiceCorutine());
+        yield return StartCoroutine(WaitChoiceCoroutine());
         isChoice = false;
         activeRewardWindow = false;
         for (int i = 0; i < rewards.Count; i++)
@@ -182,6 +183,16 @@ public class RewardManager : MonoBehaviour
             }
             if (count == 0 && ThrowingObjManager.Inst.moveThrowingReward == 0)
             {
+                if (SceneManager.GetActiveScene().name == "Tutorial2")
+                {
+                    Debug.Log("튜토리얼 보상 다 받음");
+                    TalkWindow.Inst.SetFlagIndex(false);
+                    TalkWindow.Inst.SetFlagNext(true);
+                    TalkWindow.Inst.SetSkip(true);
+                    TutorialManager.Inst.isToturialFinish = true;
+                    if (MapManager.Inst.tutorialIndex == 1)
+                        yield return new WaitForSeconds(2);
+                }
                 isGetAllReward = true;
                 break;
             }
@@ -189,7 +200,7 @@ public class RewardManager : MonoBehaviour
         }
     }
 
-    public IEnumerator WaitChoiceCorutine()
+    public IEnumerator WaitChoiceCoroutine()
     {
         while (true)
         {
@@ -208,10 +219,10 @@ public class RewardManager : MonoBehaviour
                 {
                     case EVENT_REWARD_TYPE.CARD:
                         CardManager.Inst.AddCardDeck(reward.rewardData.index, reward.rewardData.index2);
-                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.NUM_CARD, reward.transform.position, TopBar.Inst.GetIcon(TOPBAR_TYPE.BAG).transform.position, null, 1, reward.rewardData.index2, reward.rewardData.index);
+                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.NUM_CARD, reward.transform.position + Vector3.up * 0.5f, TopBar.Inst.GetIcon(TOPBAR_TYPE.BAG).transform.position, null, 1, reward.rewardData.index2, reward.rewardData.index);
                         break;
                     case EVENT_REWARD_TYPE.CARD_PIECE:
-                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.CARD_PIECE, reward.transform.position, TopBar.Inst.GetIcon(TOPBAR_TYPE.CARDPIECE).transform.position, null, 1, reward.rewardData.index / 4, 4);
+                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.CARD_PIECE, reward.transform.position + Vector3.up * 0.5f, TopBar.Inst.GetIcon(TOPBAR_TYPE.CARDPIECE).transform.position, null, 1, reward.rewardData.index / 4, 4);
                         break;
                     case EVENT_REWARD_TYPE.HP:
                         if (reward.rewardData.index < 0)
@@ -225,10 +236,10 @@ public class RewardManager : MonoBehaviour
                     case EVENT_REWARD_TYPE.DRAW:
                         break;
                     case EVENT_REWARD_TYPE.QUESTION_CARD:
-                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.QUESTION_CARD, reward.transform.position, TopBar.Inst.GetIcon(TOPBAR_TYPE.QUESTION).transform.position, null, 1, 1, reward.rewardData.index);
+                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.QUESTION_CARD, reward.transform.position + Vector3.up * 0.5f, TopBar.Inst.GetIcon(TOPBAR_TYPE.QUESTION).transform.position, null, 1, 1, reward.rewardData.index);
                         break;
                     case EVENT_REWARD_TYPE.SKILL_BOOK:
-                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.SKILL_BOOK, reward.transform.position, TopBar.Inst.GetIcon(TOPBAR_TYPE.SKILL).transform.position, TutorialManager.Inst.SetActiveTrueTopBarSkillBook());
+                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.SKILL_BOOK, reward.transform.position + Vector3.up * 0.5f, TopBar.Inst.GetIcon(TOPBAR_TYPE.SKILL).transform.position, TutorialManager.Inst.SetActiveTrueTopBarSkillBook());
                         break;
                 }
                 break;
@@ -238,6 +249,6 @@ public class RewardManager : MonoBehaviour
                 DebuffManager.Inst.debuff_type = reward.debuff_type;
                 break;
         }
-        StartCoroutine(reward.FadeCorutine(false));
+        StartCoroutine(reward.FadeCoroutine(false));
     }
 }

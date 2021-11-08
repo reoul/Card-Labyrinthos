@@ -85,14 +85,14 @@ public class SkillBookPage : MonoBehaviour
                 break;
         }
         //applyButton.SetButtonActive(false);
-        StartCoroutine(ColorAlphaCorutine(false));
+        StartCoroutine(ColorAlphaCoroutine(false));
     }
     public void Hide()
     {
-        StartCoroutine(ColorAlphaCorutine(true));
+        StartCoroutine(ColorAlphaCoroutine(true));
     }
 
-    IEnumerator ColorAlphaCorutine(bool isHide)
+    IEnumerator ColorAlphaCoroutine(bool isHide)
     {
         while (true)
         {

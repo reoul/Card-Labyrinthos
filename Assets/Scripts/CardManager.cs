@@ -59,6 +59,8 @@ public class CardManager : MonoBehaviour
     [Header("카드의 이동속도")]
     public float CardMoveSpeed;
 
+    public bool isTutorial = false;
+
     public int HandCardNumSum
     {
         get
@@ -151,7 +153,7 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    public IEnumerator InitCorutine()
+    public IEnumerator InitCoroutine()
     {
         cardSpawnPoint = GameObject.Find("CardSpawn").transform;
         cardEndPoint = GameObject.Find("CardEnd").transform;
@@ -236,10 +238,10 @@ public class CardManager : MonoBehaviour
 
     public void TurnStartDraw()
     {
-        StartCoroutine(DrawCardCorutine(5));
+        StartCoroutine(DrawCardCoroutine(5));
     }
 
-    public IEnumerator DrawCardCorutine(int cnt)
+    public IEnumerator DrawCardCoroutine(int cnt)
     {
         for (int i = 0; i < cnt; i++)
         {
@@ -293,7 +295,7 @@ public class CardManager : MonoBehaviour
 
     public void FnishCardAllMyHand()
     {
-        StartCoroutine(FinishTurnCorutine());
+        StartCoroutine(FinishTurnCoroutine());
     }
 
     public void FinishSceneAllMyHand()      //씬이 끌날때 손에 있는 모든 카드를 밑으로 내려버린다.
@@ -307,7 +309,7 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    IEnumerator FinishTurnCorutine()
+    IEnumerator FinishTurnCoroutine()
     {
         for (int i = 0; i < MyHandCards.Count; i++)
         {
@@ -442,8 +444,14 @@ public class CardManager : MonoBehaviour
             EnlargeCard(false, selectCard, true);
             isUse = true;
             UseCard(Player.Inst.gameObject);
-            if (MyHandCards.Count == 0)
-                TurnManager.Inst.EndTurn();
+
+            if (isTutorial)
+            {
+                TalkWindow.Inst.SetFlagIndex(false);
+                TalkWindow.Inst.SetFlagNext(true);
+                TalkWindow.Inst.SetSkip(true);
+            }
+
         }
         else
         {
@@ -451,16 +459,31 @@ public class CardManager : MonoBehaviour
             if (Array.Exists(hits, x => x.collider.gameObject.layer == layer) && hits.Length <= 2)      //만약 적이라면
             {
                 EnlargeCard(false, selectCard, true);
+
                 isUse = true;
+
                 int damage = selectCard.final_Num == EnemyManager.Inst.enemys[0].GetComponent<Enemy>().weaknessNum ? selectCard.final_Num + 1 : 1;
+
                 UseCard(EnemyManager.Inst.enemys[0].gameObject);
+
                 ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.CARDBACK,
                     Player.Inst.gameObject.transform.position + Vector3.up * 3.5f, EnemyManager.Inst.enemys[0].hitPos.position, null, 0.5f, damage);
+
                 EffectManager.Inst.CreateEffectObj(EffectObjType.HIT, EnemyManager.Inst.enemys[0].hitPos.position + new Vector3(0, 0, -15), 0.2f, 1, damage);
-                if (MyHandCards.Count == 0)
-                    TurnManager.Inst.EndTurn();
+
+                if (isTutorial)
+                {
+                    TalkWindow.Inst.SetFlagIndex(false);
+                    TalkWindow.Inst.SetFlagNext(true);
+                    TalkWindow.Inst.SetSkip(true);
+                }
+
             }
         }
+
+        if (MyHandCards.Count == 0)
+            TurnManager.Inst.EndTurn();
+
         if (!isUse)
             EnlargeCard(false, selectCard);
     }
@@ -519,7 +542,7 @@ public class CardManager : MonoBehaviour
         selectCard = null;
     }
 
-    public IEnumerator MoveCenterCardCorutine(Card card)
+    public IEnumerator MoveCenterCardCoroutine(Card card)
     {
         card.parent.DORotateQuaternion(Utils.CardRotate, 0.5f);
         card.parent.DOMove(CardCenterPoint.position, 0.5f).OnComplete(() =>
@@ -607,7 +630,7 @@ public class CardManager : MonoBehaviour
         yield return null;
     }
 
-    public IEnumerator FixedCardNumToturial2Corutine()
+    public IEnumerator FixedCardNumToturial2Coroutine()          //첫 전투 튜토리얼때 카드 숫자 고정
     {
         fixedCardNum[0] = 2;
         fixedCardNum[1] = 5;

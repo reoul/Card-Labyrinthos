@@ -42,6 +42,8 @@ public class TalkWindow : MonoBehaviour
             Inst = this;
         }
 
+        //Time.timeScale = 2;
+
         talks = new List<List<string>>();
         for (int i = 0; i < 14; i++)
         {
@@ -55,7 +57,7 @@ public class TalkWindow : MonoBehaviour
 
         talks[1].Add("현재 보이는 화면이 맵이라네. 만약에 더 앞을 보고 싶으면 빈 공간을 클릭해서 드래그하면 된다네.");
         talks[1].Add("여기서 아이콘을 클릭하면 해당 필드로 갈 수 있지.");
-        talks[1].Add("우리가 다녀간 필드는 초록색 체크 표시가 생기며 다시 돌아갈 수 없네.");
+        talks[1].Add("우리가 다녀간 필드는 초록색 체크 표시가 생기며 다시 돌아갈 수 없다네.");
         talks[1].Add("앞에 둥그렇게 생긴 필드가 보일 거야. 저게 바로 전투 필드라네.");
         talks[1].Add("전투 필드에서는 몬스터와 전투를 하고 승리하여 보상을 얻는 필드지. 일단 저기로 가보자.");
 
@@ -63,28 +65,27 @@ public class TalkWindow : MonoBehaviour
         talks[2].Add("손에 들고 있는 3 카드로 한번 공격해보게. 그 숫자 그대로 데미지가 들어갈 거야.");
         talks[2].Add("이번엔 6 카드로 한번 공격해봐. 숫자가 높아도 약점 숫자랑 다르다면 데미지가 1밖에 안 들어갈 거네.");
         talks[2].Add("약점 숫자 뒤에 아이콘은 적의 패턴이라네. 검일 땐 공격, 십자가일 땐 회복이지.");
-        talks[2].Add("나머지 카드를 자네에게 써보게. 그렇다면 해당 숫자만큼의 실드가 생길 거야");
-        talks[2].Add("실드는 적의 공격을 실드 숫자만큼 방어해주지.");
+        talks[2].Add("나머지 카드를 자네에게 써보게. 그렇다면 해당 숫자만큼의 실드가 생길 거라네.");
+        talks[2].Add("실드가 4만큼 생겼을 거라네. 실드는 적의 공격을 실드 숫자만큼 방어해주지.");
         talks[2].Add("그리고 손에 들고 있는 카드를 다 사용하면 몬스터의 턴으로 넘어가게 된다네. 계속 싸워서 이겨보게나.");
-        talks[2].Add("이겼을 때는 일정 확률로 물음표 카드와 카드 파편을 주지. 클릭해서 받아두게나.");
-        talks[2].Add("얻어서 보유하게 된 물음표 카드와 카드 파편의 개수는 화살표가 가리키는 곳에서 확인할 수 있네.");
+        talks[2].Add("이겼을 때는 일정 확률로 물음표 카드와 카드 파편을 주지. 보유 개수는 화살표가 가리키는 곳에서 확인할 수 있다네.");
 
-        talks[3].Add("이번 필드에서는 스킬북에 대해서 알려주지. 오른쪽 상단에 있는 책을 눌러보게.");
-        talks[3].Add("화살표가 가리키는 곳에 해당 스킬에 대한 설명이 있다네. 스킬마다 다르니 한번 확인해보도록.");
-        talks[3].Add("지금 열려있는 스킬은 카드 숫자에 +1 혹은 -1이군.");
-        talks[3].Add("만약 스킬을 사용하고 싶다면 화살표가 가리키는 곳에 카드를 드래그해서 올려두게.");
-        talks[3].Add("그렇다면 오른쪽 페이지의 버튼으로 카드의 숫자를 변경시킬 수 있을 거라네.");
-        talks[3].Add("스킬은 필드마다 한 번만 쓸 수 있으니 신중하게 쓰도록 하게나.");
-        talks[3].Add("스킬창을 끄고 싶다면 아이콘을 한 번 더 누르거나 단축키 K를 사용하면 된다네.");
+        talks[3].Add("이번엔 가방을 알려주지. 화살표가 가르키는 가방 아이콘을 눌러보게나.");
+        talks[3].Add("왼쪽에는 각 카드마다 보유 개수와 최대 보유 개수가 있다네.");
+        talks[3].Add("오른쪽에는 스킬 해금 방법과 보유 스킬을 확인할 수 있지.");
+        talks[3].Add("가방을 끄고 싶다면 아이콘을 한 번 더 누르거나 단축키 I를 사용하면 된다네.");
 
-        talks[4].Add("스킬북 옆에 가방 아이콘을 눌러보게나.");
-        talks[4].Add("왼쪽에는 각 카드마다 보유 개수와 최대 보유 개수가 있다네.");
-        talks[4].Add("오른쪽에는 스킬 해금 방법과 보유 스킬을 확인할 수 있지.");
-        talks[4].Add("가방을 끄고 싶다면 아이콘을 한 번 더 누르거나 단축키 I를 사용하면 된다네.");
+        talks[4].Add("이번 필드에서는 스킬북에 대해서 알려주지. 오른쪽 상단에 있는 책을 눌러보게.");
+        talks[4].Add("화살표가 가리키는 버튼을 통해서 다른 스킬로 바꿀수 있다네.");
+        talks[4].Add("화살표가 가리키는 곳에 해당 스킬에 대한 설명이 있다네. 스킬마다 다르니 한번 확인해보도록. 지금 스킬은 카드 숫자에 +1 혹은 -1이군.");
+        talks[4].Add("만약 스킬을 사용하고 싶다면 화살표가 가리키는 곳에 카드를 드래그해서 올려두게.");
+        talks[4].Add("그렇다면 오른쪽 페이지의 버튼으로 카드의 숫자를 변경시킬 수 있을 거라네.");
+        talks[4].Add("스킬은 필드마다 한 번만 쓸 수 있으니 신중하게 쓰도록 하게나.");
+        talks[4].Add("스킬창을 끄고 싶다면 아이콘을 한 번 더 누르거나 단축키 K를 사용하면 된다네.");
 
-        talks[5].Add("전투 필드를 고르게 되면 저주를 선택해야 될 거야.");
+        talks[5].Add("지금부터 전투 필드를 고르게 되면 저주를 선택해야 될 거야.");
         talks[5].Add("저주는 해당 전투 필드 동안 적용되는 것으로 유리한걸 선택해야 하네.");
-        talks[5].Add("저주는 랜덤 된 3가지 중 하나를 선택하면 돼.");
+        talks[5].Add("저주는 랜덤 된 3가지가 나오는데 그 중 하나를 선택하면 돼.");
 
         talks[6].Add("선택한 저주는 오른쪽 상단 저주창에서 확인할 수 있다네.");
         talks[6].Add("저주창 왼쪽 버튼을 클릭하면 저주창을 숨기거나 보이게 할 수 있다.");
@@ -119,29 +120,29 @@ public class TalkWindow : MonoBehaviour
     public IEnumerator ShowText(int index)
     {
         talkTMP.text = "";
-        yield return StartCoroutine(ShowTalkWindowCorutine());
-        //StartCoroutine(ShowTalkCorutine(index));
+        yield return StartCoroutine(ShowTalkWindowCoroutine());
+        //StartCoroutine(ShowTalkCoroutine(index));
     }
 
-    public IEnumerator ShowTalkWindowCorutine()
+    public IEnumerator ShowTalkWindowCoroutine()
     {
         talkTMP.text = "";
         Tween tween = this.GetComponent<SpriteRenderer>().DOFade(1, 1);
         yield return tween.WaitForCompletion();
     }
 
-    IEnumerator ShowTalkCorutine(int index)
+    IEnumerator ShowTalkCoroutine(int index)
     {
         for (int i = 0; i < talks[index].Count; i++)
         {
-            yield return StartCoroutine(TalkTypingCorutine(index, i));
-            yield return StartCoroutine(CheckFlagIndexCorutine());
-            yield return StartCoroutine(CheckFlagNextCorutine());
+            yield return StartCoroutine(TalkTypingCoroutine(index, i));
+            yield return StartCoroutine(CheckFlagIndexCoroutine());
+            yield return StartCoroutine(CheckFlagNextCoroutine());
         }
         StartCoroutine(HideText());
     }
 
-    public IEnumerator TalkTypingCorutine(int index, int index2)       //한 문장 텍스트 타이핑 효과 코루틴
+    public IEnumerator TalkTypingCoroutine(int index, int index2)       //한 문장 텍스트 타이핑 효과 코루틴
     {
         isSkip = false;
         for (int i = 0; i < talks[index][index2].Length; i++)
@@ -160,7 +161,7 @@ public class TalkWindow : MonoBehaviour
         yield return null;
     }
 
-    public IEnumerator CheckFlagIndexCorutine()
+    public IEnumerator CheckFlagIndexCoroutine()
     {
         while (true)
         {
@@ -171,7 +172,7 @@ public class TalkWindow : MonoBehaviour
         yield return null;
     }
 
-    public IEnumerator CheckFlagNextCorutine()
+    public IEnumerator CheckFlagNextCoroutine()
     {
         while (true)
         {
@@ -200,11 +201,21 @@ public class TalkWindow : MonoBehaviour
         isFlagIndex = flag;
     }
 
+    public void SetFlagNext(bool flag)
+    {
+        isFlagNext = flag;
+    }
+
+    public void SetSkip(bool flag)
+    {
+        isSkip = flag;
+    }
+
     private void OnMouseUp()
     {
         if (talkTMP.text.Length == currentTalk.Length)
         {
-            isFlagNext = true;
+            SetFlagNext(true);
             index2++;
         }
         else

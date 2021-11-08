@@ -17,10 +17,10 @@ public class SFXSound : MonoBehaviour
     {
         audioSource.clip = clip;
         audioSource.Play();
-        StartCoroutine(PlayCorutine());
+        StartCoroutine(PlayCoroutine());
     }
 
-    IEnumerator PlayCorutine()
+    IEnumerator PlayCoroutine()
     {
         while (true)
         {
