@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
 
     public void Dead()
     {
+        SoundManager.Inst.Play(BATTLESOUND.GAME_FAILD);
         this.GetComponent<Animator>().SetTrigger("Dead");
         hpbar.UpdateHp();
         TurnManager.Inst.isFinish = true;
@@ -40,8 +41,7 @@ public class Player : MonoBehaviour
 
     public void DeadAnimationFinish()
     {
-        SoundManager.Inst.Play(BATTLESOUND.GAME_FAILD);
-        //GameManager.Inst.Notification("게임 종료");
+        GameManager.Inst.GameOver();
         Destroy(hpbar.gameObject);
         Destroy(this.gameObject);
     }

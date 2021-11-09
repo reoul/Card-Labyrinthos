@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject hitObj;
 
     [SerializeField] GameObject endingCredit;
+    [SerializeField] GameObject gameOver;
 
     void Awake()
     {
@@ -38,6 +39,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        //if (Input.GetKeyDown(KeyCode.F8))
+        //    ResetManager.Inst.ResetGame();
         if (Input.GetKeyDown(KeyCode.F10))
             CardManager.Inst.SelectCardNumAdd(1);
 
@@ -48,17 +51,17 @@ public class GameManager : MonoBehaviour
             if (EnemyManager.Inst.enemys.Count > 0)
                 EnemyManager.Inst.enemys[0].Damage(EnemyManager.Inst.enemys[0].hpbar.hp - 1);
 
-        if (Input.GetKeyDown(KeyCode.F9))
-            EndingCredit();
-
         if (Input.GetKeyDown(KeyCode.I))
-            TopBar.Inst.Open(TOPBAR_TYPE.BAG);
+            if (TopBar.Inst != null)
+                TopBar.Inst.Open(TOPBAR_TYPE.BAG);
 
         if (Input.GetKeyDown(KeyCode.K) && TopBar.Inst.GetIcon(TOPBAR_TYPE.SKILL).gameObject.activeInHierarchy)
-            TopBar.Inst.Open(TOPBAR_TYPE.SKILL);
+            if (TopBar.Inst != null)
+                TopBar.Inst.Open(TOPBAR_TYPE.SKILL);
 
         if (Input.GetKeyDown(KeyCode.Escape))
-            TopBar.Inst.Open(TOPBAR_TYPE.SETTING);
+            if (TopBar.Inst != null)
+                TopBar.Inst.Open(TOPBAR_TYPE.SETTING);
     }
 
     public void StartGame()
@@ -81,7 +84,17 @@ public class GameManager : MonoBehaviour
 
     public void EndingCredit()
     {
+        SoundManager.Inst.Play(BACKGROUNDSOUND.ENDING);
         endingCredit.SetActive(true);
-        endingCredit.transform.DOMoveY(60, 30).SetEase(Ease.Linear);
+        endingCredit.transform.DOMoveY(65, 30).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            ResetManager.Inst.ResetGame();
+        });
+    }
+
+    public void GameOver()
+    {
+        SoundManager.Inst.Play(BACKGROUNDSOUND.ENDING);
+        gameOver.SetActive(true);
     }
 }

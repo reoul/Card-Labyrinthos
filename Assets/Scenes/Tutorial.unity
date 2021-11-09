@@ -581,7 +581,7 @@ GameObject:
   - component: {fileID: 27256632}
   m_Layer: 0
   m_Name: BagManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4165,7 +4165,7 @@ GameObject:
   - component: {fileID: 142501125}
   m_Layer: 0
   m_Name: HelpManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5051,7 +5051,7 @@ GameObject:
   - component: {fileID: 176427404}
   m_Layer: 0
   m_Name: TutorialManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6813,7 +6813,7 @@ GameObject:
   - component: {fileID: 289576659}
   m_Layer: 0
   m_Name: RewardManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7775,7 +7775,7 @@ GameObject:
   - component: {fileID: 333485852}
   m_Layer: 0
   m_Name: EnemyManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12535,7 +12535,7 @@ GameObject:
   - component: {fileID: 604372602}
   m_Layer: 0
   m_Name: FadeManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14720,7 +14720,7 @@ GameObject:
   - component: {fileID: 686830411}
   m_Layer: 0
   m_Name: EventManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14765,7 +14765,7 @@ GameObject:
   - component: {fileID: 688730082}
   m_Layer: 0
   m_Name: PlayerManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16434,7 +16434,7 @@ GameObject:
   - component: {fileID: 771174037}
   m_Layer: 0
   m_Name: GhostManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17452,7 +17452,7 @@ GameObject:
   - component: {fileID: 865943310}
   m_Layer: 0
   m_Name: TurnManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17805,7 +17805,7 @@ GameObject:
   - component: {fileID: 875703810}
   m_Layer: 0
   m_Name: MapManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20008,7 +20008,7 @@ GameObject:
   - component: {fileID: 961997493}
   m_Layer: 0
   m_Name: EffectManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25372,7 +25372,7 @@ GameObject:
   - component: {fileID: 1224444032}
   m_Layer: 0
   m_Name: DebuffManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26590,7 +26590,7 @@ GameObject:
   - component: {fileID: 1252716732}
   m_Layer: 0
   m_Name: TopBar
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29159,7 +29159,7 @@ GameObject:
   - component: {fileID: 1362508420}
   m_Layer: 0
   m_Name: ThrowingObjManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31614,7 +31614,7 @@ GameObject:
   - component: {fileID: 1440067671}
   m_Layer: 0
   m_Name: CardManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33136,7 +33136,7 @@ GameObject:
   - component: {fileID: 1484839744}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33156,6 +33156,7 @@ MonoBehaviour:
   notificationPanel: {fileID: 0}
   fadeInOutObj: {fileID: 0}
   hitObj: {fileID: 1826544702149632, guid: 5147558f73d9f6244b2ec6cd4f995fae, type: 3}
+  endingCredit: {fileID: 0}
 --- !u!4 &1484839745
 Transform:
   m_ObjectHideFlags: 0
@@ -34997,7 +34998,7 @@ GameObject:
   - component: {fileID: 1576698069}
   m_Layer: 0
   m_Name: SkillManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40459,7 +40460,7 @@ GameObject:
   - component: {fileID: 1832137356}
   m_Layer: 0
   m_Name: StageManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41338,7 +41339,7 @@ GameObject:
   - component: {fileID: 1902846629}
   m_Layer: 0
   m_Name: ArrowManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -156,8 +156,15 @@ public class Enemy : MonoBehaviour
         TurnManager.Inst.isFinish = true;
         if (EnemyManager.Inst.enemys.Count == 0)
         {
-            SoundManager.Inst.Play(BATTLESOUND.GAME_WIN);
-            StartCoroutine(TurnManager.Inst.ShowReward());
+            if (monster.type != MONSTER_TYPE.BOSS)
+            {
+                SoundManager.Inst.Play(BATTLESOUND.GAME_WIN);
+                StartCoroutine(TurnManager.Inst.ShowReward());
+            }
+            else
+            {
+                GameManager.Inst.EndingCredit();
+            }
             //CardManager.Inst.FinishBattle();
         }
         Destroy(hpbar.gameObject);

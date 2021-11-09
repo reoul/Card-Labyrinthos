@@ -41,7 +41,7 @@ public class SettingManager : MonoBehaviour
 
     public void GameReset()
     {
-
+        ResetManager.Inst.ResetGame();
     }
 
     public void GameQuit()

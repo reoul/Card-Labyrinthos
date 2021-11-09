@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ResetManager : MonoBehaviour
 {
@@ -22,5 +23,10 @@ public class ResetManager : MonoBehaviour
     public void ResetGame()
     {
         GameObject[] managers = GameObject.FindGameObjectsWithTag("Manager");
+        for (int i = 0; i < managers.Length; i++)
+        {
+            Destroy(managers[i]);
+        }
+        SceneManager.LoadScene("Intro");
     }
 }
