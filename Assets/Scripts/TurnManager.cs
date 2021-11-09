@@ -161,7 +161,7 @@ public class TurnManager : MonoBehaviour
             }
             yield return delayEndOfFrame;
         }
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(1.6f);
         if (EnemyManager.Inst.enemys.Count > 0)
         {
             for (int i = 0; i < EnemyManager.Inst.enemys.Count; i++)

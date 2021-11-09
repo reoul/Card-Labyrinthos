@@ -469,13 +469,13 @@ public class MapManager : MonoBehaviour
         yield return StartCoroutine(GhostManager.Inst.ShowGhost());
         for (int i = 0; i < TalkWindow.Inst.talks[13].Count; i++)
         {
-            ArrowManager.Inst.CreateArrowObj(fields[11].transform.position + Vector3.right * 2, ArrowCreateDirection.RIGHT, fields[11].transform);
+            if (i == 0)
+                ArrowManager.Inst.CreateArrowObj(fields[11].transform.position + Vector3.right * 2, ArrowCreateDirection.RIGHT, fields[11].transform);
             yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(13, i));
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
         }
         ArrowManager.Inst.DestoryAllArrow();
-        Debug.Log("test8");
         yield return StartCoroutine(TalkWindow.Inst.HideText());
         isFinishToturialBoss = true;
         isTutorialBoss = true;

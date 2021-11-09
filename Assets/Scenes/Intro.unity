@@ -6839,7 +6839,7 @@ MonoBehaviour:
     debuff_openbar: {fileID: 8300000, guid: 78ac3c8b537a4e64fa1e67e72304f7d0, type: 3}
     debuff_closebar: {fileID: 8300000, guid: 9fc87bfa483a1ee4fbc5f4bed960569a, type: 3}
   BackGroundAudio:
-  - {fileID: 8300000, guid: c545134a173d47e4c8f2379b6132b9bb, type: 3}
+  - {fileID: 8300000, guid: 729d9f856eaa795499be89bebfd20473, type: 3}
   - {fileID: 8300000, guid: e1c69c745ada37c41968430dbaf1326c, type: 3}
   - {fileID: 8300000, guid: 62124ebdde4442647b5c3c1aa4a4925b, type: 3}
   - {fileID: 8300000, guid: e3785b85f86c87f4c995e72e40442932, type: 3}
@@ -6847,7 +6847,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f3e729c9e6ab0b94499b47063a8077a7, type: 3}
   - {fileID: 8300000, guid: a44d26b53adf0304898127f75a810921, type: 3}
   - {fileID: 8300000, guid: 13da4cd1da7a2904387c561d80988d56, type: 3}
-  - {fileID: 8300000, guid: 09f655477bf272e4592013178849e80c, type: 3}
+  - {fileID: 8300000, guid: 3230ade7dc75e144999956280b349396, type: 3}
   SFXAudio:
   - {fileID: 8300000, guid: 649dfc814999425489df32ccd4133f6a, type: 3}
   BackGroundAudioSource: {fileID: 1287922923}

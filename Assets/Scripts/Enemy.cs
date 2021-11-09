@@ -163,7 +163,7 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                GameManager.Inst.EndingCredit();
+                StartCoroutine(GameManager.Inst.EndingCoroutine());
             }
             //CardManager.Inst.FinishBattle();
         }

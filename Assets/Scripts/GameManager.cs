@@ -77,6 +77,20 @@ public class GameManager : MonoBehaviour
         SkillManager.Inst.Close();
     }
 
+    public IEnumerator EndingCoroutine()
+    {
+        yield return StartCoroutine(GhostManager.Inst.ShowGhost());
+        for (int i = 0; i < TalkWindow.Inst.talks[14].Count; i++)
+        {
+            yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(14, i));
+            yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
+            yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
+        }
+        yield return StartCoroutine(TalkWindow.Inst.HideText());
+        yield return new WaitForSeconds(0.5f);
+        EndingCredit();
+    }
+
     public void EndingCredit()
     {
         SoundManager.Inst.Play(BACKGROUNDSOUND.ENDING);
