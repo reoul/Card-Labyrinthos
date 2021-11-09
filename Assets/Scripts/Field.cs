@@ -170,7 +170,7 @@ public class Field : MonoBehaviour
     public MONSTER_TYPE GetMonster(MONSTER_DIFFICULTY difficulty)       //필드 난이도에 따라 랜덤 몬스터 소환
     {
         //int rand = Random.Range(0, difficulty == MONSTER_DIFFICULTY.EASY ? 10 : difficulty == MONSTER_DIFFICULTY.NOMAL ? 9 : 10);
-        int rand = Random.Range(0, 5);
+        int rand = Random.Range(0, 4);
         switch (difficulty)
         {
             case MONSTER_DIFFICULTY.EASY:
