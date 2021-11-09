@@ -32,7 +32,7 @@ MonoBehaviour:
       index: 3
     attackDelay: 0
   - name: Earth Wisp
-    hp: 15
+    hp: 10
     type: 5
     prefab: {fileID: 8718625113256462797, guid: 00e93119361392c4f9011e274693cf54,
       type: 3}
@@ -47,7 +47,7 @@ MonoBehaviour:
       index: 9
     pattern_4:
       pattern_type: 1
-      index: 2
+      index: 1
     attackDelay: 0.2
   - name: Executioner
     hp: 28
@@ -86,7 +86,7 @@ MonoBehaviour:
       index: 5
     attackDelay: 0
   - name: Fire Wisp
-    hp: 15
+    hp: 10
     type: 7
     prefab: {fileID: 8718625113256462797, guid: ea29ac1bb140f0643b4cc9f5800ae091,
       type: 3}
@@ -101,7 +101,7 @@ MonoBehaviour:
       index: 9
     pattern_4:
       pattern_type: 1
-      index: 2
+      index: 1
     attackDelay: 0.15
   - name: Ghoul
     hp: 23
@@ -500,7 +500,7 @@ MonoBehaviour:
       index: 2
     attackDelay: 0
   - name: Water Wisp
-    hp: 15
+    hp: 10
     type: 8
     prefab: {fileID: 8718625113256462797, guid: 37d0677e7ee161f44810ec8880f6fd46,
       type: 3}
@@ -515,7 +515,7 @@ MonoBehaviour:
       index: 9
     pattern_4:
       pattern_type: 1
-      index: 2
+      index: 1
     attackDelay: 0.25
   - name: Werewolf
     hp: 40
@@ -536,7 +536,7 @@ MonoBehaviour:
       index: 5
     attackDelay: 0
   - name: Wind Wisp
-    hp: 15
+    hp: 10
     type: 6
     prefab: {fileID: 8718625113256462797, guid: 808d525163bb5374685be4eca0a0c7a9,
       type: 3}
@@ -551,7 +551,7 @@ MonoBehaviour:
       index: 9
     pattern_4:
       pattern_type: 1
-      index: 2
+      index: 1
     attackDelay: 0.2
   - name: Yeti
     hp: 40
@@ -572,20 +572,20 @@ MonoBehaviour:
       index: 5
     attackDelay: 0.05
   - name: Boss
-    hp: 70
+    hp: 50
     type: 31
     prefab: {fileID: 3697588050848563889, guid: 02ae7d71b02e68e4e9457efdc5e5d30d,
       type: 3}
     pattern_1:
       pattern_type: 0
-      index: 10
+      index: 12
     pattern_2:
       pattern_type: 0
-      index: 14
+      index: 16
     pattern_3:
       pattern_type: 0
-      index: 17
+      index: 19
     pattern_4:
       pattern_type: 1
-      index: 7
+      index: 3
     attackDelay: 0.1
