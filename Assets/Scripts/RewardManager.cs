@@ -130,11 +130,10 @@ public class RewardManager : MonoBehaviour
     public void SetFinishBattleReward()
     {
         SetTitleText("보상");
-        int questionCard = Random.Range(1, 3) == 0 ? 1 : 0;
+        int questionCard = Random.Range(1, 3);
         int cardPiece = Random.Range(100, 120);
-        cardPiece += 4 - ((cardPiece % 4) == 0 ? 4 : (cardPiece % 4));
-        if (questionCard == 1)
-            AddReward(REWARD_TYPE.REWARD, (int)EVENT_REWARD_TYPE.QUESTION_CARD, questionCard);
+        cardPiece += 10 - ((cardPiece % 10) == 0 ? 10 : (cardPiece % 10));
+        AddReward(REWARD_TYPE.REWARD, (int)EVENT_REWARD_TYPE.QUESTION_CARD, questionCard);
         AddReward(REWARD_TYPE.REWARD, (int)EVENT_REWARD_TYPE.CARD_PIECE, cardPiece);
     }
 
@@ -223,7 +222,7 @@ public class RewardManager : MonoBehaviour
                     case EVENT_REWARD_TYPE.CARD_PIECE:
                         if (reward.rewardData.index > 0)
                         {
-                            ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.CARD_PIECE, reward.transform.position + Vector3.up * 0.5f, TopBar.Inst.GetIcon(TOPBAR_TYPE.CARDPIECE).transform.position, null, 1, reward.rewardData.index / 4, 4);
+                            ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.CARD_PIECE, reward.transform.position + Vector3.up * 0.5f, TopBar.Inst.GetIcon(TOPBAR_TYPE.CARDPIECE).transform.position, null, 1, reward.rewardData.index / 10, 10);
                         }
                         else
                         {
@@ -242,7 +241,7 @@ public class RewardManager : MonoBehaviour
                     case EVENT_REWARD_TYPE.DRAW:
                         break;
                     case EVENT_REWARD_TYPE.QUESTION_CARD:
-                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.QUESTION_CARD, reward.transform.position + Vector3.up * 0.5f, TopBar.Inst.GetIcon(TOPBAR_TYPE.QUESTION).transform.position, null, 1, 1, reward.rewardData.index);
+                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.QUESTION_CARD, reward.transform.position + Vector3.up * 0.5f, TopBar.Inst.GetIcon(TOPBAR_TYPE.QUESTION).transform.position, null, 1, reward.rewardData.index, 1);
                         break;
                     case EVENT_REWARD_TYPE.SKILL_BOOK:
                         ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.SKILL_BOOK, reward.transform.position + Vector3.up * 0.5f, TopBar.Inst.GetIcon(TOPBAR_TYPE.SKILL).transform.position, TutorialManager.Inst.SetActiveTrueTopBarSkillBook());
