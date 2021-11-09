@@ -5,9 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class Map : MonoBehaviour
 {
+    public static Map Inst = null;
     public bool onMap = false;
     bool isMoveCamera;
     Vector3 lastMousePos;
+
+    private void Awake()
+    {
+        Inst = this;
+    }
 
     private void OnMouseEnter()
     {
@@ -40,24 +46,24 @@ public class Map : MonoBehaviour
                 {
                     this.transform.parent.position += movePos;
                     movePos = Vector3.zero;
-                    if (this.transform.parent.position.x > 25.59731f)
+                    if (this.transform.parent.position.x > 23.84775f)
                     {
-                        float _x = this.transform.parent.position.x - 25.59731f;
+                        float _x = this.transform.parent.position.x - 23.84775f;
                         movePos.x -= _x;
                     }
-                    if (this.transform.parent.position.x < -20.29902f)
+                    if (this.transform.parent.position.x < -18.5023f)
                     {
-                        float _x = this.transform.parent.position.x + 20.29902f;
+                        float _x = this.transform.parent.position.x + 18.5023f;
                         movePos.x -= _x;
                     }
-                    if (this.transform.parent.position.y > 19.7925f)
+                    if (this.transform.parent.position.y > 17.98923f)
                     {
-                        float _y = this.transform.parent.position.y - 19.7925f;
+                        float _y = this.transform.parent.position.y - 17.98923f;
                         movePos.y -= _y;
                     }
-                    if (this.transform.parent.position.y < -19.6774f)
+                    if (this.transform.parent.position.y < -18.39963f)
                     {
-                        float _y = this.transform.parent.position.y + 19.6774f;
+                        float _y = this.transform.parent.position.y + 18.39963f;
                         movePos.y -= _y;
                     }
                     this.transform.parent.position += movePos;
@@ -65,6 +71,11 @@ public class Map : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void MoveMap(Vector3 pos)
+    {
+        this.transform.parent.position += pos;
     }
 
     public void MoveUI(Vector3 pos)

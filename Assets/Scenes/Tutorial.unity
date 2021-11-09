@@ -1829,8 +1829,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72685032}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.228, y: -0.100000694, z: 0}
-  m_LocalScale: {x: 0.11063893, y: 0.34466666, z: 0.1034}
+  m_LocalPosition: {x: -6.990595, y: -0.100000694, z: 0}
+  m_LocalScale: {x: 0.094000004, y: 0.34466666, z: 0.1034}
   m_Children:
   - {fileID: 321207677}
   m_Father: {fileID: 1252716735}
@@ -4846,8 +4846,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164080878}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.5680218, y: 0.040000275, z: 0}
-  m_LocalScale: {x: 1.0165086, y: 3.1666663, z: 1}
+  m_LocalPosition: {x: -2.1818185, y: 0.04000028, z: 0}
+  m_LocalScale: {x: 0.8636364, y: 3.1666663, z: 1}
   m_Children:
   - {fileID: 1684667960}
   m_Father: {fileID: 1252716735}
@@ -5376,6 +5376,7 @@ MonoBehaviour:
   tomb: {fileID: 1445823473}
   isWin: 0
   isToturialFinish: 0
+  isToturialOpenSkill: 0
 --- !u!4 &176427405
 Transform:
   m_ObjectHideFlags: 0
@@ -9181,8 +9182,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 364337200}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.709873, y: -0.033334095, z: -0.1}
-  m_LocalScale: {x: 0.10341637, y: 0.32216665, z: 0.09665}
+  m_LocalPosition: {x: 7.4, y: -0.033334095, z: -0.099999905}
+  m_LocalScale: {x: 0.08786364, y: 0.32216665, z: 0.09665}
   m_Children: []
   m_Father: {fileID: 1252716735}
   m_RootOrder: 0
@@ -14420,8 +14421,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 650052183}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.958, y: 0.04000028, z: 0}
-  m_LocalScale: {x: 0.035010695, y: 0.109066665, z: 0.03272}
+  m_LocalPosition: {x: -4.2123694, y: 0.04000028, z: 0}
+  m_LocalScale: {x: 0.029745456, y: 0.109066665, z: 0.03272}
   m_Children:
   - {fileID: 71108571}
   m_Father: {fileID: 1252716735}
@@ -14763,6 +14764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   events: []
+  colorBackSpriteRenderer: []
 --- !u!4 &686830412
 Transform:
   m_ObjectHideFlags: 0
@@ -15903,8 +15905,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734832441}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.8480577, y: -0.05799929, z: -0.099999905}
-  m_LocalScale: {x: 0.11440536, y: 0.35639998, z: 0.1549908}
+  m_LocalPosition: {x: 5.818182, y: -0.05799929, z: -0.099999905}
+  m_LocalScale: {x: 0.09719999, y: 0.35639998, z: 0.1549908}
   m_Children: []
   m_Father: {fileID: 1252716735}
   m_RootOrder: 1
@@ -17451,6 +17453,8 @@ MonoBehaviour:
   startCardCount: 3
   isLoading: 0
   isContinue: 1
+  isTutorialLockCard: 0
+  isTutorialDebuffBar: 0
 --- !u!4 &865943311
 Transform:
   m_ObjectHideFlags: 0
@@ -17933,6 +17937,23 @@ MonoBehaviour:
   isClear: 
   fieldParent: {fileID: 0}
   fields: []
+  isFinishToturialBattle: 0
+  isFinishToturialBag: 0
+  isFinishToturialDebuff: 0
+  isFinishToturialRest: 0
+  isFinishToturialEvent: 0
+  isFinishToturialShop: 0
+  isFinishToturialBoss: 0
+  isTutorialReadyBag: 0
+  isTutorialReadyDebuff: 0
+  isTutorialReadyRest: 0
+  isTutorialReadyEvent: 0
+  isTutorialReadyShop: 0
+  isTutorialReadyBoss: 0
+  isTutorialOpenBag: 0
+  isTutorialInRest: 0
+  isTutorialInEvent: 0
+  isTutorialInShop: 0
   tutorialIndex: 0
 --- !u!4 &875703811
 Transform:
@@ -27077,7 +27098,7 @@ Transform:
   m_GameObject: {fileID: 1252716731}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 4.73, z: -5}
-  m_LocalScale: {x: 0.9345716, y: 0.3, z: 1}
+  m_LocalScale: {x: 1.1, y: 0.3, z: 1}
   m_Children:
   - {fileID: 364337204}
   - {fileID: 734832442}
@@ -30945,8 +30966,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399297805}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.778, y: -0.05799929, z: -0.099999905}
-  m_LocalScale: {x: 2.140018, y: 6.6666665, z: 1}
+  m_LocalPosition: {x: 6.6082706, y: -0.05799929, z: -0.099999905}
+  m_LocalScale: {x: 1.8181818, y: 6.6666665, z: 1}
   m_Children: []
   m_Father: {fileID: 1252716735}
   m_RootOrder: 6
@@ -47006,7 +47027,7 @@ RectTransform:
   m_GameObject: {fileID: 2139104418}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.070009, y: 3.3333333, z: 1}
+  m_LocalScale: {x: 0.9090909, y: 3.3333333, z: 1}
   m_Children: []
   m_Father: {fileID: 1252716735}
   m_RootOrder: 4

@@ -89,6 +89,7 @@ public class MapManager : MonoBehaviour
 
     public int tutorialIndex = 0;
     bool isBattleDebuffOff = false;
+    public int lastField = 0;
 
     public string CurrentSceneName      //현재 씬 이름
     {
@@ -143,7 +144,9 @@ public class MapManager : MonoBehaviour
         for (int i = 0; i < fields.Length; i++)
         {
             if (fields[i].Equals(field))
+            {
                 selectFieldIndex = i;
+            }
         }
         FadeManager.FadeEvent += new EventHandler(LoadScene);
         StartEvent();
@@ -158,6 +161,8 @@ public class MapManager : MonoBehaviour
     {
         if (isClear.Length != 0)
             isClear[selectFieldIndex] = clear;
+        if (clear)
+            lastField = selectFieldIndex;
         TurnManager.Inst.isFinish = false;
         CheckTutorialReady();
         fieldData.field_type = FIELD_TYPE.MAP;
