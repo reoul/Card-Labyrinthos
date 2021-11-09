@@ -11,6 +11,8 @@ public class TopBar : MonoBehaviour
 
     public List<TopBarIcon> icons;
 
+    public GameObject[] explanObj;
+
     private void Awake()
     {
         if (Inst == null)
@@ -104,5 +106,36 @@ public class TopBar : MonoBehaviour
                 return icons[i];
         }
         return icons[0];
+    }
+
+    public void OnMouseEnterIcon(TOPBAR_TYPE type)
+    {
+        switch (type)
+        {
+            case TOPBAR_TYPE.BAG:
+                explanObj[1].SetActive(true);
+                break;
+            case TOPBAR_TYPE.SETTING:
+                explanObj[2].SetActive(true);
+                break;
+            case TOPBAR_TYPE.SKILL:
+                explanObj[0].SetActive(true);
+                break;
+        }
+    }
+    public void OnMouseExitIcon(TOPBAR_TYPE type)
+    {
+        switch (type)
+        {
+            case TOPBAR_TYPE.BAG:
+                explanObj[1].SetActive(false);
+                break;
+            case TOPBAR_TYPE.SETTING:
+                explanObj[2].SetActive(false);
+                break;
+            case TOPBAR_TYPE.SKILL:
+                explanObj[0].SetActive(false);
+                break;
+        }
     }
 }

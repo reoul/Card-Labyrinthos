@@ -17,10 +17,30 @@ public class TopBarIcon : MonoBehaviour
     {
         SoundManager.Inst.Play(EVENTSOUND.CHOICE_MOUSEUP);
         onTopBarIcon = true;
+        switch (type)
+        {
+            case TOPBAR_TYPE.BAG:
+            case TOPBAR_TYPE.SETTING:
+            case TOPBAR_TYPE.SKILL:
+                TopBar.Inst.OnMouseEnterIcon(type);
+                break;
+            default:
+                break;
+        }
     }
     void OnMouseExit()
     {
         onTopBarIcon = false;
+        switch (type)
+        {
+            case TOPBAR_TYPE.BAG:
+            case TOPBAR_TYPE.SETTING:
+            case TOPBAR_TYPE.SKILL:
+                TopBar.Inst.OnMouseExitIcon(type);
+                break;
+            default:
+                break;
+        }
     }
 
     private void OnMouseUp()
@@ -39,4 +59,5 @@ public class TopBarIcon : MonoBehaviour
     {
         isLock = false;
     }
+
 }

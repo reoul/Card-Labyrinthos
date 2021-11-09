@@ -155,4 +155,11 @@ public class Card : MonoBehaviour
     {
         isLock = false;
     }
+
+    public void SetOrderLayer(int index)
+    {
+        this.GetComponent<SpriteRenderer>().sortingOrder = index;
+        this.transform.parent.GetChild(1).GetComponent<SpriteRenderer>().sortingOrder = index + 1;
+        this.transform.parent.GetChild(2).GetComponent<Renderer>().sortingOrder = index + 2;
+    }
 }

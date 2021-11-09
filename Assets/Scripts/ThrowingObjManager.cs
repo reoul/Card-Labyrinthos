@@ -48,7 +48,10 @@ public class ThrowingObjManager : MonoBehaviour
             var throwingObj = Instantiate(GetThrowingObjPrefab(type), startPos, type == THROWING_OBJ_TYPE.NUM_CARD ? Utils.CardRotate : Quaternion.identity);
             throwingRewardObj.Add(throwingObj);
             if (type == THROWING_OBJ_TYPE.NUM_CARD)
+            {
                 throwingObj.GetComponentInChildren<Card>().Setup(index);
+                throwingObj.GetComponentInChildren<Card>().SetOrderLayer(5500 + i * 4);
+            }
             throwingObj.transform.DOMove(endPos, moveTime).SetEase(Ease.InQuint).OnComplete(() =>
             {
                 if (enumerator123 != null)
