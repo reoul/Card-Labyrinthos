@@ -77,6 +77,7 @@ public class TutorialManager : MonoBehaviour
             }
         }
         ArrowManager.Inst.DestoryAllArrow();
+        Debug.Log("test12");
         yield return StartCoroutine(TalkWindow.Inst.HideText());
         MapManager.Inst.LoadMapScene(true);
         MapManager.Inst.tutorialIndex++;
@@ -148,6 +149,7 @@ public class TutorialManager : MonoBehaviour
             {
                 TurnManager.Inst.isContinue = true;
                 ArrowManager.Inst.DestoryAllArrow();
+                Debug.Log("test13");
                 yield return StartCoroutine(TalkWindow.Inst.HideText());
                 TalkWindow.Inst.index = 2;
                 TalkWindow.Inst.index2 = 7;
@@ -167,6 +169,7 @@ public class TutorialManager : MonoBehaviour
                 {
                     yield return new WaitForEndOfFrame();
                 }
+                Debug.Log("test14");
                 yield return StartCoroutine(TalkWindow.Inst.HideText());
                 MapManager.Inst.tutorialIndex++;
                 yield return new WaitForSeconds(1);
@@ -194,7 +197,6 @@ public class TutorialManager : MonoBehaviour
             {
                 ArrowManager.Inst.DestoryAllArrow();
                 ArrowManager.Inst.CreateArrowObj(TopBar.Inst.GetIcon(TOPBAR_TYPE.SKILL).transform.position + new Vector3(0, -1, 0), ArrowCreateDirection.DOWN);
-                Debug.Log(CardManager.Inst.MyHandCards.Count);
             }
             else if (i == 1)        //스킬 메뉴 설명
             {
@@ -231,6 +233,7 @@ public class TutorialManager : MonoBehaviour
 
         CardManager.Inst.UnLockMyHandCardAll();
 
+        Debug.Log("test15");
         yield return StartCoroutine(TalkWindow.Inst.HideText());
 
         yield return new WaitForSeconds(1);

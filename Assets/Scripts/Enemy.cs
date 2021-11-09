@@ -46,7 +46,6 @@ public class Enemy : MonoBehaviour
         lastWeaknessNum = weaknessNum;
         if (fixedWeaknessNum != -1)
         {
-            Debug.Log("약점숫자 고정");
             weaknessNum = fixedWeaknessNum;
             lastWeaknessNum = weaknessNum;
             fixedWeaknessNum = -1;

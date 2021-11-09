@@ -10,7 +10,8 @@ public class Rest : MonoBehaviour
     private void Start()
     {
         SoundManager.Inst.Play(BACKGROUNDSOUND.REST);
-        StartCoroutine(TutorialRestCoroutine());
+        if (!MapManager.Inst.isTutorialInRest)
+            StartCoroutine(TutorialRestCoroutine());
     }
 
     void OnMouseEnter()
@@ -68,6 +69,7 @@ public class Rest : MonoBehaviour
         }
         ArrowManager.Inst.DestoryAllArrow();
         isTutorial = false;
+        Debug.Log("test9");
         yield return StartCoroutine(TalkWindow.Inst.HideText());
     }
 }

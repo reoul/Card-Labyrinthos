@@ -136,6 +136,7 @@ public class TurnManager : MonoBehaviour
 
         ArrowManager.Inst.DestoryAllArrow();
 
+        Debug.Log("test11");
         yield return StartCoroutine(TalkWindow.Inst.HideText());
 
         CardManager.Inst.UnLockMyHandCardAll();
@@ -160,18 +161,18 @@ public class TurnManager : MonoBehaviour
             }
             yield return delayEndOfFrame;
         }
-        yield return new WaitForSeconds(1f);
-        for (int i = 0; i < EnemyManager.Inst.enemys.Count; i++)
-        {
-            EnemyManager.Inst.enemys[i].UseTurn();
-            yield return new WaitForSeconds(1f);
-        }
-        for (int i = 0; i < EnemyManager.Inst.enemys.Count; i++)
-        {
-            EnemyManager.Inst.enemys[i].RandomPatten();
-        }
+        yield return new WaitForSeconds(1.3f);
         if (EnemyManager.Inst.enemys.Count > 0)
         {
+            for (int i = 0; i < EnemyManager.Inst.enemys.Count; i++)
+            {
+                EnemyManager.Inst.enemys[i].UseTurn();
+                yield return new WaitForSeconds(1f);
+            }
+            for (int i = 0; i < EnemyManager.Inst.enemys.Count; i++)
+            {
+                EnemyManager.Inst.enemys[i].RandomPatten();
+            }
             DebuffManager.Inst.CheckDebuff();
             EnemyManager.Inst.UpdateStateTextAllEnemy();
             StartCoroutine(StartTurnCoroutine());

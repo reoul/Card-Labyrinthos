@@ -185,7 +185,6 @@ public class RewardManager : MonoBehaviour
             {
                 if (SceneManager.GetActiveScene().name == "Tutorial2")
                 {
-                    Debug.Log("튜토리얼 보상 다 받음");
                     TalkWindow.Inst.SetFlagIndex(false);
                     TalkWindow.Inst.SetFlagNext(true);
                     TalkWindow.Inst.SetSkip(true);
@@ -222,7 +221,14 @@ public class RewardManager : MonoBehaviour
                         ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.NUM_CARD, reward.transform.position + Vector3.up * 0.5f, TopBar.Inst.GetIcon(TOPBAR_TYPE.BAG).transform.position, null, 1, reward.rewardData.index2, reward.rewardData.index);
                         break;
                     case EVENT_REWARD_TYPE.CARD_PIECE:
-                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.CARD_PIECE, reward.transform.position + Vector3.up * 0.5f, TopBar.Inst.GetIcon(TOPBAR_TYPE.CARDPIECE).transform.position, null, 1, reward.rewardData.index / 4, 4);
+                        if (reward.rewardData.index > 0)
+                        {
+                            ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.CARD_PIECE, reward.transform.position + Vector3.up * 0.5f, TopBar.Inst.GetIcon(TOPBAR_TYPE.CARDPIECE).transform.position, null, 1, reward.rewardData.index / 4, 4);
+                        }
+                        else
+                        {
+                            PlayerManager.Inst.card_piece -= reward.rewardData.index;
+                        }
                         break;
                     case EVENT_REWARD_TYPE.HP:
                         if (reward.rewardData.index < 0)

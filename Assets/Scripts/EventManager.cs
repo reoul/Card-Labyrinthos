@@ -95,6 +95,7 @@ public class EventManager : MonoBehaviour
         colorBackSpriteRenderer[0] = GameObject.Find("firstColorBack").GetComponent<SpriteRenderer>();
         colorBackSpriteRenderer[1] = GameObject.Find("secondColorBack").GetComponent<SpriteRenderer>();
         colorBackSpriteRenderer[2] = GameObject.Find("thirdColorBack").GetComponent<SpriteRenderer>();
+        isGetReward = false;
     }
 
     public IEnumerator RandomEventCoroutine()
@@ -149,11 +150,17 @@ public class EventManager : MonoBehaviour
                 ArrowManager.Inst.CreateArrowObj(colorBackSpriteRenderer[1].transform.position + Vector3.up * 2, ArrowCreateDirection.UP);
                 ArrowManager.Inst.CreateArrowObj(colorBackSpriteRenderer[2].transform.position + Vector3.up * 2, ArrowCreateDirection.UP);
             }
+            Debug.Log(TalkWindow.Inst.talks[10].Count);
+            Debug.Log(i);
             yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(10, i));
+            Debug.Log(11111);
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
+            Debug.Log(22222);
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
+            Debug.Log(33333);
             ArrowManager.Inst.DestoryAllArrow();
         }
+        Debug.Log("test1");
         yield return StartCoroutine(TalkWindow.Inst.HideText());
         isFinishTutorial = true;
     }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ShopManager : MonoBehaviour
@@ -6,6 +7,8 @@ public class ShopManager : MonoBehaviour
     public static ShopManager Inst;
 
     public List<ShopItem> items;
+
+    public bool isFinishTutorial;
 
     private void Awake()
     {
@@ -21,10 +24,22 @@ public class ShopManager : MonoBehaviour
         }
         ChangePriceColor();
         CheckItemMax();
+        if (!MapManager.Inst.isTutorialInShop)
+        {
+            MapManager.Inst.isTutorialInShop = true;
+            isFinishTutorial = false;
+            StartCoroutine(TutorialShopCoroutine());
+        }
+        else
+        {
+            isFinishTutorial = true;
+        }
     }
 
     public void Click(ShopItem shopItem)        //상점에서 해당 아이템 클릭했을때 보상 지급
     {
+        if (!isFinishTutorial)
+            return;
         SoundManager.Inst.Play(SHOPSOUND.BUY);
         switch (shopItem.item.type)
         {
@@ -54,6 +69,39 @@ public class ShopManager : MonoBehaviour
         {
             items[i].ChangePriceColor();
         }
+    }
+
+    IEnumerator TutorialShopCoroutine()
+    {
+        yield return new WaitForSeconds(1);
+        TalkWindow.Inst.InitFlag();
+        yield return StartCoroutine(GhostManager.Inst.ShowGhost());
+        for (int i = 0; i < TalkWindow.Inst.talks[12].Count; i++)
+        {
+            if (i == 0)
+            {
+                ArrowManager.Inst.CreateArrowObj(new Vector3(-2.37f, -0.7f, -5), ArrowCreateDirection.DOWN);
+            }
+            else if (i == 2)
+            {
+                ArrowManager.Inst.DestoryAllArrow();
+                ArrowManager.Inst.CreateArrowObj(new Vector3(6.15f, 0, -5), ArrowCreateDirection.RIGHT);
+            }
+            else if (i == 3)
+            {
+                ArrowManager.Inst.DestoryAllArrow();
+            }
+            else if (i == 4)
+            {
+                ArrowManager.Inst.CreateArrowObj(new Vector3(7.15f, -2.5f, -5), ArrowCreateDirection.UP);
+            }
+            yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(12, i));
+            yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
+            yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
+        }
+        ArrowManager.Inst.DestoryAllArrow();
+        yield return StartCoroutine(TalkWindow.Inst.HideText());
+        isFinishTutorial = true;
     }
 
     public void CheckItemMax()

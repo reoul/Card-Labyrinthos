@@ -45,7 +45,7 @@ public class TalkWindow : MonoBehaviour
         //Time.timeScale = 2;
 
         talks = new List<List<string>>();
-        for (int i = 0; i < 14; i++)
+        for (int i = 0; i < 15; i++)
         {
             talks.Add(new List<string>());
         }
@@ -110,6 +110,8 @@ public class TalkWindow : MonoBehaviour
 
         talks[13].Add("드디어 우리가 보스 방까지 도달했군. 부디 나의 복수를 이루어 주게나.");
         talks[13].Add("보스는 생각보다 체력이랑 공격력이 강하네. 조심하게나.");
+
+        talks[14].Add(" ");
     }
 
     public void ShowTalk()
@@ -139,12 +141,14 @@ public class TalkWindow : MonoBehaviour
             yield return StartCoroutine(CheckFlagIndexCoroutine());
             yield return StartCoroutine(CheckFlagNextCoroutine());
         }
+        Debug.Log("test10");
         StartCoroutine(HideText());
     }
 
     public IEnumerator TalkTypingCoroutine(int index, int index2)       //한 문장 텍스트 타이핑 효과 코루틴
     {
         isSkip = false;
+        this.index = index;
         this.index2 = index2;
         for (int i = 0; i < talks[index][index2].Length; i++)
         {
@@ -190,6 +194,7 @@ public class TalkWindow : MonoBehaviour
         talkTMP.text = "";
         Tween tween = this.GetComponent<SpriteRenderer>().DOFade(0, 1);
         yield return tween.WaitForCompletion();
+        Debug.Log("인덱스 " + index + " 종료");
         index++;
         index2 = 0;
         yield return StartCoroutine(ghost.HideTalk());

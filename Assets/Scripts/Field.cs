@@ -144,6 +144,8 @@ public class Field : MonoBehaviour
     {
         if (onField && !isClear && isReady && !FadeManager.Inst.isActiveFade && ThrowingObjManager.Inst.moveThrowingReward == 0)
         {
+            if (MapManager.Inst.CurrentSceneName == "상점" && !ShopManager.Inst.isFinishTutorial)
+                return;
             MapManager.Inst.IconMouseUp(this);
         }
     }
@@ -161,7 +163,8 @@ public class Field : MonoBehaviour
 
     public MONSTER_TYPE GetMonster(MONSTER_DIFFICULTY difficulty)       //필드 난이도에 따라 랜덤 몬스터 소환
     {
-        int rand = Random.Range(0, difficulty == MONSTER_DIFFICULTY.EASY ? 10 : difficulty == MONSTER_DIFFICULTY.NOMAL ? 9 : 10);
+        //int rand = Random.Range(0, difficulty == MONSTER_DIFFICULTY.EASY ? 10 : difficulty == MONSTER_DIFFICULTY.NOMAL ? 9 : 10);
+        int rand = Random.Range(0, 5);
         switch (difficulty)
         {
             case MONSTER_DIFFICULTY.EASY:
@@ -172,43 +175,25 @@ public class Field : MonoBehaviour
                     case 1:
                         return MONSTER_TYPE.FIRE_WISP;
                     case 2:
-                        return MONSTER_TYPE.IMP;
+                        return MONSTER_TYPE.WATER_WISP;
                     case 3:
-                        return MONSTER_TYPE.MANDRAKE;
-                    case 4:
-                        return MONSTER_TYPE.RAT;
-                    case 5:
-                        return MONSTER_TYPE.SLUG;
-                    case 6:
-                        return MONSTER_TYPE.UNDEAD_WARRIOR;
-                    case 7:
-                        return MONSTER_TYPE.WATER_WISP;
-                    case 8:
-                        return MONSTER_TYPE.WATER_WISP;
-                    case 9:
                         return MONSTER_TYPE.WIND_WISP;
+                    case 4:
+                        return MONSTER_TYPE.UNDEAD_WARRIOR;
                 }
                 break;
             case MONSTER_DIFFICULTY.NOMAL:
                 switch (rand)
                 {
                     case 0:
-                        return MONSTER_TYPE.DJINN_BANDIT;
-                    case 1:
                         return MONSTER_TYPE.EXECUTIONER;
-                    case 2:
-                        return MONSTER_TYPE.GHOUL;
-                    case 3:
-                        return MONSTER_TYPE.GOBLIN;
-                    case 4:
+                    case 1:
                         return MONSTER_TYPE.KOBOLD;
-                    case 5:
-                        return MONSTER_TYPE.SHADE;
-                    case 6:
-                        return MONSTER_TYPE.OCULLOTHORAX;
-                    case 7:
+                    case 2:
                         return MONSTER_TYPE.REAPER;
-                    case 8:
+                    case 3:
+                        return MONSTER_TYPE.SHADE;
+                    case 4:
                         return MONSTER_TYPE.SATYR;
                 }
                 break;
@@ -218,29 +203,19 @@ public class Field : MonoBehaviour
                     case 0:
                         return MONSTER_TYPE.FIRE_GOLEM;
                     case 1:
-                        return MONSTER_TYPE.GOLEM;
-                    case 2:
-                        return MONSTER_TYPE.ICE_GOLEM;
-                    case 3:
                         return MONSTER_TYPE.MINOTAUR;
-                    case 4:
-                        return MONSTER_TYPE.OGRE;
-                    case 5:
+                    case 2:
                         return MONSTER_TYPE.RED_OGRE;
-                    case 6:
-                        return MONSTER_TYPE.WEREWOLF;
-                    case 7:
+                    case 3:
                         return MONSTER_TYPE.YETI;
-                    case 8:
-                        return MONSTER_TYPE.NECROMANCER;
-                    case 9:
+                    case 4:
                         return MONSTER_TYPE.PHANTOM_KNIGHT;
                 }
                 break;
             case MONSTER_DIFFICULTY.BOSS:
                 return MONSTER_TYPE.BOSS;
         }
-        return MONSTER_TYPE.IMP;
+        return MONSTER_TYPE.EARTH_WISP;
     }
 
     public void UpdateTypeText()
