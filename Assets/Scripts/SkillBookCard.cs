@@ -86,7 +86,6 @@ public class SkillBookCard : MonoBehaviour
                 //        SkillManager.Inst.ActivePage.applyButton.SetButtonActive(true);
                 //    }
                 //}
-                Debug.Log("asdas");
                 if (SkillManager.Inst.ActivePage.applyCards[0].gameObject.activeInHierarchy && SkillManager.Inst.ActivePage.applyCards[1].gameObject.activeInHierarchy)
                 {
                     flag = true;
@@ -128,7 +127,6 @@ public class SkillBookCard : MonoBehaviour
     public void SetCard(Card card)
     {
         SkillManager.Inst.SetCard(this, card);
-        Debug.Log("asdasad");
         for (int i = 0; i < cardButtons.Count; i++)
         {
             cardButtons[i].gameObject.SetActive(true);

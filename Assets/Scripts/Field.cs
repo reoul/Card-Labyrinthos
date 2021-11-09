@@ -144,8 +144,6 @@ public class Field : MonoBehaviour
     {
         if (onField && !isClear && isReady && !FadeManager.Inst.isActiveFade && ThrowingObjManager.Inst.moveThrowingReward == 0)
         {
-            Debug.Log(MapManager.Inst.isTutorialBoss);
-            Debug.Log(this.field_type == FIELD_TYPE.BOSS);
             if (MapManager.Inst.CurrentSceneName == "상점" && !ShopManager.Inst.isFinishTutorial)
                 return;
             if (!MapManager.Inst.isFinishTutorialEventField && this.field_type == FIELD_TYPE.EVENT)

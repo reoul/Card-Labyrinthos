@@ -54,7 +54,6 @@ public class Rest : MonoBehaviour
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
         }
         ArrowManager.Inst.DestoryAllArrow();
-        Debug.Log("test9");
         yield return StartCoroutine(TalkWindow.Inst.HideText());
         isTutorial = false;
         MapManager.Inst.isTutorialInRest = true;

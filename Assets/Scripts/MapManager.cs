@@ -248,7 +248,6 @@ public class MapManager : MonoBehaviour
         }
         Vector3 pos = Map.Inst.transform.position - fields[(lastField == 10) ? (lastField - 2) : lastField].transform.position;
         pos = Map.Inst.transform.parent.transform.position - fields[lastField].transform.position;
-        Debug.Log("Map.Inst.transform.position - fields[(lastField == 10) ? (lastField - 1) : lastField].transform.position " + pos.ToString());
         Map.Inst.MoveMap(new Vector3(pos.x, pos.y, 0));
         yield return null;
     }
@@ -321,7 +320,6 @@ public class MapManager : MonoBehaviour
 
     IEnumerator GetTutorialCoroutine()
     {
-        Debug.Log("GetTutorialCoroutine");
         if (!isFinishToturialBattle)
             return MapTutorialBattleCoroutine();
         else if (isTutorialReadyBag && !isFinishToturialBag)
@@ -352,7 +350,7 @@ public class MapManager : MonoBehaviour
         {
             if (i == 0)
             {
-                ArrowManager.Inst.CreateArrowObj(TalkWindow.Inst.transform.position + new Vector3(3, -0.7f, 0), ArrowCreateDirection.RIGHT);
+                ArrowManager.Inst.CreateArrowObj(TalkWindow.Inst.transform.position + new Vector3(3, 0, 0), ArrowCreateDirection.RIGHT);
             }
             else if (i == 2)
             {
@@ -369,7 +367,6 @@ public class MapManager : MonoBehaviour
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
         }
         isFinishToturialBattle = true;
-        Debug.Log("test2");
         yield return StartCoroutine(TalkWindow.Inst.HideText());
         yield return null;
     }
@@ -394,7 +391,6 @@ public class MapManager : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
         }
-        Debug.Log("test3");
         yield return StartCoroutine(TalkWindow.Inst.HideText());
         isFinishToturialBag = true;
         yield return null;
@@ -409,7 +405,6 @@ public class MapManager : MonoBehaviour
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
         }
-        Debug.Log("test4");
         yield return StartCoroutine(TalkWindow.Inst.HideText());
         isFinishToturialDebuff = true;
         TurnManager.Inst.isTutorialDebuffBar = true;
@@ -426,7 +421,6 @@ public class MapManager : MonoBehaviour
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
         }
         ArrowManager.Inst.DestoryAllArrow();
-        Debug.Log("test5");
         yield return StartCoroutine(TalkWindow.Inst.HideText());
         isFinishToturialRest = true;
         yield return null;
@@ -442,7 +436,6 @@ public class MapManager : MonoBehaviour
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
         }
         ArrowManager.Inst.DestoryAllArrow();
-        Debug.Log("test6");
         isFinishToturialEvent = true;
         yield return StartCoroutine(TalkWindow.Inst.HideText());
         isFinishTutorialEventField = true;
@@ -451,6 +444,7 @@ public class MapManager : MonoBehaviour
     public IEnumerator MapTutorialShopCoroutine()
     {
         yield return StartCoroutine(GhostManager.Inst.ShowGhost());
+        fields[7].isReady = false;
         for (int i = 0; i < TalkWindow.Inst.talks[11].Count; i++)
         {
             ArrowManager.Inst.CreateArrowObj(fields[6].transform.position + Vector3.right, ArrowCreateDirection.RIGHT, fields[6].transform);
@@ -458,8 +452,6 @@ public class MapManager : MonoBehaviour
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
         }
-        ArrowManager.Inst.DestoryAllArrow();
-        Debug.Log("test7");
         yield return StartCoroutine(TalkWindow.Inst.HideText());
         isFinishToturialShop = true;
         yield return null;

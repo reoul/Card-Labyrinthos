@@ -136,7 +136,6 @@ public class TurnManager : MonoBehaviour
 
         ArrowManager.Inst.DestoryAllArrow();
 
-        Debug.Log("test11");
         yield return StartCoroutine(TalkWindow.Inst.HideText());
 
         CardManager.Inst.UnLockMyHandCardAll();

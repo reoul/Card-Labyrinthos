@@ -7,6 +7,11 @@ public class GameOverButton : MonoBehaviour
     public enum Type { TITLE, GAME_END }
     public Type type;
 
+    private void OnMouseEnter()
+    {
+        SoundManager.Inst.Play(EVENTSOUND.CHOICE_MOUSEUP);
+    }
+
     private void OnMouseUp()
     {
         switch (type)

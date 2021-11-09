@@ -82,7 +82,7 @@ public class EventButton : MonoBehaviour
     bool onEvent = false;   //마우스가 필드 위에 있는지
     void OnMouseUp()
     {
-        if (onEvent && IsAchieve && !RewardManager.Inst.activeRewardWindow && !FadeManager.Inst.isActiveFade)
+        if (onEvent && IsAchieve && !RewardManager.Inst.activeRewardWindow && !FadeManager.Inst.isActiveFade && CardManager.Inst.MyHandCards.Count >= 3)
         {
             this.transform.parent.GetComponent<Event>().MouseUp(eventData);
         }

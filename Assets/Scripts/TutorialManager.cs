@@ -58,9 +58,9 @@ public class TutorialManager : MonoBehaviour
         for (int i = 0; i < TalkWindow.Inst.talks[0].Count; i++)
         {
             if (i == 0)
-                ArrowManager.Inst.CreateArrowObj(TalkWindow.Inst.transform.position + new Vector3(3, -0.7f, 0), ArrowCreateDirection.RIGHT);
+                ArrowManager.Inst.CreateArrowObj(TalkWindow.Inst.transform.position + new Vector3(3, 0, 0), ArrowCreateDirection.RIGHT);
             else if (i == 4)
-                ArrowManager.Inst.CreateArrowObj(TalkWindow.Inst.transform.position + new Vector3(3, -0.7f, 0), ArrowCreateDirection.RIGHT);
+                ArrowManager.Inst.CreateArrowObj(TalkWindow.Inst.transform.position + new Vector3(3, 0, 0), ArrowCreateDirection.RIGHT);
             yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(TalkWindow.Inst.index, TalkWindow.Inst.index2));
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
@@ -77,7 +77,6 @@ public class TutorialManager : MonoBehaviour
             }
         }
         ArrowManager.Inst.DestoryAllArrow();
-        Debug.Log("test12");
         yield return StartCoroutine(TalkWindow.Inst.HideText());
         MapManager.Inst.LoadMapScene(true);
         MapManager.Inst.tutorialIndex++;
@@ -131,7 +130,7 @@ public class TutorialManager : MonoBehaviour
             else if (i == 6)    //그리고 손에 들고 있는 카드를 다 사용하면 몬스터의 턴으로 넘어가게 된다네. 계속 싸워서 이겨보게나.
             {
                 ArrowManager.Inst.DestoryAllArrow();
-                ArrowManager.Inst.CreateArrowObj(TalkWindow.Inst.transform.position + new Vector3(3, -0.7f, 0), ArrowCreateDirection.RIGHT);
+                ArrowManager.Inst.CreateArrowObj(TalkWindow.Inst.transform.position + new Vector3(3, 0, 0), ArrowCreateDirection.RIGHT);
             }
 
             yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(2, i));
@@ -205,7 +204,6 @@ public class TutorialManager : MonoBehaviour
 
         CardManager.Inst.UnLockMyHandCardAll();
 
-        Debug.Log("test15");
         yield return StartCoroutine(TalkWindow.Inst.HideText());
 
         yield return new WaitForSeconds(1);

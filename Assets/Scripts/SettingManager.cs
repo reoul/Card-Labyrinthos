@@ -41,16 +41,19 @@ public class SettingManager : MonoBehaviour
 
     public void GameReset()
     {
+        SoundManager.Inst.Play(EVENTSOUND.CHOICE_BUTTON);
         ResetManager.Inst.ResetGame();
     }
 
     public void GameQuit()
     {
+        SoundManager.Inst.Play(EVENTSOUND.CHOICE_BUTTON);
         Application.Quit();
     }
 
     public void SettingExit()
     {
+        SoundManager.Inst.Play(EVENTSOUND.CHOICE_BUTTON);
         Close();
     }
 

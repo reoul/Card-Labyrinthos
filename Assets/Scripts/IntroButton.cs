@@ -17,6 +17,7 @@ public class IntroButton : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        SoundManager.Inst.Play(EVENTSOUND.CHOICE_MOUSEUP);
         isButtonOn = true;
     }
 
@@ -27,6 +28,7 @@ public class IntroButton : MonoBehaviour
 
     void Click()
     {
+        SoundManager.Inst.Play(EVENTSOUND.CHOICE_BUTTON);
         switch (type)
         {
             case IntroButtonType.START:

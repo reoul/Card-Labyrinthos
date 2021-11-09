@@ -16,6 +16,7 @@ public class SettingButton : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        SoundManager.Inst.Play(EVENTSOUND.CHOICE_MOUSEUP);
         isButtonOn = true;
     }
 
@@ -26,6 +27,7 @@ public class SettingButton : MonoBehaviour
 
     void Click()
     {
+        SoundManager.Inst.Play(EVENTSOUND.CHOICE_BUTTON);
         switch (type)
         {
             case SettingButtonType.BGM:

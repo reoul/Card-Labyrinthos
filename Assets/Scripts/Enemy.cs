@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour
     {
         do
         {
-            weaknessNum = Random.Range(1, 6);
+            weaknessNum = Random.Range(2, 6);
         } while (weaknessNum == lastWeaknessNum);
         lastWeaknessNum = weaknessNum;
         if (fixedWeaknessNum != -1)
@@ -163,7 +163,7 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                StartCoroutine(GameManager.Inst.EndingCoroutine());
+                GameManager.Inst.Ending();
             }
             //CardManager.Inst.FinishBattle();
         }

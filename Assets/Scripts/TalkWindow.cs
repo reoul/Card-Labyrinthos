@@ -45,7 +45,7 @@ public class TalkWindow : MonoBehaviour
         //Time.timeScale = 2;
 
         talks = new List<List<string>>();
-        for (int i = 0; i < 15; i++)
+        for (int i = 0; i < 16; i++)
         {
             talks.Add(new List<string>());
         }
@@ -109,6 +109,8 @@ public class TalkWindow : MonoBehaviour
         talks[13].Add("보스는 생각보다 강력한 공격을 가지고 있다네. 조심하게나.");
 
         talks[14].Add("나의 복수를 해줘서 고마구나. 자네도 그 동안 수고했네. 그럼 난 이만 가보겠네.");
+
+        talks[15].Add(" ");
     }
 
     public void ShowTalk()
@@ -139,7 +141,6 @@ public class TalkWindow : MonoBehaviour
             yield return StartCoroutine(CheckFlagIndexCoroutine());
             yield return StartCoroutine(CheckFlagNextCoroutine());
         }
-        Debug.Log("test10");
         StartCoroutine(HideText());
     }
 
@@ -193,7 +194,6 @@ public class TalkWindow : MonoBehaviour
         //Tween tween = this.GetComponent<SpriteRenderer>().DOFade(0, 1);
         Tween tween = this.GetComponent<SpriteRenderer>().DOFade(0, 0.5f);
         yield return tween.WaitForCompletion();
-        Debug.Log("인덱스 " + index + " 종료");
         index++;
         index2 = 0;
         yield return StartCoroutine(ghost.HideTalk());
@@ -223,6 +223,7 @@ public class TalkWindow : MonoBehaviour
 
     private void OnMouseUp()
     {
+        SoundManager.Inst.Play(EVENTSOUND.CHOICE_BUTTON);
         if (talkTMP.text.Length == currentTalk.Length)
         {
             SetFlagNext(true);
