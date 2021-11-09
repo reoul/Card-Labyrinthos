@@ -121,7 +121,7 @@ public class Enemy : MonoBehaviour
             case PATTERN_TYPE.ATTACK:
                 patten_sprite.sprite = isPattenHidden ? null : StageManager.Inst.attackSprite;
                 pattenIndexTMP.text = isPattenHidden ? "???" : (pattenIndex + force).ToString();
-                pattenIndexTMP.color = new Color(180f / 255, 60f / 255, 60f / 255);
+                pattenIndexTMP.color = Color.red;
                 break;
             case PATTERN_TYPE.HEAL:
                 patten_sprite.sprite = isPattenHidden ? null : StageManager.Inst.healSprite;

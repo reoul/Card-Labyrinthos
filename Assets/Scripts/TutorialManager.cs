@@ -133,11 +133,6 @@ public class TutorialManager : MonoBehaviour
                 ArrowManager.Inst.DestoryAllArrow();
                 ArrowManager.Inst.CreateArrowObj(TalkWindow.Inst.transform.position + new Vector3(3, -0.7f, 0), ArrowCreateDirection.RIGHT);
             }
-            else if (i == 7)    //이겼을 때는 일정 확률로 물음표 카드와 카드 파편을 주지. 보유 개수는 화살표가 가리키는 곳에서 확인할 수 있다네.
-            {
-                ArrowManager.Inst.CreateArrowObj(TopBar.Inst.GetIcon(TOPBAR_TYPE.CARDPIECE).transform.position + new Vector3(0, -1, 0), ArrowCreateDirection.DOWN);
-                ArrowManager.Inst.CreateArrowObj(TopBar.Inst.GetIcon(TOPBAR_TYPE.QUESTION).transform.position + new Vector3(0, -1, 0), ArrowCreateDirection.DOWN);
-            }
 
             yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(2, i));
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
@@ -149,31 +144,8 @@ public class TutorialManager : MonoBehaviour
             {
                 TurnManager.Inst.isContinue = true;
                 ArrowManager.Inst.DestoryAllArrow();
-                Debug.Log("test13");
-                yield return StartCoroutine(TalkWindow.Inst.HideText());
-                TalkWindow.Inst.index = 2;
-                TalkWindow.Inst.index2 = 7;
-                while (!isWin)
-                {
-                    if (EnemyManager.Inst.enemys.Count == 0)
-                        isWin = true;
-                    yield return new WaitForEndOfFrame();
-                }
-                GhostManager.Inst.MoveTutorialPos();
-                yield return StartCoroutine(GhostManager.Inst.ShowGhost());
-            }
-            else if (i == 7)
-            {
-                ArrowManager.Inst.DestoryAllArrow();
-                while (!isToturialFinish)
-                {
-                    yield return new WaitForEndOfFrame();
-                }
-                Debug.Log("test14");
-                yield return StartCoroutine(TalkWindow.Inst.HideText());
                 MapManager.Inst.tutorialIndex++;
-                yield return new WaitForSeconds(1);
-                GhostManager.Inst.MoveOriginPos();
+                yield return StartCoroutine(TalkWindow.Inst.HideText());
             }
             yield return null;
         }
