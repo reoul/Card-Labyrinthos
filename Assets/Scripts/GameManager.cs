@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject hitObj;
 
+    [SerializeField] GameObject endingCredit;
+
     void Awake()
     {
         if (Inst == null)
@@ -46,6 +48,9 @@ public class GameManager : MonoBehaviour
             if (EnemyManager.Inst.enemys.Count > 0)
                 EnemyManager.Inst.enemys[0].Damage(EnemyManager.Inst.enemys[0].hpbar.hp - 1);
 
+        if (Input.GetKeyDown(KeyCode.F9))
+            EndingCredit();
+
         if (Input.GetKeyDown(KeyCode.I))
             TopBar.Inst.Open(TOPBAR_TYPE.BAG);
 
@@ -72,5 +77,11 @@ public class GameManager : MonoBehaviour
     {
         BagManager.Inst.Close();
         SkillManager.Inst.Close();
+    }
+
+    public void EndingCredit()
+    {
+        endingCredit.SetActive(true);
+        endingCredit.transform.DOMoveY(60, 30).SetEase(Ease.Linear);
     }
 }
