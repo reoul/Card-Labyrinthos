@@ -248,7 +248,7 @@ MonoBehaviour:
   reward_kind: 0
   first_reward_probability: 0
   reward_type1_1: 4
-  index1_1: 1
+  index1_1: 3
   reward_type1_2: 0
   index1_2: 0
   reward_type2: 0
@@ -559,7 +559,7 @@ MonoBehaviour:
   reward_kind: 0
   first_reward_probability: 0
   reward_type1_1: 1
-  index1_1: 50
+  index1_1: 200
   reward_type1_2: 0
   index1_2: 0
   reward_type2: 0
@@ -830,7 +830,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<\uBB3C\uC74C\uD45C\uCE74\uB4DC +1>"
+  m_text: "<\uBB3C\uC74C\uD45C\uCE74\uB4DC +3>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -1358,7 +1358,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<\uCE74\uB4DC \uD30C\uD3B8 + 50>"
+  m_text: "<\uCE74\uB4DC \uD30C\uD3B8 + 200>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -2630,7 +2630,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<\uBB3C\uC74C\uD45C\uCE74\uB4DC +1>"
+  m_text: "<\uBB3C\uC74C\uD45C\uCE74\uB4DC +3>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -2984,7 +2984,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<\uBB3C\uC74C\uD45C\uCE74\uB4DC +1>"
+  m_text: "<\uBB3C\uC74C\uD45C\uCE74\uB4DC +3>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -4073,7 +4073,7 @@ MonoBehaviour:
   reward_type1_1: 2
   index1_1: -10
   reward_type1_2: 1
-  index1_2: 100
+  index1_2: 200
   reward_type2: 0
   index2: 0
   limitNumMin: 0
@@ -4135,7 +4135,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<\uBB3C\uC74C\uD45C\uCE74\uB4DC +1>"
+  m_text: "<\uBB3C\uC74C\uD45C\uCE74\uB4DC +3>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -4445,7 +4445,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<\uBB3C\uC74C\uD45C \uCE74\uB4DC+1>"
+  m_text: "<\uBB3C\uC74C\uD45C \uCE74\uB4DC+3>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -6396,7 +6396,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<\uBB3C\uC74C\uD45C\uCE74\uB4DC +1>"
+  m_text: "<\uBB3C\uC74C\uD45C\uCE74\uB4DC +3>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -7376,7 +7376,7 @@ MonoBehaviour:
   reward_kind: 0
   first_reward_probability: 0
   reward_type1_1: 4
-  index1_1: 1
+  index1_1: 3
   reward_type1_2: 0
   index1_2: 0
   reward_type2: 0
@@ -9227,7 +9227,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<\uBB3C\uC74C\uD45C\uCE74\uB4DC +1>"
+  m_text: "<\uBB3C\uC74C\uD45C\uCE74\uB4DC +3>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -10616,7 +10616,7 @@ MonoBehaviour:
   reward_kind: 0
   first_reward_probability: 0
   reward_type1_1: 4
-  index1_1: 1
+  index1_1: 3
   reward_type1_2: 0
   index1_2: 0
   reward_type2: 0
@@ -10928,7 +10928,7 @@ MonoBehaviour:
   reward_kind: 0
   first_reward_probability: 0
   reward_type1_1: 4
-  index1_1: 1
+  index1_1: 3
   reward_type1_2: 0
   index1_2: 0
   reward_type2: 0
@@ -11930,7 +11930,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<\uBB3C\uC74C\uD45C\uCE74\uB4DC +1>"
+  m_text: "<\uBB3C\uC74C\uD45C\uCE74\uB4DC +3>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -12356,7 +12356,7 @@ MonoBehaviour:
   reward_type1_1: 1
   index1_1: -100
   reward_type1_2: 4
-  index1_2: 1
+  index1_2: 3
   reward_type2: 0
   index2: 0
   limitNumMin: 0
@@ -14294,7 +14294,7 @@ MonoBehaviour:
   reward_type1_1: 2
   index1_1: -10
   reward_type1_2: 4
-  index1_2: 1
+  index1_2: 3
   reward_type2: 0
   index2: 0
   limitNumMin: 0
@@ -16131,7 +16131,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<\uCE74\uB4DC\uD30C\uD3B8+100>      "
+  m_text: "<\uCE74\uB4DC\uD30C\uD3B8+200>      "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -17043,7 +17043,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<\uCE74\uB4DC \uD30C\uD3B8 +100>"
+  m_text: "<\uCE74\uB4DC \uD30C\uD3B8 +200>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -17107,7 +17107,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -0.108347006, y: 0, z: -0.10731507, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -18101,7 +18101,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<\uCE74\uB4DC\uD30C\uD3B8+100> "
+  m_text: "<\uCE74\uB4DC\uD30C\uD3B8+200> "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -18277,7 +18277,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<\uBB3C\uC74C\uD45C\uCE74\uB4DC +1>\n(50%) "
+  m_text: "<\uBB3C\uC74C\uD45C\uCE74\uB4DC +3>\n(50%) "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -18700,7 +18700,7 @@ MonoBehaviour:
   reward_kind: 0
   first_reward_probability: 0
   reward_type1_1: 4
-  index1_1: 1
+  index1_1: 3
   reward_type1_2: 0
   index1_2: 0
   reward_type2: 0
@@ -18723,7 +18723,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1405819304
 Transform:
   m_ObjectHideFlags: 0
@@ -18886,7 +18886,7 @@ MonoBehaviour:
   reward_kind: 0
   first_reward_probability: 0
   reward_type1_1: 4
-  index1_1: 1
+  index1_1: 3
   reward_type1_2: 0
   index1_2: 0
   reward_type2: 0
@@ -19020,7 +19020,7 @@ MonoBehaviour:
   reward_kind: 0
   first_reward_probability: 0
   reward_type1_1: 4
-  index1_1: 1
+  index1_1: 3
   reward_type1_2: 0
   index1_2: 0
   reward_type2: 0
@@ -19464,7 +19464,7 @@ MonoBehaviour:
   reward_kind: 0
   first_reward_probability: 0
   reward_type1_1: 4
-  index1_1: 1
+  index1_1: 3
   reward_type1_2: 0
   index1_2: 0
   reward_type2: 0
@@ -19947,7 +19947,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<\uCE74\uB4DC\uD30C\uD3B8+100>       "
+  m_text: "<\uCE74\uB4DC\uD30C\uD3B8+200>       "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -21201,7 +21201,7 @@ MonoBehaviour:
   reward_kind: 0
   first_reward_probability: 0
   reward_type1_1: 4
-  index1_1: 1
+  index1_1: 3
   reward_type1_2: 0
   index1_2: 0
   reward_type2: 0
@@ -21754,7 +21754,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<\uBB3C\uC74C\uD45C\uCE74\uB4DC +1>\n"
+  m_text: "<\uBB3C\uC74C\uD45C\uCE74\uB4DC +3>\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -22228,7 +22228,7 @@ MonoBehaviour:
   reward_kind: 0
   first_reward_probability: 0
   reward_type1_1: 1
-  index1_1: 100
+  index1_1: 200
   reward_type1_2: 0
   index1_2: 0
   reward_type2: 0
@@ -22292,7 +22292,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<\uBB3C\uC74C\uD45C\uCE74\uB4DC +1>"
+  m_text: "<\uBB3C\uC74C\uD45C\uCE74\uB4DC +3>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -22520,7 +22520,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<\uCE74\uB4DC\uD30C\uD3B8 +50>"
+  m_text: "<\uCE74\uB4DC\uD30C\uD3B8 +200>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -22942,7 +22942,7 @@ MonoBehaviour:
   reward_kind: 0
   first_reward_probability: 0
   reward_type1_1: 1
-  index1_1: 100
+  index1_1: 200
   reward_type1_2: 0
   index1_2: 0
   reward_type2: 0
@@ -23058,7 +23058,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<\uBB3C\uC74C\uD45C\uCE74\uB4DC +1>"
+  m_text: "<\uBB3C\uC74C\uD45C\uCE74\uB4DC +3>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -25739,9 +25739,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reward_kind: 2
-  first_reward_probability: 0
+  first_reward_probability: 50
   reward_type1_1: 4
-  index1_1: 1
+  index1_1: 3
   reward_type1_2: 0
   index1_2: 0
   reward_type2: 2
@@ -25875,7 +25875,7 @@ MonoBehaviour:
   reward_kind: 0
   first_reward_probability: 0
   reward_type1_1: 1
-  index1_1: 50
+  index1_1: 200
   reward_type1_2: 0
   index1_2: 0
   reward_type2: 0
@@ -26009,7 +26009,7 @@ MonoBehaviour:
   reward_kind: 0
   first_reward_probability: 0
   reward_type1_1: 1
-  index1_1: 100
+  index1_1: 200
   reward_type1_2: 0
   index1_2: 0
   reward_type2: 0
@@ -26073,7 +26073,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<\uBB3C\uC74C\uD45C\uCE74\uB4DC +1>"
+  m_text: "<\uBB3C\uC74C\uD45C\uCE74\uB4DC +3>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -26500,7 +26500,7 @@ MonoBehaviour:
   reward_type1_1: 2
   index1_1: -10
   reward_type1_2: 4
-  index1_2: 1
+  index1_2: 3
   reward_type2: 0
   index2: 0
   limitNumMin: 0
