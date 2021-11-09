@@ -6,6 +6,7 @@ public class Rest : MonoBehaviour
 {
     bool onRestButton = false;   //마우스가 필드 위에 있는지
     bool isTutorial = false;
+    bool isClick = false;
 
     private void Start()
     {
@@ -25,30 +26,15 @@ public class Rest : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (onRestButton && !FadeManager.Inst.isActiveFade)
+        if (onRestButton && !FadeManager.Inst.isActiveFade && !isTutorial && !isClick)
         {
             StartCoroutine(RestCoroutine());
         }
     }
     IEnumerator RestCoroutine()
     {
+        isClick = true;
         RewardManager.Inst.AddReward(REWARD_TYPE.REWARD, (int)EVENT_REWARD_TYPE.HP, 20);
-        if (!MapManager.Inst.isTutorialInRest)
-        {
-            TalkWindow.Inst.SetFlagIndex(false);
-            TalkWindow.Inst.SetFlagNext(true);
-            TalkWindow.Inst.SetSkip(true);
-            MapManager.Inst.isTutorialInRest = true;
-        }
-        while (isTutorial)
-        {
-            yield return new WaitForEndOfFrame();
-        }
-        if (!MapManager.Inst.isTutorialInRest)
-        {
-            yield return new WaitForSeconds(0.5f);
-            MapManager.Inst.isTutorialInRest = true;
-        }
         yield return StartCoroutine(RewardManager.Inst.ShowRewardWindowCoroutine(false));
         yield return StartCoroutine(RewardManager.Inst.RewardCoroutine());
         TalkWindow.Inst.InitFlag();
@@ -68,8 +54,9 @@ public class Rest : MonoBehaviour
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
         }
         ArrowManager.Inst.DestoryAllArrow();
-        isTutorial = false;
         Debug.Log("test9");
         yield return StartCoroutine(TalkWindow.Inst.HideText());
+        isTutorial = false;
+        MapManager.Inst.isTutorialInRest = true;
     }
 }
