@@ -244,8 +244,8 @@ public class MapManager : MonoBehaviour
             }
             fields[i].UpdateClearImage();
         }
-        Vector3 pos = Map.Inst.transform.position - fields[lastField].transform.position;
-        Map.Inst.MoveMap(new Vector3(pos.x + 1.5f, pos.y + 0.2f, 0));
+        Vector3 pos = Map.Inst.transform.position - fields[(lastField == 10) ? (lastField - 1) : lastField].transform.position;
+        Map.Inst.MoveMap(new Vector3(pos.x + 1.5f, pos.y + 0.3f, 0));
         yield return null;
     }
 

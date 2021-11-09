@@ -178,8 +178,6 @@ public class Field : MonoBehaviour
                         return MONSTER_TYPE.WATER_WISP;
                     case 3:
                         return MONSTER_TYPE.WIND_WISP;
-                    case 4:
-                        return MONSTER_TYPE.UNDEAD_WARRIOR;
                 }
                 break;
             case MONSTER_DIFFICULTY.NOMAL:
@@ -193,8 +191,6 @@ public class Field : MonoBehaviour
                         return MONSTER_TYPE.REAPER;
                     case 3:
                         return MONSTER_TYPE.SHADE;
-                    case 4:
-                        return MONSTER_TYPE.SATYR;
                 }
                 break;
             case MONSTER_DIFFICULTY.HARD:
@@ -208,8 +204,6 @@ public class Field : MonoBehaviour
                         return MONSTER_TYPE.RED_OGRE;
                     case 3:
                         return MONSTER_TYPE.YETI;
-                    case 4:
-                        return MONSTER_TYPE.PHANTOM_KNIGHT;
                 }
                 break;
             case MONSTER_DIFFICULTY.BOSS:

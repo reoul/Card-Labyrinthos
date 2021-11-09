@@ -130,8 +130,8 @@ public class RewardManager : MonoBehaviour
     public void SetFinishBattleReward()
     {
         SetTitleText("보상");
-        int questionCard = Random.Range(0, 2) == 0 ? 1 : 0;
-        int cardPiece = Random.Range(20, 40);
+        int questionCard = Random.Range(1, 3) == 0 ? 1 : 0;
+        int cardPiece = Random.Range(100, 120);
         cardPiece += 4 - ((cardPiece % 4) == 0 ? 4 : (cardPiece % 4));
         if (questionCard == 1)
             AddReward(REWARD_TYPE.REWARD, (int)EVENT_REWARD_TYPE.QUESTION_CARD, questionCard);
