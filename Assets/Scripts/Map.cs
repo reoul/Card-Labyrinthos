@@ -46,24 +46,24 @@ public class Map : MonoBehaviour
                 {
                     this.transform.parent.position += movePos;
                     movePos = Vector3.zero;
-                    if (this.transform.parent.position.x > 23.84775f)
+                    if (this.transform.parent.position.x > 30)
                     {
-                        float _x = this.transform.parent.position.x - 23.84775f;
+                        float _x = this.transform.parent.position.x - 30;
                         movePos.x -= _x;
                     }
-                    if (this.transform.parent.position.x < -18.5023f)
+                    if (this.transform.parent.position.x < -30)
                     {
-                        float _x = this.transform.parent.position.x + 18.5023f;
+                        float _x = this.transform.parent.position.x + 30;
                         movePos.x -= _x;
                     }
-                    if (this.transform.parent.position.y > 17.98923f)
+                    if (this.transform.parent.position.y > 25)
                     {
-                        float _y = this.transform.parent.position.y - 17.98923f;
+                        float _y = this.transform.parent.position.y - 25;
                         movePos.y -= _y;
                     }
-                    if (this.transform.parent.position.y < -18.39963f)
+                    if (this.transform.parent.position.y < -25)
                     {
-                        float _y = this.transform.parent.position.y + 18.39963f;
+                        float _y = this.transform.parent.position.y + 25;
                         movePos.y -= _y;
                     }
                     this.transform.parent.position += movePos;
@@ -76,6 +76,8 @@ public class Map : MonoBehaviour
     public void MoveMap(Vector3 pos)
     {
         this.transform.parent.position += pos;
+        if (this.transform.parent.position.y < -15)
+            this.transform.parent.position -= new Vector3(this.transform.parent.position.x, -15, this.transform.parent.position.z);
     }
 
     public void MoveUI(Vector3 pos)

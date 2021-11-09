@@ -90,6 +90,7 @@ public class MapManager : MonoBehaviour
     public int tutorialIndex = 0;
     bool isBattleDebuffOff = false;
     public int lastField = 0;
+    public bool isFinishTutorialEventField;
 
     public string CurrentSceneName      //현재 씬 이름
     {
@@ -244,8 +245,10 @@ public class MapManager : MonoBehaviour
             }
             fields[i].UpdateClearImage();
         }
-        Vector3 pos = Map.Inst.transform.position - fields[(lastField == 10) ? (lastField - 1) : lastField].transform.position;
-        Map.Inst.MoveMap(new Vector3(pos.x + 1.5f, pos.y + 0.3f, 0));
+        Vector3 pos = Map.Inst.transform.position - fields[(lastField == 10) ? (lastField - 2) : lastField].transform.position;
+        pos = Map.Inst.transform.parent.transform.position - fields[lastField].transform.position;
+        Debug.Log("Map.Inst.transform.position - fields[(lastField == 10) ? (lastField - 1) : lastField].transform.position " + pos.ToString());
+        Map.Inst.MoveMap(new Vector3(pos.x, pos.y, 0));
         yield return null;
     }
 
@@ -334,7 +337,10 @@ public class MapManager : MonoBehaviour
         else if (isTutorialReadyShop && !isFinishToturialShop)
             return MapTutorialShopCoroutine();
         else if (isTutorialReadyBoss && !isFinishToturialBoss)
+        {
+            isFinishToturialBoss = true;
             return MapTutorialBossCoroutine();
+        }
         return null;
     }
 
@@ -438,6 +444,7 @@ public class MapManager : MonoBehaviour
         Debug.Log("test6");
         isFinishToturialEvent = true;
         yield return StartCoroutine(TalkWindow.Inst.HideText());
+        isFinishTutorialEventField = true;
         yield return null;
     }
     public IEnumerator MapTutorialShopCoroutine()

@@ -146,6 +146,8 @@ public class Field : MonoBehaviour
         {
             if (MapManager.Inst.CurrentSceneName == "상점" && !ShopManager.Inst.isFinishTutorial)
                 return;
+            if (!MapManager.Inst.isFinishTutorialEventField && this.field_type == FIELD_TYPE.EVENT)
+                return;
             MapManager.Inst.IconMouseUp(this);
         }
     }
