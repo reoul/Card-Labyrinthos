@@ -63,7 +63,7 @@ public class BagManager : MonoBehaviour
         {
             skill_spriteRenderer[i].color = new Color(0, 0, 0, 0.5f);
             skill_spriteRenderer[i].transform.GetChild(0).GetComponent<TMP_Text>().color = new Color(0, 0, 0, 0.5f);
-            if (CardManager.Inst.cardDeck[0] >= i * 2 + 1)
+            if (CardManager.Inst.cardDeck[0] >= 1)
             {
                 skill_spriteRenderer[i].color = Color.white;
                 skill_spriteRenderer[i].transform.GetChild(0).GetComponent<TMP_Text>().color = Color.black;

@@ -1374,7 +1374,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD558\uB4DC"
+  m_text: "\uB178\uB9D0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78cfb9ce2d1829745874d90c32680bbb, type: 2}
   m_sharedMaterial: {fileID: 5310651378644524790, guid: 78cfb9ce2d1829745874d90c32680bbb,
@@ -5355,7 +5355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   field_type: 0
   event_type: 0
-  monster_difficulty: 2
+  monster_difficulty: 1
   surroundingObj: []
   isReady: 0
   isClear: 0
@@ -11778,6 +11778,7 @@ MonoBehaviour:
   isTutorialInEvent: 0
   isTutorialInShop: 0
   tutorialIndex: 0
+  lastField: 0
 --- !u!1 &1496325639
 GameObject:
   m_ObjectHideFlags: 0

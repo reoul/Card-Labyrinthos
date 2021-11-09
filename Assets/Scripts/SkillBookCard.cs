@@ -86,6 +86,7 @@ public class SkillBookCard : MonoBehaviour
                 //        SkillManager.Inst.ActivePage.applyButton.SetButtonActive(true);
                 //    }
                 //}
+                Debug.Log("asdas");
                 if (SkillManager.Inst.ActivePage.applyCards[0].gameObject.activeInHierarchy && SkillManager.Inst.ActivePage.applyCards[1].gameObject.activeInHierarchy)
                 {
                     flag = true;
@@ -95,29 +96,6 @@ public class SkillBookCard : MonoBehaviour
                 else
                 {
                     SkillManager.Inst.ActivePage.applyButton.SetButtonActive(false);
-                }
-            }
-            if (SkillManager.Inst.ActivePage.skill_type == SKILL_TYPE.SKILL2)
-            {
-                if (SkillManager.Inst.ActivePage.applyCards[0].Equals(this))
-                {
-                    if (SkillManager.Inst.ActivePage.applyCards[0].curNum >= SkillManager.Inst.ActivePage.applyCards[0].originNum)
-                    {
-                        SkillManager.Inst.ActivePage.applyCards[0].isShowDownButton = true;
-                        cardButtons[0].gameObject.SetActive(false);
-                    }
-                    else
-                    {
-                        SkillManager.Inst.ActivePage.applyCards[0].isShowDownButton = false;
-                        cardButtons[0].gameObject.SetActive(true);
-                    }
-                }
-                else
-                {
-                    if (SkillManager.Inst.ActivePage.applyCards[1].curNum >= 5)
-                        SkillManager.Inst.ActivePage.applyCards[0].isSecondMaxNum = true;
-                    else
-                        SkillManager.Inst.ActivePage.applyCards[0].isSecondMaxNum = false;
                 }
             }
             if (SkillManager.Inst.ActivePage.skill_type != SKILL_TYPE.SKILL5)
@@ -150,6 +128,7 @@ public class SkillBookCard : MonoBehaviour
     public void SetCard(Card card)
     {
         SkillManager.Inst.SetCard(this, card);
+        Debug.Log("asdasad");
         for (int i = 0; i < cardButtons.Count; i++)
         {
             cardButtons[i].gameObject.SetActive(true);

@@ -75,12 +75,6 @@ public class SkillManager : MonoBehaviour
     {
         if (isUseSkill[page])
             return;
-        if (page == 1)
-        {
-            if (choiceCards[1].Equals(skillBookCard))
-                if (card.final_Num == 5)
-                    return;
-        }
         for (int i = 0; i < choiceCards.Count; i++)
         {
             if (choiceCards[i].curSelectCard == card)
@@ -149,7 +143,8 @@ public class SkillManager : MonoBehaviour
         SoundManager.Inst.Play(SKILLBOOKSOUND.TURN_PAGE);
         for (int i = 0; i < bookmarks.Count; i++)
         {
-            bookmarks[i].gameObject.SetActive(CardManager.Inst.cardDeck[0] >= (i * 2 + 1) ? true : false);
+            //bookmarks[i].gameObject.SetActive(CardManager.Inst.cardDeck[0] >= (i * 2 + 1) ? true : false);
+            bookmarks[i].gameObject.SetActive(true);
         }
         bookmarks[page].transform.localPosition += new Vector3(-0.09158f, 0, 0);
         page = index;

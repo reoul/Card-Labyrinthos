@@ -56,8 +56,11 @@ public class SkillBookPage : MonoBehaviour
                 }
                 break;
             case SKILL_TYPE.SKILL2:     //-n +n
-                applyCards[1].isHideButton = true;
-                applyCards[0].isShowDownButton = true;
+                for (int i = 0; i < applyCards.Count; i++)
+                {
+                    applyCards[i].isHideButton = true;
+                    applyCards[i].isQuestionMark = true;
+                }
                 break;
             case SKILL_TYPE.SKILL3:     //원하는 숫자로 카드 한장 바꾸기
                 break;
