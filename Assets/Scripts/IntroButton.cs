@@ -6,11 +6,12 @@ public enum IntroButtonType { START, SETTING, QUIT }
 public class IntroButton : MonoBehaviour
 {
     bool isButtonOn = false;
+    bool isClick = false;
     [SerializeField] IntroButtonType type;
 
     private void OnMouseUp()
     {
-        if (isButtonOn)
+        if (isButtonOn && !isClick)
             Click();
     }
 
@@ -29,6 +30,7 @@ public class IntroButton : MonoBehaviour
         switch (type)
         {
             case IntroButtonType.START:
+                isClick = true;
                 IntroManager.Inst.GameStart();
                 break;
             case IntroButtonType.SETTING:

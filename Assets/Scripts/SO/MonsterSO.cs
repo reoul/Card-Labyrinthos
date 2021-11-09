@@ -47,6 +47,8 @@ public class Monster
     public PATTERN pattern_2; //중공
     public PATTERN pattern_3; //강공
     public PATTERN pattern_4; //회복
+
+    public float attackDelay;
 }
 
 [System.Serializable]

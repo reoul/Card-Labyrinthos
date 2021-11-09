@@ -55,6 +55,7 @@ public class StageManager : MonoBehaviour
 
                     EnemyManager.Inst.enemys.Add(enemy);
                     enemy.hpbar.SetHP(monsterSO.monsters[i].hp);
+                    enemy.attackDelay = monsterSO.monsters[i].attackDelay;
                     //enemy.hpbar.hp = 5;
                     enemy.monster = monsterSO.monsters[i];
                     enemy.name = "Enemy";
@@ -81,6 +82,7 @@ public class StageManager : MonoBehaviour
                 enemy.SetFixedWeaknessNum(MapManager.Inst.tutorialIndex == 1 ? 2 : -1);
                 EnemyManager.Inst.enemys.Add(enemy);
                 enemy.hpbar.SetHP(monsterSO.monsters[i].hp);
+                enemy.attackDelay = monsterSO.monsters[i].attackDelay;
                 //enemy.hpbar.hp = 5;
                 enemy.monster = monsterSO.monsters[i];
                 enemy.name = "Enemy123";

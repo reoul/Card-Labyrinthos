@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
 
     public void Damage(int damage)          //플레이어가 공격 당할때 호출
     {
-        EffectManager.Inst.CreateEffectObj(EffectObjType.HIT, this.transform.position + new Vector3(0, 1, -15));
+        //EffectManager.Inst.CreateEffectObj(EffectObjType.HIT, this.transform.position + new Vector3(0, 1, -15));
         hpbar.Damage(damage);
     }
 

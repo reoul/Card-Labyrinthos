@@ -30,6 +30,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 3
+    attackDelay: 0
   - name: Earth Wisp
     hp: 15
     type: 5
@@ -47,6 +48,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 2
+    attackDelay: 0.2
   - name: Executioner
     hp: 28
     type: 19
@@ -64,6 +66,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 3
+    attackDelay: 0
   - name: Fire Golem
     hp: 42
     type: 20
@@ -81,6 +84,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 5
+    attackDelay: 0
   - name: Fire Wisp
     hp: 15
     type: 7
@@ -98,6 +102,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 2
+    attackDelay: 0.15
   - name: Ghoul
     hp: 23
     type: 21
@@ -115,6 +120,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 3
+    attackDelay: 0
   - name: Goblin
     hp: 20
     type: 0
@@ -132,6 +138,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 3
+    attackDelay: 0
   - name: Golem
     hp: 45
     type: 18
@@ -149,6 +156,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 5
+    attackDelay: 0
   - name: Ice Golem
     hp: 48
     type: 22
@@ -166,6 +174,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 5
+    attackDelay: 0
   - name: Imp
     hp: 15
     type: 23
@@ -183,6 +192,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 2
+    attackDelay: 0
   - name: Kobold
     hp: 20
     type: 1
@@ -200,6 +210,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 3
+    attackDelay: 0
   - name: Mandrake
     hp: 10
     type: 11
@@ -217,6 +228,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 2
+    attackDelay: 0
   - name: Mimic
     hp: 10
     type: 4
@@ -234,6 +246,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 3
+    attackDelay: 0
   - name: Minotaur
     hp: 40
     type: 9
@@ -251,6 +264,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 5
+    attackDelay: 0.05
   - name: Necromancer
     hp: 50
     type: 24
@@ -268,6 +282,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 2
       index: 5
+    attackDelay: 0
   - name: Normal_Chest
     hp: 10
     type: 29
@@ -285,6 +300,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 0
+    attackDelay: 0
   - name: Oculothorax
     hp: 22
     type: 3
@@ -302,6 +318,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 3
+    attackDelay: 0
   - name: Ogre
     hp: 45
     type: 2
@@ -319,6 +336,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 5
+    attackDelay: 0
   - name: Phantom Knight
     hp: 60
     type: 25
@@ -336,6 +354,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 15
+    attackDelay: 0
   - name: Rat
     hp: 10
     type: 10
@@ -353,6 +372,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 2
+    attackDelay: 0
   - name: Reaper
     hp: 23
     type: 26
@@ -370,6 +390,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 3
+    attackDelay: 0.05
   - name: Red Ogre
     hp: 45
     type: 30
@@ -387,6 +408,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 5
+    attackDelay: 0.1
   - name: Satyr
     hp: 21
     type: 13
@@ -404,6 +426,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 3
+    attackDelay: 0
   - name: Shade
     hp: 27
     type: 14
@@ -421,6 +444,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 3
+    attackDelay: 0.15
   - name: Slug
     hp: 15
     type: 27
@@ -438,6 +462,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 2
+    attackDelay: 0
   - name: Undead Warrior
     hp: 20
     type: 28
@@ -455,6 +480,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 2
+    attackDelay: 0.05
   - name: Wasp
     hp: 15
     type: 15
@@ -472,6 +498,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 2
+    attackDelay: 0
   - name: Water Wisp
     hp: 15
     type: 8
@@ -489,6 +516,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 2
+    attackDelay: 0.25
   - name: Werewolf
     hp: 40
     type: 16
@@ -506,6 +534,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 5
+    attackDelay: 0
   - name: Wind Wisp
     hp: 15
     type: 6
@@ -523,6 +552,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 2
+    attackDelay: 0.2
   - name: Yeti
     hp: 40
     type: 17
@@ -540,6 +570,7 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 5
+    attackDelay: 0.05
   - name: Boss
     hp: 70
     type: 31
@@ -557,3 +588,4 @@ MonoBehaviour:
     pattern_4:
       pattern_type: 1
       index: 7
+    attackDelay: 0.1

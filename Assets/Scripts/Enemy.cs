@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     public bool isVampire;
     public bool isWeaknessHidden;
     public bool isPattenHidden;
+    public float attackDelay;
     public Transform hitPos;        //전투 중 카드가 날아갈 곳
 
     [SerializeField] SpriteRenderer patten_sprite;
@@ -80,6 +81,7 @@ public class Enemy : MonoBehaviour
         switch (curPatten.pattern_type)
         {
             case PATTERN_TYPE.ATTACK:
+                EffectManager.Inst.CreateEffectObj(EffectObjType.HIT, Player.Inst.transform.position + new Vector3(0, 1, -15), 0.15f + attackDelay);
                 this.GetComponent<Animator>().SetTrigger("Attack");         //공격 애니메이션 실행
                 break;
             case PATTERN_TYPE.HEAL:
