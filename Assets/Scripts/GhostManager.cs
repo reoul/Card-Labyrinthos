@@ -28,13 +28,15 @@ public class GhostManager : MonoBehaviour
 
     public IEnumerator ShowGhost()
     {
-        Tween tween = this.ghost.GetComponent<SpriteRenderer>().DOFade(1, 1);
+        //Tween tween = this.ghost.GetComponent<SpriteRenderer>().DOFade(1, 1);
+        Tween tween = this.ghost.GetComponent<SpriteRenderer>().DOFade(1, 0.5f);
         yield return tween.WaitForCompletion();
         yield return StartCoroutine(ghost.ShowTalk());
     }
     public IEnumerator HideGhost()
     {
-        Tween tween = this.ghost.GetComponent<SpriteRenderer>().DOFade(0, 1);
+        //Tween tween = this.ghost.GetComponent<SpriteRenderer>().DOFade(0, 1);
+        Tween tween = this.ghost.GetComponent<SpriteRenderer>().DOFade(0, 0.5f);
         yield return tween.WaitForCompletion();
     }
 

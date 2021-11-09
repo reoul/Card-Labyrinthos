@@ -126,7 +126,8 @@ public class TalkWindow : MonoBehaviour
     public IEnumerator ShowTalkWindowCoroutine()
     {
         talkTMP.text = "";
-        Tween tween = this.GetComponent<SpriteRenderer>().DOFade(1, 1);
+        //Tween tween = this.GetComponent<SpriteRenderer>().DOFade(1, 1);
+        Tween tween = this.GetComponent<SpriteRenderer>().DOFade(1, 0.5f);
         yield return tween.WaitForCompletion();
     }
 
@@ -156,7 +157,7 @@ public class TalkWindow : MonoBehaviour
                 break;
             }
             talkTMP.text = talks[index][index2].Substring(0, i + 1);
-            yield return new WaitForSeconds(0.07f);
+            yield return new WaitForSeconds(0.03f);
         }
         yield return null;
     }
@@ -189,7 +190,8 @@ public class TalkWindow : MonoBehaviour
     public IEnumerator HideText()
     {
         talkTMP.text = "";
-        Tween tween = this.GetComponent<SpriteRenderer>().DOFade(0, 1);
+        //Tween tween = this.GetComponent<SpriteRenderer>().DOFade(0, 1);
+        Tween tween = this.GetComponent<SpriteRenderer>().DOFade(0, 0.5f);
         yield return tween.WaitForCompletion();
         Debug.Log("인덱스 " + index + " 종료");
         index++;

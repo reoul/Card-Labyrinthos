@@ -150,7 +150,7 @@ public class Field : MonoBehaviour
                 return;
             if (!MapManager.Inst.isFinishTutorialEventField && this.field_type == FIELD_TYPE.EVENT)
                 return;
-            if (!MapManager.Inst.isTutorialBoss && this.field_type == FIELD_TYPE.BOSS)
+            if (!MapManager.Inst.isTutorialBoss && this.monster_difficulty == MONSTER_DIFFICULTY.BOSS)
                 return;
             MapManager.Inst.IconMouseUp(this);
         }
