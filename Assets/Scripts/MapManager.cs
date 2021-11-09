@@ -83,6 +83,7 @@ public class MapManager : MonoBehaviour
     public bool isTutorialInRest = false;
     public bool isTutorialInEvent = false;
     public bool isTutorialInShop = false;
+    public bool isTutorialBoss = false;
 
     bool isMoveCamera = false;
     Vector3 lastMousePos;
@@ -477,6 +478,7 @@ public class MapManager : MonoBehaviour
         Debug.Log("test8");
         yield return StartCoroutine(TalkWindow.Inst.HideText());
         isFinishToturialBoss = true;
+        isTutorialBoss = true;
         yield return null;
     }
 }

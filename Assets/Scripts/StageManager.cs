@@ -19,6 +19,8 @@ public class StageManager : MonoBehaviour
 
     [SerializeField] bool isTutorial = false;
 
+    public bool isWin;
+
     private void Awake()
     {
         Inst = this;
@@ -66,6 +68,15 @@ public class StageManager : MonoBehaviour
         }
         debuffTMP.text = string.Format($"저주 : {DebuffManager.Inst.DebuffString}");
         DebuffManager.Inst.ApplyDebuff();
+    }
+
+    IEnumerator CheckBossWinCoroutine()
+    {
+        while (!isWin)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+
     }
 
     public IEnumerator CreateStageInTutorial()

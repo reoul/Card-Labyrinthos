@@ -17847,6 +17847,7 @@ MonoBehaviour:
   isTutorialInRest: 0
   isTutorialInEvent: 0
   isTutorialInShop: 0
+  isTutorialBoss: 0
   tutorialIndex: 0
   lastField: 0
   isFinishTutorialEventField: 0
@@ -33157,6 +33158,7 @@ MonoBehaviour:
   fadeInOutObj: {fileID: 0}
   hitObj: {fileID: 1826544702149632, guid: 5147558f73d9f6244b2ec6cd4f995fae, type: 3}
   endingCredit: {fileID: 0}
+  gameOver: {fileID: 0}
 --- !u!4 &1484839745
 Transform:
   m_ObjectHideFlags: 0
@@ -40484,6 +40486,7 @@ MonoBehaviour:
   healSprite: {fileID: 21300000, guid: 848c64b0e55ef0f428b5813ac9cedca4, type: 3}
   debuffTMP: {fileID: 0}
   isTutorial: 1
+  isWin: 0
 --- !u!4 &1832137357
 Transform:
   m_ObjectHideFlags: 0
