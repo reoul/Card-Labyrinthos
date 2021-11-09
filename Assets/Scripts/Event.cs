@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Event : MonoBehaviour
 {
-    [SerializeField] TMP_Text[] condition_TMP;
+    public TMP_Text[] condition_TMP;
 
     public void MouseUp(EventData eventData)
     {

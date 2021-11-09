@@ -41,7 +41,7 @@ public class TutorialManager : MonoBehaviour
             case 1:
                 StartCoroutine(TutorialBattleCoroutine());
                 break;
-            case 2:
+            case 3:
                 StartCoroutine(TutorialSkillCoroutine());
                 break;
         }
@@ -88,6 +88,7 @@ public class TutorialManager : MonoBehaviour
         SoundManager.Inst.Play(BACKGROUNDSOUND.BATTLE);
 
         yield return StartCoroutine(StageManager.Inst.CreateStageInTutorial());
+        TurnManager.Inst.isTutorialLockCard = true;
         yield return new WaitForSeconds(1);
         yield return StartCoroutine(GhostManager.Inst.ShowGhost());
 
@@ -96,13 +97,11 @@ public class TutorialManager : MonoBehaviour
             if (i == 0)     //앞에 몬스터 머리 위에 있는 3이라는 숫자가 보이나? 그 숫자가 적의 약점 숫자라네.
             {
                 ArrowManager.Inst.CreateArrowObj(EnemyManager.Inst.enemys[0].weaknessTMP.transform.position + new Vector3(0, 1f, 0), ArrowCreateDirection.UP);
-                for (int j = 0; j < CardManager.Inst.MyHandCards.Count; j++)
-                    CardManager.Inst.MyHandCards[j].isLock = true;
             }
             else if (i == 1 || i == 2)  //손에 들고 있는 3 카드로 한번 공격해보게. 그 숫자 그대로 데미지가 들어갈 거야., 이번엔 6 카드로 한번 공격해봐. 약점 숫자랑 다르다면 데미지가 1밖에 안 들어갈 거네.
             {
                 ArrowManager.Inst.DestoryAllArrow();
-                CardManager.Inst.MyHandCards[0].isLock = false;
+                CardManager.Inst.UnLockMyHandCard(0);
                 ArrowManager.Inst.CreateArrowObj(CardManager.Inst.MyHandCards[0].transform.position + new Vector3(0, 2, 0), ArrowCreateDirection.UP, CardManager.Inst.MyHandCards[0].transform);
                 ArrowManager.Inst.CreateArrowObj(EnemyManager.Inst.enemys[0].hitPos.transform.position + new Vector3(-2, 0, 0), ArrowCreateDirection.LEFT);
                 TalkWindow.Inst.SetFlagIndex(true);
@@ -116,7 +115,7 @@ public class TutorialManager : MonoBehaviour
             else if (i == 4)    //나머지 카드를 자네에게 써보게. 그렇다면 해당 숫자만큼의 실드가 생길 거야
             {
                 ArrowManager.Inst.DestoryAllArrow();
-                CardManager.Inst.MyHandCards[0].isLock = false;
+                CardManager.Inst.UnLockMyHandCard(0);
                 ArrowManager.Inst.CreateArrowObj(CardManager.Inst.MyHandCards[0].transform.position + new Vector3(0, 2f, 0), ArrowCreateDirection.UP, CardManager.Inst.MyHandCards[0].transform);
                 ArrowManager.Inst.CreateArrowObj(Player.Inst.transform.position + new Vector3(1.5f, 1, 0), ArrowCreateDirection.RIGHT);
                 TalkWindow.Inst.SetFlagIndex(true);
@@ -215,31 +214,27 @@ public class TutorialManager : MonoBehaviour
             }
             else if (i == 4)
                 ArrowManager.Inst.DestoryAllArrow();
-            Debug.Log("1");
+
             yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(4, i));
-            Debug.Log("11");
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
-            Debug.Log("111");
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
-            Debug.Log("1111");
+
             if (i == 0)
             {
-                Debug.Log("2222");
                 while (!isToturialOpenSkill)
                 {
-                    Debug.Log("스킬이 안열렸음");
                     yield return new WaitForEndOfFrame();
                 }
-                Debug.Log("3333");
             }
 
         }
-        for (int j = 0; j < CardManager.Inst.MyHandCards.Count; j++)
-        {
-            CardManager.Inst.MyHandCards[j].isLock = false;
-        }
+
+        CardManager.Inst.UnLockMyHandCardAll();
+
         yield return StartCoroutine(TalkWindow.Inst.HideText());
+
         yield return new WaitForSeconds(1);
+
         GhostManager.Inst.MoveOriginPos();
     }
 

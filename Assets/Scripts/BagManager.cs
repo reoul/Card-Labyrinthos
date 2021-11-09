@@ -45,6 +45,7 @@ public class BagManager : MonoBehaviour
             TalkWindow.Inst.SetFlagNext(true);
             TalkWindow.Inst.SetSkip(true);
             TalkWindow.Inst.index2 = 1;
+            MapManager.Inst.tutorialIndex++;
         }
         GameManager.Inst.CloseAllUI();
         isOpen = true;

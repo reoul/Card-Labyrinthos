@@ -80,6 +80,8 @@ public class MapManager : MonoBehaviour
     public bool isTutorialReadyBoss = false;
 
     public bool isTutorialOpenBag = false;
+    public bool isTutorialInRest = false;
+    public bool isTutorialInEvent = false;
 
     bool isMoveCamera = false;
     Vector3 lastMousePos;
@@ -388,6 +390,7 @@ public class MapManager : MonoBehaviour
         }
         yield return StartCoroutine(TalkWindow.Inst.HideText());
         isFinishToturialDebuff = true;
+        TurnManager.Inst.isTutorialDebuffBar = true;
         yield return null;
     }
     public IEnumerator MapTutorialRestCoroutine()
@@ -395,10 +398,12 @@ public class MapManager : MonoBehaviour
         yield return StartCoroutine(GhostManager.Inst.ShowGhost());
         for (int i = 0; i < TalkWindow.Inst.talks[7].Count; i++)
         {
+            ArrowManager.Inst.CreateArrowObj(fields[4].transform.position + Vector3.right, ArrowCreateDirection.RIGHT, fields[4].transform);
             yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(7, i));
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
         }
+        ArrowManager.Inst.DestoryAllArrow();
         yield return StartCoroutine(TalkWindow.Inst.HideText());
         isFinishToturialRest = true;
         yield return null;
@@ -408,10 +413,12 @@ public class MapManager : MonoBehaviour
         yield return StartCoroutine(GhostManager.Inst.ShowGhost());
         for (int i = 0; i < TalkWindow.Inst.talks[9].Count; i++)
         {
+            ArrowManager.Inst.CreateArrowObj(fields[5].transform.position + Vector3.right, ArrowCreateDirection.RIGHT, fields[5].transform);
             yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(9, i));
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
         }
+        ArrowManager.Inst.DestoryAllArrow();
         yield return StartCoroutine(TalkWindow.Inst.HideText());
         isFinishToturialEvent = true;
         yield return null;
@@ -421,10 +428,12 @@ public class MapManager : MonoBehaviour
         yield return StartCoroutine(GhostManager.Inst.ShowGhost());
         for (int i = 0; i < TalkWindow.Inst.talks[11].Count; i++)
         {
+            ArrowManager.Inst.CreateArrowObj(fields[6].transform.position + Vector3.right, ArrowCreateDirection.RIGHT, fields[6].transform);
             yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(11, i));
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
         }
+        ArrowManager.Inst.DestoryAllArrow();
         yield return StartCoroutine(TalkWindow.Inst.HideText());
         isFinishToturialShop = true;
         yield return null;
@@ -434,10 +443,12 @@ public class MapManager : MonoBehaviour
         yield return StartCoroutine(GhostManager.Inst.ShowGhost());
         for (int i = 0; i < TalkWindow.Inst.talks[13].Count; i++)
         {
+            ArrowManager.Inst.CreateArrowObj(fields[11].transform.position + Vector3.right * 2, ArrowCreateDirection.RIGHT, fields[11].transform);
             yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(13, i));
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
         }
+        ArrowManager.Inst.DestoryAllArrow();
         yield return StartCoroutine(TalkWindow.Inst.HideText());
         isFinishToturialBoss = true;
         yield return null;

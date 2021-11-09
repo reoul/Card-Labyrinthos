@@ -6,6 +6,12 @@ public class TopBarIcon : MonoBehaviour
 {
     public TOPBAR_TYPE type;
     bool onTopBarIcon = false;   //마우스가 필드 위에 있는지
+    bool _isLock;
+    public bool isLock
+    {
+        get { return _isLock; }
+        private set { _isLock = value; }
+    }
 
     void OnMouseEnter()
     {
@@ -21,7 +27,16 @@ public class TopBarIcon : MonoBehaviour
     {
         if (onTopBarIcon)
         {
-            TopBar.Inst.Click(this);
+            TopBar.Inst.Open(this);
         }
+    }
+
+    public void Lock()
+    {
+        isLock = true;
+    }
+    public void UnLock()
+    {
+        isLock = false;
     }
 }

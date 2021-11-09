@@ -76,7 +76,7 @@ public class TalkWindow : MonoBehaviour
         talks[3].Add("가방을 끄고 싶다면 아이콘을 한 번 더 누르거나 단축키 I를 사용하면 된다네.");
 
         talks[4].Add("이번 필드에서는 스킬북에 대해서 알려주지. 오른쪽 상단에 있는 책을 눌러보게.");
-        talks[4].Add("화살표가 가리키는 버튼을 통해서 다른 스킬로 바꿀수 있다네.");
+        talks[4].Add("화살표가 가리키는 버튼을 통해서 다른 스킬로 바꿀수 있다네. 지금은 해금된 스킬이 하나지만 나중에는 해금된 스킬이 늘어날거라네.");
         talks[4].Add("화살표가 가리키는 곳에 해당 스킬에 대한 설명이 있다네. 스킬마다 다르니 한번 확인해보도록. 지금 스킬은 카드 숫자에 +1 혹은 -1이군.");
         talks[4].Add("만약 스킬을 사용하고 싶다면 화살표가 가리키는 곳에 카드를 드래그해서 올려두게.");
         talks[4].Add("그렇다면 오른쪽 페이지의 버튼으로 카드의 숫자를 변경시킬 수 있을 거라네.");
@@ -88,17 +88,17 @@ public class TalkWindow : MonoBehaviour
         talks[5].Add("저주는 랜덤 된 3가지가 나오는데 그 중 하나를 선택하면 돼.");
 
         talks[6].Add("선택한 저주는 오른쪽 상단 저주창에서 확인할 수 있다네.");
-        talks[6].Add("저주창 왼쪽 버튼을 클릭하면 저주창을 숨기거나 보이게 할 수 있다.");
+        talks[6].Add("저주창 왼쪽 버튼을 클릭하면 저주창을 숨기거나 보이게 할 수 있다네.");
 
         talks[7].Add("앞에 필드가 다르게 생긴 게 보일 거야. 너의 체력을 회복시켜줄 수 있는 휴식 필드라네.");
 
-        talks[8].Add("가운데 버튼을 누르면 너의 체력이 20만큼 회복이 될 거야");
+        talks[8].Add("가운데 버튼을 누르면 너의 체력이 20만큼 회복이 될 거야.");
 
         talks[9].Add("앞에 필드가 다르게 생긴 게 보일 거야. 다양한 이벤트가 있는 필드라네.");
 
         talks[10].Add("각각의 선택지들은 손에 들고 있는 카드 숫자의 합이라는 조건을 가지고 있지.");
         talks[10].Add("이벤트 필드도 스킬을 사용할 수 있으니 참고하게나.");
-        talks[10].Add("이제 조건에 맞는 선택지를 클릭해보도록.");
+        talks[10].Add("테두리가 초록색인 선택지를 선택 할 수 있을 거라네.");
 
         talks[11].Add("왼쪽에 다르게 생긴 필드가 있을 거야. 이 필드는 숫자 카드와 시작 드로우 수를 늘릴 수 있는 상점 필드라네.");
 
@@ -145,6 +145,7 @@ public class TalkWindow : MonoBehaviour
     public IEnumerator TalkTypingCoroutine(int index, int index2)       //한 문장 텍스트 타이핑 효과 코루틴
     {
         isSkip = false;
+        this.index2 = index2;
         for (int i = 0; i < talks[index][index2].Length; i++)
         {
             if (isSkip)
@@ -154,9 +155,7 @@ public class TalkWindow : MonoBehaviour
                 break;
             }
             talkTMP.text = talks[index][index2].Substring(0, i + 1);
-            //if (talks[index][index2][i] == ' ')
-            //    yield return new WaitForSeconds(0.1f);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.07f);
         }
         yield return null;
     }
@@ -209,6 +208,13 @@ public class TalkWindow : MonoBehaviour
     public void SetSkip(bool flag)
     {
         isSkip = flag;
+    }
+
+    public void InitFlag()
+    {
+        SetFlagIndex(false);
+        SetFlagNext(false);
+        SetSkip(false);
     }
 
     private void OnMouseUp()

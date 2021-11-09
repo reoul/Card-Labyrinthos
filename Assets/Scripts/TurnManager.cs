@@ -46,6 +46,7 @@ public class TurnManager : MonoBehaviour
 
     public bool isContinue;
     public bool isTutorialLockCard;
+    public bool isTutorialDebuffBar;
 
     public IEnumerator StartGameCoroutine()
     {
@@ -58,6 +59,11 @@ public class TurnManager : MonoBehaviour
     {
         isLoading = true;
 
+        if (isTutorialDebuffBar)
+        {
+            isTutorialDebuffBar = false;
+            yield return StartCoroutine(TutorialDebuffBarCoroutine());
+        }
         yield return delay07;
         if (MapManager.Inst.CurrentSceneName == "전투" || MapManager.Inst.CurrentSceneName == "알 수 없는 공간" || MapManager.Inst.CurrentSceneName == "보스")
         {
@@ -84,12 +90,11 @@ public class TurnManager : MonoBehaviour
             }
             if (isTutorialLockCard)
             {
-                for (int i = 0; i < CardManager.Inst.MyHandCards.Count; i++)
-                {
-                    CardManager.Inst.MyHandCards[i].isLock = true;
-                }
+                CardManager.Inst.LockMyHandCardAll();
                 isTutorialLockCard = false;
             }
+            if (MapManager.Inst.CurrentSceneName == "이벤트")
+                StartCoroutine(EventManager.Inst.UpdateBackColorCoroutine());
 
         }
         yield return delay07;
@@ -110,6 +115,32 @@ public class TurnManager : MonoBehaviour
         GameManager.Inst.Notification("내 턴");
         yield return delay07;
         isLoading = false;
+    }
+
+    IEnumerator TutorialDebuffBarCoroutine()
+    {
+        yield return StartCoroutine(GhostManager.Inst.ShowGhost());
+        for (int i = 0; i < TalkWindow.Inst.talks[6].Count; i++)
+        {
+            ArrowManager.Inst.DestoryAllArrow();
+
+            if (i == 0)
+                ArrowManager.Inst.CreateArrowObj(StageManager.Inst.debuffTMP.transform.position + new Vector3(0, -1, 0), ArrowCreateDirection.DOWN, StageManager.Inst.debuffTMP.transform);
+            else if (i == 1)
+                ArrowManager.Inst.CreateArrowObj(StageManager.Inst.debuffTMP.transform.position + new Vector3(-3, 0, 0), ArrowCreateDirection.LEFT, StageManager.Inst.debuffTMP.transform);
+
+            yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(6, i));
+            yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
+            yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
+        }
+
+        ArrowManager.Inst.DestoryAllArrow();
+
+        yield return StartCoroutine(TalkWindow.Inst.HideText());
+
+        CardManager.Inst.UnLockMyHandCardAll();
+
+        MapManager.Inst.tutorialIndex++;
     }
 
     public void EndTurn()

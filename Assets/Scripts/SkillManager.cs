@@ -53,7 +53,7 @@ public class SkillManager : MonoBehaviour
         isOpen = true;
         transform.GetChild(0).gameObject.SetActive(true);
         SelectPage(page);
-        if (SceneManager.GetActiveScene().name == "Tutorial2")
+        if (MapManager.Inst.tutorialIndex == 3 && SceneManager.GetActiveScene().name == "Tutorial2")
         {
             TutorialManager.Inst.isToturialOpenSkill = true;
             TalkWindow.Inst.SetFlagNext(true);

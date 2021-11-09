@@ -61,9 +61,28 @@ public class TopBar : MonoBehaviour
         }
     }
 
-    public void Click(TopBarIcon icon)
+    public void Open(TopBarIcon icon)
     {
+        if (icon.isLock)
+            return;
         switch (icon.type)
+        {
+            case TOPBAR_TYPE.BAG:
+                BagManager.Inst.Open();
+                break;
+            case TOPBAR_TYPE.SETTING:
+                SettingManager.Inst.Open();
+                break;
+            case TOPBAR_TYPE.SKILL:
+                SkillManager.Inst.Open();
+                break;
+        }
+    }
+    public void Open(TOPBAR_TYPE type)
+    {
+        if (GetIcon(type).isLock)
+            return;
+        switch (type)
         {
             case TOPBAR_TYPE.BAG:
                 BagManager.Inst.Open();

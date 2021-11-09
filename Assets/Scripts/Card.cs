@@ -25,7 +25,13 @@ public class Card : MonoBehaviour
     public PRS originPRS;
     public Transform parent;
     public bool isFinish = false;
-    public bool isLock = false;
+    bool _isLock;
+    public bool isLock
+    {
+        get { return _isLock; }
+        private set { _isLock = value; }
+    }
+
 
     public void Setup(int num)
     {
@@ -138,5 +144,15 @@ public class Card : MonoBehaviour
         this.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, isHalf ? 0 : 1);
         this.parent.GetChild(1).GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, isHalf ? 0.5f : 1);     //카드 앞면
         this.parent.GetChild(2).GetComponent<TMP_Text>().color = new Color(0, 0, 0, isHalf ? 0.5f : 1);     //숫자 텍스트
+    }
+
+    public void Lock()
+    {
+        isLock = true;
+    }
+
+    public void UnLock()
+    {
+        isLock = false;
     }
 }

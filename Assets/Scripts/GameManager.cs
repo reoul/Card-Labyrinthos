@@ -38,19 +38,22 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
             CardManager.Inst.SelectCardNumAdd(1);
+
         if (Input.GetKeyDown(KeyCode.Alpha2))
             CardManager.Inst.SelectCardNumAdd(-1);
-        //if (Input.GetKeyDown(KeyCode.T))
-        //    ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.CARDBACK, Vector3.zero, new Vector3(5, 0), null, 0.5f);
-        if (Input.GetKeyDown(KeyCode.I))
-            BagManager.Inst.Open();
-        if (Input.GetKeyDown(KeyCode.K) && TopBar.Inst.GetIcon(TOPBAR_TYPE.SKILL).gameObject.activeInHierarchy)
-            SkillManager.Inst.Open();
+
         if (Input.GetKeyDown(KeyCode.P))
             if (EnemyManager.Inst.enemys.Count > 0)
                 EnemyManager.Inst.enemys[0].Damage(EnemyManager.Inst.enemys[0].hpbar.hp - 1);
+
+        if (Input.GetKeyDown(KeyCode.I))
+            TopBar.Inst.Open(TOPBAR_TYPE.BAG);
+
+        if (Input.GetKeyDown(KeyCode.K) && TopBar.Inst.GetIcon(TOPBAR_TYPE.SKILL).gameObject.activeInHierarchy)
+            TopBar.Inst.Open(TOPBAR_TYPE.SKILL);
+
         if (Input.GetKeyDown(KeyCode.Escape))
-            SettingManager.Inst.Open();
+            TopBar.Inst.Open(TOPBAR_TYPE.SETTING);
     }
 
     public void StartGame()

@@ -649,4 +649,32 @@ public class CardManager : MonoBehaviour
         fixedCardNum[11] = 3;
         yield return null;
     }
+
+    public void LockMyHandCard(int index)
+    {
+        if (index < MyHandCards.Count)
+            MyHandCards[index].Lock();
+    }
+
+    public void UnLockMyHandCard(int index)
+    {
+        if (index < MyHandCards.Count)
+            MyHandCards[index].UnLock();
+    }
+
+    public void LockMyHandCardAll()
+    {
+        for (int i = 0; i < MyHandCards.Count; i++)
+        {
+            LockMyHandCard(i);
+        }
+    }
+
+    public void UnLockMyHandCardAll()
+    {
+        for (int i = 0; i < MyHandCards.Count; i++)
+        {
+            UnLockMyHandCard(i);
+        }
+    }
 }
