@@ -126,11 +126,11 @@ public class SkillBookCard : MonoBehaviour
 
     public void SetCard(Card card)
     {
-        SkillManager.Inst.SetCard(this, card);
-        for (int i = 0; i < cardButtons.Count; i++)
+        for (int i = 0; i < frontCard.GetComponent<SkillBookCard>().cardButtons.Count; i++)
         {
-            cardButtons[i].gameObject.SetActive(true);
+            frontCard.GetComponent<SkillBookCard>().cardButtons[i].gameObject.SetActive(true);
         }
+        SkillManager.Inst.SetCard(this, card);
     }
 
     public void Up(int index = 1)
