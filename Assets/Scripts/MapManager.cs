@@ -458,6 +458,7 @@ public class MapManager : MonoBehaviour
     }
     public IEnumerator MapTutorialBossCoroutine()
     {
+        fields[6].isReady = false;
         yield return StartCoroutine(GhostManager.Inst.ShowGhost());
         for (int i = 0; i < TalkWindow.Inst.talks[13].Count; i++)
         {
@@ -471,6 +472,7 @@ public class MapManager : MonoBehaviour
         yield return StartCoroutine(TalkWindow.Inst.HideText());
         isFinishToturialBoss = true;
         isTutorialBoss = true;
+        fields[6].isReady = true;
         yield return null;
     }
 }
