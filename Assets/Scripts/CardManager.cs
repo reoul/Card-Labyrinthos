@@ -430,7 +430,7 @@ public class CardManager : MonoBehaviour
         int layer = LayerMask.NameToLayer("SkillBookCard");
         for (int i = 0; i < hits.Length; i++)
         {
-            if (hits[i].collider.gameObject.layer == layer)
+            if (hits[i].collider.gameObject.layer == layer && SkillManager.Inst.ActivePage.isFinishFade)
             {
                 hits[i].collider.GetComponent<SkillBookCard>().SetCard(selectCard);
                 EnlargeCard(false, selectCard, false);

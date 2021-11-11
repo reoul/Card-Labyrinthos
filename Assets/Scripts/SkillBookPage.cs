@@ -14,6 +14,8 @@ public class SkillBookPage : MonoBehaviour
 
     public SkillBookCardButton applyButton;
 
+    public bool isFinishFade = false;
+
     public void Init()
     {
         for (int i = 0; i < choiceCards.Count; i++)
@@ -32,6 +34,7 @@ public class SkillBookPage : MonoBehaviour
     public void Show()
     {
         Init();
+        isFinishFade = false;
         SkillManager.Inst.choiceCards = this.choiceCards;
         SkillManager.Inst.applyCards = this.applyCards;
         for (int i = 0; i < TextTMP.Count; i++)
@@ -136,5 +139,6 @@ public class SkillBookPage : MonoBehaviour
             this.gameObject.SetActive(false);
         else
             applyButton.SetButtonActive(false);
+        isFinishFade = true;
     }
 }
