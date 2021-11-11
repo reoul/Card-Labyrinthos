@@ -94,17 +94,15 @@ public class GameManager : MonoBehaviour
         }
         yield return StartCoroutine(TalkWindow.Inst.HideText());
         yield return new WaitForSeconds(0.5f);
-        EndingCredit();
+        StartCoroutine(EndingCreditCoroutine());
     }
 
-    public void EndingCredit()
+    IEnumerator EndingCreditCoroutine()
     {
         SoundManager.Inst.Play(BACKGROUNDSOUND.ENDING);
         endingCredit.SetActive(true);
-        endingCredit.transform.DOMoveY(65, 30).SetEase(Ease.Linear).OnComplete(() =>
-        {
-            ResetManager.Inst.ResetGame();
-        });
+        yield return new WaitForSeconds(5f);
+        ResetManager.Inst.ResetGame();
     }
 
     public void GameOver()
