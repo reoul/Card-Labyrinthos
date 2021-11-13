@@ -50,7 +50,7 @@ public class TutorialManager : MonoBehaviour
     public IEnumerator TutorialStoryCoroutine()      //기본 스토리 설명
     {
         SoundManager.Inst.Play(BACKGROUNDSOUND.TUTORIAL);
-        playerHpBar.SetHP(80);
+        playerHpBar.SetHP(60);
         //
         //yield return new WaitForSeconds(2);
         yield return new WaitForSeconds(1);
