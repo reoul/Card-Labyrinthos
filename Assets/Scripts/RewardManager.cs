@@ -226,7 +226,7 @@ public class RewardManager : MonoBehaviour
                         }
                         else
                         {
-                            PlayerManager.Inst.card_piece -= reward.rewardData.index;
+                            PlayerManager.Inst.card_piece += reward.rewardData.index;
                         }
                         break;
                     case EVENT_REWARD_TYPE.HP:

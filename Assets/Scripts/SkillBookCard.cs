@@ -173,7 +173,7 @@ public class SkillBookCard : MonoBehaviour
     public void Init()
     {
         HideCard();
-        curSelectCard.SetColorAlpha(false);
+        curSelectCard?.SetColorAlpha(false);
         curSelectCard = null;
         SetColorAlpha(true);
         this.GetComponentInChildren<TMP_Text>().text = "+";
