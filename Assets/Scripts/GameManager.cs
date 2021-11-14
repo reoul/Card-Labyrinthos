@@ -85,7 +85,6 @@ public class GameManager : MonoBehaviour
     public IEnumerator EndingCoroutine()
     {
         yield return StartCoroutine(GhostManager.Inst.ShowGhost());
-        Debug.Log(TalkWindow.Inst.talks[14].Count);
         for (int i = 0; i < TalkWindow.Inst.talks[14].Count; i++)
         {
             yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(14, i));
