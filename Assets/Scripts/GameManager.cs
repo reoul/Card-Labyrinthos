@@ -42,10 +42,6 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F12))
             ResetManager.Inst.ResetGame();
 
-        if (Input.GetKeyDown(KeyCode.F11))
-            if (EnemyManager.Inst.enemys.Count > 0)
-                EnemyManager.Inst.enemys[0].Damage(EnemyManager.Inst.enemys[0].hpbar.hp - 1);
-
         if (Input.GetKeyDown(KeyCode.I))
             if (TopBar.Inst != null)
                 TopBar.Inst.Open(TOPBAR_TYPE.BAG);
