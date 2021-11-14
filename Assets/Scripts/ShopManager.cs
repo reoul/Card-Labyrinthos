@@ -85,7 +85,7 @@ public class ShopManager : MonoBehaviour
             else if (i == 2)
             {
                 ArrowManager.Inst.DestoryAllArrow();
-                ArrowManager.Inst.CreateArrowObj(new Vector3(6.15f, 0, -5), ArrowCreateDirection.RIGHT);
+                ArrowManager.Inst.CreateArrowObj(new Vector3(5.6f, 0, -5), ArrowCreateDirection.RIGHT);
             }
             else if (i == 3)
             {
@@ -93,7 +93,7 @@ public class ShopManager : MonoBehaviour
             }
             else if (i == 4)
             {
-                ArrowManager.Inst.CreateArrowObj(new Vector3(7.15f, -2.5f, -5), ArrowCreateDirection.UP);
+                ArrowManager.Inst.CreateArrowObj(new Vector3(7.5f, -3, -5), ArrowCreateDirection.UP);
             }
             yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(12, i));
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
