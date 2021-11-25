@@ -13,6 +13,8 @@ public class FadeManager : MonoBehaviour
 
     public bool isActiveFade;
 
+    private WaitForSeconds delay01 = new WaitForSeconds(0.1f);
+
     private void Awake()
     {
         if (Inst == null)
@@ -24,6 +26,7 @@ public class FadeManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
         SR = this.GetComponent<SpriteRenderer>();
         isActiveFade = false;
     }
@@ -43,45 +46,43 @@ public class FadeManager : MonoBehaviour
         StartCoroutine(Fade(true));
     }
 
-    public IEnumerator FadeInOut(IEnumerator FadeOutPrev1 = null, IEnumerator FadeOutPrev2 = null, IEnumerator FadeOutPrev3 = null,
-            IEnumerator FadeOutAfter1 = null, IEnumerator FadeOutAfter2 = null, IEnumerator FadeOutAfter3 = null,
-            IEnumerator FadeInAfter1 = null, IEnumerator FadeInAfter2 = null, IEnumerator FadeInAfter3 = null)
+    public IEnumerator FadeInOut(IEnumerator fadeOutPrev1 = null, IEnumerator fadeOutPrev2 = null,
+        IEnumerator fadeOutPrev3 = null,
+        IEnumerator fadeOutAfter1 = null, IEnumerator fadeOutAfter2 = null, IEnumerator fadeOutAfter3 = null,
+        IEnumerator fadeInAfter1 = null, IEnumerator fadeInAfter2 = null, IEnumerator fadeInAfter3 = null)
     {
         isActiveFade = true;
-        if (FadeOutPrev1 != null)
-            yield return StartCoroutine(FadeOutPrev1);
-        if (FadeOutPrev2 != null)
-            yield return StartCoroutine(FadeOutPrev2);
-        if (FadeOutPrev3 != null)
-            yield return StartCoroutine(FadeOutPrev3);
-        yield return StartCoroutine(Fade(true));       //페이드아웃 실행
+        yield return StartCoroutine(fadeOutPrev1 ?? EmptyCoroutine());
+        yield return StartCoroutine(fadeOutPrev2 ?? EmptyCoroutine());
+        yield return StartCoroutine(fadeOutPrev3 ?? EmptyCoroutine());
+        yield return StartCoroutine(Fade(true)); //페이드아웃 실행
         if (FadeEvent != null)
         {
-            FadeEvent(this, EventArgs.Empty);           //실행 후 이벤트 실행
+            FadeEvent(this, EventArgs.Empty); //실행 후 이벤트 실행
             FadeEvent = null;
         }
-        yield return new WaitForSeconds(0.1f);
+
+        yield return delay01;
         TopBar.Inst.InitPosition();
         RewardManager.Inst.Init();
         BagManager.Inst.Init();
         SkillManager.Inst.Init();
         Init();
-        yield return new WaitForSeconds(0.1f);
+        yield return delay01;
         TopBar.Inst.UpdateText(TOPBAR_TYPE.SCENENAME);
-        if (FadeOutAfter1 != null)
-            yield return StartCoroutine(FadeOutAfter1);
-        if (FadeOutAfter2 != null)
-            yield return StartCoroutine(FadeOutAfter2);
-        if (FadeOutAfter3 != null)
-            yield return StartCoroutine(FadeOutAfter3);
-        yield return StartCoroutine(Fade(false));                   //다시 페이드인 실행
-        if (FadeInAfter1 != null)
-            yield return StartCoroutine(FadeInAfter1);
-        if (FadeInAfter2 != null)
-            yield return StartCoroutine(FadeInAfter2);
-        if (FadeInAfter3 != null)
-            yield return StartCoroutine(FadeInAfter3);
+        yield return StartCoroutine(fadeOutAfter1 ?? EmptyCoroutine());
+        yield return StartCoroutine(fadeOutAfter2 ?? EmptyCoroutine());
+        yield return StartCoroutine(fadeOutAfter3 ?? EmptyCoroutine());
+        yield return StartCoroutine(Fade(false)); //다시 페이드인 실행
+        yield return StartCoroutine(fadeInAfter1 ?? EmptyCoroutine());
+        yield return StartCoroutine(fadeInAfter2 ?? EmptyCoroutine());
+        yield return StartCoroutine(fadeInAfter3 ?? EmptyCoroutine());
         isActiveFade = false;
+    }
+
+    IEnumerator EmptyCoroutine()
+    {
+        yield return null;
     }
 
     IEnumerator Fade(bool isOut)

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using Random = UnityEngine.Random;
 
-[System.Serializable]
+[Serializable]
 public class FieldData
 {
     public FIELD_TYPE field_type;
@@ -26,7 +25,7 @@ public class FieldData
 }
 
 public enum FIELD_TYPE { BATTLE, EVENT, REST, SHOP, MAP, BOSS, TUTORIAL, TUTORIAL2 }
-public enum EVENT_TYPE { EVENT1, EVENT2, EVENT3 };
+public enum EVENT_TYPE { EVENT1, EVENT2, EVENT3 }
 
 public class SceneEventArgs : EventArgs
 {
@@ -39,18 +38,18 @@ public class SceneEventArgs : EventArgs
 
 public class MapManager : MonoBehaviour
 {
-    public static MapManager Inst = null;
+    public static MapManager Inst;
 
     private void Awake()
     {
         if (Inst == null)
         {
             Inst = this;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
@@ -64,33 +63,33 @@ public class MapManager : MonoBehaviour
     GameObject fieldParent;
     public Field[] fields;
 
-    public bool isFinishToturialBattle = false;
-    public bool isFinishToturialBag = false;
-    public bool isFinishToturialDebuff = false;
-    public bool isFinishToturialRest = false;
-    public bool isFinishToturialEvent = false;
-    public bool isFinishToturialShop = false;
-    public bool isFinishToturialBoss = false;
+    public bool isFinishToturialBattle;
+    public bool isFinishToturialBag;
+    public bool isFinishToturialDebuff;
+    public bool isFinishToturialRest;
+    public bool isFinishToturialEvent;
+    public bool isFinishToturialShop;
+    public bool isFinishToturialBoss;
 
-    public bool isTutorialReadyBag = false;
-    public bool isTutorialReadyDebuff = false;
-    public bool isTutorialReadyRest = false;
-    public bool isTutorialReadyEvent = false;
-    public bool isTutorialReadyShop = false;
-    public bool isTutorialReadyBoss = false;
+    public bool isTutorialReadyBag;
+    public bool isTutorialReadyDebuff;
+    public bool isTutorialReadyRest;
+    public bool isTutorialReadyEvent;
+    public bool isTutorialReadyShop;
+    public bool isTutorialReadyBoss;
 
-    public bool isTutorialOpenBag = false;
-    public bool isTutorialInRest = false;
-    public bool isTutorialInEvent = false;
-    public bool isTutorialInShop = false;
-    public bool isTutorialBoss = false;
+    public bool isTutorialOpenBag;
+    public bool isTutorialInRest;
+    public bool isTutorialInEvent;
+    public bool isTutorialInShop;
+    public bool isTutorialBoss;
 
     bool isMoveCamera = false;
     Vector3 lastMousePos;
 
-    public int tutorialIndex = 0;
-    bool isBattleDebuffOff = false;
-    public int lastField = 0;
+    public int tutorialIndex;
+    bool isBattleDebuffOff;
+    public int lastField;
     public bool isFinishTutorialEventField;
 
     public string CurrentSceneName      //현재 씬 이름
@@ -121,27 +120,10 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        //fieldParent = GameObject.Find("FieldParent");
-        //StartCoroutine(FieldClearCheckCoroutine());
-    }
-
-    public void Init()
-    {
-        fieldData.field_type = FIELD_TYPE.BATTLE;
-        fieldData.event_type = EVENT_TYPE.EVENT1;
-        fieldData.monster_type = MONSTER_TYPE.RAT;
-        selectFieldIndex = 0;
-        isClear = new bool[0];
-        fieldParent = null;
-        fields = new Field[0];
-    }
-
     public void IconMouseUp(Field field)
     {
         SoundManager.Inst.Play(MAPSOUND.CHOICE_FIELD);
-        this.fieldData = field.fieldData;
+        fieldData = field.fieldData;
         isBattleDebuffOff = field.isDebuffOff;
         for (int i = 0; i < fields.Length; i++)
         {
@@ -150,7 +132,7 @@ public class MapManager : MonoBehaviour
                 selectFieldIndex = i;
             }
         }
-        FadeManager.FadeEvent += new EventHandler(LoadScene);
+        FadeManager.FadeEvent += LoadScene;
         StartEvent();
     }
 
@@ -172,15 +154,15 @@ public class MapManager : MonoBehaviour
         TalkWindow.Inst.SetFlagNext(false);
         TalkWindow.Inst.SetSkip(false);
         isTutorialOpenBag = false;
-        FadeManager.FadeEvent += new EventHandler(LoadScene);
+        FadeManager.FadeEvent += LoadScene;
         StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null, FieldClearCheckCoroutine(), InitSkillTime(), null, GetTutorialCoroutine()));
     }
 
     public void LoadTutorialScene()
     {
         fieldData.field_type = FIELD_TYPE.TUTORIAL;
-        FadeManager.FadeEvent += new EventHandler(LoadScene);
-        StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null, null, null, null));
+        FadeManager.FadeEvent += LoadScene;
+        StartCoroutine(FadeManager.Inst.FadeInOut());
     }
 
     void StartEvent()
@@ -246,8 +228,7 @@ public class MapManager : MonoBehaviour
             }
             fields[i].UpdateClearImage();
         }
-        Vector3 pos = Map.Inst.transform.position - fields[(lastField == 10) ? (lastField - 2) : lastField].transform.position;
-        pos = Map.Inst.transform.parent.transform.position - fields[lastField].transform.position;
+        Vector3 pos = Map.Inst.transform.parent.transform.position - fields[lastField].transform.position;
         Map.Inst.MoveMap(new Vector3(pos.x, pos.y, 0));
         yield return null;
     }
@@ -322,20 +303,21 @@ public class MapManager : MonoBehaviour
     {
         if (!isFinishToturialBattle)
             return MapTutorialBattleCoroutine();
-        else if (isTutorialReadyBag && !isFinishToturialBag)
+        if (isTutorialReadyBag && !isFinishToturialBag)
             return MapTutorialBagCoroutine();
-        else if (isTutorialReadyDebuff && !isFinishToturialDebuff)
+        if (isTutorialReadyDebuff && !isFinishToturialDebuff)
             return MapTutorialDebuffCoroutine();
-        else if (isTutorialReadyRest && !isFinishToturialRest)
+        if (isTutorialReadyRest && !isFinishToturialRest)
             return MapTutorialRestCoroutine();
-        else if (isTutorialReadyEvent && !isFinishToturialEvent)
+        if (isTutorialReadyEvent && !isFinishToturialEvent)
         {
             isFinishToturialEvent = true;
             return MapTutorialEventCoroutine();
         }
-        else if (isTutorialReadyShop && !isFinishToturialShop)
+
+        if (isTutorialReadyShop && !isFinishToturialShop)
             return MapTutorialShopCoroutine();
-        else if (isTutorialReadyBoss && !isFinishToturialBoss)
+        if (isTutorialReadyBoss && !isFinishToturialBoss)
         {
             isFinishToturialBoss = true;
             return MapTutorialBossCoroutine();

@@ -79,14 +79,4 @@ public class Map : MonoBehaviour
         if (this.transform.parent.position.y < -15)
             this.transform.parent.position -= new Vector3(this.transform.parent.position.x, -15, this.transform.parent.position.z);
     }
-
-    public void MoveUI(Vector3 pos)
-    {
-        Camera.main.transform.position -= pos;
-        TopBar.Inst.transform.position -= pos;
-        RewardManager.Inst.transform.position -= pos;
-        BagManager.Inst.transform.position -= pos;
-        FadeManager.Inst.transform.position -= pos;
-        SkillManager.Inst.transform.position -= pos;
-    }
 }
