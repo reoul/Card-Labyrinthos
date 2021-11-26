@@ -1,12 +1,10 @@
 ﻿using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DebuffBar : MonoBehaviour
 {
     bool isOpen = true;
-    bool isMove = false;
+    bool isMove;
 
     [SerializeField] SpriteRenderer button;
     public Sprite open;
@@ -14,21 +12,21 @@ public class DebuffBar : MonoBehaviour
 
     public void Open()
     {
-        if (isMove)
+        if (this.isMove)
             return;
-        isMove = true;
-        if (isOpen)
+        this.isMove = true;
+        if (this.isOpen)
         {
-            Close();
+            this.Close();
             return;
         }
         SoundManager.Inst.Play(DEBUFFSOUND.OPEN_BAR);
         this.transform.DOMove(new Vector3(6.94f, 3.65f, 0), 1).OnComplete(() =>
         {
-            button.sprite = close;
-            isMove = false;
+            this.button.sprite = this.close;
+            this.isMove = false;
         });
-        isOpen = true;
+        this.isOpen = true;
     }
 
     public void Close()
@@ -36,9 +34,9 @@ public class DebuffBar : MonoBehaviour
         SoundManager.Inst.Play(DEBUFFSOUND.CLOSE_BAR);
         this.transform.DOMove(new Vector3(10.89f, 3.65f, 0), 1).OnComplete(() =>
         {
-            button.sprite = open;
-            isMove = false;
+            this.button.sprite = this.open;
+            this.isMove = false;
         }); ;
-        isOpen = false;
+        this.isOpen = false;
     }
 }

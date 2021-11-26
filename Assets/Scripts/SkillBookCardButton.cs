@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 public class SkillBookCardButton : MonoBehaviour
 {
     public SkillBookCard parent;
 
-    [SerializeField] bool onButton = false;
+    [SerializeField] bool onButton;
 
     enum TYPE { UP, DOWN, APPLY, BOOKMARK }
     public int index;
@@ -19,14 +17,14 @@ public class SkillBookCardButton : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (onButton && isActive)
-            switch (type)
+        if (this.onButton && this.isActive)
+            switch (this.type)
             {
                 case TYPE.UP:
-                    parent.Up();
+                    this.parent.Up();
                     break;
                 case TYPE.DOWN:
-                    parent.Down();
+                    this.parent.Down();
                     break;
                 case TYPE.APPLY:
                     if (!SkillManager.Inst.isUseSkill[SkillManager.Inst.ActivePageIndex])
@@ -47,23 +45,23 @@ public class SkillBookCardButton : MonoBehaviour
                                 break;
                         }
                         SkillManager.Inst.ApplyCardAll();
-                        SetButtonActive(false);
+                        this.SetButtonActive(false);
                     }
                     break;
                 case TYPE.BOOKMARK:
-                    SkillManager.Inst.SelectPage(index);
+                    SkillManager.Inst.SelectPage(this.index);
                     break;
             }
     }
 
     private void OnMouseEnter()
     {
-        onButton = true;
+        this.onButton = true;
     }
 
     private void OnMouseExit()
     {
-        onButton = false;
+        this.onButton = false;
     }
 
     public void SetButtonActive(bool isActive)

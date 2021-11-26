@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 #if UNITY_EDITOR
 [CustomEditor(typeof(Field))]
@@ -9,19 +11,19 @@ public class FieldInspector : Editor
 {
     public override void OnInspectorGUI()
     {
-        serializedObject.Update();
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("field_type"));
-        int propertyfield = serializedObject.FindProperty("field_type").enumValueIndex;
-        Field field = (Field)target;
+        this.serializedObject.Update();
+        EditorGUILayout.PropertyField(this.serializedObject.FindProperty("field_type"));
+        int propertyfield = this.serializedObject.FindProperty("field_type").enumValueIndex;
+        Field field = (Field) this.target;
         Sprite[] fieldIcon = Resources.LoadAll<Sprite>("FieldIcon");
         switch (propertyfield)
         {
             case (int)FIELD_TYPE.BATTLE:
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("monster_difficulty"));
+                EditorGUILayout.PropertyField(this.serializedObject.FindProperty("monster_difficulty"));
                 //field.spriteRenderer.sprite = fieldIcon[1];
                 break;
             case (int)FIELD_TYPE.EVENT:
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("event_type"));
+                EditorGUILayout.PropertyField(this.serializedObject.FindProperty("event_type"));
                 //field.spriteRenderer.sprite = fieldIcon[2];
                 break;
             case (int)FIELD_TYPE.REST:
@@ -33,15 +35,12 @@ public class FieldInspector : Editor
             case (int)FIELD_TYPE.BOSS:
                 //field.spriteRenderer.sprite = fieldIcon[0];
                 break;
-            default:
-                //field.spriteRenderer.sprite = fieldIcon[1];
-                break;
         }
         string text = "";
         switch (propertyfield)
         {
             case (int)FIELD_TYPE.BATTLE:
-                int monster_difficulty = serializedObject.FindProperty("monster_difficulty").enumValueIndex;
+                int monster_difficulty = this.serializedObject.FindProperty("monster_difficulty").enumValueIndex;
                 switch (monster_difficulty)
                 {
                     case (int)MONSTER_DIFFICULTY.EASY:
@@ -95,16 +94,16 @@ public class FieldInspector : Editor
                     break;
             }
         }
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("isClear"));
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("clearObj"));
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("surroundingObj"));
+        EditorGUILayout.PropertyField(this.serializedObject.FindProperty("isClear"));
+        EditorGUILayout.PropertyField(this.serializedObject.FindProperty("clearObj"));
+        EditorGUILayout.PropertyField(this.serializedObject.FindProperty("surroundingObj"));
 
-        serializedObject.ApplyModifiedProperties();
+        this.serializedObject.ApplyModifiedProperties();
     }
 }
 #endif
 
-[System.Serializable]
+[Serializable]
 public class Field : MonoBehaviour
 {
     [SerializeField]
@@ -114,7 +113,7 @@ public class Field : MonoBehaviour
     [SerializeField]
     MONSTER_DIFFICULTY monster_difficulty;
 
-    bool onField = false;   //마우스가 필드 위에 있는지
+    bool onField;   //마우스가 필드 위에 있는지
 
     public List<GameObject> surroundingObj;
 
@@ -123,26 +122,25 @@ public class Field : MonoBehaviour
     public bool isDebuffOff;
     public GameObject clearObj;
 
-    public FieldData fieldData { get { return new FieldData(field_type, event_type, GetMonster(monster_difficulty)); } }
+    public FieldData fieldData { get { return new FieldData(this.field_type, this.event_type, this.GetMonster(this.monster_difficulty)); } }
 
     public SpriteRenderer spriteRenderer => this.GetComponent<SpriteRenderer>();
 
     private void Start()
     {
-        transform.GetChild(0).gameObject.SetActive(false);
-        if (this.transform.childCount > 1)
-            clearObj = this.transform.GetChild(1).gameObject;
-        spriteRenderer.color -= new Color(0, 0, 0, 0.5f);
-        if (field_type == FIELD_TYPE.MAP)
+        this.transform.GetChild(0).gameObject.SetActive(false);
+        if (this.transform.childCount > 1) this.clearObj = this.transform.GetChild(1).gameObject;
+        this.spriteRenderer.color -= new Color(0, 0, 0, 0.5f);
+        if (this.field_type == FIELD_TYPE.MAP)
         {
-            spriteRenderer.color += new Color(0, 0, 0, 0.5f);
-            isReady = true;
+            this.spriteRenderer.color += new Color(0, 0, 0, 0.5f);
+            this.isReady = true;
         }
     }
 
     void OnMouseUp()
     {
-        if (onField && !isClear && isReady && !FadeManager.Inst.isActiveFade && ThrowingObjManager.Inst.moveThrowingReward == 0)
+        if (this.onField && !this.isClear && this.isReady && !FadeManager.Inst.isActiveFade && ThrowingObjManager.Inst.moveThrowingReward == 0)
         {
             if (MapManager.Inst.CurrentSceneName == "상점" && !ShopManager.Inst.isFinishTutorial)
                 return;
@@ -157,12 +155,12 @@ public class Field : MonoBehaviour
     void OnMouseEnter()
     {
         SoundManager.Inst.Play(EVENTSOUND.CHOICE_MOUSEUP);
-        onField = true;
+        this.onField = true;
     }
 
     void OnMouseExit()
     {
-        onField = false;
+        this.onField = false;
     }
 
     public MONSTER_TYPE GetMonster(MONSTER_DIFFICULTY difficulty)       //필드 난이도에 따라 랜덤 몬스터 소환
@@ -219,10 +217,10 @@ public class Field : MonoBehaviour
     public void UpdateTypeText()
     {
         string text = "";
-        switch (field_type)
+        switch (this.field_type)
         {
             case FIELD_TYPE.BATTLE:
-                switch (monster_difficulty)
+                switch (this.monster_difficulty)
                 {
                     case MONSTER_DIFFICULTY.EASY:
                         text = "이지";
@@ -250,20 +248,21 @@ public class Field : MonoBehaviour
                 text = "보스";
                 break;
         }
+
         this.transform.GetChild(0).GetComponent<TextMeshPro>().text = text;
         this.transform.GetChild(0).GetComponent<TextMeshPro>().text = text;
     }
 
     public void UpdateClearImage()
     {
-        if (isClear && clearObj != null)
+        if (this.isClear && this.clearObj != null)
         {
-            clearObj.gameObject.SetActive(true);
-            spriteRenderer.color += new Color(0, 0, 0, 0.5f);
-            for (int i = 0; i < surroundingObj.Count; i++)
+            this.clearObj.gameObject.SetActive(true);
+            this.spriteRenderer.color += new Color(0, 0, 0, 0.5f);
+            for (int i = 0; i < this.surroundingObj.Count; i++)
             {
-                surroundingObj[i].GetComponent<Field>().spriteRenderer.color += new Color(0, 0, 0, 0.5f);
-                surroundingObj[i].GetComponent<Field>().isReady = true;
+                this.surroundingObj[i].GetComponent<Field>().spriteRenderer.color += new Color(0, 0, 0, 0.5f);
+                this.surroundingObj[i].GetComponent<Field>().isReady = true;
             }
         }
     }

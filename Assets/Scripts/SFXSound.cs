@@ -1,32 +1,31 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SFXSound : MonoBehaviour
 {
     AudioSource audioSource;
 
-    public bool isPlaying { get { return audioSource.isPlaying; } }
+    public bool isPlaying { get { return this.audioSource.isPlaying; } }
 
     private void Awake()
     {
-        audioSource = this.GetComponent<AudioSource>();
+        this.audioSource = this.GetComponent<AudioSource>();
     }
 
     public void Play(AudioClip clip)
     {
-        audioSource.clip = clip;
-        audioSource.Play();
-        StartCoroutine(PlayCoroutine());
+        this.audioSource.clip = clip;
+        this.audioSource.Play();
+        this.StartCoroutine(this.PlayCoroutine());
     }
 
     IEnumerator PlayCoroutine()
     {
         while (true)
         {
-            if (!audioSource.isPlaying)
+            if (!this.audioSource.isPlaying)
             {
-                audioSource.clip = null;
+                this.audioSource.clip = null;
                 break;
             }
             yield return new WaitForEndOfFrame();
@@ -35,6 +34,6 @@ public class SFXSound : MonoBehaviour
 
     public void SetVolume(float volume)
     {
-        audioSource.volume = volume;
+        this.audioSource.volume = volume;
     }
 }

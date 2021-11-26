@@ -1,15 +1,15 @@
-﻿using DG.Tweening;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class ThrowingObjManager : MonoBehaviour
 {
-    public static ThrowingObjManager Inst = null;
+    public static ThrowingObjManager Inst;
 
     public List<GameObject> throwingRewardObj;
 
-    public int moveThrowingReward { get { return throwingRewardObj.Count; } }
+    public int moveThrowingReward { get { return this.throwingRewardObj.Count; } }
 
     public GameObject CardBackPrefab;
     public GameObject CardPiecePrefab;
@@ -32,12 +32,12 @@ public class ThrowingObjManager : MonoBehaviour
 
     private void Start()
     {
-        throwingRewardObj = new List<GameObject>();
+        this.throwingRewardObj = new List<GameObject>();
     }
 
     public void CreateThrowingObj(THROWING_OBJ_TYPE type, Vector3 startPos, Vector3 endPos, IEnumerator enumerator = null, float moveTime = 1, int cnt = 1, int index = 0)   //index : 추가적으로 변수를 함수로 넘겨줘야할 경우
     {
-        StartCoroutine(CreateThrowingObjCoroutine(type, startPos, endPos, enumerator, moveTime, cnt, index));
+        this.StartCoroutine(this.CreateThrowingObjCoroutine(type, startPos, endPos, enumerator, moveTime, cnt, index));
     }
 
     IEnumerator CreateThrowingObjCoroutine(THROWING_OBJ_TYPE type, Vector3 startPos, Vector3 endPos, IEnumerator enumerator123 = null, float moveTime = 1, int cnt = 1, int index = 0)
@@ -45,8 +45,8 @@ public class ThrowingObjManager : MonoBehaviour
         for (int i = 0; i < cnt; i++)
         {
             SoundManager.Inst.Play(SHOPSOUND.THROWINGOBJ);
-            var throwingObj = Instantiate(GetThrowingObjPrefab(type), startPos, type == THROWING_OBJ_TYPE.NUM_CARD ? Utils.CardRotate : Quaternion.identity);
-            throwingRewardObj.Add(throwingObj);
+            var throwingObj = Instantiate(this.GetThrowingObjPrefab(type), startPos, type == THROWING_OBJ_TYPE.NUM_CARD ? Utils.CardRotate : Quaternion.identity);
+            this.throwingRewardObj.Add(throwingObj);
             if (type == THROWING_OBJ_TYPE.NUM_CARD)
             {
                 throwingObj.GetComponentInChildren<Card>().Setup(index);
@@ -54,8 +54,7 @@ public class ThrowingObjManager : MonoBehaviour
             }
             throwingObj.transform.DOMove(endPos, moveTime).SetEase(Ease.InQuint).OnComplete(() =>
             {
-                if (enumerator123 != null)
-                    StartCoroutine(enumerator123);
+                if (enumerator123 != null) this.StartCoroutine(enumerator123);
                 switch (type)
                 {
                     case THROWING_OBJ_TYPE.CARDBACK:
@@ -73,7 +72,7 @@ public class ThrowingObjManager : MonoBehaviour
                 }
                 if (EnemyManager.Inst.enemys.Count > 0)
                     EnemyManager.Inst.enemys[0].Damage(1);
-                throwingRewardObj.Remove(throwingObj);
+                this.throwingRewardObj.Remove(throwingObj);
                 Destroy(throwingObj);
             });
             yield return new WaitForSeconds(0.07f);
@@ -85,16 +84,16 @@ public class ThrowingObjManager : MonoBehaviour
         switch (type)
         {
             case THROWING_OBJ_TYPE.CARDBACK:
-                return CardBackPrefab;
+                return this.CardBackPrefab;
             case THROWING_OBJ_TYPE.CARD_PIECE:
-                return CardPiecePrefab;
+                return this.CardPiecePrefab;
             case THROWING_OBJ_TYPE.NUM_CARD:
-                return NumCardPrefab;
+                return this.NumCardPrefab;
             case THROWING_OBJ_TYPE.QUESTION_CARD:
-                return QuestionCardPrefab;
+                return this.QuestionCardPrefab;
             case THROWING_OBJ_TYPE.SKILL_BOOK:
-                return SkillBookPrefab;
+                return this.SkillBookPrefab;
         }
-        return CardBackPrefab;
+        return this.CardBackPrefab;
     }
 }

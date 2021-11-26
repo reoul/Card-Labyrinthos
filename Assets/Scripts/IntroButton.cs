@@ -1,38 +1,35 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public enum IntroButtonType { START, SETTING, QUIT }
 public class IntroButton : MonoBehaviour
 {
-    bool isButtonOn = false;
-    bool isClick = false;
+    bool isButtonOn;
+    bool isClick;
     [SerializeField] IntroButtonType type;
 
     private void OnMouseUp()
     {
-        if (isButtonOn && !isClick)
-            Click();
+        if (this.isButtonOn && !this.isClick) this.Click();
     }
 
     private void OnMouseEnter()
     {
         SoundManager.Inst.Play(EVENTSOUND.CHOICE_MOUSEUP);
-        isButtonOn = true;
+        this.isButtonOn = true;
     }
 
     private void OnMouseExit()
     {
-        isButtonOn = false;
+        this.isButtonOn = false;
     }
 
     void Click()
     {
         SoundManager.Inst.Play(EVENTSOUND.CHOICE_BUTTON);
-        switch (type)
+        switch (this.type)
         {
             case IntroButtonType.START:
-                isClick = true;
+                this.isClick = true;
                 IntroManager.Inst.GameStart();
                 break;
             case IntroButtonType.SETTING:

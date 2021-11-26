@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class UICloseButton : MonoBehaviour
 {
@@ -8,17 +6,17 @@ public class UICloseButton : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        isOnButton = true;
+        this.isOnButton = true;
     }
 
     private void OnMouseExit()
     {
-        isOnButton = false;
+        this.isOnButton = false;
     }
 
     private void OnMouseUp()
     {
-        if (isOnButton)
+        if (this.isOnButton)
             GameManager.Inst.CloseAllUI();
     }
 }

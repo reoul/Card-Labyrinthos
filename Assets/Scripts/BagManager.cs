@@ -1,15 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class BagManager : MonoBehaviour
 {
-    public static BagManager Inst = null;
-    int[] cardMax = new int[6] { 18, 15, 12, 9, 6, 3 };
+    public static BagManager Inst;
+    readonly int[] cardMax = new int[6] {18, 15, 12, 9, 6, 3};
 
     public bool isOpen;
+
     void Awake()
     {
         if (Inst == null)
@@ -34,11 +33,12 @@ public class BagManager : MonoBehaviour
 
     public void Open()
     {
-        if (isOpen)
+        if (this.isOpen)
         {
-            Close();
+            this.Close();
             return;
         }
+
         if (MapManager.Inst.tutorialIndex == 2)
         {
             MapManager.Inst.isTutorialOpenBag = true;
@@ -47,34 +47,36 @@ public class BagManager : MonoBehaviour
             TalkWindow.Inst.index2 = 1;
             MapManager.Inst.tutorialIndex++;
         }
+
         GameManager.Inst.CloseAllUI();
-        isOpen = true;
-        UpdateText();
+        this.isOpen = true;
+        this.UpdateText();
         this.transform.GetChild(0).gameObject.SetActive(true);
     }
 
     public void UpdateText()
     {
-        for (int i = 0; i < card_text.Count; i++)
+        for (int i = 0; i < this.card_text.Count; i++)
         {
-            card_text[i].text = string.Format($"{CardManager.Inst.cardDeck[i]}/{cardMax[i]}");
+            this.card_text[i].text = string.Format($"{CardManager.Inst.cardDeck[i].ToString()}/{this.cardMax[i].ToString()}");
         }
-        for (int i = 0; i < skill_spriteRenderer.Count; i++)
+
+        for (int i = 0; i < this.skill_spriteRenderer.Count; i++)
         {
-            skill_spriteRenderer[i].color = new Color(0, 0, 0, 0.5f);
-            skill_spriteRenderer[i].transform.GetChild(0).GetComponent<TMP_Text>().color = new Color(0, 0, 0, 0.5f);
+            this.skill_spriteRenderer[i].color = new Color(0, 0, 0, 0.5f);
+            this.skill_spriteRenderer[i].transform.GetChild(0).GetComponent<TMP_Text>().color = new Color(0, 0, 0, 0.5f);
             if (CardManager.Inst.cardDeck[0] >= 1)
             {
-                skill_spriteRenderer[i].color = Color.white;
-                skill_spriteRenderer[i].transform.GetChild(0).GetComponent<TMP_Text>().color = Color.black;
-                unlockObjs[i].SetActive(true);
+                this.skill_spriteRenderer[i].color = Color.white;
+                this.skill_spriteRenderer[i].transform.GetChild(0).GetComponent<TMP_Text>().color = Color.black;
+                this.unlockObjs[i].SetActive(true);
             }
         }
     }
 
     public void Close()
     {
-        isOpen = false;
+        this.isOpen = false;
         this.transform.GetChild(0).gameObject.SetActive(false);
     }
 }

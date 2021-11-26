@@ -1,61 +1,59 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Rest : MonoBehaviour
 {
-    bool onRestButton = false;   //마우스가 필드 위에 있는지
-    bool isTutorial = false;
-    bool isClick = false;
+    bool onRestButton;   //마우스가 필드 위에 있는지
+    bool isTutorial;
+    bool isClick;
 
     private void Start()
     {
         SoundManager.Inst.Play(BACKGROUNDSOUND.REST);
-        if (!MapManager.Inst.isTutorialInRest)
-            StartCoroutine(TutorialRestCoroutine());
+        if (!MapManager.Inst.isTutorialInRest) this.StartCoroutine(this.TutorialRestCoroutine());
     }
 
     void OnMouseEnter()
     {
-        onRestButton = true;
+        this.onRestButton = true;
     }
     void OnMouseExit()
     {
-        onRestButton = false;
+        this.onRestButton = false;
     }
 
     private void OnMouseUp()
     {
-        if (onRestButton && !FadeManager.Inst.isActiveFade && !isTutorial && !isClick)
+        if (this.onRestButton && !FadeManager.Inst.isActiveFade && !this.isTutorial && !this.isClick)
         {
-            StartCoroutine(RestCoroutine());
+            this.StartCoroutine(this.RestCoroutine());
         }
     }
     IEnumerator RestCoroutine()
     {
-        isClick = true;
+        this.isClick = true;
         RewardManager.Inst.AddReward(REWARD_TYPE.REWARD, (int)EVENT_REWARD_TYPE.HP, 20);
-        yield return StartCoroutine(RewardManager.Inst.ShowRewardWindowCoroutine(false));
-        yield return StartCoroutine(RewardManager.Inst.RewardCoroutine());
+        yield return this.StartCoroutine(RewardManager.Inst.ShowRewardWindowCoroutine(false));
+        yield return this.StartCoroutine(RewardManager.Inst.RewardCoroutine());
         TalkWindow.Inst.InitFlag();
         MapManager.Inst.LoadMapScene(true);
     }
 
     IEnumerator TutorialRestCoroutine()
     {
-        isTutorial = true;
+        this.isTutorial = true;
         yield return new WaitForSeconds(1);
-        yield return StartCoroutine(GhostManager.Inst.ShowGhost());
+        yield return this.StartCoroutine(GhostManager.Inst.ShowGhost());
         for (int i = 0; i < TalkWindow.Inst.talks[8].Count; i++)
         {
             ArrowManager.Inst.CreateArrowObj(this.transform.position + Vector3.right * 2, ArrowCreateDirection.RIGHT);
-            yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(8, i));
-            yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
-            yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
+            yield return this.StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(8, i));
+            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
+            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
         }
         ArrowManager.Inst.DestoryAllArrow();
-        yield return StartCoroutine(TalkWindow.Inst.HideText());
-        isTutorial = false;
+        yield return this.StartCoroutine(TalkWindow.Inst.HideText());
+        this.isTutorial = false;
         MapManager.Inst.isTutorialInRest = true;
     }
 }

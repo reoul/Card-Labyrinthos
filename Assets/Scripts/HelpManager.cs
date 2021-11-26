@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public enum HELP_TYPE { BATTLE, MAP, DEBUFFE, BAG, SKILL, SHOP, EVENT }
 public class HelpManager : MonoBehaviour
 {
-    public static HelpManager Inst = null;
+    public static HelpManager Inst;
 
     bool[] isShowOnce;
     [SerializeField] List<GameObject> helps;
@@ -21,16 +20,17 @@ public class HelpManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        isShowOnce = new bool[7];
+
+        this.isShowOnce = new bool[7];
     }
 
     public void ShowHelp(HELP_TYPE type)
     {
-        if (!isShowOnce[(int)type])
+        if (!this.isShowOnce[(int)type])
         {
             SoundManager.Inst.Play(REWARDSOUND.SHOW_REWARD_WINDOW);
-            helps[(int)type].SetActive(true);
-            isShowOnce[(int)type] = true;
+            this.helps[(int)type].SetActive(true);
+            this.isShowOnce[(int)type] = true;
         }
     }
 }

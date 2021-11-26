@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class IntroManager : MonoBehaviour
 {
-    public static IntroManager Inst = null;
+    public static IntroManager Inst;
 
     private void Awake()
     {

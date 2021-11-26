@@ -1,11 +1,10 @@
-﻿using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 
 public class GhostManager : MonoBehaviour
 {
-    public static GhostManager Inst = null;
+    public static GhostManager Inst;
     [SerializeField] Ghost ghost;
 
     private void Awake()
@@ -31,7 +30,7 @@ public class GhostManager : MonoBehaviour
         //Tween tween = this.ghost.GetComponent<SpriteRenderer>().DOFade(1, 1);
         Tween tween = this.ghost.GetComponent<SpriteRenderer>().DOFade(1, 0.5f);
         yield return tween.WaitForCompletion();
-        yield return StartCoroutine(ghost.ShowTalk());
+        yield return this.StartCoroutine(this.ghost.ShowTalk());
     }
     public IEnumerator HideGhost()
     {

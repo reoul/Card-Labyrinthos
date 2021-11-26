@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -7,27 +6,27 @@ public enum TutorialBookIconType { CARDS, SKILL, STARTBATTLE }
 
 public class TutorialBookIcon : MonoBehaviour
 {
-    bool onIcon = false;   //마우스가 필드 위에 있는지
-    bool isGet = false;
+    bool onIcon;   //마우스가 필드 위에 있는지
+    bool isGet;
     bool isFade = true;
 
     public TutorialBookIconType type;
 
     void OnMouseEnter()
     {
-        onIcon = true;
+        this.onIcon = true;
     }
     void OnMouseExit()
     {
-        onIcon = false;
+        this.onIcon = false;
     }
 
     private void OnMouseUp()
     {
-        if (onIcon && !isGet && !isFade)
+        if (this.onIcon && !this.isGet && !this.isFade)
         {
             TutorialManager.Inst.Click(this);
-            isFade = true;
+            this.isFade = true;
         }
     }
 
@@ -44,12 +43,13 @@ public class TutorialBookIcon : MonoBehaviour
                 break;
             yield return new WaitForEndOfFrame();
         }
-        isFade = false;
+
+        this.isFade = false;
     }
 
     public void GetItem()
     {
         this.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
-        isGet = true;
+        this.isGet = true;
     }
 }

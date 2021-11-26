@@ -1,27 +1,26 @@
 ﻿using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
     public void Start()
     {
-        MoveB();
+        this.MoveDown();
     }
-    public void MoveA()
+
+    private void MoveUp()
     {
-        this.transform.DOLocalMove(this.transform.localPosition + transform.up * 0.5f, 0.75f).SetEase(Ease.OutBack).OnComplete(() =>
+        this.transform.DOLocalMove(this.transform.localPosition + this.transform.up * 0.5f, 0.75f).SetEase(Ease.OutBack).OnComplete(() =>
         {
-            MoveB();
+            this.MoveDown();
         });
     }
 
-    public void MoveB()
+    private void MoveDown()
     {
-        this.transform.DOLocalMove(this.transform.localPosition + -transform.up * 0.5f, 0.75f).SetEase(Ease.InBack).OnComplete(() =>
+        this.transform.DOLocalMove(this.transform.localPosition + -this.transform.up * 0.5f, 0.75f).SetEase(Ease.InBack).OnComplete(() =>
         {
-            MoveA();
+            this.MoveUp();
         });
     }
 

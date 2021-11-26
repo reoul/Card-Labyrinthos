@@ -1,13 +1,17 @@
-﻿using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public enum ArrowCreateDirection { LEFT, RIGHT, UP, DOWN }        //화살표가 생성되는 위치
+public enum ArrowCreateDirection
+{
+    LEFT,
+    RIGHT,
+    UP,
+    DOWN
+} //화살표가 생성되는 위치
 
 public class ArrowManager : MonoBehaviour
 {
-    public static ArrowManager Inst = null;
+    public static ArrowManager Inst;
     public GameObject arrowPrefab;
 
     [SerializeField] List<Arrow> arrows;
@@ -18,7 +22,7 @@ public class ArrowManager : MonoBehaviour
         {
             Inst = this;
             DontDestroyOnLoad(this.gameObject);
-            arrows = new List<Arrow>();
+            this.arrows = new List<Arrow>();
         }
         else
         {
@@ -28,24 +32,25 @@ public class ArrowManager : MonoBehaviour
 
     public void DestoryAllArrow()
     {
-        int arrowCnt = arrows.Count;
+        int arrowCnt = this.arrows.Count;
         for (int i = 0; i < arrowCnt; i++)
         {
-            if (arrows[0] == null || arrows[0].isActiveAndEnabled == false)
+            if (this.arrows[0] == null || this.arrows[0].isActiveAndEnabled == false)
             {
-                arrows.RemoveAt(0);
+                this.arrows.RemoveAt(0);
                 i++;
             }
-            var obj = arrows[0];
-            arrows.RemoveAt(0);
-            obj.ArrowDestory();
+
+            var arrow = this.arrows[0];
+            this.arrows.RemoveAt(0);
+            arrow.ArrowDestory();
         }
     }
 
     public void CreateArrowObj(Vector3 pos, ArrowCreateDirection direction, Transform parent = null)
     {
-        Arrow arrow = GameObject.Instantiate(arrowPrefab, pos, GetRotate(direction)).GetComponent<Arrow>();
-        arrows.Add(arrow);
+        var arrow = Instantiate(this.arrowPrefab, pos, this.GetRotate(direction)).GetComponent<Arrow>();
+        this.arrows.Add(arrow);
         if (parent != null)
         {
             arrow.transform.parent = parent;
@@ -73,6 +78,7 @@ public class ArrowManager : MonoBehaviour
                 quaternion.eulerAngles = new Vector3(0, 0, 0);
                 break;
         }
+
         return quaternion;
     }
 }

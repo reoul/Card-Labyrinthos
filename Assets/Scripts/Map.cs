@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class Map : MonoBehaviour
 {
-    public static Map Inst = null;
-    public bool onMap = false;
+    public static Map Inst;
+    public bool onMap;
     bool isMoveCamera;
     Vector3 lastMousePos;
 
@@ -17,31 +14,31 @@ public class Map : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        onMap = true;
+        this.onMap = true;
     }
     private void OnMouseExit()
     {
-        onMap = false;
-        isMoveCamera = false;
+        this.onMap = false;
+        this.isMoveCamera = false;
     }
     private void Update()
     {
-        if (onMap)
+        if (this.onMap)
         {
             if (Input.GetMouseButtonDown(0))
             {
-                isMoveCamera = true;
-                lastMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                this.isMoveCamera = true;
+                this.lastMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 //lastMousePos = Input.mousePosition * 0.01f;
             }
             else if (Input.GetMouseButtonUp(0))
             {
-                isMoveCamera = false;
-                lastMousePos = Vector3.zero;
+                this.isMoveCamera = false;
+                this.lastMousePos = Vector3.zero;
             }
-            if (isMoveCamera)
+            if (this.isMoveCamera)
             {
-                Vector3 movePos = Camera.main.ScreenToWorldPoint(Input.mousePosition) - lastMousePos;
+                Vector3 movePos = Camera.main.ScreenToWorldPoint(Input.mousePosition) - this.lastMousePos;
                 if (movePos != Vector3.zero)
                 {
                     this.transform.parent.position += movePos;
@@ -66,8 +63,9 @@ public class Map : MonoBehaviour
                         float _y = this.transform.parent.position.y + 25;
                         movePos.y -= _y;
                     }
+
                     this.transform.parent.position += movePos;
-                    lastMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    this.lastMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 }
             }
         }
@@ -76,7 +74,6 @@ public class Map : MonoBehaviour
     public void MoveMap(Vector3 pos)
     {
         this.transform.parent.position += pos;
-        if (this.transform.parent.position.y < -15)
-            this.transform.parent.position -= new Vector3(this.transform.parent.position.x, -15, this.transform.parent.position.z);
+        if (this.transform.parent.position.y < -15) this.transform.parent.position -= new Vector3(this.transform.parent.position.x, -15, this.transform.parent.position.z);
     }
 }

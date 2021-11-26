@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 //체력바 스크립트
@@ -18,94 +16,94 @@ public class HpBar : MonoBehaviour
 
     public void Init()          //초기화, 게임 시작할때 실행
     {
-        UpdateHp();
-        turnStartSheld = 0;
+        this.UpdateHp();
+        this.turnStartSheld = 0;
     }
 
     public void SetHP(int hp)
     {
         this.hp = hp;
         this.max_hp = hp;
-        parent = this.transform.parent.gameObject;
-        UpdateHp();
+        this.parent = this.transform.parent.gameObject;
+        this.UpdateHp();
     }
 
     public void SetTurnStartSheld(int sheld)
     {
-        turnStartSheld = sheld;
+        this.turnStartSheld = sheld;
     }
 
     public void UpdateHp()      //현재 데이터로 텍스트랑 체력바 게이지 조정
     {
-        ShowText();
-        UpdateHpBar();
+        this.ShowText();
+        this.UpdateHpBar();
     }
 
     void ShowText()         //체력 텍스트 업데이트
     {
-        hptext.text = string.Format("{0}/{1}", hp, max_hp);
+        this.hptext.text = string.Format("{0}/{1}", this.hp, this.max_hp);
     }
 
     void UpdateHpBar()      //체력바 게이지 조정
     {
-        float percent = (float)hp / (float)max_hp;
-        hpbar.transform.localScale = new Vector3(percent, 1, 1);
+        float percent = this.hp / (float) this.max_hp;
+        this.hpbar.transform.localScale = new Vector3(percent, 1, 1);
     }
 
     public void Damage(int damage)      //데미지를 주고 싶을 때 매개변수로 해당 수를 넣어주면 체력이 깍인다
     {
-        if (sheld > 0)
+        if (this.sheld > 0)
         {
-            sheld -= damage;
-            ShowSheldText();
-            if (sheld <= 0)
+            this.sheld -= damage;
+            this.ShowSheldText();
+            if (this.sheld <= 0)
             {
-                hp += sheld;
-                sheld = 0;
-                sheldObj.SetActive(false);
+                this.hp += this.sheld;
+                this.sheld = 0;
+                this.sheldObj.SetActive(false);
             }
         }
         else
-            hp -= damage;
-        if (parent.tag == "Player")
-            PlayerManager.Inst.hp = hp;
-        if (hp <= 0)         //체력이 0 이하가 되면 죽음
+            this.hp -= damage;
+        if (this.parent.tag == "Player")
+            PlayerManager.Inst.hp = this.hp;
+        if (this.hp <= 0)         //체력이 0 이하가 되면 죽음
         {
-            Dead();
+            this.Dead();
         }
         else
         {
-            ShowText();
-            UpdateHpBar();
+            this.ShowText();
+            this.UpdateHpBar();
         }
     }
 
     public void Sheld(int _sheld)       //방어력을 주고 싶을 때 매개변수로 해당 수를 넣어주면 방어력이 증가함
     {
         SoundManager.Inst.Play(BATTLESOUND.SHELD);
-        sheld += _sheld;
-        sheldObj.SetActive(true);
-        ShowSheldText();
+        this.sheld += _sheld;
+        this.sheldObj.SetActive(true);
+        this.ShowSheldText();
     }
 
     public void Heal(int index)
     {
         SoundManager.Inst.Play(BATTLESOUND.HEAL);
-        hp = Mathf.Clamp(hp + index, 0, max_hp);
-        UpdateHp();
+        this.hp = Mathf.Clamp(this.hp + index, 0, this.max_hp);
+        this.UpdateHp();
     }
 
     void ShowSheldText()                //방어력 텍스트 업데이트
     {
-        sheldtext.text = sheld.ToString();
+        this.sheldtext.text = this.sheld.ToString();
     }
 
     void Dead()         //죽었을때 발동
     {
-        hp = 0;
-        if (parent.tag == "Player")
-            parent.GetComponent<Player>().Dead();
+        this.hp = 0;
+        if (this.parent.tag == "Player")
+            this.parent.GetComponent<Player>().Dead();
         else
-            parent.GetComponent<Enemy>().Dead();
+            this.parent.GetComponent<Enemy>().Dead();
     }
 }

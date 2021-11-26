@@ -1,6 +1,4 @@
-﻿using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 public class Ghost : MonoBehaviour
@@ -8,12 +6,12 @@ public class Ghost : MonoBehaviour
     [SerializeField] TalkWindow talkWindow;
     public IEnumerator ShowTalk()
     {
-        talkWindow.gameObject.SetActive(true);
-        yield return StartCoroutine(TalkWindow.Inst.ShowTalkWindowCoroutine());
+        this.talkWindow.gameObject.SetActive(true);
+        yield return this.StartCoroutine(TalkWindow.Inst.ShowTalkWindowCoroutine());
     }
     public IEnumerator HideTalk()
     {
-        talkWindow.gameObject.SetActive(false);
-        yield return StartCoroutine(GhostManager.Inst.HideGhost());
+        this.talkWindow.gameObject.SetActive(false);
+        yield return this.StartCoroutine(GhostManager.Inst.HideGhost());
     }
 }

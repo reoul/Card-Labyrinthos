@@ -18,27 +18,28 @@ public class ShopManager : MonoBehaviour
     private void Start()
     {
         SoundManager.Inst.Play(BACKGROUNDSOUND.SHOP);
-        for (int i = 0; i < items.Count; i++)
+        for (int i = 0; i < this.items.Count; i++)
         {
-            items[i].Start();
+            this.items[i].Start();
         }
-        ChangePriceColor();
-        CheckItemMax();
+
+        this.ChangePriceColor();
+        this.CheckItemMax();
         if (!MapManager.Inst.isTutorialInShop)
         {
             MapManager.Inst.isTutorialInShop = true;
-            isFinishTutorial = false;
-            StartCoroutine(TutorialShopCoroutine());
+            this.isFinishTutorial = false;
+            this.StartCoroutine(this.TutorialShopCoroutine());
         }
         else
         {
-            isFinishTutorial = true;
+            this.isFinishTutorial = true;
         }
     }
 
     public void Click(ShopItem shopItem)        //상점에서 해당 아이템 클릭했을때 보상 지급
     {
-        if (!isFinishTutorial)
+        if (!this.isFinishTutorial)
             return;
         SoundManager.Inst.Play(SHOPSOUND.BUY);
         switch (shopItem.item.type)
@@ -59,15 +60,16 @@ public class ShopManager : MonoBehaviour
                 }
                 break;
         }
-        ChangePriceColor();
-        CheckItemMax();
+
+        this.ChangePriceColor();
+        this.CheckItemMax();
     }
 
     public void ChangePriceColor()
     {
-        for (int i = 0; i < items.Count; i++)
+        for (int i = 0; i < this.items.Count; i++)
         {
-            items[i].ChangePriceColor();
+            this.items[i].ChangePriceColor();
         }
     }
 
@@ -75,7 +77,7 @@ public class ShopManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         TalkWindow.Inst.InitFlag();
-        yield return StartCoroutine(GhostManager.Inst.ShowGhost());
+        yield return this.StartCoroutine(GhostManager.Inst.ShowGhost());
         for (int i = 0; i < TalkWindow.Inst.talks[12].Count; i++)
         {
             if (i == 0)
@@ -95,13 +97,13 @@ public class ShopManager : MonoBehaviour
             {
                 ArrowManager.Inst.CreateArrowObj(new Vector3(7.5f, -3, -5), ArrowCreateDirection.UP);
             }
-            yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(12, i));
-            yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
-            yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
+            yield return this.StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(12, i));
+            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
+            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
         }
         ArrowManager.Inst.DestoryAllArrow();
-        yield return StartCoroutine(TalkWindow.Inst.HideText());
-        isFinishTutorial = true;
+        yield return this.StartCoroutine(TalkWindow.Inst.HideText());
+        this.isFinishTutorial = true;
     }
 
     public void CheckItemMax()
@@ -111,14 +113,14 @@ public class ShopManager : MonoBehaviour
         {
             if (cardmax[i])
             {
-                items[i].transform.GetChild(1).gameObject.SetActive(true);
-                items[i].CountMax();
+                this.items[i].transform.GetChild(1).gameObject.SetActive(true);
+                this.items[i].CountMax();
             }
         }
         if (TurnManager.Inst.isStartCardCountMax)
         {
-            items[6].transform.GetChild(1).gameObject.SetActive(true);
-            items[6].CountMax();
+            this.items[6].transform.GetChild(1).gameObject.SetActive(true);
+            this.items[6].CountMax();
         }
     }
 }

@@ -1,66 +1,64 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class SkillBookCard : MonoBehaviour
 {
     public GameObject frontCard;
-    public Card curSelectCard = null;
+    public Card curSelectCard;
     [SerializeField] List<SkillBookCardButton> cardButtons;
     int _originNum;
     public int originNum
     {
         get
         {
-            return _originNum;
+            return this._originNum;
         }
         set
         {
-            _originNum = value;
-            curNum = _originNum;
+            this._originNum = value;
+            this.curNum = this._originNum;
         }
     }
     int _curNum;
 
-    bool flag = false;
+    bool flag;
     public int curNum
     {
         get
         {
-            return _curNum;
+            return this._curNum;
         }
         set
         {
-            _curNum = Mathf.Clamp(value, 0, 5);
-            this.transform.GetComponentInChildren<TMP_Text>().text = isQuestionMark ? "?" : (_curNum + 1).ToString();
-            if (frontCard != null)
-                frontCard.GetComponentInChildren<TMP_Text>().text = (_curNum + 1).ToString();
-            if (!isHideButton)
+            this._curNum = Mathf.Clamp(value, 0, 5);
+            this.transform.GetComponentInChildren<TMP_Text>().text = this.isQuestionMark ? "?" : (this._curNum + 1).ToString();
+            if (this.frontCard != null) this.frontCard.GetComponentInChildren<TMP_Text>().text = (this._curNum + 1).ToString();
+            if (!this.isHideButton)
             {
-                if (cardButtons.Count == 2)
+                if (this.cardButtons.Count == 2)
                 {
-                    if (_curNum == (limitNum == 0 ? 0 : Mathf.Clamp(_originNum - limitNum, 0, 5)))
-                        cardButtons[1].gameObject.SetActive(false);
-                    else if (_curNum == (limitNum == 0 ? 5 : Mathf.Clamp(_originNum + limitNum, 0, 5)))
-                        cardButtons[0].gameObject.SetActive(false);
+                    if (this._curNum == (this.limitNum == 0 ? 0 : Mathf.Clamp(this._originNum - this.limitNum, 0, 5)))
+                        this.cardButtons[1].gameObject.SetActive(false);
+                    else if (this._curNum == (this.limitNum == 0 ? 5 : Mathf.Clamp(this._originNum + this.limitNum, 0, 5)))
+                        this.cardButtons[0].gameObject.SetActive(false);
                     else
                     {
-                        cardButtons[0].gameObject.SetActive(isShowDownButton ? false : true);
-                        cardButtons[1].gameObject.SetActive(isSecondMaxNum ? false : true);
+                        this.cardButtons[0].gameObject.SetActive(this.isShowDownButton ? false : true);
+                        this.cardButtons[1].gameObject.SetActive(this.isSecondMaxNum ? false : true);
                     }
                 }
             }
             else
             {
-                for (int i = 0; i < cardButtons.Count; i++)
+                for (int i = 0; i < this.cardButtons.Count; i++)
                 {
-                    cardButtons[i].gameObject.SetActive(false);
+                    this.cardButtons[i].gameObject.SetActive(false);
                 }
             }
-            if (flag)
+            if (this.flag)
             {
-                flag = false;
+                this.flag = false;
                 return;
             }
             if (SkillManager.Inst.ActivePage.skill_type == SKILL_TYPE.SKILL5)
@@ -88,7 +86,7 @@ public class SkillBookCard : MonoBehaviour
                 //}
                 if (SkillManager.Inst.ActivePage.applyCards[0].gameObject.activeInHierarchy && SkillManager.Inst.ActivePage.applyCards[1].gameObject.activeInHierarchy)
                 {
-                    flag = true;
+                    this.flag = true;
                     SkillManager.Inst.ActivePage.applyCards[1].curNum = SkillManager.Inst.ActivePage.applyCards[0].curNum;
                     SkillManager.Inst.ActivePage.applyButton.SetButtonActive(true);
                 }
@@ -99,13 +97,13 @@ public class SkillBookCard : MonoBehaviour
             }
             if (SkillManager.Inst.ActivePage.skill_type != SKILL_TYPE.SKILL5)
             {
-                if ((originNum == curNum) && !isQuestionMark)
+                if ((this.originNum == this.curNum) && !this.isQuestionMark)
                     SkillManager.Inst.ActivePage.applyButton.SetButtonActive(false);
                 else
                     SkillManager.Inst.ActivePage.applyButton.SetButtonActive(true);
             }
 
-            if (isApplyButtonOn)
+            if (this.isApplyButtonOn)
                 SkillManager.Inst.ActivePage.applyButton.SetButtonActive(true);
             //if (SkillManager.Inst.isUseSkill[SkillManager.Inst.ActivePageIndex])
             //{
@@ -126,9 +124,9 @@ public class SkillBookCard : MonoBehaviour
 
     public void SetCard(Card card)
     {
-        for (int i = 0; i < frontCard.GetComponent<SkillBookCard>().cardButtons.Count; i++)
+        for (int i = 0; i < this.frontCard.GetComponent<SkillBookCard>().cardButtons.Count; i++)
         {
-            frontCard.GetComponent<SkillBookCard>().cardButtons[i].gameObject.SetActive(true);
+            this.frontCard.GetComponent<SkillBookCard>().cardButtons[i].gameObject.SetActive(true);
         }
         SkillManager.Inst.SetCard(this, card);
     }
@@ -136,7 +134,7 @@ public class SkillBookCard : MonoBehaviour
     public void Up(int index = 1)
     {
         SoundManager.Inst.Play(SKILLBOOKSOUND.CARD_NUM_UP_DOWN);
-        curNum += index;
+        this.curNum += index;
         if (SkillManager.Inst.ActivePage.skill_type == SKILL_TYPE.SKILL2)
         {
             if (SkillManager.Inst.ActivePage.applyCards[0].Equals(this))
@@ -148,7 +146,7 @@ public class SkillBookCard : MonoBehaviour
     public void Down(int index = 1)
     {
         SoundManager.Inst.Play(SKILLBOOKSOUND.CARD_NUM_UP_DOWN);
-        curNum -= index;
+        this.curNum -= index;
         if (SkillManager.Inst.ActivePage.skill_type == SKILL_TYPE.SKILL2)
         {
             if (SkillManager.Inst.ActivePage.applyCards[0].Equals(this))
@@ -161,7 +159,7 @@ public class SkillBookCard : MonoBehaviour
     public void HideCard()
     {
         //frontCard.GetComponent<SkillBookCard>().limitNum = 0;
-        frontCard.SetActive(false);
+        this.frontCard.SetActive(false);
     }
 
     public void SetColorAlpha(bool isHalf)
@@ -172,16 +170,16 @@ public class SkillBookCard : MonoBehaviour
 
     public void Init()
     {
-        HideCard();
-        curSelectCard?.SetColorAlpha(false);
-        curSelectCard = null;
-        SetColorAlpha(true);
+        this.HideCard();
+        this.curSelectCard?.SetColorAlpha(false);
+        this.curSelectCard = null;
+        this.SetColorAlpha(true);
         this.GetComponentInChildren<TMP_Text>().text = "+";
     }
 
     private void OnMouseOver()
     {
-        if (curSelectCard != null)
+        if (this.curSelectCard != null)
             if (Input.GetMouseButtonUp(1))
             {
                 if (SkillManager.Inst.ActivePage.skill_type == SKILL_TYPE.SKILL5 || SkillManager.Inst.ActivePage.skill_type == SKILL_TYPE.SKILL2)
@@ -194,7 +192,7 @@ public class SkillBookCard : MonoBehaviour
                 }
                 else
                 {
-                    Init();
+                    this.Init();
                 }
             }
     }

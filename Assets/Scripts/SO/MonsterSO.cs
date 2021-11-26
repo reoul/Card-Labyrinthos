@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using UnityEngine.Animations;
-
 
 public enum MONSTER_TYPE
 {
@@ -15,7 +12,7 @@ public enum MONSTER_DIFFICULTY { EASY, NOMAL, HARD, BOSS }
 
 public enum PATTERN_TYPE { ATTACK, HEAL }
 
-[System.Serializable]
+[Serializable]
 public class PATTERN
 {
     public PATTERN_TYPE pattern_type;
@@ -23,7 +20,7 @@ public class PATTERN
 
     public PATTERN(PATTERN_TYPE type, int index = 0)
     {
-        pattern_type = type;
+        this.pattern_type = type;
         this.index = index;
     }
 }
@@ -34,24 +31,24 @@ public enum CardType
     NonDesignated
 }
 
-[System.Serializable]
+[Serializable]
 public class Monster
 {
-    public string name; //���� �̸�
-    public int hp;    //���� ü��
-    public MONSTER_TYPE type;   //Ÿ��
-    public GameObject prefab;   //���� ������
+    public string name; //¸ó½ºÅÍ ÀÌ¸§
+    public int hp;    //¸ó½ºÅÍ Ã¼·Â
+    public MONSTER_TYPE type;   //Å¸ÀÔ
+    public GameObject prefab;   //¸ó½ºÅÍ ÇÁ¸®ÆÕ
 
-    [Header("����")]
-    public PATTERN pattern_1; //���
-    public PATTERN pattern_2; //�߰�
-    public PATTERN pattern_3; //����
-    public PATTERN pattern_4; //ȸ��
+    [Header("ÆÐÅÏ")]
+    public PATTERN pattern_1; //¾à°ø
+    public PATTERN pattern_2; //Áß°ø
+    public PATTERN pattern_3; //°­°ø
+    public PATTERN pattern_4; //È¸º¹
 
     public float attackDelay;
 }
 
-[System.Serializable]
+[Serializable]
 [CreateAssetMenu(fileName = "MonsterSO", menuName = "Scriptable Object/MonsterSO")]
 public class MonsterSO : ScriptableObject
 {

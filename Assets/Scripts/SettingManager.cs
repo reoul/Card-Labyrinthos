@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class SettingManager : MonoBehaviour
 {
-    public static SettingManager Inst = null;
+    public static SettingManager Inst;
 
     [SerializeField] GameObject settingWindow;
     [SerializeField] Slider bgmSlider;
@@ -26,17 +24,18 @@ public class SettingManager : MonoBehaviour
 
     public void Open()
     {
-        if (settingWindow.activeInHierarchy)
+        if (this.settingWindow.activeInHierarchy)
         {
-            Close();
+            this.Close();
             return;
         }
-        settingWindow.SetActive(true);
+
+        this.settingWindow.SetActive(true);
     }
 
     public void Close()
     {
-        settingWindow.SetActive(false);
+        this.settingWindow.SetActive(false);
     }
 
     public void GameReset()
@@ -54,16 +53,16 @@ public class SettingManager : MonoBehaviour
     public void SettingExit()
     {
         SoundManager.Inst.Play(EVENTSOUND.CHOICE_BUTTON);
-        Close();
+        this.Close();
     }
 
     public void UpdateBGMVolume()
     {
-        SoundManager.Inst.SetBGMVolume(bgmSlider.value);
+        SoundManager.Inst.SetBGMVolume(this.bgmSlider.value);
     }
 
     public void UpdateSFXVolume()
     {
-        SoundManager.Inst.SetSFXVolume(sfxSlider.value);
+        SoundManager.Inst.SetSFXVolume(this.sfxSlider.value);
     }
 }

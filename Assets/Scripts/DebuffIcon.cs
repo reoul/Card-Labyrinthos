@@ -2,20 +2,20 @@
 
 public class DebuffIcon : MonoBehaviour
 {
-    bool onDebuffIcon = false;   //마우스가 필드 위에 있는지
+    bool onDebuffIcon;   //마우스가 필드 위에 있는지
 
     void OnMouseEnter()
     {
-        onDebuffIcon = true;
+        this.onDebuffIcon = true;
     }
     void OnMouseExit()
     {
-        onDebuffIcon = false;
+        this.onDebuffIcon = false;
     }
 
     private void OnMouseUp()
     {
-        if (onDebuffIcon)
+        if (this.onDebuffIcon)
         {
             this.transform.parent.GetComponent<DebuffBar>().Open();
         }

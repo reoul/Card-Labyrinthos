@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DebuffManager : MonoBehaviour
 {
-    public static DebuffManager Inst = null;
+    public static DebuffManager Inst;
 
     public DEBUFF_TYPE debuff_type;
 
@@ -16,7 +14,7 @@ public class DebuffManager : MonoBehaviour
     {
         get
         {
-            switch (debuff_type)
+            switch (this.debuff_type)
             {
                 case DEBUFF_TYPE.DEBUFF1: return "매턴마다 데미지 1이상 못 넣었을때 플레이어에게 데미지를 2만큼 입힙니다";
                 case DEBUFF_TYPE.DEBUFF2: return "매턴마다 데미지 1이상 못 넣었을때 몬스터의 체력이 2만큼 회복됩니다";
@@ -27,7 +25,8 @@ public class DebuffManager : MonoBehaviour
                 case DEBUFF_TYPE.DEBUFF7: return "매턴마다 몬스터의 방어도가 3씩 쌓입니다";
                 case DEBUFF_TYPE.TUTORIAL: return "아무런 저주가 없습니다";
             }
-            debuff_type = DEBUFF_TYPE.DEBUFF1;
+
+            this.debuff_type = DEBUFF_TYPE.DEBUFF1;
             return "매턴마다 데미지 1이상 못넣었을때 플레이어에게 데미지를 2만큼 입힙니다";
         }
     }
@@ -43,15 +42,16 @@ public class DebuffManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        AddForceTurnIndex = 0;
+
+        this.AddForceTurnIndex = 0;
     }
 
     public void CheckDebuff()
     {
-        AddForceTurn += AddForceTurnIndex;
-        if (turnDamage == 0)
+        this.AddForceTurn += this.AddForceTurnIndex;
+        if (this.turnDamage == 0)
         {
-            switch (debuff_type)
+            switch (this.debuff_type)
             {
                 case DEBUFF_TYPE.DEBUFF1:           //플레이어 데미지
                     Player.Inst.hpbar.Damage(2);
@@ -68,21 +68,22 @@ public class DebuffManager : MonoBehaviour
             }
         }
 
-        if (AddForceTurn == 2)                  //2턴마다 공격력 상승
+        if (this.AddForceTurn == 2)                  //2턴마다 공격력 상승
         {
-            AddForceTurn = 0;
+            this.AddForceTurn = 0;
             EnemyManager.Inst.enemys[0].force++;
         }
-        turnDamage = 0;
+
+        this.turnDamage = 0;
     }
 
     public void ApplyDebuff()
     {
-        Init();
-        switch (debuff_type)
+        this.Init();
+        switch (this.debuff_type)
         {
             case DEBUFF_TYPE.DEBUFF5:       //2턴마다 공격력 상승
-                AddForceTurnIndex = 1;
+                this.AddForceTurnIndex = 1;
                 break;
             case DEBUFF_TYPE.DEBUFF6:       //플레이어에게 넣은 피해만큼 몬스터 회복
                 EnemyManager.Inst.enemys[0].isVampire = true;
@@ -95,8 +96,8 @@ public class DebuffManager : MonoBehaviour
 
     public void Init()
     {
-        turnDamage = 0;
-        AddForceTurn = 0;
-        AddForceTurnIndex = 0;
+        this.turnDamage = 0;
+        this.AddForceTurn = 0;
+        this.AddForceTurnIndex = 0;
     }
 }

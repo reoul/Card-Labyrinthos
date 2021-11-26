@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public enum BACKGROUNDSOUND { INTRO, TUTORIAL, MAP, BATTLE, EVENT, SHOP, REST, BOSS, ENDING }
@@ -14,7 +13,7 @@ public enum RESTSOUND { HEAL }
 public enum DEBUFFSOUND { OPEN_BAR, CLOSE_BAR }
 
 
-[System.Serializable]
+[Serializable]
 public class Sounds
 {
     [Header("스킬북")]
@@ -64,7 +63,7 @@ public class Sounds
 }
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager Inst = null;
+    public static SoundManager Inst;
 
     [SerializeField] Sounds sounds;
 
@@ -89,67 +88,67 @@ public class SoundManager : MonoBehaviour
 
     public void SetBGMVolume(float volume)
     {
-        BackGroundAudioSource.volume = volume;
+        this.BackGroundAudioSource.volume = volume;
     }
 
     public void SetSFXVolume(float volume)
     {
-        for (int i = 0; i < SFXAudioSources.Length; i++)
+        for (int i = 0; i < this.SFXAudioSources.Length; i++)
         {
-            SFXAudioSources[i].SetVolume(volume);
+            this.SFXAudioSources[i].SetVolume(volume);
         }
     }
 
     public void Play(BACKGROUNDSOUND sound)
     {
-        BackGroundAudioSource.clip = GetAudio(sound);
-        BackGroundAudioSource.Play();
+        this.BackGroundAudioSource.clip = this.GetAudio(sound);
+        this.BackGroundAudioSource.Play();
     }
     public void Play(SKILLBOOKSOUND sound)
     {
-        SFXPlay(GetAudio(sound));
+        this.SFXPlay(this.GetAudio(sound));
     }
     public void Play(MAPSOUND sound)
     {
-        SFXPlay(GetAudio(sound));
+        this.SFXPlay(this.GetAudio(sound));
     }
     public void Play(BATTLESOUND sound)
     {
-        SFXPlay(GetAudio(sound));
+        this.SFXPlay(this.GetAudio(sound));
     }
     public void Play(EVENTSOUND sound)
     {
-        SFXPlay(GetAudio(sound));
+        this.SFXPlay(this.GetAudio(sound));
     }
     public void Play(SHOPSOUND sound)
     {
-        SFXPlay(GetAudio(sound));
+        this.SFXPlay(this.GetAudio(sound));
     }
     public void Play(REWARDSOUND sound)
     {
-        SFXPlay(GetAudio(sound));
+        this.SFXPlay(this.GetAudio(sound));
     }
     public void Play(CARDSOUND sound)
     {
-        SFXPlay(GetAudio(sound));
+        this.SFXPlay(this.GetAudio(sound));
     }
 
     public void Play(RESTSOUND sound)
     {
-        SFXPlay(GetAudio(sound));
+        this.SFXPlay(this.GetAudio(sound));
     }
 
     public void Play(DEBUFFSOUND sound)
     {
-        SFXPlay(GetAudio(sound));
+        this.SFXPlay(this.GetAudio(sound));
     }
     public void SFXPlay(AudioClip clip)
     {
-        for (int i = 0; i < SFXAudioSources.Length; i++)
+        for (int i = 0; i < this.SFXAudioSources.Length; i++)
         {
-            if (!SFXAudioSources[i].isPlaying)
+            if (!this.SFXAudioSources[i].isPlaying)
             {
-                SFXAudioSources[i].Play(clip);
+                this.SFXAudioSources[i].Play(clip);
                 break;
             }
         }
@@ -157,7 +156,7 @@ public class SoundManager : MonoBehaviour
 
     public AudioClip GetAudio(BACKGROUNDSOUND sound)
     {
-        return BackGroundAudio[(int)sound];
+        return this.BackGroundAudio[(int)sound];
     }
     public AudioClip GetAudio(SKILLBOOKSOUND sound)
     {
@@ -165,22 +164,22 @@ public class SoundManager : MonoBehaviour
         switch (sound)
         {
             case SKILLBOOKSOUND.OPEN_BOOK:
-                clip = sounds.skillbook_openBook;
+                clip = this.sounds.skillbook_openBook;
                 break;
             case SKILLBOOKSOUND.CLOSE_BOOK:
-                clip = sounds.skillbook_closeBook;
+                clip = this.sounds.skillbook_closeBook;
                 break;
             case SKILLBOOKSOUND.CARD_ON_BOOK:
-                clip = sounds.skillbook_cardOnBook;
+                clip = this.sounds.skillbook_cardOnBook;
                 break;
             case SKILLBOOKSOUND.CARD_NUM_UP_DOWN:
-                clip = sounds.skillbook_cardNumUpDown;
+                clip = this.sounds.skillbook_cardNumUpDown;
                 break;
             case SKILLBOOKSOUND.TURN_PAGE:
-                clip = sounds.skillbook_turnPage;
+                clip = this.sounds.skillbook_turnPage;
                 break;
             default:
-                clip = sounds.skillbook_openBook;
+                clip = this.sounds.skillbook_openBook;
                 break;
         }
         return clip;
@@ -191,19 +190,19 @@ public class SoundManager : MonoBehaviour
         switch (sound)
         {
             case MAPSOUND.CHOICE_FIELD:
-                clip = sounds.map_choiceField;
+                clip = this.sounds.map_choiceField;
                 break;
             case MAPSOUND.OPEN_DEBUFFWINDOW:
-                clip = sounds.map_openDebuffWindow;
+                clip = this.sounds.map_openDebuffWindow;
                 break;
             case MAPSOUND.CHOICE_DEBUFF:
-                clip = sounds.map_choiceDebuff;
+                clip = this.sounds.map_choiceDebuff;
                 break;
             case MAPSOUND.SHOW_DEBUFF_BUTTON:
-                clip = sounds.map_showDebuffButton;
+                clip = this.sounds.map_showDebuffButton;
                 break;
             default:
-                clip = sounds.map_choiceField;
+                clip = this.sounds.map_choiceField;
                 break;
         }
         return clip;
@@ -214,31 +213,31 @@ public class SoundManager : MonoBehaviour
         switch (sound)
         {
             case BATTLESOUND.HEAL:
-                clip = sounds.battle_heal;
+                clip = this.sounds.battle_heal;
                 break;
             case BATTLESOUND.CARD_DRAW:
-                clip = sounds.battle_cardDraw;
+                clip = this.sounds.battle_cardDraw;
                 break;
             case BATTLESOUND.SHELD:
-                clip = sounds.battle_sheld;
+                clip = this.sounds.battle_sheld;
                 break;
             case BATTLESOUND.HIT:
-                clip = sounds.battle_hit;
+                clip = this.sounds.battle_hit;
                 break;
             case BATTLESOUND.TURN_START:
-                clip = sounds.battle_turnStart;
+                clip = this.sounds.battle_turnStart;
                 break;
             case BATTLESOUND.TURN_END:
-                clip = sounds.battle_turnEnd;
+                clip = this.sounds.battle_turnEnd;
                 break;
             case BATTLESOUND.GAME_WIN:
-                clip = sounds.battle_gameWin;
+                clip = this.sounds.battle_gameWin;
                 break;
             case BATTLESOUND.GAME_FAILD:
-                clip = sounds.battle_gameFaild;
+                clip = this.sounds.battle_gameFaild;
                 break;
             default:
-                clip = sounds.battle_heal;
+                clip = this.sounds.battle_heal;
                 break;
         }
         return clip;
@@ -249,13 +248,13 @@ public class SoundManager : MonoBehaviour
         switch (sound)
         {
             case EVENTSOUND.CHOICE_MOUSEUP:
-                clip = sounds.event_choiceMouseUp;
+                clip = this.sounds.event_choiceMouseUp;
                 break;
             case EVENTSOUND.CHOICE_BUTTON:
-                clip = sounds.event_choiceButton;
+                clip = this.sounds.event_choiceButton;
                 break;
             default:
-                clip = sounds.event_choiceButton;
+                clip = this.sounds.event_choiceButton;
                 break;
         }
         return clip;
@@ -266,19 +265,19 @@ public class SoundManager : MonoBehaviour
         switch (sound)
         {
             case SHOPSOUND.BUY:
-                clip = sounds.shop_buyitem;
+                clip = this.sounds.shop_buyitem;
                 break;
             case SHOPSOUND.SOLDOUT:
-                clip = sounds.shop_soldOut;
+                clip = this.sounds.shop_soldOut;
                 break;
             case SHOPSOUND.THROWINGOBJ:
-                clip = sounds.shop_throwingObj;
+                clip = this.sounds.shop_throwingObj;
                 break;
             case SHOPSOUND.IN_TOPBAR_ICON:
-                clip = sounds.shop_inTopBarIcon;
+                clip = this.sounds.shop_inTopBarIcon;
                 break;
             default:
-                clip = sounds.shop_buyitem;
+                clip = this.sounds.shop_buyitem;
                 break;
         }
         return clip;
@@ -289,22 +288,22 @@ public class SoundManager : MonoBehaviour
         switch (sound)
         {
             case REWARDSOUND.SHOW_REWARD_WINDOW:
-                clip = sounds.reward_showRewardWindow;
+                clip = this.sounds.reward_showRewardWindow;
                 break;
             case REWARDSOUND.GETQUESTION:
-                clip = sounds.reward_getQuestion;
+                clip = this.sounds.reward_getQuestion;
                 break;
             case REWARDSOUND.GETCARDPIECE:
-                clip = sounds.reward_getCardPiece;
+                clip = this.sounds.reward_getCardPiece;
                 break;
             case REWARDSOUND.LOSTHEAL:
-                clip = sounds.reward_lostHeal;
+                clip = this.sounds.reward_lostHeal;
                 break;
             case REWARDSOUND.SHOW_REWARD_BUTTON:
-                clip = sounds.reward_showRewardButton;
+                clip = this.sounds.reward_showRewardButton;
                 break;
             default:
-                clip = sounds.reward_getQuestion;
+                clip = this.sounds.reward_getQuestion;
                 break;
         }
         return clip;
@@ -315,16 +314,16 @@ public class SoundManager : MonoBehaviour
         switch (sound)
         {
             case CARDSOUND.UP_CARD:
-                clip = sounds.card_upCard;
+                clip = this.sounds.card_upCard;
                 break;
             case CARDSOUND.GO_BACK:
-                clip = sounds.card_goback;
+                clip = this.sounds.card_goback;
                 break;
             case CARDSOUND.Shuffling:
-                clip = sounds.card_shuffling;
+                clip = this.sounds.card_shuffling;
                 break;
             default:
-                clip = sounds.card_upCard;
+                clip = this.sounds.card_upCard;
                 break;
         }
         return clip;
@@ -335,10 +334,10 @@ public class SoundManager : MonoBehaviour
         switch (sound)
         {
             case RESTSOUND.HEAL:
-                clip = sounds.rest_heal;
+                clip = this.sounds.rest_heal;
                 break;
             default:
-                clip = sounds.rest_heal;
+                clip = this.sounds.rest_heal;
                 break;
         }
         return clip;
@@ -350,13 +349,13 @@ public class SoundManager : MonoBehaviour
         switch (sound)
         {
             case DEBUFFSOUND.OPEN_BAR:
-                clip = sounds.debuff_openbar;
+                clip = this.sounds.debuff_openbar;
                 break;
             case DEBUFFSOUND.CLOSE_BAR:
-                clip = sounds.debuff_closebar;
+                clip = this.sounds.debuff_closebar;
                 break;
             default:
-                clip = sounds.debuff_openbar;
+                clip = this.sounds.debuff_openbar;
                 break;
         }
         return clip;

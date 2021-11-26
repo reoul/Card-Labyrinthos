@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameOverButton : MonoBehaviour
 {
@@ -14,7 +12,7 @@ public class GameOverButton : MonoBehaviour
 
     private void OnMouseUp()
     {
-        switch (type)
+        switch (this.type)
         {
             case Type.TITLE:
                 ResetManager.Inst.ResetGame();

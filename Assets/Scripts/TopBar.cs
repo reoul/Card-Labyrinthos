@@ -1,13 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public enum TOPBAR_TYPE { HP, QUESTION, CARDPIECE, SCENENAME, BAG, SETTING, SKILL };
+public enum TOPBAR_TYPE { HP, QUESTION, CARDPIECE, SCENENAME, BAG, SETTING, SKILL }
 
 public class TopBar : MonoBehaviour
 {
-    public static TopBar Inst = null;
+    public static TopBar Inst;
 
     public List<TopBarIcon> icons;
 
@@ -28,10 +27,10 @@ public class TopBar : MonoBehaviour
 
     private void Start()
     {
-        UpdateText(TOPBAR_TYPE.HP);
-        UpdateText(TOPBAR_TYPE.CARDPIECE);
-        UpdateText(TOPBAR_TYPE.QUESTION);
-        UpdateText(TOPBAR_TYPE.SCENENAME);
+        this.UpdateText(TOPBAR_TYPE.HP);
+        this.UpdateText(TOPBAR_TYPE.CARDPIECE);
+        this.UpdateText(TOPBAR_TYPE.QUESTION);
+        this.UpdateText(TOPBAR_TYPE.SCENENAME);
     }
 
     public TMP_Text hpTMP;
@@ -49,16 +48,16 @@ public class TopBar : MonoBehaviour
         switch (type)
         {
             case TOPBAR_TYPE.HP:
-                hpTMP.text = PlayerManager.Inst.hpString;
+                this.hpTMP.text = PlayerManager.Inst.hpString;
                 break;
             case TOPBAR_TYPE.QUESTION:
-                questionTMP.text = PlayerManager.Inst.question_card.ToString();
+                this.questionTMP.text = PlayerManager.Inst.question_card.ToString();
                 break;
             case TOPBAR_TYPE.CARDPIECE:
-                cardPieceTMP.text = PlayerManager.Inst.card_piece.ToString();
+                this.cardPieceTMP.text = PlayerManager.Inst.card_piece.ToString();
                 break;
             case TOPBAR_TYPE.SCENENAME:
-                sceneNameTMP.text = MapManager.Inst.CurrentSceneName;
+                this.sceneNameTMP.text = MapManager.Inst.CurrentSceneName;
                 break;
         }
     }
@@ -82,7 +81,7 @@ public class TopBar : MonoBehaviour
     }
     public void Open(TOPBAR_TYPE type)
     {
-        if (GetIcon(type).isLock)
+        if (this.GetIcon(type).isLock)
             return;
         switch (type)
         {
@@ -100,12 +99,12 @@ public class TopBar : MonoBehaviour
 
     public TopBarIcon GetIcon(TOPBAR_TYPE type)
     {
-        for (int i = 0; i < icons.Count; i++)
+        for (int i = 0; i < this.icons.Count; i++)
         {
-            if (icons[i].type == type)
-                return icons[i];
+            if (this.icons[i].type == type)
+                return this.icons[i];
         }
-        return icons[0];
+        return this.icons[0];
     }
 
     public void OnMouseEnterIcon(TOPBAR_TYPE type)
@@ -113,13 +112,13 @@ public class TopBar : MonoBehaviour
         switch (type)
         {
             case TOPBAR_TYPE.BAG:
-                explanObj[1].SetActive(true);
+                this.explanObj[1].SetActive(true);
                 break;
             case TOPBAR_TYPE.SETTING:
-                explanObj[2].SetActive(true);
+                this.explanObj[2].SetActive(true);
                 break;
             case TOPBAR_TYPE.SKILL:
-                explanObj[0].SetActive(true);
+                this.explanObj[0].SetActive(true);
                 break;
         }
     }
@@ -128,13 +127,13 @@ public class TopBar : MonoBehaviour
         switch (type)
         {
             case TOPBAR_TYPE.BAG:
-                explanObj[1].SetActive(false);
+                this.explanObj[1].SetActive(false);
                 break;
             case TOPBAR_TYPE.SETTING:
-                explanObj[2].SetActive(false);
+                this.explanObj[2].SetActive(false);
                 break;
             case TOPBAR_TYPE.SKILL:
-                explanObj[0].SetActive(false);
+                this.explanObj[0].SetActive(false);
                 break;
         }
     }

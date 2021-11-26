@@ -1,51 +1,45 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TopBarIcon : MonoBehaviour
 {
     public TOPBAR_TYPE type;
-    bool onTopBarIcon = false;   //마우스가 필드 위에 있는지
+    bool onTopBarIcon;   //마우스가 필드 위에 있는지
     bool _isLock;
     public bool isLock
     {
-        get { return _isLock; }
-        private set { _isLock = value; }
+        get { return this._isLock; }
+        private set { this._isLock = value; }
     }
 
     void OnMouseEnter()
     {
         SoundManager.Inst.Play(EVENTSOUND.CHOICE_MOUSEUP);
-        onTopBarIcon = true;
-        switch (type)
+        this.onTopBarIcon = true;
+        switch (this.type)
         {
             case TOPBAR_TYPE.BAG:
             case TOPBAR_TYPE.SETTING:
             case TOPBAR_TYPE.SKILL:
-                TopBar.Inst.OnMouseEnterIcon(type);
-                break;
-            default:
+                TopBar.Inst.OnMouseEnterIcon(this.type);
                 break;
         }
     }
     void OnMouseExit()
     {
-        onTopBarIcon = false;
-        switch (type)
+        this.onTopBarIcon = false;
+        switch (this.type)
         {
             case TOPBAR_TYPE.BAG:
             case TOPBAR_TYPE.SETTING:
             case TOPBAR_TYPE.SKILL:
-                TopBar.Inst.OnMouseExitIcon(type);
-                break;
-            default:
+                TopBar.Inst.OnMouseExitIcon(this.type);
                 break;
         }
     }
 
     private void OnMouseUp()
     {
-        if (onTopBarIcon)
+        if (this.onTopBarIcon)
         {
             TopBar.Inst.Open(this);
         }
@@ -53,11 +47,11 @@ public class TopBarIcon : MonoBehaviour
 
     public void Lock()
     {
-        isLock = true;
+        this.isLock = true;
     }
     public void UnLock()
     {
-        isLock = false;
+        this.isLock = false;
     }
 
 }

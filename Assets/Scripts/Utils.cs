@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
-[System.Serializable]
+[Serializable]
 public class PRS
 {
     public Vector3 pos;

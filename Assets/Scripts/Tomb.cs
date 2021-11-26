@@ -1,28 +1,27 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Tomb : MonoBehaviour
 {
-    bool onIcon = false;   //마우스가 필드 위에 있는지
-    bool isGet = false;
+    bool onIcon;   //마우스가 필드 위에 있는지
+    bool isGet;
     bool isFade = true;
 
     void OnMouseEnter()
     {
-        onIcon = true;
+        this.onIcon = true;
     }
     void OnMouseExit()
     {
-        onIcon = false;
+        this.onIcon = false;
     }
 
     private void OnMouseUp()
     {
-        if (onIcon && !isGet && !isFade)
+        if (this.onIcon && !this.isGet && !this.isFade)
         {
-            StartCoroutine(TutorialManager.Inst.GetCardCoroutine());
-            isFade = true;
+            this.StartCoroutine(TutorialManager.Inst.GetCardCoroutine());
+            this.isFade = true;
         }
     }
 
@@ -35,12 +34,13 @@ public class Tomb : MonoBehaviour
                 break;
             yield return new WaitForEndOfFrame();
         }
-        isFade = false;
+
+        this.isFade = false;
     }
 
     public void GetItem()
     {
         this.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
-        isGet = true;
+        this.isGet = true;
     }
 }

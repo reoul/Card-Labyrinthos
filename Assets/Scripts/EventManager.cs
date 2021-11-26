@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public enum EVENT_REWARD_TYPE { CARD, CARD_PIECE, HP, DRAW, QUESTION_CARD, SKILL_BOOK }
 
 public class EventData
@@ -31,16 +30,16 @@ public class EventData
 
 public class EventManager : MonoBehaviour
 {
-    public static EventManager Inst = null;
+    public static EventManager Inst;
 
     public List<Event> events;
 
     public SpriteRenderer[] colorBackSpriteRenderer;
     EventButton[] curEventButtons;
 
-    bool isGetReward = false;
+    bool isGetReward;
 
-    bool isFinishTutorial = false;
+    bool isFinishTutorial;
 
     private void Awake()
     {
@@ -57,9 +56,9 @@ public class EventManager : MonoBehaviour
 
     public void Choice(EventData eventData)         //조건에 맞는 해당 선택지를 클릭했을때
     {
-        if (!isFinishTutorial)
+        if (!this.isFinishTutorial)
             return;
-        isGetReward = true;
+        this.isGetReward = true;
         SoundManager.Inst.Play(EVENTSOUND.CHOICE_BUTTON);
         RewardManager.Inst.SetTitleText("결과");
         switch (eventData.reward_kind)
@@ -79,7 +78,8 @@ public class EventManager : MonoBehaviour
                     RewardManager.Inst.AddReward(REWARD_TYPE.REWARD, (int)eventData.reward_type2, eventData.index2);
                 break;
         }
-        StartCoroutine(RewardManager.Inst.ShowRewardWindowCoroutine());
+
+        this.StartCoroutine(RewardManager.Inst.ShowRewardWindowCoroutine());
     }
 
     void FindEvents()
@@ -91,46 +91,47 @@ public class EventManager : MonoBehaviour
             events[i].gameObject.SetActive(false);
             this.events.Add(events[i]);
         }
-        colorBackSpriteRenderer = new SpriteRenderer[3];
-        colorBackSpriteRenderer[0] = GameObject.Find("firstColorBack").GetComponent<SpriteRenderer>();
-        colorBackSpriteRenderer[1] = GameObject.Find("secondColorBack").GetComponent<SpriteRenderer>();
-        colorBackSpriteRenderer[2] = GameObject.Find("thirdColorBack").GetComponent<SpriteRenderer>();
-        isGetReward = false;
+
+        this.colorBackSpriteRenderer = new SpriteRenderer[3];
+        this.colorBackSpriteRenderer[0] = GameObject.Find("firstColorBack").GetComponent<SpriteRenderer>();
+        this.colorBackSpriteRenderer[1] = GameObject.Find("secondColorBack").GetComponent<SpriteRenderer>();
+        this.colorBackSpriteRenderer[2] = GameObject.Find("thirdColorBack").GetComponent<SpriteRenderer>();
+        this.isGetReward = false;
     }
 
     public IEnumerator RandomEventCoroutine()
     {
         SoundManager.Inst.Play(BACKGROUNDSOUND.EVENT);
-        FindEvents();
-        int rand = Random.Range(0, events.Count);
-        events[rand].Init();
-        events[rand].gameObject.SetActive(true);
-        curEventButtons = new EventButton[3];
+        this.FindEvents();
+        int rand = Random.Range(0, this.events.Count);
+        this.events[rand].Init();
+        this.events[rand].gameObject.SetActive(true);
+        this.curEventButtons = new EventButton[3];
         for (int i = 0; i < 3; i++)
         {
-            curEventButtons[i] = events[rand].condition_TMP[i].transform.parent.GetComponent<EventButton>();
+            this.curEventButtons[i] = this.events[rand].condition_TMP[i].transform.parent.GetComponent<EventButton>();
         }
         if (!MapManager.Inst.isTutorialInEvent)
         {
             MapManager.Inst.isTutorialInEvent = true;
-            StartCoroutine(TutorialEventCoroutine());
+            this.StartCoroutine(this.TutorialEventCoroutine());
         }
         yield return null;
     }
 
     public IEnumerator UpdateBackColorCoroutine()      //일정한 시간마다 조건에 맞는 선택지에 초록 불이 들어오고 아닌 선택지는 빨간불이 들어오게 한다
     {
-        while (!isGetReward)
+        while (!this.isGetReward)
         {
-            for (int i = 0; i < curEventButtons.Length; i++)
+            for (int i = 0; i < this.curEventButtons.Length; i++)
             {
-                if (curEventButtons[i].IsAchieve)
+                if (this.curEventButtons[i].IsAchieve)
                 {
-                    BackColorGreen(i);
+                    this.BackColorGreen(i);
                 }
                 else
                 {
-                    BackColorRed(i);
+                    this.BackColorRed(i);
                 }
             }
             yield return new WaitForSeconds(0.1f);
@@ -141,31 +142,31 @@ public class EventManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         TalkWindow.Inst.InitFlag();
-        yield return StartCoroutine(GhostManager.Inst.ShowGhost());
+        yield return this.StartCoroutine(GhostManager.Inst.ShowGhost());
         for (int i = 0; i < TalkWindow.Inst.talks[10].Count; i++)
         {
             if (i == 0)
             {
-                ArrowManager.Inst.CreateArrowObj(colorBackSpriteRenderer[0].transform.position + Vector3.up * 2, ArrowCreateDirection.UP);
-                ArrowManager.Inst.CreateArrowObj(colorBackSpriteRenderer[1].transform.position + Vector3.up * 2, ArrowCreateDirection.UP);
-                ArrowManager.Inst.CreateArrowObj(colorBackSpriteRenderer[2].transform.position + Vector3.up * 2, ArrowCreateDirection.UP);
+                ArrowManager.Inst.CreateArrowObj(this.colorBackSpriteRenderer[0].transform.position + Vector3.up * 2, ArrowCreateDirection.UP);
+                ArrowManager.Inst.CreateArrowObj(this.colorBackSpriteRenderer[1].transform.position + Vector3.up * 2, ArrowCreateDirection.UP);
+                ArrowManager.Inst.CreateArrowObj(this.colorBackSpriteRenderer[2].transform.position + Vector3.up * 2, ArrowCreateDirection.UP);
             }
-            yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(10, i));
-            yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
-            yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
+            yield return this.StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(10, i));
+            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
+            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
             ArrowManager.Inst.DestoryAllArrow();
         }
-        yield return StartCoroutine(TalkWindow.Inst.HideText());
-        isFinishTutorial = true;
+        yield return this.StartCoroutine(TalkWindow.Inst.HideText());
+        this.isFinishTutorial = true;
     }
 
     void BackColorGreen(int index)
     {
-        colorBackSpriteRenderer[index].color = new Color(60f / 255, 180f / 255, 60f / 255);
+        this.colorBackSpriteRenderer[index].color = new Color(60f / 255, 180f / 255, 60f / 255);
     }
 
     void BackColorRed(int index)
     {
-        colorBackSpriteRenderer[index].color = new Color(180f / 255, 60f / 255, 60f / 255);
+        this.colorBackSpriteRenderer[index].color = new Color(180f / 255, 60f / 255, 60f / 255);
     }
 }

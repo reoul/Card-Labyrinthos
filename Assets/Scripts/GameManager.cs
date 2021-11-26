@@ -1,9 +1,6 @@
-﻿using DG.Tweening;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
+using DG.Tweening;
 using UnityEngine;
-
 
 public class GameManager : MonoBehaviour
 {
@@ -57,14 +54,12 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        StartCoroutine(TurnManager.Inst.StartGameCoroutine());
+        this.StartCoroutine(TurnManager.Inst.StartGameCoroutine());
     }
     public void Notification(string message)
     {
-        if (notificationPanel == null)
-            notificationPanel = GameObject.Find("MyTurn").GetComponent<Notification>();
-        if (notificationPanel != null)
-            notificationPanel.Show(message);
+        if (this.notificationPanel == null) this.notificationPanel = GameObject.Find("MyTurn").GetComponent<Notification>();
+        if (this.notificationPanel != null) this.notificationPanel.Show(message);
     }
 
     public void CloseAllUI()
@@ -75,27 +70,27 @@ public class GameManager : MonoBehaviour
 
     public void Ending()
     {
-        StartCoroutine(EndingCoroutine());
+        this.StartCoroutine(this.EndingCoroutine());
     }
 
     public IEnumerator EndingCoroutine()
     {
-        yield return StartCoroutine(GhostManager.Inst.ShowGhost());
+        yield return this.StartCoroutine(GhostManager.Inst.ShowGhost());
         for (int i = 0; i < TalkWindow.Inst.talks[14].Count; i++)
         {
-            yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(14, i));
-            yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
-            yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
+            yield return this.StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(14, i));
+            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
+            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
         }
-        yield return StartCoroutine(TalkWindow.Inst.HideText());
+        yield return this.StartCoroutine(TalkWindow.Inst.HideText());
         yield return new WaitForSeconds(0.5f);
-        StartCoroutine(EndingCreditCoroutine());
+        this.StartCoroutine(this.EndingCreditCoroutine());
     }
 
     IEnumerator EndingCreditCoroutine()
     {
         SoundManager.Inst.Play(BACKGROUNDSOUND.ENDING);
-        endingCredit.SetActive(true);
+        this.endingCredit.SetActive(true);
         yield return new WaitForSeconds(5f);
         ResetManager.Inst.ResetGame();
     }
@@ -103,6 +98,6 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         SoundManager.Inst.Play(BACKGROUNDSOUND.ENDING);
-        gameOver.SetActive(true);
+        this.gameOver.SetActive(true);
     }
 }

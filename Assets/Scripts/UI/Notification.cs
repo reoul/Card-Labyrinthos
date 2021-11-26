@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using DG.Tweening;
 using TMPro;
-using DG.Tweening;
-using UnityEngine.UI;
+using UnityEngine;
 
 public class Notification : MonoBehaviour
 {
@@ -11,25 +8,25 @@ public class Notification : MonoBehaviour
 
     public void Show(string message)
     {
-        notificationTmp.text = message;
-        Sequence sequence = DOTween.Sequence().Append(transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.InOutQuad))
+        this.notificationTmp.text = message;
+        Sequence sequence = DOTween.Sequence().Append(this.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.InOutQuad))
             .AppendInterval(0.9f)
-            .Append(transform.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InOutQuad));
+            .Append(this.transform.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InOutQuad));
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        ScaleZero();
+        this.ScaleZero();
     }
 
     public void ScaleOne()
     {
-        transform.localScale = Vector3.one;
+        this.transform.localScale = Vector3.one;
     }
 
     public void ScaleZero()
     {
-        transform.localScale = Vector3.zero;
+        this.transform.localScale = Vector3.zero;
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Order : MonoBehaviour
 {
@@ -12,24 +10,24 @@ public class Order : MonoBehaviour
     public void SetOriginOrder(int originOrder)
     {
         this.originOrder = originOrder;
-        SetOrder(originOrder);
+        this.SetOrder(originOrder);
     }
 
     public void SetMostFrontOrder(bool isMostFront)
     {
-        SetOrder(isMostFront ? 3800 : originOrder);
+        this.SetOrder(isMostFront ? 3800 : this.originOrder);
     }
 
     public void SetOrder(int order)
     {
-        foreach (var renderer in backRenderers)
+        foreach (var renderer in this.backRenderers)
         {
-            renderer.sortingLayerName = sortingLayerName;
+            renderer.sortingLayerName = this.sortingLayerName;
             renderer.sortingOrder = order;
         }
-        foreach (var renderer in middleRenderers)
+        foreach (var renderer in this.middleRenderers)
         {
-            renderer.sortingLayerName = sortingLayerName;
+            renderer.sortingLayerName = this.sortingLayerName;
             renderer.sortingOrder = order + 1;
         }
     }

@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using TMPro;
 using UnityEngine;
 
 public enum SHOPITEM_TYPE { CARD, ADD_DRAW }
 
-[System.Serializable]
+[Serializable]
 public class Item
 {
     public SHOPITEM_TYPE type;
@@ -16,52 +15,52 @@ public class Item
 public class ShopItem : MonoBehaviour
 {
     public Item item;
-    bool onItem = false;    //마우스가 아이템 위에 있는지
+    bool onItem;    //마우스가 아이템 위에 있는지
     Vector3 originalScale;
-    bool isMax = false;
+    bool isMax;
     [SerializeField] GameObject bottomBar;
     [SerializeField] TMP_Text priceTMP;
 
     public void Start()
     {
-        originalScale = transform.localScale == Vector3.zero ? Vector3.one * 0.35f : transform.localScale;
+        this.originalScale = this.transform.localScale == Vector3.zero ? Vector3.one * 0.35f : this.transform.localScale;
     }
 
     private void OnMouseUp()
     {
-        if (onItem && !FadeManager.Inst.isActiveFade && !isMax)
-            if (PlayerManager.Inst.card_piece >= item.price || PlayerManager.Inst.question_card > 0)
+        if (this.onItem && !FadeManager.Inst.isActiveFade && !this.isMax)
+            if (PlayerManager.Inst.card_piece >= this.item.price || PlayerManager.Inst.question_card > 0)
                 ShopManager.Inst.Click(this);
     }
 
     private void OnMouseEnter()
     {
-        if (!isMax && !FadeManager.Inst.isActiveFade)
+        if (!this.isMax && !FadeManager.Inst.isActiveFade)
         {
             SoundManager.Inst.Play(EVENTSOUND.CHOICE_MOUSEUP);
-            onItem = true;
-            transform.localScale = originalScale + Vector3.one * 0.02f;
+            this.onItem = true;
+            this.transform.localScale = this.originalScale + Vector3.one * 0.02f;
         }
     }
 
     private void OnMouseExit()
     {
-        onItem = false;
-        transform.localScale = originalScale;
+        this.onItem = false;
+        this.transform.localScale = this.originalScale;
     }
 
     public void ChangePriceColor()
     {
-        if (PlayerManager.Inst.card_piece >= item.price)
-            priceTMP.color = Color.green;
+        if (PlayerManager.Inst.card_piece >= this.item.price)
+            this.priceTMP.color = Color.green;
         else
-            priceTMP.color = Color.red;
+            this.priceTMP.color = Color.red;
     }
 
     public void CountMax()
     {
-        isMax = true;
-        transform.localScale = originalScale;
-        bottomBar.SetActive(false);
+        this.isMax = true;
+        this.transform.localScale = this.originalScale;
+        this.bottomBar.SetActive(false);
     }
 }

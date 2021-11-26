@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
@@ -7,17 +6,17 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] HpBar playerHpBar;
     [SerializeField] TutorialBook tutorialBook;
 
-    bool isGetCard = false;
-    bool isGetSkillBook = false;
-    bool isStartBattle = false;
+    bool isGetCard;
+    bool isGetSkillBook;
+    bool isStartBattle;
 
-    public static TutorialManager Inst = null;
+    public static TutorialManager Inst;
     [SerializeField] Tomb tomb;
 
     public bool isWin;
 
-    public bool isToturialFinish = false;
-    public bool isToturialOpenSkill = false;
+    public bool isToturialFinish;
+    public bool isToturialOpenSkill;
 
     private void Awake()
     {
@@ -27,7 +26,7 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(TutorialCoroutine());
+        this.StartCoroutine(this.TutorialCoroutine());
     }
 
     public IEnumerator TutorialCoroutine()
@@ -36,13 +35,13 @@ public class TutorialManager : MonoBehaviour
         switch (MapManager.Inst.tutorialIndex)
         {
             case 0:
-                StartCoroutine(TutorialStoryCoroutine());
+                this.StartCoroutine(this.TutorialStoryCoroutine());
                 break;
             case 1:
-                StartCoroutine(TutorialBattleCoroutine());
+                this.StartCoroutine(this.TutorialBattleCoroutine());
                 break;
             case 3:
-                StartCoroutine(TutorialSkillCoroutine());
+                this.StartCoroutine(this.TutorialSkillCoroutine());
                 break;
         }
     }
@@ -50,34 +49,34 @@ public class TutorialManager : MonoBehaviour
     public IEnumerator TutorialStoryCoroutine()      //기본 스토리 설명
     {
         SoundManager.Inst.Play(BACKGROUNDSOUND.TUTORIAL);
-        playerHpBar.SetHP(60);
+        this.playerHpBar.SetHP(60);
         //
         //yield return new WaitForSeconds(2);
         yield return new WaitForSeconds(1);
-        yield return StartCoroutine(GhostManager.Inst.ShowGhost());
+        yield return this.StartCoroutine(GhostManager.Inst.ShowGhost());
         for (int i = 0; i < TalkWindow.Inst.talks[0].Count; i++)
         {
             if (i == 0)
                 ArrowManager.Inst.CreateArrowObj(TalkWindow.Inst.transform.position + new Vector3(3, 0, 0), ArrowCreateDirection.RIGHT);
             else if (i == 4)
                 ArrowManager.Inst.CreateArrowObj(TalkWindow.Inst.transform.position + new Vector3(3, 0, 0), ArrowCreateDirection.RIGHT);
-            yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(TalkWindow.Inst.index, TalkWindow.Inst.index2));
-            yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
-            yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
+            yield return this.StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(TalkWindow.Inst.index, TalkWindow.Inst.index2));
+            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
+            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
             if (i == 3)
             {
                 ArrowManager.Inst.DestoryAllArrow();
                 //무덤 이미지 보이게 하기
-                tomb.gameObject.SetActive(true);
-                yield return StartCoroutine(tomb.SetLook());
-                ArrowManager.Inst.CreateArrowObj(tomb.transform.position + new Vector3(1.5f, 0, 0), ArrowCreateDirection.RIGHT);
-                yield return StartCoroutine(CheckGetCardCoroutine());
-                yield return StartCoroutine(CheckGetSkillBookCoroutine());
+                this.tomb.gameObject.SetActive(true);
+                yield return this.StartCoroutine(this.tomb.SetLook());
+                ArrowManager.Inst.CreateArrowObj(this.tomb.transform.position + new Vector3(1.5f, 0, 0), ArrowCreateDirection.RIGHT);
+                yield return this.StartCoroutine(this.CheckGetCardCoroutine());
+                yield return this.StartCoroutine(this.CheckGetSkillBookCoroutine());
                 ArrowManager.Inst.DestoryAllArrow();
             }
         }
         ArrowManager.Inst.DestoryAllArrow();
-        yield return StartCoroutine(TalkWindow.Inst.HideText());
+        yield return this.StartCoroutine(TalkWindow.Inst.HideText());
         MapManager.Inst.LoadMapScene(true);
         MapManager.Inst.tutorialIndex++;
         yield return null;
@@ -87,10 +86,10 @@ public class TutorialManager : MonoBehaviour
     {
         SoundManager.Inst.Play(BACKGROUNDSOUND.BATTLE);
 
-        yield return StartCoroutine(StageManager.Inst.CreateStageInTutorial());
+        yield return this.StartCoroutine(StageManager.Inst.CreateStageInTutorial());
         TurnManager.Inst.isTutorialLockCard = true;
         yield return new WaitForSeconds(1);
-        yield return StartCoroutine(GhostManager.Inst.ShowGhost());
+        yield return this.StartCoroutine(GhostManager.Inst.ShowGhost());
 
         for (int i = 0; i < TalkWindow.Inst.talks[2].Count; i++)
         {
@@ -133,9 +132,9 @@ public class TutorialManager : MonoBehaviour
                 ArrowManager.Inst.CreateArrowObj(TalkWindow.Inst.transform.position + new Vector3(3, 0, 0), ArrowCreateDirection.RIGHT);
             }
 
-            yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(2, i));
-            yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
-            yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
+            yield return this.StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(2, i));
+            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
+            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
 
             if (i == 1 || i == 2 || i == 4)
                 TalkWindow.Inst.index2 = i + 1;
@@ -144,7 +143,7 @@ public class TutorialManager : MonoBehaviour
                 TurnManager.Inst.isContinue = true;
                 ArrowManager.Inst.DestoryAllArrow();
                 MapManager.Inst.tutorialIndex++;
-                yield return StartCoroutine(TalkWindow.Inst.HideText());
+                yield return this.StartCoroutine(TalkWindow.Inst.HideText());
             }
             yield return null;
         }
@@ -154,10 +153,10 @@ public class TutorialManager : MonoBehaviour
     {
         SoundManager.Inst.Play(BACKGROUNDSOUND.BATTLE);
 
-        yield return StartCoroutine(StageManager.Inst.CreateStageInTutorial());
+        yield return this.StartCoroutine(StageManager.Inst.CreateStageInTutorial());
         TurnManager.Inst.isTutorialLockCard = true;
         yield return new WaitForSeconds(1);
-        yield return StartCoroutine(GhostManager.Inst.ShowGhost());
+        yield return this.StartCoroutine(GhostManager.Inst.ShowGhost());
 
         for (int i = 0; i < TalkWindow.Inst.talks[4].Count; i++)
         {
@@ -188,13 +187,13 @@ public class TutorialManager : MonoBehaviour
             else if (i == 4)
                 ArrowManager.Inst.DestoryAllArrow();
 
-            yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(4, i));
-            yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
-            yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
+            yield return this.StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(4, i));
+            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
+            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
 
             if (i == 0)
             {
-                while (!isToturialOpenSkill)
+                while (!this.isToturialOpenSkill)
                 {
                     yield return new WaitForEndOfFrame();
                 }
@@ -204,7 +203,7 @@ public class TutorialManager : MonoBehaviour
 
         CardManager.Inst.UnLockMyHandCardAll();
 
-        yield return StartCoroutine(TalkWindow.Inst.HideText());
+        yield return this.StartCoroutine(TalkWindow.Inst.HideText());
 
         yield return new WaitForSeconds(1);
 
@@ -218,19 +217,19 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator BookCoroutine()
     {
-        tutorialBook.gameObject.SetActive(true);
-        yield return StartCoroutine(tutorialBook.ShowBook());
+        this.tutorialBook.gameObject.SetActive(true);
+        yield return this.StartCoroutine(this.tutorialBook.ShowBook());
         yield return new WaitForSeconds(0.5f);
-        yield return StartCoroutine(tutorialBook.LoadTextTyping(0));
-        yield return StartCoroutine(tutorialBook.icons[0].GetComponent<TutorialBookIcon>().SetLook());
-        yield return StartCoroutine(CheckGetCardCoroutine());
-        yield return StartCoroutine(tutorialBook.LoadTextTyping(1));
-        yield return StartCoroutine(tutorialBook.LoadTextTyping(2));
-        yield return StartCoroutine(tutorialBook.icons[1].GetComponent<TutorialBookIcon>().SetLook());
-        yield return StartCoroutine(CheckGetSkillBookCoroutine());
-        yield return StartCoroutine(tutorialBook.LoadTextTyping(3));
-        yield return StartCoroutine(tutorialBook.icons[2].GetComponent<TutorialBookIcon>().SetLook());
-        yield return StartCoroutine(CheckStartBattleCoroutine());
+        yield return this.StartCoroutine(this.tutorialBook.LoadTextTyping(0));
+        yield return this.StartCoroutine(this.tutorialBook.icons[0].GetComponent<TutorialBookIcon>().SetLook());
+        yield return this.StartCoroutine(this.CheckGetCardCoroutine());
+        yield return this.StartCoroutine(this.tutorialBook.LoadTextTyping(1));
+        yield return this.StartCoroutine(this.tutorialBook.LoadTextTyping(2));
+        yield return this.StartCoroutine(this.tutorialBook.icons[1].GetComponent<TutorialBookIcon>().SetLook());
+        yield return this.StartCoroutine(this.CheckGetSkillBookCoroutine());
+        yield return this.StartCoroutine(this.tutorialBook.LoadTextTyping(3));
+        yield return this.StartCoroutine(this.tutorialBook.icons[2].GetComponent<TutorialBookIcon>().SetLook());
+        yield return this.StartCoroutine(this.CheckStartBattleCoroutine());
     }
 
     public IEnumerator GetCardCoroutine()
@@ -243,10 +242,10 @@ public class TutorialManager : MonoBehaviour
         RewardManager.Inst.AddReward(REWARD_TYPE.REWARD, (int)EVENT_REWARD_TYPE.CARD, 4, 2);
         RewardManager.Inst.AddReward(REWARD_TYPE.REWARD, (int)EVENT_REWARD_TYPE.CARD, 5, 1);
         RewardManager.Inst.AddReward(REWARD_TYPE.REWARD, (int)EVENT_REWARD_TYPE.SKILL_BOOK, 1);
-        yield return StartCoroutine(RewardManager.Inst.ShowRewardWindowCoroutine(false));
-        yield return StartCoroutine(RewardManager.Inst.RewardCoroutine(false));
+        yield return this.StartCoroutine(RewardManager.Inst.ShowRewardWindowCoroutine(false));
+        yield return this.StartCoroutine(RewardManager.Inst.RewardCoroutine(false));
         RewardManager.Inst.transform.GetChild(0).gameObject.SetActive(false);
-        isGetCard = true;
+        this.isGetCard = true;
     }
 
     IEnumerator GetSkillPageCoroutine()
@@ -259,13 +258,13 @@ public class TutorialManager : MonoBehaviour
         switch (icon.type)
         {
             case TutorialBookIconType.CARDS:
-                StartCoroutine(GetCardCoroutine());
+                this.StartCoroutine(this.GetCardCoroutine());
                 break;
             case TutorialBookIconType.SKILL:
-                ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.SKILL_BOOK, icon.transform.position, TopBar.Inst.GetIcon(TOPBAR_TYPE.SKILL).transform.position, SetActiveTrueTopBarSkillBook());
+                ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.SKILL_BOOK, icon.transform.position, TopBar.Inst.GetIcon(TOPBAR_TYPE.SKILL).transform.position, this.SetActiveTrueTopBarSkillBook());
                 break;
             case TutorialBookIconType.STARTBATTLE:
-                isStartBattle = true;
+                this.isStartBattle = true;
                 break;
         }
     }
@@ -273,7 +272,7 @@ public class TutorialManager : MonoBehaviour
     public IEnumerator SetActiveTrueTopBarSkillBook()
     {
         TopBar.Inst.GetIcon(TOPBAR_TYPE.SKILL).gameObject.SetActive(true);
-        isGetSkillBook = true;
+        this.isGetSkillBook = true;
         yield return null;
     }
 
@@ -281,9 +280,9 @@ public class TutorialManager : MonoBehaviour
     {
         while (true)
         {
-            if (isGetCard)
+            if (this.isGetCard)
             {
-                tutorialBook.icons[0].GetComponent<TutorialBookIcon>().GetItem();
+                this.tutorialBook.icons[0].GetComponent<TutorialBookIcon>().GetItem();
                 break;
             }
             yield return new WaitForEndOfFrame();
@@ -294,9 +293,9 @@ public class TutorialManager : MonoBehaviour
     {
         while (true)
         {
-            if (isGetSkillBook)
+            if (this.isGetSkillBook)
             {
-                tutorialBook.icons[1].GetComponent<TutorialBookIcon>().GetItem();
+                this.tutorialBook.icons[1].GetComponent<TutorialBookIcon>().GetItem();
                 break;
             }
             yield return new WaitForEndOfFrame();
@@ -307,9 +306,9 @@ public class TutorialManager : MonoBehaviour
     {
         while (true)
         {
-            if (isStartBattle)
+            if (this.isStartBattle)
             {
-                tutorialBook.gameObject.SetActive(false);
+                this.tutorialBook.gameObject.SetActive(false);
                 break;
             }
             yield return new WaitForEndOfFrame();

@@ -1,6 +1,4 @@
 ﻿using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -8,72 +6,73 @@ public class Card : MonoBehaviour
 {
     public int original_Num { get; private set; }
     int _final_Num;
+
     public int final_Num
     {
-        get
-        {
-            return _final_Num;
-        }
+        get => this._final_Num;
         private set
         {
-            _final_Num = Mathf.Clamp(value, 0, 5);
-            UpdateNumTMP();
+            this._final_Num = Mathf.Clamp(value, 0, 5);
+            this.UpdateNumTMP();
         }
     }
+
     public TMP_Text num_TMP;
 
     public PRS originPRS;
     public Transform parent;
-    public bool isFinish = false;
+    public bool isFinish;
     bool _isLock;
+
     public bool isLock
     {
-        get { return _isLock; }
-        private set { _isLock = value; }
+        get { return this._isLock; }
+        private set { this._isLock = value; }
     }
 
-
+    // TODO : 지금 이렇게
     public void Setup(int num)
     {
         this.original_Num = num;
         this.final_Num = num;
-        UpdateNumTMP();
+        this.UpdateNumTMP();
     }
 
     public void RevertOriginNum()
     {
-        final_Num = original_Num;
+        this.final_Num = this.original_Num;
     }
 
     public void UpdateNumTMP()
     {
-        num_TMP.text = (final_Num + 1).ToString();
+        this.num_TMP.text = (this.final_Num + 1).ToString();
     }
 
     private void Awake()
     {
-        parent = transform.parent;
+        this.parent = this.transform.parent;
     }
 
     public void MoveTransform(PRS prs, bool useDotween, float dotweenTime = 0)
     {
         if (useDotween)
         {
-            transform.parent.DOMove(prs.pos, dotweenTime);
-            transform.parent.DORotateQuaternion(prs.rot, dotweenTime);
-            transform.parent.DOScale(prs.scale, dotweenTime);
+            this.transform.parent.DOMove(prs.pos, dotweenTime);
+            this.transform.parent.DORotateQuaternion(prs.rot, dotweenTime);
+            this.transform.parent.DOScale(prs.scale, dotweenTime);
         }
         else
         {
-            transform.parent.position = prs.pos;
-            transform.parent.rotation = prs.rot;
-            transform.parent.localScale = prs.scale;
+            this.transform.parent.position = prs.pos;
+            this.transform.parent.rotation = prs.rot;
+            this.transform.parent.localScale = prs.scale;
         }
     }
+
     public void FinishCard()
     {
-        parent.localScale = Vector3.one * 0.1f;
-        SetActiveChildObj(false);
+        this.parent.localScale = Vector3.one * 0.1f;
+        this.SetActiveChildObj(false);
     }
 
     public void SetActiveChildObj(bool isActive)
@@ -99,7 +98,7 @@ public class Card : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (!FadeManager.Inst.isActiveFade && !isFinish && !isLock)
+        if (!FadeManager.Inst.isActiveFade && !this.isFinish && !this.isLock)
         {
             CardManager.Inst.CardMouseDown();
         }
@@ -107,14 +106,14 @@ public class Card : MonoBehaviour
 
     void OnMouseUp()
     {
-        if (!isFinish && !isLock)
+        if (!this.isFinish && !this.isLock)
             CardManager.Inst.CardMouseUp();
     }
 
     public void Use(GameObject obj = null)
     {
         if (obj.tag == "Player")
-            Player.Inst.Sheld(final_Num + 1);
+            Player.Inst.Sheld(this.final_Num + 1);
         else
         {
             Player.Inst.Attack();
@@ -124,36 +123,37 @@ public class Card : MonoBehaviour
 
     public void FinishScene()
     {
-        isFinish = true;
-        MoveTransform(originPRS, false);
-        MoveTransform(new PRS(originPRS.pos - Vector3.up * 3, originPRS.rot, originPRS.scale), true, 0.3f);
+        this.isFinish = true;
+        this.MoveTransform(this.originPRS, false);
+        this.MoveTransform(new PRS(this.originPRS.pos - Vector3.up * 3, this.originPRS.rot, this.originPRS.scale), true,
+            0.3f);
     }
 
     public void AddNum(int index)
     {
-        final_Num += index;
+        this.final_Num += index;
     }
 
     public void SetFinalNum(int index)
     {
-        final_Num = index;
+        this.final_Num = index;
     }
 
     public void SetColorAlpha(bool isHalf)
     {
         this.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, isHalf ? 0 : 1);
-        this.parent.GetChild(1).GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, isHalf ? 0.5f : 1);     //카드 앞면
-        this.parent.GetChild(2).GetComponent<TMP_Text>().color = new Color(0, 0, 0, isHalf ? 0.5f : 1);     //숫자 텍스트
+        this.parent.GetChild(1).GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, isHalf ? 0.5f : 1); //카드 앞면
+        this.parent.GetChild(2).GetComponent<TMP_Text>().color = new Color(0, 0, 0, isHalf ? 0.5f : 1); //숫자 텍스트
     }
 
     public void Lock()
     {
-        isLock = true;
+        this.isLock = true;
     }
 
     public void UnLock()
     {
-        isLock = false;
+        this.isLock = false;
     }
 
     public void SetOrderLayer(int index)

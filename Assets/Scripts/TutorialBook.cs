@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -11,10 +10,10 @@ public class TutorialBook : MonoBehaviour
 
     void Awake()
     {
-        for (int i = 0; i < texts.Length; i++)
+        for (int i = 0; i < this.texts.Length; i++)
         {
-            contents[i] = texts[i].text;
-            texts[i].text = "";
+            this.contents[i] = this.texts[i].text;
+            this.texts[i].text = "";
         }
     }
 
@@ -31,9 +30,9 @@ public class TutorialBook : MonoBehaviour
 
     public IEnumerator LoadTextTyping(int index)
     {
-        for (int i = 0; i < contents[index].Length; i++)
+        for (int i = 0; i < this.contents[index].Length; i++)
         {
-            texts[index].text = contents[index].Substring(0, i + 1);
+            this.texts[index].text = this.contents[index].Substring(0, i + 1);
             //texts[index].text = texts[index].text.Replace("\\n", "\n");
             //yield return new WaitForSeconds(0.05f);
             yield return new WaitForEndOfFrame();

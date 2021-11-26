@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
@@ -15,9 +14,9 @@ public class EnemyManager : MonoBehaviour
 
     public void UpdateStateTextAllEnemy()
     {
-        for (int i = 0; i < enemys.Count; i++)
+        for (int i = 0; i < this.enemys.Count; i++)
         {
-            enemys[i].UpdateStateText();
+            this.enemys[i].UpdateStateText();
         }
     }
 }

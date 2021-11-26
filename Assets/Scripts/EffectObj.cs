@@ -1,6 +1,4 @@
 ﻿using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EffectObj : MonoBehaviour
@@ -9,16 +7,16 @@ public class EffectObj : MonoBehaviour
 
     public void Init(EffectObjType _type)
     {
-        type = _type;
-        switch (type)
+        this.type = _type;
+        switch (this.type)
         {
             case EffectObjType.HIT:
                 break;
             case EffectObjType.SHELD:
-                SheldAnimation();
+                this.SheldAnimation();
                 break;
             case EffectObjType.HEAL:
-                HealAnimation();
+                this.HealAnimation();
                 break;
         }
     }

@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -22,27 +19,27 @@ public class Player : MonoBehaviour
     public void Sheld(int _sheld)
     {
         EffectManager.Inst.CreateEffectObj(EffectObjType.SHELD, this.transform.position + new Vector3(0, 2, -15), 0, 0.7f);
-        hpbar.Sheld(_sheld);
+        this.hpbar.Sheld(_sheld);
     }
 
     public void Damage(int damage)          //플레이어가 공격 당할때 호출
     {
         //EffectManager.Inst.CreateEffectObj(EffectObjType.HIT, this.transform.position + new Vector3(0, 1, -15));
-        hpbar.Damage(damage);
+        this.hpbar.Damage(damage);
     }
 
     public void Dead()
     {
         SoundManager.Inst.Play(BATTLESOUND.GAME_FAILD);
         this.GetComponent<Animator>().SetTrigger("Dead");
-        hpbar.UpdateHp();
+        this.hpbar.UpdateHp();
         TurnManager.Inst.isFinish = true;
     }
 
     public void DeadAnimationFinish()
     {
         GameManager.Inst.GameOver();
-        Destroy(hpbar.gameObject);
+        Destroy(this.hpbar.gameObject);
         Destroy(this.gameObject);
     }
 }
