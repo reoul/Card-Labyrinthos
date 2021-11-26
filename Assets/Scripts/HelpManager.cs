@@ -6,31 +6,31 @@ public class HelpManager : MonoBehaviour
 {
     public static HelpManager Inst;
 
-    bool[] isShowOnce;
-    [SerializeField] List<GameObject> helps;
+    private bool[] isShowOnce;
+    [SerializeField] private List<GameObject> helps;
 
     private void Awake()
     {
         if (Inst == null)
         {
             Inst = this;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 
-        this.isShowOnce = new bool[7];
+        isShowOnce = new bool[7];
     }
 
     public void ShowHelp(HELP_TYPE type)
     {
-        if (!this.isShowOnce[(int)type])
+        if (!isShowOnce[(int)type])
         {
             SoundManager.Inst.Play(REWARDSOUND.SHOW_REWARD_WINDOW);
-            this.helps[(int)type].SetActive(true);
-            this.isShowOnce[(int)type] = true;
+            helps[(int)type].SetActive(true);
+            isShowOnce[(int)type] = true;
         }
     }
 }

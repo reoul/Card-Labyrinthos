@@ -44,22 +44,19 @@ public class MapManager : MonoBehaviour
         if (Inst == null)
         {
             Inst = this;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
     public FieldData fieldData;
-    [SerializeField]
-    int selectFieldIndex;
+    [SerializeField] private int selectFieldIndex;
 
-    [SerializeField]
-    bool[] isClear;     //필드 클리어 여부, 해당 필드가 끝이 날때 변경
-    [SerializeField]
-    GameObject fieldParent;
+    [SerializeField] private bool[] isClear;     //필드 클리어 여부, 해당 필드가 끝이 날때 변경
+    [SerializeField] private GameObject fieldParent;
     public Field[] fields;
 
     public bool isFinishToturialBattle;
@@ -83,11 +80,11 @@ public class MapManager : MonoBehaviour
     public bool isTutorialInShop;
     public bool isTutorialBoss;
 
-    bool isMoveCamera = false;
-    Vector3 lastMousePos;
+    private bool isMoveCamera = false;
+    private Vector3 lastMousePos;
 
     public int tutorialIndex;
-    bool isBattleDebuffOff;
+    private bool isBattleDebuffOff;
     public int lastField;
     public bool isFinishTutorialEventField;
 
@@ -122,82 +119,90 @@ public class MapManager : MonoBehaviour
     public void IconMouseUp(Field field)
     {
         SoundManager.Inst.Play(MAPSOUND.CHOICE_FIELD);
-        this.fieldData = field.fieldData;
-        this.isBattleDebuffOff = field.isDebuffOff;
-        for (int i = 0; i < this.fields.Length; i++)
+        fieldData = field.fieldData;
+        isBattleDebuffOff = field.isDebuffOff;
+        for (int i = 0; i < fields.Length; i++)
         {
-            if (this.fields[i].Equals(field))
+            if (fields[i].Equals(field))
             {
-                this.selectFieldIndex = i;
+                selectFieldIndex = i;
             }
         }
-        FadeManager.FadeEvent += this.LoadScene;
-        this.StartEvent();
+        FadeManager.FadeEvent += LoadScene;
+        StartEvent();
     }
 
     public void LoadScene(object obj, EventArgs e)
     {
-        SceneManager.LoadScene(this.fieldData.field_type.ToString());
+        SceneManager.LoadScene(fieldData.field_type.ToString());
     }
 
     public void LoadMapScene(bool clear)
     {
-        if (this.isClear.Length != 0) this.isClear[this.selectFieldIndex] = clear;
-        if (clear) this.lastField = this.selectFieldIndex;
+        if (isClear.Length != 0)
+        {
+            isClear[selectFieldIndex] = clear;
+        }
+
+        if (clear)
+        {
+            lastField = selectFieldIndex;
+        }
+
         TurnManager.Inst.isFinish = false;
-        this.CheckTutorialReady();
-        this.fieldData.field_type = FIELD_TYPE.MAP;
+        CheckTutorialReady();
+        fieldData.field_type = FIELD_TYPE.MAP;
         TalkWindow.Inst.SetFlagIndex(false);
         TalkWindow.Inst.SetFlagNext(false);
         TalkWindow.Inst.SetSkip(false);
-        this.isTutorialOpenBag = false;
-        FadeManager.FadeEvent += this.LoadScene;
-        this.StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null, this.FieldClearCheckCoroutine(), this.InitSkillTime(), null, this.GetTutorialCoroutine()));
+        isTutorialOpenBag = false;
+        FadeManager.FadeEvent += LoadScene;
+        StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null, FieldClearCheckCoroutine(), InitSkillTime(), null, GetTutorialCoroutine()));
     }
 
     public void LoadTutorialScene()
     {
-        this.fieldData.field_type = FIELD_TYPE.TUTORIAL;
-        FadeManager.FadeEvent += this.LoadScene;
-        this.StartCoroutine(FadeManager.Inst.FadeInOut());
+        fieldData.field_type = FIELD_TYPE.TUTORIAL;
+        FadeManager.FadeEvent += LoadScene;
+        StartCoroutine(FadeManager.Inst.FadeInOut());
     }
 
-    void StartEvent()
+    private void StartEvent()
     {
-        switch (this.fieldData.field_type)
+        switch (fieldData.field_type)
         {
             case FIELD_TYPE.BATTLE:
-                this.StartCoroutine(FadeManager.Inst.FadeInOut(TurnManager.Inst.ShowDebuffCoroutine(), null, null,
+                StartCoroutine(FadeManager.Inst.FadeInOut(TurnManager.Inst.ShowDebuffCoroutine(), null, null,
                     PlayerManager.Inst.SetupGameCoroutine(), null, null,
                         CardManager.Inst.InitCoroutine(), TurnManager.Inst.StartGameCoroutine()));
                 break;
             case FIELD_TYPE.EVENT:
-                this.StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null,
+                StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null,
                     EventManager.Inst.RandomEventCoroutine(), null, null,
                         CardManager.Inst.InitCoroutine(), TurnManager.Inst.StartGameCoroutine()));
                 break;
             case FIELD_TYPE.SHOP:
-                this.StartCoroutine(FadeManager.Inst.FadeInOut());
+                StartCoroutine(FadeManager.Inst.FadeInOut());
                 break;
             case FIELD_TYPE.REST:
-                this.StartCoroutine(FadeManager.Inst.FadeInOut());
+                StartCoroutine(FadeManager.Inst.FadeInOut());
                 break;
             case FIELD_TYPE.MAP:
-                this.StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null, this.FieldClearCheckCoroutine(), this.InitSkillTime(), null, this.GetTutorialCoroutine()));
+                StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null, FieldClearCheckCoroutine(), InitSkillTime(), null, GetTutorialCoroutine()));
                 break;
             case FIELD_TYPE.BOSS:
-                this.StartCoroutine(FadeManager.Inst.FadeInOut(TurnManager.Inst.ShowDebuffCoroutine(), null, null,
+                StartCoroutine(FadeManager.Inst.FadeInOut(TurnManager.Inst.ShowDebuffCoroutine(), null, null,
                     PlayerManager.Inst.SetupGameCoroutine(), null, null,
                         CardManager.Inst.InitCoroutine(), TurnManager.Inst.StartGameCoroutine()));
                 break;
             case FIELD_TYPE.TUTORIAL:
-                this.StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null,
+                StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null,
                     null, null, null,
                         TutorialManager.Inst.TutorialCoroutine()));
                 break;
             case FIELD_TYPE.TUTORIAL2:
-                this.StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null,
-                    PlayerManager.Inst.SetupGameCoroutine(), null, null, this.tutorialIndex == 1 ? CardManager.Inst.FixedCardNumToturial2Coroutine() : null, CardManager.Inst.InitCoroutine(), TurnManager.Inst.StartGameCoroutine()));
+                StartCoroutine(FadeManager.Inst.FadeInOut(null, null, null,
+                    PlayerManager.Inst.SetupGameCoroutine(), null, null, tutorialIndex == 1 ? CardManager.Inst.FixedCardNumToturial2Coroutine() : null, CardManager.Inst.InitCoroutine(), TurnManager.Inst.StartGameCoroutine()));
                 break;
         }
     }
@@ -205,84 +210,96 @@ public class MapManager : MonoBehaviour
     public IEnumerator FieldClearCheckCoroutine()
     {
         SoundManager.Inst.Play(BACKGROUNDSOUND.MAP);
-        if (this.fieldParent == null) this.fieldParent = GameObject.Find("FieldParent");
-        this.fields = this.fieldParent.GetComponentsInChildren<Field>(true);
-        if (this.isClear.Length == 0) this.isClear = new bool[this.fields.Length];
-        this.isClear[0] = true;
-
-        for (int i = 0; i < this.fields.Length; i++)
+        if (fieldParent == null)
         {
-            this.fields[i].isClear = this.isClear[i];
-            for (int j = 0; j < this.fields.Length; j++)
+            fieldParent = GameObject.Find("FieldParent");
+        }
+
+        fields = fieldParent.GetComponentsInChildren<Field>(true);
+        if (isClear.Length == 0)
+        {
+            isClear = new bool[fields.Length];
+        }
+
+        isClear[0] = true;
+
+        for (int i = 0; i < fields.Length; i++)
+        {
+            fields[i].isClear = isClear[i];
+            for (int j = 0; j < fields.Length; j++)
             {
-                if (Vector3.Distance(this.fields[i].transform.position, this.fields[j].transform.position) < 2.5f &&
-                        Vector3.Distance(this.fields[i].transform.position, this.fields[j].transform.position) >= 1.8f)
-                    this.fields[i].surroundingObj.Add(this.fields[j].gameObject);
+                if (Vector3.Distance(fields[i].transform.position, fields[j].transform.position) < 2.5f &&
+                        Vector3.Distance(fields[i].transform.position, fields[j].transform.position) >= 1.8f)
+                {
+                    fields[i].surroundingObj.Add(fields[j].gameObject);
+                }
             }
 
-            this.fields[i].UpdateClearImage();
+            fields[i].UpdateClearImage();
         }
-        Vector3 pos = Map.Inst.transform.parent.transform.position - this.fields[this.lastField].transform.position;
+        Vector3 pos = Map.Inst.transform.parent.transform.position - fields[lastField].transform.position;
         Map.Inst.MoveMap(new Vector3(pos.x, pos.y, 0));
         yield return null;
     }
 
     public void CheckTutorialReady()
     {
-        for (int i = this.isClear.Length - 1; i >= 0; i--)
+        for (int i = isClear.Length - 1; i >= 0; i--)
         {
-            if (this.isClear[i])
+            if (isClear[i])
             {
                 if (i == 1)     //가방
                 {
-                    if (this.isFinishToturialBattle)
+                    if (isFinishToturialBattle)
                     {
-                        this.isTutorialReadyBag = true;
+                        isTutorialReadyBag = true;
                         break;
                     }
                 }
                 else if (i == 2)    //저주
                 {
-                    if (this.isFinishToturialBag)
+                    if (isFinishToturialBag)
                     {
-                        this.isTutorialReadyDebuff = true;
+                        isTutorialReadyDebuff = true;
                         break;
                     }
                 }
                 else if (i == 3)    //휴식방
                 {
-                    if (this.isFinishToturialDebuff)
+                    if (isFinishToturialDebuff)
                     {
-                        this.isTutorialReadyRest = true;
+                        isTutorialReadyRest = true;
                         break;
                     }
                 }
                 else if (i == 4)    //이벤트
                 {
-                    if (this.isFinishToturialRest)
+                    if (isFinishToturialRest)
                     {
-                        this.isTutorialReadyEvent = true;
+                        isTutorialReadyEvent = true;
                         break;
                     }
                 }
                 else if (i == 5)    //상점
                 {
-                    if (this.isFinishToturialEvent)
+                    if (isFinishToturialEvent)
                     {
-                        this.isTutorialReadyShop = true;
+                        isTutorialReadyShop = true;
                         break;
                     }
                 }
                 else if (i == 10)    //보스
                 {
-                    if (this.isFinishToturialShop)
+                    if (isFinishToturialShop)
                     {
-                        this.isTutorialReadyBoss = true;
+                        isTutorialReadyBoss = true;
                         break;
                     }
                 }
                 else
+                {
                     break;
+                }
             }
         }
     }
@@ -293,163 +310,181 @@ public class MapManager : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator GetTutorialCoroutine()
+    private IEnumerator GetTutorialCoroutine()
     {
-        if (!this.isFinishToturialBattle)
-            return this.MapTutorialBattleCoroutine();
-        if (this.isTutorialReadyBag && !this.isFinishToturialBag)
-            return this.MapTutorialBagCoroutine();
-        if (this.isTutorialReadyDebuff && !this.isFinishToturialDebuff)
-            return this.MapTutorialDebuffCoroutine();
-        if (this.isTutorialReadyRest && !this.isFinishToturialRest)
-            return this.MapTutorialRestCoroutine();
-        if (this.isTutorialReadyEvent && !this.isFinishToturialEvent)
+        if (!isFinishToturialBattle)
         {
-            this.isFinishToturialEvent = true;
-            return this.MapTutorialEventCoroutine();
+            return MapTutorialBattleCoroutine();
         }
 
-        if (this.isTutorialReadyShop && !this.isFinishToturialShop)
-            return this.MapTutorialShopCoroutine();
-        if (this.isTutorialReadyBoss && !this.isFinishToturialBoss)
+        if (isTutorialReadyBag && !isFinishToturialBag)
         {
-            this.isFinishToturialBoss = true;
-            return this.MapTutorialBossCoroutine();
+            return MapTutorialBagCoroutine();
+        }
+
+        if (isTutorialReadyDebuff && !isFinishToturialDebuff)
+        {
+            return MapTutorialDebuffCoroutine();
+        }
+
+        if (isTutorialReadyRest && !isFinishToturialRest)
+        {
+            return MapTutorialRestCoroutine();
+        }
+
+        if (isTutorialReadyEvent && !isFinishToturialEvent)
+        {
+            isFinishToturialEvent = true;
+            return MapTutorialEventCoroutine();
+        }
+
+        if (isTutorialReadyShop && !isFinishToturialShop)
+        {
+            return MapTutorialShopCoroutine();
+        }
+
+        if (isTutorialReadyBoss && !isFinishToturialBoss)
+        {
+            isFinishToturialBoss = true;
+            return MapTutorialBossCoroutine();
         }
         return null;
     }
 
     public IEnumerator MapTutorialBattleCoroutine()
     {
-        yield return this.StartCoroutine(GhostManager.Inst.ShowGhost());
+        yield return StartCoroutine(GhostManager.Inst.ShowGhost());
         for (int i = 0; i < TalkWindow.Inst.talks[1].Count; i++)
         {
             if (i == 0)
             {
-                ArrowManager.Inst.CreateArrowObj(TalkWindow.Inst.transform.position + new Vector3(3, 0, 0), ArrowCreateDirection.RIGHT);
+                ArrowManager.Inst.CreateArrowObj(TalkWindow.Inst.transform.position + new Vector3(3, 0, 0), ArrowCreateDirection.Right);
             }
             else if (i == 2)
             {
                 ArrowManager.Inst.DestoryAllArrow();
-                ArrowManager.Inst.CreateArrowObj(this.fields[0].transform.position + -Vector3.right, ArrowCreateDirection.LEFT, this.fields[0].transform);
+                ArrowManager.Inst.CreateArrowObj(fields[0].transform.position + -Vector3.right, ArrowCreateDirection.Left, fields[0].transform);
             }
             else if (i == 3)
             {
                 ArrowManager.Inst.DestoryAllArrow();
-                ArrowManager.Inst.CreateArrowObj(this.fields[1].transform.position + -Vector3.right, ArrowCreateDirection.LEFT, this.fields[1].transform);
+                ArrowManager.Inst.CreateArrowObj(fields[1].transform.position + -Vector3.right, ArrowCreateDirection.Left, fields[1].transform);
             }
-            yield return this.StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(1, i));
-            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
-            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
+            yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(1, i));
+            yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
+            yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
         }
 
-        this.isFinishToturialBattle = true;
-        yield return this.StartCoroutine(TalkWindow.Inst.HideText());
+        isFinishToturialBattle = true;
+        yield return StartCoroutine(TalkWindow.Inst.HideText());
         yield return null;
     }
     public IEnumerator MapTutorialBagCoroutine()       //가방 설명
     {
-        yield return this.StartCoroutine(GhostManager.Inst.ShowGhost());
+        yield return StartCoroutine(GhostManager.Inst.ShowGhost());
         for (int i = 0; i < TalkWindow.Inst.talks[3].Count; i++)
         {
             if (i == 0)
             {
-                ArrowManager.Inst.CreateArrowObj(TopBar.Inst.GetIcon(TOPBAR_TYPE.BAG).transform.position + new Vector3(0, -1, 0), ArrowCreateDirection.DOWN);
+                ArrowManager.Inst.CreateArrowObj(TopBar.Inst.GetIcon(TOPBAR_TYPE.BAG).transform.position + new Vector3(0, -1, 0), ArrowCreateDirection.Down);
             }
             else if (i == 1)
             {
                 ArrowManager.Inst.DestoryAllArrow();
             }
-            yield return this.StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(3, i));
-            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
-            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
-            while (!this.isTutorialOpenBag)
+            yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(3, i));
+            yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
+            yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
+            while (!isTutorialOpenBag)
             {
                 yield return new WaitForEndOfFrame();
             }
         }
-        yield return this.StartCoroutine(TalkWindow.Inst.HideText());
-        this.isFinishToturialBag = true;
+        yield return StartCoroutine(TalkWindow.Inst.HideText());
+        isFinishToturialBag = true;
         yield return null;
     }
 
     public IEnumerator MapTutorialDebuffCoroutine()       //Debuff 설명
     {
-        yield return this.StartCoroutine(GhostManager.Inst.ShowGhost());
+        yield return StartCoroutine(GhostManager.Inst.ShowGhost());
         for (int i = 0; i < TalkWindow.Inst.talks[5].Count; i++)
         {
-            yield return this.StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(5, i));
-            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
-            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
+            yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(5, i));
+            yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
+            yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
         }
-        yield return this.StartCoroutine(TalkWindow.Inst.HideText());
-        this.isFinishToturialDebuff = true;
+        yield return StartCoroutine(TalkWindow.Inst.HideText());
+        isFinishToturialDebuff = true;
         TurnManager.Inst.isTutorialDebuffBar = true;
         yield return null;
     }
     public IEnumerator MapTutorialRestCoroutine()
     {
-        yield return this.StartCoroutine(GhostManager.Inst.ShowGhost());
+        yield return StartCoroutine(GhostManager.Inst.ShowGhost());
         for (int i = 0; i < TalkWindow.Inst.talks[7].Count; i++)
         {
-            ArrowManager.Inst.CreateArrowObj(this.fields[4].transform.position + Vector3.right, ArrowCreateDirection.RIGHT, this.fields[4].transform);
-            yield return this.StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(7, i));
-            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
-            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
+            ArrowManager.Inst.CreateArrowObj(fields[4].transform.position + Vector3.right, ArrowCreateDirection.Right, fields[4].transform);
+            yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(7, i));
+            yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
+            yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
         }
         ArrowManager.Inst.DestoryAllArrow();
-        yield return this.StartCoroutine(TalkWindow.Inst.HideText());
-        this.isFinishToturialRest = true;
+        yield return StartCoroutine(TalkWindow.Inst.HideText());
+        isFinishToturialRest = true;
         yield return null;
     }
     public IEnumerator MapTutorialEventCoroutine()
     {
-        yield return this.StartCoroutine(GhostManager.Inst.ShowGhost());
+        yield return StartCoroutine(GhostManager.Inst.ShowGhost());
         for (int i = 0; i < TalkWindow.Inst.talks[9].Count; i++)
         {
-            ArrowManager.Inst.CreateArrowObj(this.fields[5].transform.position + Vector3.right, ArrowCreateDirection.RIGHT, this.fields[5].transform);
-            yield return this.StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(9, i));
-            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
-            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
+            ArrowManager.Inst.CreateArrowObj(fields[5].transform.position + Vector3.right, ArrowCreateDirection.Right, fields[5].transform);
+            yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(9, i));
+            yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
+            yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
         }
         ArrowManager.Inst.DestoryAllArrow();
-        this.isFinishToturialEvent = true;
-        yield return this.StartCoroutine(TalkWindow.Inst.HideText());
-        this.isFinishTutorialEventField = true;
+        isFinishToturialEvent = true;
+        yield return StartCoroutine(TalkWindow.Inst.HideText());
+        isFinishTutorialEventField = true;
         yield return null;
     }
     public IEnumerator MapTutorialShopCoroutine()
     {
-        yield return this.StartCoroutine(GhostManager.Inst.ShowGhost());
-        this.fields[7].isReady = false;
+        yield return StartCoroutine(GhostManager.Inst.ShowGhost());
+        fields[7].isReady = false;
         for (int i = 0; i < TalkWindow.Inst.talks[11].Count; i++)
         {
-            ArrowManager.Inst.CreateArrowObj(this.fields[6].transform.position + Vector3.right, ArrowCreateDirection.RIGHT, this.fields[6].transform);
-            yield return this.StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(11, i));
-            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
-            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
+            ArrowManager.Inst.CreateArrowObj(fields[6].transform.position + Vector3.right, ArrowCreateDirection.Right, fields[6].transform);
+            yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(11, i));
+            yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
+            yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
         }
-        yield return this.StartCoroutine(TalkWindow.Inst.HideText());
-        this.isFinishToturialShop = true;
+        yield return StartCoroutine(TalkWindow.Inst.HideText());
+        isFinishToturialShop = true;
         yield return null;
     }
     public IEnumerator MapTutorialBossCoroutine()
     {
-        this.fields[6].isReady = false;
-        yield return this.StartCoroutine(GhostManager.Inst.ShowGhost());
+        fields[6].isReady = false;
+        yield return StartCoroutine(GhostManager.Inst.ShowGhost());
         for (int i = 0; i < TalkWindow.Inst.talks[13].Count; i++)
         {
             if (i == 0)
-                ArrowManager.Inst.CreateArrowObj(this.fields[11].transform.position + Vector3.right * 2, ArrowCreateDirection.RIGHT, this.fields[11].transform);
-            yield return this.StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(13, i));
-            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
-            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
+            {
+                ArrowManager.Inst.CreateArrowObj(fields[11].transform.position + Vector3.right * 2, ArrowCreateDirection.Right, fields[11].transform);
+            }
+
+            yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(13, i));
+            yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
+            yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
         }
         ArrowManager.Inst.DestoryAllArrow();
-        yield return this.StartCoroutine(TalkWindow.Inst.HideText());
-        this.isFinishToturialBoss = true;
-        this.isTutorialBoss = true;
-        this.fields[6].isReady = true;
+        yield return StartCoroutine(TalkWindow.Inst.HideText());
+        isFinishToturialBoss = true;
+        isTutorialBoss = true;
+        fields[6].isReady = true;
         yield return null;
     }
 }

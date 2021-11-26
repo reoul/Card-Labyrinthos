@@ -8,12 +8,12 @@ public class TutorialBook : MonoBehaviour
     public string[] contents;
     public GameObject[] icons;
 
-    void Awake()
+    private void Awake()
     {
-        for (int i = 0; i < this.texts.Length; i++)
+        for (int i = 0; i < texts.Length; i++)
         {
-            this.contents[i] = this.texts[i].text;
-            this.texts[i].text = "";
+            contents[i] = texts[i].text;
+            texts[i].text = "";
         }
     }
 
@@ -21,18 +21,21 @@ public class TutorialBook : MonoBehaviour
     {
         while (true)
         {
-            this.GetComponent<SpriteRenderer>().color += Color.black * Time.deltaTime;
-            if (this.GetComponent<SpriteRenderer>().color.a >= 1)
+            GetComponent<SpriteRenderer>().color += Color.black * Time.deltaTime;
+            if (GetComponent<SpriteRenderer>().color.a >= 1)
+            {
                 break;
+            }
+
             yield return new WaitForEndOfFrame();
         }
     }
 
     public IEnumerator LoadTextTyping(int index)
     {
-        for (int i = 0; i < this.contents[index].Length; i++)
+        for (int i = 0; i < contents[index].Length; i++)
         {
-            this.texts[index].text = this.contents[index].Substring(0, i + 1);
+            texts[index].text = contents[index].Substring(0, i + 1);
             //texts[index].text = texts[index].text.Replace("\\n", "\n");
             //yield return new WaitForSeconds(0.05f);
             yield return new WaitForEndOfFrame();

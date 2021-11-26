@@ -14,9 +14,9 @@ public class EnemyManager : MonoBehaviour
 
     public void UpdateStateTextAllEnemy()
     {
-        for (int i = 0; i < this.enemys.Count; i++)
+        foreach (Enemy enemy in enemys)
         {
-            this.enemys[i].UpdateStateText();
+            enemy.UpdateStateText();
         }
     }
 }

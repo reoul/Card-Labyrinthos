@@ -3,25 +3,26 @@ using UnityEngine;
 
 public class Tomb : MonoBehaviour
 {
-    bool onIcon;   //마우스가 필드 위에 있는지
-    bool isGet;
-    bool isFade = true;
+    private bool onIcon;   //마우스가 필드 위에 있는지
+    private bool isGet;
+    private bool isFade = true;
 
-    void OnMouseEnter()
+    private void OnMouseEnter()
     {
-        this.onIcon = true;
+        onIcon = true;
     }
-    void OnMouseExit()
+
+    private void OnMouseExit()
     {
-        this.onIcon = false;
+        onIcon = false;
     }
 
     private void OnMouseUp()
     {
-        if (this.onIcon && !this.isGet && !this.isFade)
+        if (onIcon && !isGet && !isFade)
         {
-            this.StartCoroutine(TutorialManager.Inst.GetCardCoroutine());
-            this.isFade = true;
+            StartCoroutine(TutorialManager.Inst.GetCardCoroutine());
+            isFade = true;
         }
     }
 
@@ -29,18 +30,21 @@ public class Tomb : MonoBehaviour
     {
         while (true)
         {
-            this.GetComponent<SpriteRenderer>().color += Color.black * Time.deltaTime;
-            if (this.GetComponent<SpriteRenderer>().color.a >= 1)
+            GetComponent<SpriteRenderer>().color += Color.black * Time.deltaTime;
+            if (GetComponent<SpriteRenderer>().color.a >= 1)
+            {
                 break;
+            }
+
             yield return new WaitForEndOfFrame();
         }
 
-        this.isFade = false;
+        isFade = false;
     }
 
     public void GetItem()
     {
-        this.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
-        this.isGet = true;
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
+        isGet = true;
     }
 }

@@ -3,32 +3,37 @@ using UnityEngine;
 
 public class EffectObj : MonoBehaviour
 {
-    EffectObjType type;
+    private EffectObjType type;
 
-    public void Init(EffectObjType _type)
+    public void Init(EffectObjType type)
     {
-        this.type = _type;
+        this.type = type;
         switch (this.type)
         {
-            case EffectObjType.HIT:
+            case EffectObjType.Hit:
                 break;
-            case EffectObjType.SHELD:
-                this.SheldAnimation();
+            case EffectObjType.Sheld:
+                SheldAnimation();
                 break;
-            case EffectObjType.HEAL:
-                this.HealAnimation();
+            case EffectObjType.Heal:
+                HealAnimation();
                 break;
         }
     }
 
-    void SheldAnimation()
+    private void SheldAnimation()
     {
-        this.transform.DOMoveY(this.transform.position.y - 0.5f, 1);
-        this.transform.GetComponent<SpriteRenderer>().DOFade(1, 0.5f);
+        transform.DOMoveY(transform.position.y - 0.5f, 1);
+        AnimationObjFade();
     }
 
-    void HealAnimation()
+    private void HealAnimation()
     {
-        this.transform.GetComponent<SpriteRenderer>().DOFade(1, 0.5f);
+        AnimationObjFade();
+    }
+
+    private void AnimationObjFade()
+    {
+        transform.GetComponent<SpriteRenderer>().DOFade(1, 0.5f);
     }
 }

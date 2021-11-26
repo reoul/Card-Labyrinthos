@@ -11,16 +11,16 @@ public class Test : MonoBehaviour
 
     private Vector3[] waypoints;
 
-    void Start()
+    private void Start()
     {
         //DOTween.Init(false, true, LogBehaviour.ErrorsOnly);
 
-        this.waypoints = new Vector3[3];
-        this.waypoints.SetValue(this.waypoint1.position, 0);
-        this.waypoints.SetValue(this.waypoint2.position, 1);
-        this.waypoints.SetValue(this.waypoint3.position, 2);
+        waypoints = new Vector3[3];
+        waypoints.SetValue(waypoint1.position, 0);
+        waypoints.SetValue(waypoint2.position, 1);
+        waypoints.SetValue(waypoint3.position, 2);
 
-        this.transform.DOPath(this.waypoints, 0.7f, PathType.CatmullRom).SetLookAt(new Vector3(0, 0, 0)).SetEase(this.ease).SetLoops(-1, LoopType.Yoyo);
+        transform.DOPath(waypoints, 0.7f, PathType.CatmullRom).SetLookAt(new Vector3(0, 0, 0)).SetEase(ease).SetLoops(-1, LoopType.Yoyo);
     }
 
 }

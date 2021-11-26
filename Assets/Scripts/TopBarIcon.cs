@@ -3,43 +3,44 @@
 public class TopBarIcon : MonoBehaviour
 {
     public TOPBAR_TYPE type;
-    bool onTopBarIcon;   //마우스가 필드 위에 있는지
-    bool _isLock;
+    private bool onTopBarIcon;   //마우스가 필드 위에 있는지
+    private bool _isLock;
     public bool isLock
     {
-        get { return this._isLock; }
-        private set { this._isLock = value; }
+        get { return _isLock; }
+        private set { _isLock = value; }
     }
 
-    void OnMouseEnter()
+    private void OnMouseEnter()
     {
         SoundManager.Inst.Play(EVENTSOUND.CHOICE_MOUSEUP);
-        this.onTopBarIcon = true;
-        switch (this.type)
+        onTopBarIcon = true;
+        switch (type)
         {
             case TOPBAR_TYPE.BAG:
             case TOPBAR_TYPE.SETTING:
             case TOPBAR_TYPE.SKILL:
-                TopBar.Inst.OnMouseEnterIcon(this.type);
+                TopBar.Inst.OnMouseEnterIcon(type);
                 break;
         }
     }
-    void OnMouseExit()
+
+    private void OnMouseExit()
     {
-        this.onTopBarIcon = false;
-        switch (this.type)
+        onTopBarIcon = false;
+        switch (type)
         {
             case TOPBAR_TYPE.BAG:
             case TOPBAR_TYPE.SETTING:
             case TOPBAR_TYPE.SKILL:
-                TopBar.Inst.OnMouseExitIcon(this.type);
+                TopBar.Inst.OnMouseExitIcon(type);
                 break;
         }
     }
 
     private void OnMouseUp()
     {
-        if (this.onTopBarIcon)
+        if (onTopBarIcon)
         {
             TopBar.Inst.Open(this);
         }
@@ -47,11 +48,11 @@ public class TopBarIcon : MonoBehaviour
 
     public void Lock()
     {
-        this.isLock = true;
+        isLock = true;
     }
     public void UnLock()
     {
-        this.isLock = false;
+        isLock = false;
     }
 
 }

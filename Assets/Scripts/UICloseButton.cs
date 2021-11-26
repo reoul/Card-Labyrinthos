@@ -2,21 +2,23 @@
 
 public class UICloseButton : MonoBehaviour
 {
-    bool isOnButton;
+    private bool isOnButton;
 
     private void OnMouseEnter()
     {
-        this.isOnButton = true;
+        isOnButton = true;
     }
 
     private void OnMouseExit()
     {
-        this.isOnButton = false;
+        isOnButton = false;
     }
 
     private void OnMouseUp()
     {
-        if (this.isOnButton)
+        if (isOnButton)
+        {
             GameManager.Inst.CloseAllUI();
+        }
     }
 }

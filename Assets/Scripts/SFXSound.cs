@@ -3,29 +3,29 @@ using UnityEngine;
 
 public class SFXSound : MonoBehaviour
 {
-    AudioSource audioSource;
+    private AudioSource audioSource;
 
-    public bool isPlaying { get { return this.audioSource.isPlaying; } }
+    public bool isPlaying { get { return audioSource.isPlaying; } }
 
     private void Awake()
     {
-        this.audioSource = this.GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void Play(AudioClip clip)
     {
-        this.audioSource.clip = clip;
-        this.audioSource.Play();
-        this.StartCoroutine(this.PlayCoroutine());
+        audioSource.clip = clip;
+        audioSource.Play();
+        StartCoroutine(PlayCoroutine());
     }
 
-    IEnumerator PlayCoroutine()
+    private IEnumerator PlayCoroutine()
     {
         while (true)
         {
-            if (!this.audioSource.isPlaying)
+            if (!audioSource.isPlaying)
             {
-                this.audioSource.clip = null;
+                audioSource.clip = null;
                 break;
             }
             yield return new WaitForEndOfFrame();
@@ -34,6 +34,6 @@ public class SFXSound : MonoBehaviour
 
     public void SetVolume(float volume)
     {
-        this.audioSource.volume = volume;
+        audioSource.volume = volume;
     }
 }

@@ -3,10 +3,10 @@ using UnityEngine;
 
 public enum ArrowCreateDirection
 {
-    LEFT,
-    RIGHT,
-    UP,
-    DOWN
+    Left,
+    Right,
+    Up,
+    Down
 } //화살표가 생성되는 위치
 
 public class ArrowManager : MonoBehaviour
@@ -14,64 +14,64 @@ public class ArrowManager : MonoBehaviour
     public static ArrowManager Inst;
     public GameObject arrowPrefab;
 
-    [SerializeField] List<Arrow> arrows;
+    [SerializeField] private List<Arrow> arrows;
 
     private void Awake()
     {
         if (Inst == null)
         {
             Inst = this;
-            DontDestroyOnLoad(this.gameObject);
-            this.arrows = new List<Arrow>();
+            DontDestroyOnLoad(gameObject);
+            arrows = new List<Arrow>();
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
     public void DestoryAllArrow()
     {
-        int arrowCnt = this.arrows.Count;
-        for (int i = 0; i < arrowCnt; i++)
+        var arrowCnt = arrows.Count;
+        for (var i = 0; i < arrowCnt; i++)
         {
-            if (this.arrows[0] == null || this.arrows[0].isActiveAndEnabled == false)
+            if (arrows[0] == null || arrows[0].isActiveAndEnabled == false)
             {
-                this.arrows.RemoveAt(0);
+                arrows.RemoveAt(0);
                 i++;
             }
 
-            var arrow = this.arrows[0];
-            this.arrows.RemoveAt(0);
+            var arrow = arrows[0];
+            arrows.RemoveAt(0);
             arrow.ArrowDestory();
         }
     }
 
     public void CreateArrowObj(Vector3 pos, ArrowCreateDirection direction, Transform parent = null)
     {
-        var arrow = Instantiate(this.arrowPrefab, pos, this.GetRotate(direction)).GetComponent<Arrow>();
-        this.arrows.Add(arrow);
+        var arrow = Instantiate(arrowPrefab, pos, GetRotate(direction)).GetComponent<Arrow>();
+        arrows.Add(arrow);
         if (parent != null)
         {
             arrow.transform.parent = parent;
         }
     }
 
-    Quaternion GetRotate(ArrowCreateDirection direction)
+    private Quaternion GetRotate(ArrowCreateDirection direction)
     {
         Quaternion quaternion = Quaternion.identity;
         switch (direction)
         {
-            case ArrowCreateDirection.LEFT:
+            case ArrowCreateDirection.Left:
                 quaternion.eulerAngles = new Vector3(0, 0, 270);
                 break;
-            case ArrowCreateDirection.RIGHT:
+            case ArrowCreateDirection.Right:
                 quaternion.eulerAngles = new Vector3(0, 0, 90);
                 break;
-            case ArrowCreateDirection.UP:
+            case ArrowCreateDirection.Up:
                 quaternion.eulerAngles = new Vector3(0, 0, 180);
                 break;
-            case ArrowCreateDirection.DOWN:
+            case ArrowCreateDirection.Down:
                 quaternion.eulerAngles = new Vector3(0, 0, 0);
                 break;
             default:

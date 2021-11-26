@@ -9,8 +9,8 @@ public class SkillBookPage : MonoBehaviour
     public List<SkillBookCard> choiceCards;
     public List<SkillBookCard> applyCards;
 
-    [SerializeField] List<TMP_Text> TextTMP;
-    [SerializeField] List<SpriteRenderer> renderers;
+    [SerializeField] private List<TMP_Text> TextTMP;
+    [SerializeField] private List<SpriteRenderer> renderers;
 
     public SkillBookCardButton applyButton;
 
@@ -18,127 +18,136 @@ public class SkillBookPage : MonoBehaviour
 
     public void Init()
     {
-        for (int i = 0; i < this.choiceCards.Count; i++)
+        for (int i = 0; i < choiceCards.Count; i++)
         {
-            if (this.choiceCards[i].curSelectCard != null)
+            if (choiceCards[i].curSelectCard != null)
             {
-                this.choiceCards[i].curSelectCard.SetColorAlpha(false);
-                this.choiceCards[i].curSelectCard = null;
-                this.choiceCards[i].HideCard();
-                this.choiceCards[i].SetColorAlpha(true);
-                this.choiceCards[i].GetComponentInChildren<TMP_Text>().text = "+";
+                choiceCards[i].curSelectCard.SetColorAlpha(false);
+                choiceCards[i].curSelectCard = null;
+                choiceCards[i].HideCard();
+                choiceCards[i].SetColorAlpha(true);
+                choiceCards[i].GetComponentInChildren<TMP_Text>().text = "+";
             }
         }
 
-        this.applyButton.isActive = false;
+        applyButton.isActive = false;
     }
     public void Show()
     {
-        this.Init();
-        this.isFinishFade = false;
-        SkillManager.Inst.choiceCards = this.choiceCards;
-        SkillManager.Inst.applyCards = this.applyCards;
-        for (int i = 0; i < this.TextTMP.Count; i++)
+        Init();
+        isFinishFade = false;
+        SkillManager.Inst.choiceCards = choiceCards;
+        SkillManager.Inst.applyCards = applyCards;
+        for (int i = 0; i < TextTMP.Count; i++)
         {
-            this.TextTMP[i].color = new Color(1, 1, 1, 0);
+            TextTMP[i].color = new Color(1, 1, 1, 0);
         }
-        for (int i = 0; i < this.renderers.Count; i++)
+        for (int i = 0; i < renderers.Count; i++)
         {
-            this.renderers[i].color = new Color(1, 1, 1, 0);
+            renderers[i].color = new Color(1, 1, 1, 0);
         }
-        for (int i = 0; i < this.choiceCards.Count; i++)
+        for (int i = 0; i < choiceCards.Count; i++)
         {
-            this.choiceCards[i].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
-            this.choiceCards[i].GetComponentInChildren<TMP_Text>().color = new Color(1, 1, 1, 0);
+            choiceCards[i].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+            choiceCards[i].GetComponentInChildren<TMP_Text>().color = new Color(1, 1, 1, 0);
         }
-        switch (this.skill_type)
+        switch (skill_type)
         {
             case SKILL_TYPE.SKILL1:     //한장의 카드에 +1 or -1
-                for (int i = 0; i < this.applyCards.Count; i++)
+                for (int i = 0; i < applyCards.Count; i++)
                 {
-                    this.applyCards[i].limitNum = 1;
+                    applyCards[i].limitNum = 1;
                 }
                 break;
             case SKILL_TYPE.SKILL2:     //-n +n
-                for (int i = 0; i < this.applyCards.Count; i++)
+                for (int i = 0; i < applyCards.Count; i++)
                 {
-                    this.applyCards[i].isHideButton = true;
-                    this.applyCards[i].isQuestionMark = true;
+                    applyCards[i].isHideButton = true;
+                    applyCards[i].isQuestionMark = true;
                 }
                 break;
             case SKILL_TYPE.SKILL3:     //원하는 숫자로 카드 한장 바꾸기
                 break;
             case SKILL_TYPE.SKILL4:     //최대 3장 선택 후 +1 -1
-                for (int i = 0; i < this.applyCards.Count; i++)
+                for (int i = 0; i < applyCards.Count; i++)
                 {
-                    this.applyCards[i].limitNum = 1;
+                    applyCards[i].limitNum = 1;
                 }
                 break;
             case SKILL_TYPE.SKILL5:     //손패에 있는 카드 한장을 다른 카드에 복제
-                for (int i = 0; i < this.applyCards.Count; i++)
+                for (int i = 0; i < applyCards.Count; i++)
                 {
-                    this.applyCards[i].isHideButton = true;
+                    applyCards[i].isHideButton = true;
                     //applyCards[i].isApplyButtonOn = true;
                 }
                 break;
             case SKILL_TYPE.SKILL6:     //최대 3장 선택후 랜덤 숫자로 변경
-                for (int i = 0; i < this.applyCards.Count; i++)
+                for (int i = 0; i < applyCards.Count; i++)
                 {
-                    this.applyCards[i].isHideButton = true;
-                    this.applyCards[i].isQuestionMark = true;
+                    applyCards[i].isHideButton = true;
+                    applyCards[i].isQuestionMark = true;
                 }
                 break;
         }
         //applyButton.SetButtonActive(false);
-        this.StartCoroutine(this.ColorAlphaCoroutine(false));
+        StartCoroutine(ColorAlphaCoroutine(false));
     }
     public void Hide()
     {
-        this.StartCoroutine(this.ColorAlphaCoroutine(true));
+        StartCoroutine(ColorAlphaCoroutine(true));
     }
 
-    IEnumerator ColorAlphaCoroutine(bool isHide)
+    private IEnumerator ColorAlphaCoroutine(bool isHide)
     {
         while (true)
         {
             float alpha = Time.deltaTime * (isHide ? -1 : 1);
-            for (int i = 0; i < this.TextTMP.Count; i++)
+            for (int i = 0; i < TextTMP.Count; i++)
             {
-                this.TextTMP[i].color += Color.black * alpha;
+                TextTMP[i].color += Color.black * alpha;
             }
-            for (int i = 0; i < this.renderers.Count; i++)
+            for (int i = 0; i < renderers.Count; i++)
             {
-                this.renderers[i].color += Color.black * alpha;
+                renderers[i].color += Color.black * alpha;
             }
 
-            this.applyButton.GetComponent<SpriteRenderer>().color -= Color.black * alpha * 0.5f;
-            this.applyButton.GetComponentInChildren<TMP_Text>().color -= Color.black * alpha * 0.5f;
-            for (int i = 0; i < this.choiceCards.Count; i++)
+            applyButton.GetComponent<SpriteRenderer>().color -= Color.black * alpha * 0.5f;
+            applyButton.GetComponentInChildren<TMP_Text>().color -= Color.black * alpha * 0.5f;
+            for (int i = 0; i < choiceCards.Count; i++)
             {
-                this.choiceCards[i].GetComponent<SpriteRenderer>().color += Color.black * alpha * (this.choiceCards[i].curSelectCard == null ? 0.5f : 1);
-                this.choiceCards[i].GetComponentInChildren<TMP_Text>().color += Color.black * alpha * (this.choiceCards[i].curSelectCard == null ? 0.5f : 1);
+                choiceCards[i].GetComponent<SpriteRenderer>().color += Color.black * alpha * (choiceCards[i].curSelectCard == null ? 0.5f : 1);
+                choiceCards[i].GetComponentInChildren<TMP_Text>().color += Color.black * alpha * (choiceCards[i].curSelectCard == null ? 0.5f : 1);
             }
             if (isHide)
             {
-                for (int i = 0; i < this.applyCards.Count; i++)
+                for (int i = 0; i < applyCards.Count; i++)
                 {
-                    this.choiceCards[i].GetComponent<SpriteRenderer>().color += Color.black * alpha;
-                    this.choiceCards[i].GetComponentInChildren<TMP_Text>().color += Color.black * alpha;
+                    choiceCards[i].GetComponent<SpriteRenderer>().color += Color.black * alpha;
+                    choiceCards[i].GetComponentInChildren<TMP_Text>().color += Color.black * alpha;
                 }
-                if (this.TextTMP[0].color.a <= 0)
+                if (TextTMP[0].color.a <= 0)
+                {
                     break;
+                }
             }
             else
             {
-                if (this.TextTMP[0].color.a >= 1)
+                if (TextTMP[0].color.a >= 1)
+                {
                     break;
+                }
             }
             yield return new WaitForEndOfFrame();
         }
         if (isHide)
-            this.gameObject.SetActive(false);
+        {
+            gameObject.SetActive(false);
+        }
         else
-            this.applyButton.SetButtonActive(false);
-        this.isFinishFade = true;
+        {
+            applyButton.SetButtonActive(false);
+        }
+
+        isFinishFade = true;
     }
 }

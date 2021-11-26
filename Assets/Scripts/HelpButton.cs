@@ -2,24 +2,25 @@
 
 public class HelpButton : MonoBehaviour
 {
-    bool onHelpButton;   //마우스가 필드 위에 있는지
+    private bool onHelpButton;   //마우스가 필드 위에 있는지
 
-    void OnMouseEnter()
+    private void OnMouseEnter()
     {
         SoundManager.Inst.Play(EVENTSOUND.CHOICE_MOUSEUP);
-        this.onHelpButton = true;
+        onHelpButton = true;
     }
-    void OnMouseExit()
+
+    private void OnMouseExit()
     {
-        this.onHelpButton = false;
+        onHelpButton = false;
     }
 
     private void OnMouseUp()
     {
-        if (this.onHelpButton)
+        if (onHelpButton)
         {
             SoundManager.Inst.Play(EVENTSOUND.CHOICE_BUTTON);
-            this.transform.parent.gameObject.SetActive(false);
+            transform.parent.gameObject.SetActive(false);
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class FadeManager : MonoBehaviour
 {
     public static FadeManager Inst;
-    SpriteRenderer SR;
+    private SpriteRenderer SR;
 
     public static event EventHandler FadeEvent;
 
@@ -20,30 +20,20 @@ public class FadeManager : MonoBehaviour
         if (Inst == null)
         {
             Inst = this;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 
-        this.SR = this.GetComponent<SpriteRenderer>();
-        this.isActiveFade = false;
+        SR = GetComponent<SpriteRenderer>();
+        isActiveFade = false;
     }
 
-    public void Init()
+    private void Init()
     {
-        this.transform.position = Vector3.zero;
-    }
-
-    public void FadeIn()
-    {
-        this.StartCoroutine(this.Fade(false));
-    }
-
-    public void FadeOut()
-    {
-        this.StartCoroutine(this.Fade(true));
+        transform.position = Vector3.zero;
     }
 
     public IEnumerator FadeInOut(IEnumerator fadeOutPrev1 = null, IEnumerator fadeOutPrev2 = null,
@@ -51,56 +41,61 @@ public class FadeManager : MonoBehaviour
         IEnumerator fadeOutAfter1 = null, IEnumerator fadeOutAfter2 = null, IEnumerator fadeOutAfter3 = null,
         IEnumerator fadeInAfter1 = null, IEnumerator fadeInAfter2 = null, IEnumerator fadeInAfter3 = null)
     {
-        this.isActiveFade = true;
-        yield return this.StartCoroutine(fadeOutPrev1 ?? this.EmptyCoroutine());
-        yield return this.StartCoroutine(fadeOutPrev2 ?? this.EmptyCoroutine());
-        yield return this.StartCoroutine(fadeOutPrev3 ?? this.EmptyCoroutine());
-        yield return this.StartCoroutine(this.Fade(true)); //페이드아웃 실행
+        isActiveFade = true;
+        yield return StartCoroutine(fadeOutPrev1 ?? EmptyCoroutine());
+        yield return StartCoroutine(fadeOutPrev2 ?? EmptyCoroutine());
+        yield return StartCoroutine(fadeOutPrev3 ?? EmptyCoroutine());
+        yield return StartCoroutine(Fade(true)); //페이드아웃 실행
         if (FadeEvent != null)
         {
             FadeEvent(this, EventArgs.Empty); //실행 후 이벤트 실행
             FadeEvent = null;
         }
 
-        yield return this.delay01;
+        yield return delay01;
         TopBar.Inst.InitPosition();
         RewardManager.Inst.Init();
         BagManager.Inst.Init();
         SkillManager.Inst.Init();
-        this.Init();
-        yield return this.delay01;
+        Init();
+        yield return delay01;
         TopBar.Inst.UpdateText(TOPBAR_TYPE.SCENENAME);
-        yield return this.StartCoroutine(fadeOutAfter1 ?? this.EmptyCoroutine());
-        yield return this.StartCoroutine(fadeOutAfter2 ?? this.EmptyCoroutine());
-        yield return this.StartCoroutine(fadeOutAfter3 ?? this.EmptyCoroutine());
-        yield return this.StartCoroutine(this.Fade(false)); //다시 페이드인 실행
-        yield return this.StartCoroutine(fadeInAfter1 ?? this.EmptyCoroutine());
-        yield return this.StartCoroutine(fadeInAfter2 ?? this.EmptyCoroutine());
-        yield return this.StartCoroutine(fadeInAfter3 ?? this.EmptyCoroutine());
-        this.isActiveFade = false;
+        yield return StartCoroutine(fadeOutAfter1 ?? EmptyCoroutine());
+        yield return StartCoroutine(fadeOutAfter2 ?? EmptyCoroutine());
+        yield return StartCoroutine(fadeOutAfter3 ?? EmptyCoroutine());
+        yield return StartCoroutine(Fade(false)); //다시 페이드인 실행
+        yield return StartCoroutine(fadeInAfter1 ?? EmptyCoroutine());
+        yield return StartCoroutine(fadeInAfter2 ?? EmptyCoroutine());
+        yield return StartCoroutine(fadeInAfter3 ?? EmptyCoroutine());
+        isActiveFade = false;
     }
 
-    IEnumerator EmptyCoroutine()
+    // 페이드 함수에서 fade 이벤트가 널일때 대신 호출
+    private IEnumerator EmptyCoroutine()
     {
         yield return null;
     }
 
-    IEnumerator Fade(bool isOut)
+    private IEnumerator Fade(bool isOut)
     {
         float alpha = isOut ? 0 : 1;
         if (isOut)
+        {
             while (alpha < 1)
             {
-                alpha += Time.deltaTime * this.fade_speed;
-                this.SR.color = new Color(0, 0, 0, Mathf.Clamp01(alpha));
+                alpha += Time.deltaTime * fade_speed;
+                SR.color = new Color(0, 0, 0, Mathf.Clamp01(alpha));
                 yield return new WaitForEndOfFrame();
             }
+        }
         else
+        {
             while (alpha > 0)
             {
-                alpha -= Time.deltaTime * this.fade_speed;
-                this.SR.color = new Color(0, 0, 0, Mathf.Clamp01(alpha));
+                alpha -= Time.deltaTime * fade_speed;
+                SR.color = new Color(0, 0, 0, Mathf.Clamp01(alpha));
                 yield return new WaitForEndOfFrame();
             }
+        }
     }
 }

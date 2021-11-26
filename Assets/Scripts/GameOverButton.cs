@@ -1,8 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class GameOverButton : MonoBehaviour
 {
-    public enum Type { TITLE, GAME_END }
+    public enum Type
+    {
+        Title,
+        GameEnd
+    }
+
     public Type type;
 
     private void OnMouseEnter()
@@ -12,14 +18,16 @@ public class GameOverButton : MonoBehaviour
 
     private void OnMouseUp()
     {
-        switch (this.type)
+        switch (type)
         {
-            case Type.TITLE:
+            case Type.Title:
                 ResetManager.Inst.ResetGame();
                 break;
-            case Type.GAME_END:
+            case Type.GameEnd:
                 Application.Quit();
                 break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(type));
         }
     }
 }

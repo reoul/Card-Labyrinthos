@@ -5,28 +5,28 @@ public class Arrow : MonoBehaviour
 {
     public void Start()
     {
-        this.MoveDown();
+        MoveDown();
     }
 
     private void MoveUp()
     {
-        this.transform.DOLocalMove(this.transform.localPosition + this.transform.up * 0.5f, 0.75f).SetEase(Ease.OutBack).OnComplete(() =>
+        transform.DOLocalMove(transform.localPosition + transform.up * 0.5f, 0.75f).SetEase(Ease.OutBack).OnComplete(() =>
         {
-            this.MoveDown();
+            MoveDown();
         });
     }
 
     private void MoveDown()
     {
-        this.transform.DOLocalMove(this.transform.localPosition + -this.transform.up * 0.5f, 0.75f).SetEase(Ease.InBack).OnComplete(() =>
+        transform.DOLocalMove(transform.localPosition + -transform.up * 0.5f, 0.75f).SetEase(Ease.InBack).OnComplete(() =>
         {
-            this.MoveUp();
+            MoveUp();
         });
     }
 
     public void ArrowDestory()
     {
-        this.transform.DOPause();
-        Destroy(this.gameObject);
+        transform.DOPause();
+        Destroy(gameObject);
     }
 }

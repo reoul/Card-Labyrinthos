@@ -11,82 +11,85 @@ public class FieldInspector : Editor
 {
     public override void OnInspectorGUI()
     {
-        this.serializedObject.Update();
-        EditorGUILayout.PropertyField(this.serializedObject.FindProperty("field_type"));
-        int propertyfield = this.serializedObject.FindProperty("field_type").enumValueIndex;
-        Field field = (Field) this.target;
+        serializedObject.Update();
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("field_type"));
+        int propertyField = serializedObject.FindProperty("field_type").enumValueIndex;
+        Field field = (Field) target;
         Sprite[] fieldIcon = Resources.LoadAll<Sprite>("FieldIcon");
-        switch (propertyfield)
+        switch ((FIELD_TYPE) propertyField)
         {
-            case (int)FIELD_TYPE.BATTLE:
-                EditorGUILayout.PropertyField(this.serializedObject.FindProperty("monster_difficulty"));
+            case FIELD_TYPE.BATTLE:
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("monster_difficulty"));
                 //field.spriteRenderer.sprite = fieldIcon[1];
                 break;
-            case (int)FIELD_TYPE.EVENT:
-                EditorGUILayout.PropertyField(this.serializedObject.FindProperty("event_type"));
+            case FIELD_TYPE.EVENT:
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("event_type"));
                 //field.spriteRenderer.sprite = fieldIcon[2];
                 break;
-            case (int)FIELD_TYPE.REST:
+            case FIELD_TYPE.REST:
                 //field.spriteRenderer.sprite = fieldIcon[3];
                 break;
-            case (int)FIELD_TYPE.SHOP:
+            case FIELD_TYPE.SHOP:
                 //field.spriteRenderer.sprite = fieldIcon[4];
                 break;
-            case (int)FIELD_TYPE.BOSS:
+            case FIELD_TYPE.BOSS:
                 //field.spriteRenderer.sprite = fieldIcon[0];
                 break;
         }
-        string text = "";
-        switch (propertyfield)
+
+        string titleTxt = string.Empty;
+        switch (propertyField)
         {
-            case (int)FIELD_TYPE.BATTLE:
-                int monster_difficulty = this.serializedObject.FindProperty("monster_difficulty").enumValueIndex;
-                switch (monster_difficulty)
+            case (int) FIELD_TYPE.BATTLE:
+                int monsterDifficulty = serializedObject.FindProperty("monster_difficulty").enumValueIndex;
+                switch (monsterDifficulty)
                 {
-                    case (int)MONSTER_DIFFICULTY.EASY:
-                        text = "이지";
+                    case (int) MONSTER_DIFFICULTY.EASY:
+                        titleTxt = "이지";
                         break;
-                    case (int)MONSTER_DIFFICULTY.NOMAL:
-                        text = "노말";
+                    case (int) MONSTER_DIFFICULTY.NOMAL:
+                        titleTxt = "노말";
                         break;
-                    case (int)MONSTER_DIFFICULTY.HARD:
-                        text = "하드";
+                    case (int) MONSTER_DIFFICULTY.HARD:
+                        titleTxt = "하드";
                         break;
                 }
+
                 break;
-            case (int)FIELD_TYPE.EVENT:
-                text = "이벤트";
+            case (int) FIELD_TYPE.EVENT:
+                titleTxt = "이벤트";
                 break;
-            case (int)FIELD_TYPE.REST:
-                text = "휴식";
+            case (int) FIELD_TYPE.REST:
+                titleTxt = "휴식";
                 break;
-            case (int)FIELD_TYPE.SHOP:
-                text = "상점";
+            case (int) FIELD_TYPE.SHOP:
+                titleTxt = "상점";
                 break;
-            case (int)FIELD_TYPE.MAP:
+            case (int) FIELD_TYPE.MAP:
                 break;
-            case (int)FIELD_TYPE.BOSS:
-                text = "보스";
+            case (int) FIELD_TYPE.BOSS:
+                titleTxt = "보스";
                 break;
         }
-        field.transform.GetChild(0).GetComponent<TextMeshPro>().text = text;
+
+        field.transform.GetChild(0).GetComponent<TextMeshPro>().text = titleTxt;
         if (GUILayout.Button("이미지 변경"))
         {
-            switch (propertyfield)
+            switch (propertyField)
             {
-                case (int)FIELD_TYPE.BATTLE:
+                case (int) FIELD_TYPE.BATTLE:
                     field.spriteRenderer.sprite = fieldIcon[1];
                     break;
-                case (int)FIELD_TYPE.EVENT:
+                case (int) FIELD_TYPE.EVENT:
                     field.spriteRenderer.sprite = fieldIcon[2];
                     break;
-                case (int)FIELD_TYPE.REST:
+                case (int) FIELD_TYPE.REST:
                     field.spriteRenderer.sprite = fieldIcon[3];
                     break;
-                case (int)FIELD_TYPE.SHOP:
+                case (int) FIELD_TYPE.SHOP:
                     field.spriteRenderer.sprite = fieldIcon[4];
                     break;
-                case (int)FIELD_TYPE.BOSS:
+                case (int) FIELD_TYPE.BOSS:
                     field.spriteRenderer.sprite = fieldIcon[0];
                     break;
                 default:
@@ -94,11 +97,12 @@ public class FieldInspector : Editor
                     break;
             }
         }
-        EditorGUILayout.PropertyField(this.serializedObject.FindProperty("isClear"));
-        EditorGUILayout.PropertyField(this.serializedObject.FindProperty("clearObj"));
-        EditorGUILayout.PropertyField(this.serializedObject.FindProperty("surroundingObj"));
 
-        this.serializedObject.ApplyModifiedProperties();
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("isClear"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("clearObj"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("surroundingObj"));
+
+        serializedObject.ApplyModifiedProperties();
     }
 }
 #endif
@@ -106,14 +110,11 @@ public class FieldInspector : Editor
 [Serializable]
 public class Field : MonoBehaviour
 {
-    [SerializeField]
-    FIELD_TYPE field_type;
-    [SerializeField]
-    EVENT_TYPE event_type;
-    [SerializeField]
-    MONSTER_DIFFICULTY monster_difficulty;
+    [SerializeField] private FIELD_TYPE field_type;
+    [SerializeField] private EVENT_TYPE event_type;
+    [SerializeField] private MONSTER_DIFFICULTY monster_difficulty;
 
-    bool onField;   //마우스가 필드 위에 있는지
+    private bool onField; //마우스가 필드 위에 있는지
 
     public List<GameObject> surroundingObj;
 
@@ -122,48 +123,62 @@ public class Field : MonoBehaviour
     public bool isDebuffOff;
     public GameObject clearObj;
 
-    public FieldData fieldData { get { return new FieldData(this.field_type, this.event_type, this.GetMonster(this.monster_difficulty)); } }
+    public FieldData fieldData => new FieldData(field_type, event_type, GetMonster(monster_difficulty));
 
-    public SpriteRenderer spriteRenderer => this.GetComponent<SpriteRenderer>();
+    public SpriteRenderer spriteRenderer => GetComponent<SpriteRenderer>();
 
     private void Start()
     {
-        this.transform.GetChild(0).gameObject.SetActive(false);
-        if (this.transform.childCount > 1) this.clearObj = this.transform.GetChild(1).gameObject;
-        this.spriteRenderer.color -= new Color(0, 0, 0, 0.5f);
-        if (this.field_type == FIELD_TYPE.MAP)
+        transform.GetChild(0).gameObject.SetActive(false);
+        if (transform.childCount > 1)
         {
-            this.spriteRenderer.color += new Color(0, 0, 0, 0.5f);
-            this.isReady = true;
+            clearObj = transform.GetChild(1).gameObject;
+        }
+
+        spriteRenderer.color -= new Color(0, 0, 0, 0.5f);
+        if (field_type == FIELD_TYPE.MAP)
+        {
+            spriteRenderer.color += new Color(0, 0, 0, 0.5f);
+            isReady = true;
         }
     }
 
-    void OnMouseUp()
+    private void OnMouseUp()
     {
-        if (this.onField && !this.isClear && this.isReady && !FadeManager.Inst.isActiveFade && ThrowingObjManager.Inst.moveThrowingReward == 0)
+        if (onField && !isClear && isReady && !FadeManager.Inst.isActiveFade &&
+            ThrowingObjManager.Inst.moveThrowingReward == 0)
         {
             if (MapManager.Inst.CurrentSceneName == "상점" && !ShopManager.Inst.isFinishTutorial)
+            {
                 return;
-            if (!MapManager.Inst.isFinishTutorialEventField && this.field_type == FIELD_TYPE.EVENT)
+            }
+
+            if (!MapManager.Inst.isFinishTutorialEventField && field_type == FIELD_TYPE.EVENT)
+            {
                 return;
-            if (!MapManager.Inst.isTutorialBoss && this.monster_difficulty == MONSTER_DIFFICULTY.BOSS)
+            }
+
+            if (!MapManager.Inst.isTutorialBoss && monster_difficulty == MONSTER_DIFFICULTY.BOSS)
+            {
                 return;
+            }
+
             MapManager.Inst.IconMouseUp(this);
         }
     }
 
-    void OnMouseEnter()
+    private void OnMouseEnter()
     {
         SoundManager.Inst.Play(EVENTSOUND.CHOICE_MOUSEUP);
-        this.onField = true;
+        onField = true;
     }
 
-    void OnMouseExit()
+    private void OnMouseExit()
     {
-        this.onField = false;
+        onField = false;
     }
 
-    public MONSTER_TYPE GetMonster(MONSTER_DIFFICULTY difficulty)       //필드 난이도에 따라 랜덤 몬스터 소환
+    public MONSTER_TYPE GetMonster(MONSTER_DIFFICULTY difficulty) //필드 난이도에 따라 랜덤 몬스터 소환
     {
         //int rand = Random.Range(0, difficulty == MONSTER_DIFFICULTY.EASY ? 10 : difficulty == MONSTER_DIFFICULTY.NOMAL ? 9 : 10);
         int rand = Random.Range(0, 4);
@@ -181,6 +196,7 @@ public class Field : MonoBehaviour
                     case 3:
                         return MONSTER_TYPE.WIND_WISP;
                 }
+
                 break;
             case MONSTER_DIFFICULTY.NOMAL:
                 switch (rand)
@@ -194,6 +210,7 @@ public class Field : MonoBehaviour
                     case 3:
                         return MONSTER_TYPE.SHADE;
                 }
+
                 break;
             case MONSTER_DIFFICULTY.HARD:
                 switch (rand)
@@ -207,62 +224,64 @@ public class Field : MonoBehaviour
                     case 3:
                         return MONSTER_TYPE.YETI;
                 }
+
                 break;
             case MONSTER_DIFFICULTY.BOSS:
                 return MONSTER_TYPE.BOSS;
         }
+
         return MONSTER_TYPE.EARTH_WISP;
     }
 
     public void UpdateTypeText()
     {
-        string text = "";
-        switch (this.field_type)
+        string fieldTxt = string.Empty;
+        switch (field_type)
         {
             case FIELD_TYPE.BATTLE:
-                switch (this.monster_difficulty)
+                switch (monster_difficulty)
                 {
                     case MONSTER_DIFFICULTY.EASY:
-                        text = "이지";
+                        fieldTxt = "이지";
                         break;
                     case MONSTER_DIFFICULTY.NOMAL:
-                        text = "노말";
+                        fieldTxt = "노말";
                         break;
                     case MONSTER_DIFFICULTY.HARD:
-                        text = "하드";
+                        fieldTxt = "하드";
                         break;
                 }
+
                 break;
             case FIELD_TYPE.EVENT:
-                text = "이벤트";
+                fieldTxt = "이벤트";
                 break;
             case FIELD_TYPE.REST:
-                text = "휴식";
+                fieldTxt = "휴식";
                 break;
             case FIELD_TYPE.SHOP:
-                text = "상점";
+                fieldTxt = "상점";
                 break;
             case FIELD_TYPE.MAP:
                 break;
             case FIELD_TYPE.BOSS:
-                text = "보스";
+                fieldTxt = "보스";
                 break;
         }
 
-        this.transform.GetChild(0).GetComponent<TextMeshPro>().text = text;
-        this.transform.GetChild(0).GetComponent<TextMeshPro>().text = text;
+        transform.GetChild(0).GetComponent<TextMeshPro>().text = fieldTxt;
     }
 
     public void UpdateClearImage()
     {
-        if (this.isClear && this.clearObj != null)
+        if (isClear && (clearObj != null))
         {
-            this.clearObj.gameObject.SetActive(true);
-            this.spriteRenderer.color += new Color(0, 0, 0, 0.5f);
-            for (int i = 0; i < this.surroundingObj.Count; i++)
+            clearObj.gameObject.SetActive(true);
+            spriteRenderer.color += new Color(0, 0, 0, 0.5f);
+            foreach (GameObject surroundObj in surroundingObj)
             {
-                this.surroundingObj[i].GetComponent<Field>().spriteRenderer.color += new Color(0, 0, 0, 0.5f);
-                this.surroundingObj[i].GetComponent<Field>().isReady = true;
+                surroundObj.GetComponent<Field>().spriteRenderer.color += new Color(0, 0, 0, 0.5f);
+                surroundObj.GetComponent<Field>().isReady = true;
             }
         }
     }

@@ -8,8 +8,8 @@ public class SkillManager : MonoBehaviour
 {
 
     public static SkillManager Inst;
-    bool isOpen;
-    [SerializeField] int page;
+    private bool isOpen;
+    [SerializeField] private int page;
 
     public List<SkillBookPage> pages;
     public List<SkillBookCardButton> bookmarks;
@@ -19,39 +19,39 @@ public class SkillManager : MonoBehaviour
     public List<GameObject> skillXObjs;
     public bool[] isUseSkill;
 
-    public SkillBookPage ActivePage { get { return this.pages[this.page]; } }
-    public int ActivePageIndex { get { return this.page; } }
+    public SkillBookPage ActivePage { get { return pages[page]; } }
+    public int ActivePageIndex { get { return page; } }
 
     private void Awake()
     {
         if (Inst == null)
         {
             Inst = this;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
     public void Init()
     {
-        this.transform.position = new Vector3(0, 0, -2);
+        transform.position = new Vector3(0, 0, -2);
     }
 
     public void Open()      //스킬창 여는 것
     {
-        if (this.isOpen)
+        if (isOpen)
         {
-            this.Close();
+            Close();
             return;
         }
         SoundManager.Inst.Play(SKILLBOOKSOUND.OPEN_BOOK);
         GameManager.Inst.CloseAllUI();
-        this.isOpen = true;
-        this.transform.GetChild(0).gameObject.SetActive(true);
-        this.SelectPage(this.page);
+        isOpen = true;
+        transform.GetChild(0).gameObject.SetActive(true);
+        SelectPage(page);
         if (MapManager.Inst.tutorialIndex == 3 && SceneManager.GetActiveScene().name == "Tutorial2")
         {
             TutorialManager.Inst.isToturialOpenSkill = true;
@@ -64,30 +64,33 @@ public class SkillManager : MonoBehaviour
     public void Close()      //스킬창 여는 것
     {
         SoundManager.Inst.Play(SKILLBOOKSOUND.CLOSE_BOOK);
-        this.InitCard();
-        this.pages[this.page].gameObject.SetActive(false);
-        this.transform.GetChild(0).gameObject.SetActive(false);
-        this.isOpen = false;
+        InitCard();
+        pages[page].gameObject.SetActive(false);
+        transform.GetChild(0).gameObject.SetActive(false);
+        isOpen = false;
     }
 
     public void SetCard(SkillBookCard skillBookCard, Card card)
     {
-        if (this.isUseSkill[this.page])
-            return;
-        for (int i = 0; i < this.choiceCards.Count; i++)
+        if (isUseSkill[page])
         {
-            if (this.choiceCards[i].curSelectCard == card)
+            return;
+        }
+
+        for (int i = 0; i < choiceCards.Count; i++)
+        {
+            if (choiceCards[i].curSelectCard == card)
             {
-                this.choiceCards[i].curSelectCard = null;
-                this.choiceCards[i].HideCard();
-                this.choiceCards[i].SetColorAlpha(true);
-                this.choiceCards[i].GetComponentInChildren<TMP_Text>().text = "+";
+                choiceCards[i].curSelectCard = null;
+                choiceCards[i].HideCard();
+                choiceCards[i].SetColorAlpha(true);
+                choiceCards[i].GetComponentInChildren<TMP_Text>().text = "+";
             }
         }
         SoundManager.Inst.Play(SKILLBOOKSOUND.CARD_ON_BOOK);
         skillBookCard.frontCard.SetActive(true);
         skillBookCard.originNum = card.final_Num;
-        skillBookCard.frontCard.GetComponent<SkillBookCard>().originNum = skillBookCard.frontCard.GetComponent<SkillBookCard>().isQuestionMark ? this.RandomNum(card.final_Num) : card.final_Num;
+        skillBookCard.frontCard.GetComponent<SkillBookCard>().originNum = skillBookCard.frontCard.GetComponent<SkillBookCard>().isQuestionMark ? RandomNum(card.final_Num) : card.final_Num;
         skillBookCard.SetColorAlpha(false);
         skillBookCard.GetComponentInChildren<TMP_Text>().text = (card.final_Num + 1).ToString();
         if (skillBookCard.curSelectCard == null)
@@ -105,7 +108,7 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    int RandomNum(int num)
+    private int RandomNum(int num)
     {
         int result = 0;
         do
@@ -117,69 +120,78 @@ public class SkillManager : MonoBehaviour
 
     public void ApplyCardAll()
     {
-        for (int i = 0; i < this.applyCards.Count; i++)
+        for (int i = 0; i < applyCards.Count; i++)
         {
-            if (this.applyCards[i].gameObject.activeInHierarchy) this.applyCards[i].curSelectCard.SetFinalNum(this.applyCards[i].curNum);
+            if (applyCards[i].gameObject.activeInHierarchy)
+            {
+                applyCards[i].curSelectCard.SetFinalNum(applyCards[i].curNum);
+            }
         }
 
-        this.UseSkill(true);
-        this.InitCard();
+        UseSkill(true);
+        InitCard();
     }
 
     public void SelectPage(int index)
     {
-        for (int i = 0; i < this.pages.Count; i++)
+        for (int i = 0; i < pages.Count; i++)
         {
-            if (this.pages[i].gameObject.activeInHierarchy)
+            if (pages[i].gameObject.activeInHierarchy)
             {
                 if (i == index)
+                {
                     return;
-                this.pages[i].Init();
-                this.pages[i].gameObject.SetActive(false);
+                }
+
+                pages[i].Init();
+                pages[i].gameObject.SetActive(false);
                 break;
             }
         }
         SoundManager.Inst.Play(SKILLBOOKSOUND.TURN_PAGE);
-        for (int i = 0; i < this.bookmarks.Count; i++)
+        for (int i = 0; i < bookmarks.Count; i++)
         {
             //bookmarks[i].gameObject.SetActive(CardManager.Inst.cardDeck[0] >= (i * 2 + 1) ? true : false);
-            this.bookmarks[i].gameObject.SetActive(true);
+            bookmarks[i].gameObject.SetActive(true);
         }
 
-        this.bookmarks[this.page].transform.localPosition += new Vector3(-0.09158f, 0, 0);
-        this.page = index;
-        this.bookmarks[this.page].transform.localPosition += new Vector3(0.09158f, 0, 0);
-        this.pages[this.page].gameObject.SetActive(true);
-        this.pages[this.page].Show();
+        bookmarks[page].transform.localPosition += new Vector3(-0.09158f, 0, 0);
+        page = index;
+        bookmarks[page].transform.localPosition += new Vector3(0.09158f, 0, 0);
+        pages[page].gameObject.SetActive(true);
+        pages[page].Show();
     }
 
     public void InitCard()
     {
-        for (int i = 0; i < this.applyCards.Count; i++)
+        for (int i = 0; i < applyCards.Count; i++)
         {
-            if (this.applyCards[i].gameObject.activeInHierarchy) this.applyCards[i].curSelectCard.SetColorAlpha(false);
+            if (applyCards[i].gameObject.activeInHierarchy)
+            {
+                applyCards[i].curSelectCard.SetColorAlpha(false);
+            }
         }
-        for (int i = 0; i < this.choiceCards.Count; i++)
+        for (int i = 0; i < choiceCards.Count; i++)
         {
-            this.choiceCards[i].curSelectCard = null;
-            this.choiceCards[i].HideCard();
-            this.choiceCards[i].SetColorAlpha(true);
-            this.choiceCards[i].GetComponentInChildren<TMP_Text>().text = "+";
+            choiceCards[i].curSelectCard = null;
+            choiceCards[i].HideCard();
+            choiceCards[i].SetColorAlpha(true);
+            choiceCards[i].GetComponentInChildren<TMP_Text>().text = "+";
         }
     }
 
     public void InitSkillTime()
     {
-        for (int i = 0; i < this.isUseSkill.Length; i++)
+        for (int i = 0; i < isUseSkill.Length; i++)
         {
-            this.isUseSkill[i] = false;
-            this.skillXObjs[i].SetActive(false);
+            isUseSkill[i] = false;
+            skillXObjs[i].SetActive(false);
         }
     }
 
     public void UseSkill(bool use)
     {
-        this.isUseSkill[this.page] = use;
-        this.skillXObjs[this.page].SetActive(use);
+        isUseSkill[page] = use;
+        skillXObjs[page].SetActive(use);
     }
 }

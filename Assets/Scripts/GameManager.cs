@@ -6,60 +6,63 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Inst { get; private set; }
 
-    [SerializeField] Notification notificationPanel;
+    [SerializeField] private Notification notificationPanel;
+    [SerializeField] private GameObject endingCredit;
+    [SerializeField] private GameObject gameOver;
 
-    [SerializeField] SpriteRenderer fadeInOutObj;
-
-    [SerializeField] GameObject hitObj;
-
-    [SerializeField] GameObject endingCredit;
-    [SerializeField] GameObject gameOver;
-
-    void Awake()
+    private void Awake()
     {
         if (Inst == null)
         {
             Inst = this;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
-    void Start()
+    private void Start()
     {
-        //StartGame();
         DOTween.Init(false, true, LogBehaviour.ErrorsOnly);
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F12))
+        {
             ResetManager.Inst.ResetGame();
+        }
 
-        if (Input.GetKeyDown(KeyCode.I))
-            if (TopBar.Inst != null)
-                TopBar.Inst.Open(TOPBAR_TYPE.BAG);
+        if (Input.GetKeyDown(KeyCode.I) && TopBar.Inst != null)
+        {
+            TopBar.Inst.Open(TOPBAR_TYPE.BAG);
+        }
 
-        if (Input.GetKeyDown(KeyCode.K) && TopBar.Inst.GetIcon(TOPBAR_TYPE.SKILL).gameObject.activeInHierarchy)
-            if (TopBar.Inst != null)
-                TopBar.Inst.Open(TOPBAR_TYPE.SKILL);
+        if (Input.GetKeyDown(KeyCode.K) && TopBar.Inst.GetIcon(TOPBAR_TYPE.SKILL).gameObject.activeInHierarchy &&
+            TopBar.Inst != null)
+        {
+            TopBar.Inst.Open(TOPBAR_TYPE.SKILL);
+        }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-            if (TopBar.Inst != null)
-                TopBar.Inst.Open(TOPBAR_TYPE.SETTING);
+        if (Input.GetKeyDown(KeyCode.Escape) && TopBar.Inst != null)
+        {
+            TopBar.Inst.Open(TOPBAR_TYPE.SETTING);
+        }
     }
 
-    public void StartGame()
-    {
-        this.StartCoroutine(TurnManager.Inst.StartGameCoroutine());
-    }
     public void Notification(string message)
     {
-        if (this.notificationPanel == null) this.notificationPanel = GameObject.Find("MyTurn").GetComponent<Notification>();
-        if (this.notificationPanel != null) this.notificationPanel.Show(message);
+        if (notificationPanel == null)
+        {
+            notificationPanel = GameObject.Find("MyTurn").GetComponent<Notification>();
+        }
+
+        if (notificationPanel != null)
+        {
+            notificationPanel.Show(message);
+        }
     }
 
     public void CloseAllUI()
@@ -70,27 +73,28 @@ public class GameManager : MonoBehaviour
 
     public void Ending()
     {
-        this.StartCoroutine(this.EndingCoroutine());
+        StartCoroutine(EndingCoroutine());
     }
 
     public IEnumerator EndingCoroutine()
     {
-        yield return this.StartCoroutine(GhostManager.Inst.ShowGhost());
+        yield return StartCoroutine(GhostManager.Inst.ShowGhost());
         for (int i = 0; i < TalkWindow.Inst.talks[14].Count; i++)
         {
-            yield return this.StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(14, i));
-            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
-            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
+            yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(14, i));
+            yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
+            yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
         }
-        yield return this.StartCoroutine(TalkWindow.Inst.HideText());
+
+        yield return StartCoroutine(TalkWindow.Inst.HideText());
         yield return new WaitForSeconds(0.5f);
-        this.StartCoroutine(this.EndingCreditCoroutine());
+        StartCoroutine(EndingCreditCoroutine());
     }
 
-    IEnumerator EndingCreditCoroutine()
+    private IEnumerator EndingCreditCoroutine()
     {
         SoundManager.Inst.Play(BACKGROUNDSOUND.ENDING);
-        this.endingCredit.SetActive(true);
+        endingCredit.SetActive(true);
         yield return new WaitForSeconds(5f);
         ResetManager.Inst.ResetGame();
     }
@@ -98,6 +102,6 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         SoundManager.Inst.Play(BACKGROUNDSOUND.ENDING);
-        this.gameOver.SetActive(true);
+        gameOver.SetActive(true);
     }
 }

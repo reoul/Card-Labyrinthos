@@ -6,59 +6,68 @@ public class SkillBookCard : MonoBehaviour
 {
     public GameObject frontCard;
     public Card curSelectCard;
-    [SerializeField] List<SkillBookCardButton> cardButtons;
-    int _originNum;
+    [SerializeField] private List<SkillBookCardButton> cardButtons;
+    private int _originNum;
     public int originNum
     {
         get
         {
-            return this._originNum;
+            return _originNum;
         }
         set
         {
-            this._originNum = value;
-            this.curNum = this._originNum;
+            _originNum = value;
+            curNum = _originNum;
         }
     }
-    int _curNum;
 
-    bool flag;
+    private int _curNum;
+
+    private bool flag;
     public int curNum
     {
         get
         {
-            return this._curNum;
+            return _curNum;
         }
         set
         {
-            this._curNum = Mathf.Clamp(value, 0, 5);
-            this.transform.GetComponentInChildren<TMP_Text>().text = this.isQuestionMark ? "?" : (this._curNum + 1).ToString();
-            if (this.frontCard != null) this.frontCard.GetComponentInChildren<TMP_Text>().text = (this._curNum + 1).ToString();
-            if (!this.isHideButton)
+            _curNum = Mathf.Clamp(value, 0, 5);
+            transform.GetComponentInChildren<TMP_Text>().text = isQuestionMark ? "?" : (_curNum + 1).ToString();
+            if (frontCard != null)
             {
-                if (this.cardButtons.Count == 2)
+                frontCard.GetComponentInChildren<TMP_Text>().text = (_curNum + 1).ToString();
+            }
+
+            if (!isHideButton)
+            {
+                if (cardButtons.Count == 2)
                 {
-                    if (this._curNum == (this.limitNum == 0 ? 0 : Mathf.Clamp(this._originNum - this.limitNum, 0, 5)))
-                        this.cardButtons[1].gameObject.SetActive(false);
-                    else if (this._curNum == (this.limitNum == 0 ? 5 : Mathf.Clamp(this._originNum + this.limitNum, 0, 5)))
-                        this.cardButtons[0].gameObject.SetActive(false);
+                    if (_curNum == (limitNum == 0 ? 0 : Mathf.Clamp(_originNum - limitNum, 0, 5)))
+                    {
+                        cardButtons[1].gameObject.SetActive(false);
+                    }
+                    else if (_curNum == (limitNum == 0 ? 5 : Mathf.Clamp(_originNum + limitNum, 0, 5)))
+                    {
+                        cardButtons[0].gameObject.SetActive(false);
+                    }
                     else
                     {
-                        this.cardButtons[0].gameObject.SetActive(this.isShowDownButton ? false : true);
-                        this.cardButtons[1].gameObject.SetActive(this.isSecondMaxNum ? false : true);
+                        cardButtons[0].gameObject.SetActive(isShowDownButton ? false : true);
+                        cardButtons[1].gameObject.SetActive(isSecondMaxNum ? false : true);
                     }
                 }
             }
             else
             {
-                for (int i = 0; i < this.cardButtons.Count; i++)
+                for (int i = 0; i < cardButtons.Count; i++)
                 {
-                    this.cardButtons[i].gameObject.SetActive(false);
+                    cardButtons[i].gameObject.SetActive(false);
                 }
             }
-            if (this.flag)
+            if (flag)
             {
-                this.flag = false;
+                flag = false;
                 return;
             }
             if (SkillManager.Inst.ActivePage.skill_type == SKILL_TYPE.SKILL5)
@@ -86,7 +95,7 @@ public class SkillBookCard : MonoBehaviour
                 //}
                 if (SkillManager.Inst.ActivePage.applyCards[0].gameObject.activeInHierarchy && SkillManager.Inst.ActivePage.applyCards[1].gameObject.activeInHierarchy)
                 {
-                    this.flag = true;
+                    flag = true;
                     SkillManager.Inst.ActivePage.applyCards[1].curNum = SkillManager.Inst.ActivePage.applyCards[0].curNum;
                     SkillManager.Inst.ActivePage.applyButton.SetButtonActive(true);
                 }
@@ -97,14 +106,20 @@ public class SkillBookCard : MonoBehaviour
             }
             if (SkillManager.Inst.ActivePage.skill_type != SKILL_TYPE.SKILL5)
             {
-                if ((this.originNum == this.curNum) && !this.isQuestionMark)
+                if ((originNum == curNum) && !isQuestionMark)
+                {
                     SkillManager.Inst.ActivePage.applyButton.SetButtonActive(false);
+                }
                 else
+                {
                     SkillManager.Inst.ActivePage.applyButton.SetButtonActive(true);
+                }
             }
 
-            if (this.isApplyButtonOn)
+            if (isApplyButtonOn)
+            {
                 SkillManager.Inst.ActivePage.applyButton.SetButtonActive(true);
+            }
             //if (SkillManager.Inst.isUseSkill[SkillManager.Inst.ActivePageIndex])
             //{
             //    for (int i = 0; i < cardButtons.Count; i++)
@@ -124,9 +139,9 @@ public class SkillBookCard : MonoBehaviour
 
     public void SetCard(Card card)
     {
-        for (int i = 0; i < this.frontCard.GetComponent<SkillBookCard>().cardButtons.Count; i++)
+        for (int i = 0; i < frontCard.GetComponent<SkillBookCard>().cardButtons.Count; i++)
         {
-            this.frontCard.GetComponent<SkillBookCard>().cardButtons[i].gameObject.SetActive(true);
+            frontCard.GetComponent<SkillBookCard>().cardButtons[i].gameObject.SetActive(true);
         }
         SkillManager.Inst.SetCard(this, card);
     }
@@ -134,7 +149,7 @@ public class SkillBookCard : MonoBehaviour
     public void Up(int index = 1)
     {
         SoundManager.Inst.Play(SKILLBOOKSOUND.CARD_NUM_UP_DOWN);
-        this.curNum += index;
+        curNum += index;
         if (SkillManager.Inst.ActivePage.skill_type == SKILL_TYPE.SKILL2)
         {
             if (SkillManager.Inst.ActivePage.applyCards[0].Equals(this))
@@ -146,7 +161,7 @@ public class SkillBookCard : MonoBehaviour
     public void Down(int index = 1)
     {
         SoundManager.Inst.Play(SKILLBOOKSOUND.CARD_NUM_UP_DOWN);
-        this.curNum -= index;
+        curNum -= index;
         if (SkillManager.Inst.ActivePage.skill_type == SKILL_TYPE.SKILL2)
         {
             if (SkillManager.Inst.ActivePage.applyCards[0].Equals(this))
@@ -159,27 +174,28 @@ public class SkillBookCard : MonoBehaviour
     public void HideCard()
     {
         //frontCard.GetComponent<SkillBookCard>().limitNum = 0;
-        this.frontCard.SetActive(false);
+        frontCard.SetActive(false);
     }
 
     public void SetColorAlpha(bool isHalf)
     {
-        this.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, isHalf ? 0.5f : 1);
-        this.transform.GetChild(0).GetComponent<TMP_Text>().color = new Color(isHalf ? 1 : 0, isHalf ? 1 : 0, isHalf ? 1 : 0, isHalf ? 0.5f : 1);     //숫자 텍스트
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, isHalf ? 0.5f : 1);
+        transform.GetChild(0).GetComponent<TMP_Text>().color = new Color(isHalf ? 1 : 0, isHalf ? 1 : 0, isHalf ? 1 : 0, isHalf ? 0.5f : 1);     //숫자 텍스트
     }
 
     public void Init()
     {
-        this.HideCard();
-        this.curSelectCard?.SetColorAlpha(false);
-        this.curSelectCard = null;
-        this.SetColorAlpha(true);
-        this.GetComponentInChildren<TMP_Text>().text = "+";
+        HideCard();
+        curSelectCard?.SetColorAlpha(false);
+        curSelectCard = null;
+        SetColorAlpha(true);
+        GetComponentInChildren<TMP_Text>().text = "+";
     }
 
     private void OnMouseOver()
     {
-        if (this.curSelectCard != null)
+        if (curSelectCard != null)
+        {
             if (Input.GetMouseButtonUp(1))
             {
                 if (SkillManager.Inst.ActivePage.skill_type == SKILL_TYPE.SKILL5 || SkillManager.Inst.ActivePage.skill_type == SKILL_TYPE.SKILL2)
@@ -192,8 +208,9 @@ public class SkillBookCard : MonoBehaviour
                 }
                 else
                 {
-                    this.Init();
+                    Init();
                 }
             }
+        }
     }
 }

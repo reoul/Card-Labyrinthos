@@ -20,7 +20,7 @@ public class PATTERN
 
     public PATTERN(PATTERN_TYPE type, int index = 0)
     {
-        this.pattern_type = type;
+        pattern_type = type;
         this.index = index;
     }
 }

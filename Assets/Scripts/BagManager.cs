@@ -5,37 +5,37 @@ using UnityEngine;
 public class BagManager : MonoBehaviour
 {
     public static BagManager Inst;
-    readonly int[] cardMax = new int[6] {18, 15, 12, 9, 6, 3};
+    private readonly int[] cardMax = {18, 15, 12, 9, 6, 3};
 
     public bool isOpen;
 
-    void Awake()
+    private void Awake()
     {
         if (Inst == null)
         {
             Inst = this;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
-    [SerializeField] List<TMP_Text> card_text;
-    [SerializeField] List<SpriteRenderer> skill_spriteRenderer;
-    [SerializeField] List<GameObject> unlockObjs;
+    [SerializeField] private List<TMP_Text> card_text;
+    [SerializeField] private List<SpriteRenderer> skill_spriteRenderer;
+    [SerializeField] private List<GameObject> unlockObjs;
 
     public void Init()
     {
-        this.transform.position = new Vector3(0, 0, -4);
+        transform.position = new Vector3(0, 0, -4);
     }
 
     public void Open()
     {
-        if (this.isOpen)
+        if (isOpen)
         {
-            this.Close();
+            Close();
             return;
         }
 
@@ -49,34 +49,34 @@ public class BagManager : MonoBehaviour
         }
 
         GameManager.Inst.CloseAllUI();
-        this.isOpen = true;
-        this.UpdateText();
-        this.transform.GetChild(0).gameObject.SetActive(true);
+        isOpen = true;
+        UpdateText();
+        transform.GetChild(0).gameObject.SetActive(true);
     }
 
     public void UpdateText()
     {
-        for (int i = 0; i < this.card_text.Count; i++)
+        for (int i = 0; i < card_text.Count; i++)
         {
-            this.card_text[i].text = string.Format($"{CardManager.Inst.cardDeck[i].ToString()}/{this.cardMax[i].ToString()}");
+            card_text[i].text = string.Format($"{CardManager.Inst.cardDeck[i].ToString()}/{cardMax[i].ToString()}");
         }
 
-        for (int i = 0; i < this.skill_spriteRenderer.Count; i++)
+        for (int i = 0; i < skill_spriteRenderer.Count; i++)
         {
-            this.skill_spriteRenderer[i].color = new Color(0, 0, 0, 0.5f);
-            this.skill_spriteRenderer[i].transform.GetChild(0).GetComponent<TMP_Text>().color = new Color(0, 0, 0, 0.5f);
+            skill_spriteRenderer[i].color = new Color(0, 0, 0, 0.5f);
+            skill_spriteRenderer[i].transform.GetChild(0).GetComponent<TMP_Text>().color = new Color(0, 0, 0, 0.5f);
             if (CardManager.Inst.cardDeck[0] >= 1)
             {
-                this.skill_spriteRenderer[i].color = Color.white;
-                this.skill_spriteRenderer[i].transform.GetChild(0).GetComponent<TMP_Text>().color = Color.black;
-                this.unlockObjs[i].SetActive(true);
+                skill_spriteRenderer[i].color = Color.white;
+                skill_spriteRenderer[i].transform.GetChild(0).GetComponent<TMP_Text>().color = Color.black;
+                unlockObjs[i].SetActive(true);
             }
         }
     }
 
     public void Close()
     {
-        this.isOpen = false;
-        this.transform.GetChild(0).gameObject.SetActive(false);
+        isOpen = false;
+        transform.GetChild(0).gameObject.SetActive(false);
     }
 }

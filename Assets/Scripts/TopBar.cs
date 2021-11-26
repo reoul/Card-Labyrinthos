@@ -17,20 +17,20 @@ public class TopBar : MonoBehaviour
         if (Inst == null)
         {
             Inst = this;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
     private void Start()
     {
-        this.UpdateText(TOPBAR_TYPE.HP);
-        this.UpdateText(TOPBAR_TYPE.CARDPIECE);
-        this.UpdateText(TOPBAR_TYPE.QUESTION);
-        this.UpdateText(TOPBAR_TYPE.SCENENAME);
+        UpdateText(TOPBAR_TYPE.HP);
+        UpdateText(TOPBAR_TYPE.CARDPIECE);
+        UpdateText(TOPBAR_TYPE.QUESTION);
+        UpdateText(TOPBAR_TYPE.SCENENAME);
     }
 
     public TMP_Text hpTMP;
@@ -40,7 +40,7 @@ public class TopBar : MonoBehaviour
 
     public void InitPosition()
     {
-        this.transform.position = new Vector3(0, 4.73f, -5);
+        transform.position = new Vector3(0, 4.73f, -5);
     }
 
     public void UpdateText(TOPBAR_TYPE type)
@@ -48,16 +48,16 @@ public class TopBar : MonoBehaviour
         switch (type)
         {
             case TOPBAR_TYPE.HP:
-                this.hpTMP.text = PlayerManager.Inst.hpString;
+                hpTMP.text = PlayerManager.Inst.hpString;
                 break;
             case TOPBAR_TYPE.QUESTION:
-                this.questionTMP.text = PlayerManager.Inst.question_card.ToString();
+                questionTMP.text = PlayerManager.Inst.question_card.ToString();
                 break;
             case TOPBAR_TYPE.CARDPIECE:
-                this.cardPieceTMP.text = PlayerManager.Inst.card_piece.ToString();
+                cardPieceTMP.text = PlayerManager.Inst.card_piece.ToString();
                 break;
             case TOPBAR_TYPE.SCENENAME:
-                this.sceneNameTMP.text = MapManager.Inst.CurrentSceneName;
+                sceneNameTMP.text = MapManager.Inst.CurrentSceneName;
                 break;
         }
     }
@@ -65,7 +65,10 @@ public class TopBar : MonoBehaviour
     public void Open(TopBarIcon icon)
     {
         if (icon.isLock)
+        {
             return;
+        }
+
         switch (icon.type)
         {
             case TOPBAR_TYPE.BAG:
@@ -81,8 +84,11 @@ public class TopBar : MonoBehaviour
     }
     public void Open(TOPBAR_TYPE type)
     {
-        if (this.GetIcon(type).isLock)
+        if (GetIcon(type).isLock)
+        {
             return;
+        }
+
         switch (type)
         {
             case TOPBAR_TYPE.BAG:
@@ -99,12 +105,14 @@ public class TopBar : MonoBehaviour
 
     public TopBarIcon GetIcon(TOPBAR_TYPE type)
     {
-        for (int i = 0; i < this.icons.Count; i++)
+        for (int i = 0; i < icons.Count; i++)
         {
-            if (this.icons[i].type == type)
-                return this.icons[i];
+            if (icons[i].type == type)
+            {
+                return icons[i];
+            }
         }
-        return this.icons[0];
+        return icons[0];
     }
 
     public void OnMouseEnterIcon(TOPBAR_TYPE type)
@@ -112,13 +120,13 @@ public class TopBar : MonoBehaviour
         switch (type)
         {
             case TOPBAR_TYPE.BAG:
-                this.explanObj[1].SetActive(true);
+                explanObj[1].SetActive(true);
                 break;
             case TOPBAR_TYPE.SETTING:
-                this.explanObj[2].SetActive(true);
+                explanObj[2].SetActive(true);
                 break;
             case TOPBAR_TYPE.SKILL:
-                this.explanObj[0].SetActive(true);
+                explanObj[0].SetActive(true);
                 break;
         }
     }
@@ -127,13 +135,13 @@ public class TopBar : MonoBehaviour
         switch (type)
         {
             case TOPBAR_TYPE.BAG:
-                this.explanObj[1].SetActive(false);
+                explanObj[1].SetActive(false);
                 break;
             case TOPBAR_TYPE.SETTING:
-                this.explanObj[2].SetActive(false);
+                explanObj[2].SetActive(false);
                 break;
             case TOPBAR_TYPE.SKILL:
-                this.explanObj[0].SetActive(false);
+                explanObj[0].SetActive(false);
                 break;
         }
     }

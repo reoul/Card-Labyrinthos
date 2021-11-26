@@ -24,19 +24,19 @@ public class RewardManager : MonoBehaviour
         if (Inst == null)
         {
             Inst = this;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
     private void Start()
     {
-        this.activeRewardWindow = false;
-        this.isGetAllReward = true;
-        Reward[] rewards = this.GetComponentsInChildren<Reward>(true);
+        activeRewardWindow = false;
+        isGetAllReward = true;
+        Reward[] rewards = GetComponentsInChildren<Reward>(true);
         for (int i = 0; i < rewards.Length; i++)
         {
             this.rewards.Add(rewards[i]);
@@ -45,7 +45,7 @@ public class RewardManager : MonoBehaviour
 
     public void Init()
     {
-        this.transform.position = new Vector3(0, 0, -1);
+        transform.position = new Vector3(0, 0, -1);
     }
 
     public bool getReward;              //
@@ -54,40 +54,51 @@ public class RewardManager : MonoBehaviour
     public IEnumerator ShowRewardWindowCoroutine(bool isStartRewardCoroutine = true)
     {
         SoundManager.Inst.Play(REWARDSOUND.SHOW_REWARD_WINDOW);
-        this.activeRewardWindow = true;
-        this.rewardWindow.SetActive(true);
-        SpriteRenderer windowRenderer = this.rewardWindow.GetComponent<SpriteRenderer>();
-        TMP_Text titleTMP = this.rewardWindow.transform.GetChild(0).GetComponent<TMP_Text>();
+        activeRewardWindow = true;
+        rewardWindow.SetActive(true);
+        SpriteRenderer windowRenderer = rewardWindow.GetComponent<SpriteRenderer>();
+        TMP_Text titleTMP = rewardWindow.transform.GetChild(0).GetComponent<TMP_Text>();
 
         windowRenderer.color = new Color(255, 255, 255, 0);
         titleTMP.color = new Color(255, 255, 255, 0);
 
         if (MapManager.Inst.CurrentSceneName != "지도" && MapManager.Inst.CurrentSceneName != "휴식")
+        {
             CardManager.Inst.FinishSceneAllMyHand();
+        }
+
         while (true)        //보상창
         {
             windowRenderer.color += Color.black * Time.deltaTime * 2;
             titleTMP.color += Color.black * Time.deltaTime * 2;
             if (windowRenderer.color.a > 1)
+            {
                 break;
+            }
+
             yield return new WaitForEndOfFrame();
         }
-        for (int i = 0; i < this.rewards.Count; i++)         //보상 선택지
+        for (int i = 0; i < rewards.Count; i++)         //보상 선택지
         {
-            if (this.rewards[i].isRewardOn)
-                yield return this.StartCoroutine(this.rewards[i].FadeCoroutine(true));
+            if (rewards[i].isRewardOn)
+            {
+                yield return StartCoroutine(rewards[i].FadeCoroutine(true));
+            }
         }
-        if (isStartRewardCoroutine) this.StartCoroutine(this.RewardCoroutine());
+        if (isStartRewardCoroutine)
+        {
+            StartCoroutine(RewardCoroutine());
+        }
     }
 
     public void AddReward(REWARD_TYPE type, int reward_type, int index, int index2 = 0)
     {
-        for (int i = 0; i < this.rewards.Count; i++)
+        for (int i = 0; i < rewards.Count; i++)
         {
-            if (!this.rewards[i].isRewardOn)
+            if (!rewards[i].isRewardOn)
             {
-                this.rewards[i].SetReward(type, reward_type, index, index2);
-                this.rewards[i].gameObject.SetActive(true);
+                rewards[i].SetReward(type, reward_type, index, index2);
+                rewards[i].gameObject.SetActive(true);
                 break;
             }
         }
@@ -95,53 +106,58 @@ public class RewardManager : MonoBehaviour
 
     public IEnumerator RewardCoroutine(bool isLoadMap = true)
     {
-        this.isGetAllReward = false;
-        this.StartCoroutine(this.CheckGetAllReward());
+        isGetAllReward = false;
+        StartCoroutine(CheckGetAllReward());
         while (true)
         {
-            if (this.isGetAllReward)
+            if (isGetAllReward)
             {
                 break;
             }
             yield return new WaitForSeconds(0.1f);
         }
 
-        this.activeRewardWindow = false;
-        this.rewardWindow.SetActive(false);
+        activeRewardWindow = false;
+        rewardWindow.SetActive(false);
         if (MapManager.Inst.CurrentSceneName != "휴식" && MapManager.Inst.CurrentSceneName != "지도")
+        {
             CardManager.Inst.Init();
+        }
+
         if (isLoadMap)
+        {
             MapManager.Inst.LoadMapScene(true);
+        }
     }
 
     public IEnumerator RewardStartBattleCoroutine()
     {
-        this.isGetAllReward = false;
-        yield return this.StartCoroutine(this.WaitChoiceCoroutine());
-        this.isChoice = false;
-        this.activeRewardWindow = false;
-        for (int i = 0; i < this.rewards.Count; i++)
+        isGetAllReward = false;
+        yield return StartCoroutine(WaitChoiceCoroutine());
+        isChoice = false;
+        activeRewardWindow = false;
+        for (int i = 0; i < rewards.Count; i++)
         {
-            this.rewards[i].Init();
+            rewards[i].Init();
         }
 
-        this.rewardWindow.SetActive(false);
+        rewardWindow.SetActive(false);
     }
 
     public void SetFinishBattleReward()
     {
-        this.SetTitleText("보상");
+        SetTitleText("보상");
         int questionCard = Random.Range(1, 3);
         int cardPiece = Random.Range(100, 120);
         cardPiece += 10 - ((cardPiece % 10) == 0 ? 10 : (cardPiece % 10));
-        this.AddReward(REWARD_TYPE.REWARD, (int)EVENT_REWARD_TYPE.QUESTION_CARD, questionCard);
-        this.AddReward(REWARD_TYPE.REWARD, (int)EVENT_REWARD_TYPE.CARD_PIECE, cardPiece);
+        AddReward(REWARD_TYPE.REWARD, (int)EVENT_REWARD_TYPE.QUESTION_CARD, questionCard);
+        AddReward(REWARD_TYPE.REWARD, (int)EVENT_REWARD_TYPE.CARD_PIECE, cardPiece);
     }
 
     public void SetRandomBattleDebuff()
     {
         SoundManager.Inst.Play(MAPSOUND.OPEN_DEBUFFWINDOW);
-        this.SetTitleText("저주");
+        SetTitleText("저주");
         int[] choices = new int[3];      //랜덤으로 선택된 3개의 디버프
         int[] Debuffs = new int[7];
         for (int i = 0; i < Debuffs.Length; i++)
@@ -160,13 +176,13 @@ public class RewardManager : MonoBehaviour
                 randomDebuff = Random.Range(0, 7);
             } while (choices[0] == randomDebuff || choices[1] == randomDebuff || choices[2] == randomDebuff);
             choices[i] = randomDebuff;
-            this.AddReward(REWARD_TYPE.DEBUFF, choices[i], 0);
+            AddReward(REWARD_TYPE.DEBUFF, choices[i], 0);
         }
     }
 
     public void SetTitleText(string title)
     {
-        this.titleTMP.text = title;
+        titleTMP.text = title;
     }
 
     public IEnumerator CheckGetAllReward()
@@ -174,9 +190,9 @@ public class RewardManager : MonoBehaviour
         while (true)
         {
             int count = 0;
-            for (int i = 0; i < this.rewards.Count; i++)
+            for (int i = 0; i < rewards.Count; i++)
             {
-                if (this.rewards[i].isRewardOn)
+                if (rewards[i].isRewardOn)
                 {
                     count++;
                 }
@@ -190,10 +206,12 @@ public class RewardManager : MonoBehaviour
                     TalkWindow.Inst.SetSkip(true);
                     TutorialManager.Inst.isToturialFinish = true;
                     if (MapManager.Inst.tutorialIndex == 1)
+                    {
                         yield return new WaitForSeconds(2);
+                    }
                 }
 
-                this.isGetAllReward = true;
+                isGetAllReward = true;
                 break;
             }
             yield return new WaitForSeconds(0.1f);
@@ -204,8 +222,11 @@ public class RewardManager : MonoBehaviour
     {
         while (true)
         {
-            if (this.isChoice)
+            if (isChoice)
+            {
                 break;
+            }
+
             yield return new WaitForSeconds(0.1f);
         }
     }
@@ -219,12 +240,12 @@ public class RewardManager : MonoBehaviour
                 {
                     case EVENT_REWARD_TYPE.CARD:
                         CardManager.Inst.AddCardDeck(reward.rewardData.index, reward.rewardData.index2);
-                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.NUM_CARD, reward.transform.position + Vector3.up * 0.5f, TopBar.Inst.GetIcon(TOPBAR_TYPE.BAG).transform.position, null, 1, reward.rewardData.index2, reward.rewardData.index);
+                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.NumCard, reward.transform.position + Vector3.up * 0.5f, TopBar.Inst.GetIcon(TOPBAR_TYPE.BAG).transform.position, null, 1, reward.rewardData.index2, reward.rewardData.index);
                         break;
                     case EVENT_REWARD_TYPE.CARD_PIECE:
                         if (reward.rewardData.index > 0)
                         {
-                            ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.CARD_PIECE, reward.transform.position + Vector3.up * 0.5f, TopBar.Inst.GetIcon(TOPBAR_TYPE.CARDPIECE).transform.position, null, 1, reward.rewardData.index / 10, 10);
+                            ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.CardPiece, reward.transform.position + Vector3.up * 0.5f, TopBar.Inst.GetIcon(TOPBAR_TYPE.CARDPIECE).transform.position, null, 1, reward.rewardData.index / 10, 10);
                         }
                         else
                         {
@@ -233,7 +254,9 @@ public class RewardManager : MonoBehaviour
                         break;
                     case EVENT_REWARD_TYPE.HP:
                         if (reward.rewardData.index < 0)
+                        {
                             SoundManager.Inst.Play(REWARDSOUND.LOSTHEAL);
+                        }
                         else
                         {
                             SoundManager.Inst.Play(RESTSOUND.HEAL);
@@ -243,20 +266,20 @@ public class RewardManager : MonoBehaviour
                     case EVENT_REWARD_TYPE.DRAW:
                         break;
                     case EVENT_REWARD_TYPE.QUESTION_CARD:
-                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.QUESTION_CARD, reward.transform.position + Vector3.up * 0.5f, TopBar.Inst.GetIcon(TOPBAR_TYPE.QUESTION).transform.position, null, 1, reward.rewardData.index, 1);
+                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.QuestionCard, reward.transform.position + Vector3.up * 0.5f, TopBar.Inst.GetIcon(TOPBAR_TYPE.QUESTION).transform.position, null, 1, reward.rewardData.index, 1);
                         break;
                     case EVENT_REWARD_TYPE.SKILL_BOOK:
-                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.SKILL_BOOK, reward.transform.position + Vector3.up * 0.5f, TopBar.Inst.GetIcon(TOPBAR_TYPE.SKILL).transform.position, TutorialManager.Inst.SetActiveTrueTopBarSkillBook());
+                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.SkillBook, reward.transform.position + Vector3.up * 0.5f, TopBar.Inst.GetIcon(TOPBAR_TYPE.SKILL).transform.position, TutorialManager.Inst.SetActiveTrueTopBarSkillBook());
                         break;
                 }
                 break;
             case REWARD_TYPE.DEBUFF:
                 SoundManager.Inst.Play(MAPSOUND.CHOICE_DEBUFF);
-                this.isChoice = true;
+                isChoice = true;
                 DebuffManager.Inst.debuff_type = reward.debuff_type;
                 break;
         }
 
-        this.StartCoroutine(reward.FadeCoroutine(false));
+        StartCoroutine(reward.FadeCoroutine(false));
     }
 }

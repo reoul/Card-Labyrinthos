@@ -7,19 +7,20 @@ public class TurnManager : MonoBehaviour
     public static TurnManager Inst;
 
     public bool isFinish;
-    void Awake()
+
+    private void Awake()
     {
         if (Inst == null)
         {
             Inst = this;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 
-        this.isFinish = false;
+        isFinish = false;
     }
 
     [Tooltip("시작 카드 개수를 정합니다")]
@@ -29,16 +30,16 @@ public class TurnManager : MonoBehaviour
     {
         get
         {
-            return this.startCardCount >= 6 ? true : false;
+            return startCardCount >= 6 ? true : false;
         }
     }
 
     [Header("Properties")]
     public bool isLoading;
 
-    WaitForEndOfFrame delayEndOfFrame = new WaitForEndOfFrame();
-    WaitForSeconds delay01 = new WaitForSeconds(0.1f);
-    WaitForSeconds delay07 = new WaitForSeconds(0.7f);
+    private WaitForEndOfFrame delayEndOfFrame = new WaitForEndOfFrame();
+    private WaitForSeconds delay01 = new WaitForSeconds(0.1f);
+    private WaitForSeconds delay07 = new WaitForSeconds(0.7f);
 
     public static Action OnAddCard;
 
@@ -48,94 +49,107 @@ public class TurnManager : MonoBehaviour
 
     public IEnumerator StartGameCoroutine()
     {
-        yield return this.delay01;
-        this.isContinue = true;
-        this.StartCoroutine(this.StartTurnCoroutine());
+        yield return delay01;
+        isContinue = true;
+        StartCoroutine(StartTurnCoroutine());
     }
 
-    IEnumerator StartTurnCoroutine()
+    private IEnumerator StartTurnCoroutine()
     {
-        this.isLoading = true;
+        isLoading = true;
 
-        if (this.isTutorialDebuffBar)
+        if (isTutorialDebuffBar)
         {
-            this.isTutorialDebuffBar = false;
-            yield return this.StartCoroutine(this.TutorialDebuffBarCoroutine());
+            isTutorialDebuffBar = false;
+            yield return StartCoroutine(TutorialDebuffBarCoroutine());
         }
-        yield return this.delay07;
+        yield return delay07;
         if (MapManager.Inst.CurrentSceneName == "전투" || MapManager.Inst.CurrentSceneName == "알 수 없는 공간" || MapManager.Inst.CurrentSceneName == "보스")
         {
             if (Player.Inst.hpbar.sheld > 0)
+            {
                 Player.Inst.hpbar.Damage(Player.Inst.hpbar.sheld);
+            }
+
             if (EnemyManager.Inst.enemys.Count > 0)
             {
                 if (EnemyManager.Inst.enemys[0].hpbar.sheld > 0)
+                {
                     EnemyManager.Inst.enemys[0].hpbar.Damage(EnemyManager.Inst.enemys[0].hpbar.sheld);
+                }
 
                 if (EnemyManager.Inst.enemys[0].hpbar.turnStartSheld > 0)
+                {
                     EnemyManager.Inst.enemys[0].Sheld(EnemyManager.Inst.enemys[0].hpbar.turnStartSheld);
+                }
             }
         }
-        if (!this.isFinish)
+        if (!isFinish)
         {
-            for (int i = 0; i < this.startCardCount; i++)
+            for (int i = 0; i < startCardCount; i++)
             {
                 OnAddCard.Invoke();
-                yield return this.delay01;
+                yield return delay01;
             }
             if (MapManager.Inst.CurrentSceneName == "전투" || MapManager.Inst.CurrentSceneName == "보스" || MapManager.Inst.CurrentSceneName == "알 수 없는 공간")
             {
                 SoundManager.Inst.Play(BATTLESOUND.TURN_START);
                 GameManager.Inst.Notification("내 턴");
             }
-            if (this.isTutorialLockCard)
+            if (isTutorialLockCard)
             {
                 CardManager.Inst.LockMyHandCardAll();
-                this.isTutorialLockCard = false;
+                isTutorialLockCard = false;
             }
-            if (MapManager.Inst.CurrentSceneName == "이벤트") this.StartCoroutine(EventManager.Inst.UpdateBackColorCoroutine());
-
+            if (MapManager.Inst.CurrentSceneName == "이벤트")
+            {
+                StartCoroutine(EventManager.Inst.UpdateBackColorCoroutine());
+            }
         }
-        yield return this.delay07;
-        this.isLoading = false;
+        yield return delay07;
+        isLoading = false;
     }
 
-    IEnumerator EndTurnCoroutine()
+    private IEnumerator EndTurnCoroutine()
     {
-        this.isLoading = true;
+        isLoading = true;
 
-        yield return this.delay07;
+        yield return delay07;
 
-        for (int i = 0; i < this.startCardCount; i++)
+        for (int i = 0; i < startCardCount; i++)
         {
             OnAddCard.Invoke();
-            yield return this.delay01;
+            yield return delay01;
         }
         GameManager.Inst.Notification("내 턴");
-        yield return this.delay07;
-        this.isLoading = false;
+        yield return delay07;
+        isLoading = false;
     }
 
-    IEnumerator TutorialDebuffBarCoroutine()
+    private IEnumerator TutorialDebuffBarCoroutine()
     {
-        yield return this.StartCoroutine(GhostManager.Inst.ShowGhost());
+        yield return StartCoroutine(GhostManager.Inst.ShowGhost());
         for (int i = 0; i < TalkWindow.Inst.talks[6].Count; i++)
         {
             ArrowManager.Inst.DestoryAllArrow();
 
             if (i == 0)
-                ArrowManager.Inst.CreateArrowObj(StageManager.Inst.debuffTMP.transform.position + new Vector3(0, -1, 0), ArrowCreateDirection.DOWN, StageManager.Inst.debuffTMP.transform);
+            {
+                ArrowManager.Inst.CreateArrowObj(StageManager.Inst.debuffTMP.transform.position + new Vector3(0, -1, 0), ArrowCreateDirection.Down, StageManager.Inst.debuffTMP.transform);
+            }
             else if (i == 1)
-                ArrowManager.Inst.CreateArrowObj(StageManager.Inst.debuffTMP.transform.position + new Vector3(-3, 0, 0), ArrowCreateDirection.LEFT, StageManager.Inst.debuffTMP.transform);
+            {
+                ArrowManager.Inst.CreateArrowObj(StageManager.Inst.debuffTMP.transform.position + new Vector3(-3, 0, 0), ArrowCreateDirection.Left, StageManager.Inst.debuffTMP.transform);
+            }
 
-            yield return this.StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(6, i));
-            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
-            yield return this.StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
+            yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(6, i));
+            yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
+            yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
         }
 
         ArrowManager.Inst.DestoryAllArrow();
 
-        yield return this.StartCoroutine(TalkWindow.Inst.HideText());
+        yield return StartCoroutine(TalkWindow.Inst.HideText());
 
         CardManager.Inst.UnLockMyHandCardAll();
 
@@ -146,18 +160,18 @@ public class TurnManager : MonoBehaviour
     {
         //EndTurnBtn.SetActive(false);
         //CardManager.Inst.FnishCardAllMyHand();
-        this.StartCoroutine(this.EnemyTurnCoroutine());
+        StartCoroutine(EnemyTurnCoroutine());
     }
 
-    IEnumerator EnemyTurnCoroutine()
+    private IEnumerator EnemyTurnCoroutine()
     {
         while (true)
         {
-            if (this.isContinue)
+            if (isContinue)
             {
                 break;
             }
-            yield return this.delayEndOfFrame;
+            yield return delayEndOfFrame;
         }
         yield return new WaitForSeconds(1.6f);
         if (EnemyManager.Inst.enemys.Count > 0)
@@ -173,27 +187,30 @@ public class TurnManager : MonoBehaviour
             }
             DebuffManager.Inst.CheckDebuff();
             EnemyManager.Inst.UpdateStateTextAllEnemy();
-            this.StartCoroutine(this.StartTurnCoroutine());
+            StartCoroutine(StartTurnCoroutine());
         }
     }
 
     public void AddStartTurnCard()
     {
-        if (!this.isStartCardCountMax) this.startCardCount++;
+        if (!isStartCardCountMax)
+        {
+            startCardCount++;
+        }
     }
 
     public IEnumerator ShowReward()    //전투가 끝나거나 이벤트 보상을 얻을때
     {
         RewardManager.Inst.SetFinishBattleReward();
-        yield return this.StartCoroutine(RewardManager.Inst.ShowRewardWindowCoroutine());    //보상 다 받았으면
+        yield return StartCoroutine(RewardManager.Inst.ShowRewardWindowCoroutine());    //보상 다 받았으면
         MapManager.Inst.LoadMapScene(true);
     }
 
     public IEnumerator ShowDebuffCoroutine()    //전투에 들어가기 전에 전투 디버프 설정
     {
         RewardManager.Inst.SetRandomBattleDebuff();
-        yield return this.StartCoroutine(RewardManager.Inst.ShowRewardWindowCoroutine(false));    //보상 다 받았으면
-        yield return this.StartCoroutine(RewardManager.Inst.RewardStartBattleCoroutine());
+        yield return StartCoroutine(RewardManager.Inst.ShowRewardWindowCoroutine(false));    //보상 다 받았으면
+        yield return StartCoroutine(RewardManager.Inst.RewardStartBattleCoroutine());
     }
 
 }

@@ -3,33 +3,36 @@
 public enum IntroButtonType { START, SETTING, QUIT }
 public class IntroButton : MonoBehaviour
 {
-    bool isButtonOn;
-    bool isClick;
-    [SerializeField] IntroButtonType type;
+    private bool isButtonOn;
+    private bool isClick;
+    [SerializeField] private IntroButtonType type;
 
     private void OnMouseUp()
     {
-        if (this.isButtonOn && !this.isClick) this.Click();
+        if (isButtonOn && !isClick)
+        {
+            Click();
+        }
     }
 
     private void OnMouseEnter()
     {
         SoundManager.Inst.Play(EVENTSOUND.CHOICE_MOUSEUP);
-        this.isButtonOn = true;
+        isButtonOn = true;
     }
 
     private void OnMouseExit()
     {
-        this.isButtonOn = false;
+        isButtonOn = false;
     }
 
-    void Click()
+    private void Click()
     {
         SoundManager.Inst.Play(EVENTSOUND.CHOICE_BUTTON);
-        switch (this.type)
+        switch (type)
         {
             case IntroButtonType.START:
-                this.isClick = true;
+                isClick = true;
                 IntroManager.Inst.GameStart();
                 break;
             case IntroButtonType.SETTING:

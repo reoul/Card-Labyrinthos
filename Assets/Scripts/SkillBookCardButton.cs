@@ -5,26 +5,27 @@ public class SkillBookCardButton : MonoBehaviour
 {
     public SkillBookCard parent;
 
-    [SerializeField] bool onButton;
+    [SerializeField] private bool onButton;
 
-    enum TYPE { UP, DOWN, APPLY, BOOKMARK }
+    private enum TYPE { UP, DOWN, APPLY, BOOKMARK }
     public int index;
     public bool isActive = true;
 
-    [SerializeField] TYPE type;
+    [SerializeField] private TYPE type;
 
-    int flag = 0;
+    private int flag = 0;
 
     private void OnMouseUp()
     {
-        if (this.onButton && this.isActive)
-            switch (this.type)
+        if (onButton && isActive)
+        {
+            switch (type)
             {
                 case TYPE.UP:
-                    this.parent.Up();
+                    parent.Up();
                     break;
                 case TYPE.DOWN:
-                    this.parent.Down();
+                    parent.Down();
                     break;
                 case TYPE.APPLY:
                     if (!SkillManager.Inst.isUseSkill[SkillManager.Inst.ActivePageIndex])
@@ -45,29 +46,30 @@ public class SkillBookCardButton : MonoBehaviour
                                 break;
                         }
                         SkillManager.Inst.ApplyCardAll();
-                        this.SetButtonActive(false);
+                        SetButtonActive(false);
                     }
                     break;
                 case TYPE.BOOKMARK:
-                    SkillManager.Inst.SelectPage(this.index);
+                    SkillManager.Inst.SelectPage(index);
                     break;
             }
+        }
     }
 
     private void OnMouseEnter()
     {
-        this.onButton = true;
+        onButton = true;
     }
 
     private void OnMouseExit()
     {
-        this.onButton = false;
+        onButton = false;
     }
 
     public void SetButtonActive(bool isActive)
     {
         this.isActive = isActive;
-        this.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, isActive ? 1 : 0.5f);
-        this.transform.GetChild(0).GetComponent<TMP_Text>().color = new Color(1, 1, 1, isActive ? 1 : 0.5f);     //숫자 텍스트
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, isActive ? 1 : 0.5f);
+        transform.GetChild(0).GetComponent<TMP_Text>().color = new Color(1, 1, 1, isActive ? 1 : 0.5f);     //숫자 텍스트
     }
 }

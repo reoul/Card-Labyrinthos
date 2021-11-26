@@ -5,37 +5,37 @@ public class SettingManager : MonoBehaviour
 {
     public static SettingManager Inst;
 
-    [SerializeField] GameObject settingWindow;
-    [SerializeField] Slider bgmSlider;
-    [SerializeField] Slider sfxSlider;
+    [SerializeField] private GameObject settingWindow;
+    [SerializeField] private Slider bgmSlider;
+    [SerializeField] private Slider sfxSlider;
 
     private void Awake()
     {
         if (Inst == null)
         {
             Inst = this;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
     public void Open()
     {
-        if (this.settingWindow.activeInHierarchy)
+        if (settingWindow.activeInHierarchy)
         {
-            this.Close();
+            Close();
             return;
         }
 
-        this.settingWindow.SetActive(true);
+        settingWindow.SetActive(true);
     }
 
     public void Close()
     {
-        this.settingWindow.SetActive(false);
+        settingWindow.SetActive(false);
     }
 
     public void GameReset()
@@ -53,16 +53,16 @@ public class SettingManager : MonoBehaviour
     public void SettingExit()
     {
         SoundManager.Inst.Play(EVENTSOUND.CHOICE_BUTTON);
-        this.Close();
+        Close();
     }
 
     public void UpdateBGMVolume()
     {
-        SoundManager.Inst.SetBGMVolume(this.bgmSlider.value);
+        SoundManager.Inst.SetBGMVolume(bgmSlider.value);
     }
 
     public void UpdateSFXVolume()
     {
-        SoundManager.Inst.SetSFXVolume(this.sfxSlider.value);
+        SoundManager.Inst.SetSFXVolume(sfxSlider.value);
     }
 }
