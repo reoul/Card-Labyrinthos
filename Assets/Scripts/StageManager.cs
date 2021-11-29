@@ -35,18 +35,18 @@ public class StageManager : MonoBehaviour
 
     public void CreateStage()
     {
-        if (MapManager.Inst.CurrentSceneName == "전투" || MapManager.Inst.CurrentSceneName == "보스")
+        if (MapManager.CurrentSceneName == "전투" || MapManager.CurrentSceneName == "보스")
         {
-            SoundManager.Inst.Play(BACKGROUNDSOUND.BATTLE);
+            SoundManager.Inst.Play(BACKGROUNDSOUND.Battle);
             for (int i = 0; i < monsterSO.monsters.Length; i++)
             {
                 if (MapManager.Inst.fieldData.monster_type == MONSTER_TYPE.BOSS)
                 {
-                    SoundManager.Inst.Play(BACKGROUNDSOUND.BOSS);
+                    SoundManager.Inst.Play(BACKGROUNDSOUND.Boss);
                 }
                 else
                 {
-                    SoundManager.Inst.Play(BACKGROUNDSOUND.BATTLE);
+                    SoundManager.Inst.Play(BACKGROUNDSOUND.Battle);
                 }
 
                 if (MapManager.Inst.fieldData.monster_type == monsterSO.monsters[i].type)

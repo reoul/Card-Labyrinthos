@@ -1,16 +1,32 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
-public enum REWARD_TYPE { REWARD, DEBUFF }
-public enum DEBUFF_TYPE { DEBUFF1, DEBUFF2, DEBUFF3, DEBUFF4, DEBUFF5, DEBUFF6, DEBUFF7, TUTORIAL }
-
-public class RewardManager : MonoBehaviour
+public enum REWARD_TYPE
 {
-    public static RewardManager Inst;
+    Reward,
+    Debuff
+}
 
+public enum DEBUFF_TYPE
+{
+    Debuff1,
+    Debuff2,
+    Debuff3,
+    Debuff4,
+    Debuff5,
+    Debuff6,
+    Debuff7,
+    Tutorial
+}
+
+public class RewardManager : Singleton<RewardManager>
+{
     public GameObject rewardWindow;
     public TMP_Text titleTMP;
 
@@ -21,25 +37,17 @@ public class RewardManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Inst == null)
-        {
-            Inst = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        ExistInstance(this);
     }
 
     private void Start()
     {
         activeRewardWindow = false;
         isGetAllReward = true;
-        Reward[] rewards = GetComponentsInChildren<Reward>(true);
-        for (int i = 0; i < rewards.Length; i++)
+        var rewards = GetComponentsInChildren<Reward>(true);
+        foreach (Reward reward in rewards)
         {
-            this.rewards.Add(rewards[i]);
+            this.rewards.Add(reward);
         }
     }
 
@@ -48,12 +56,11 @@ public class RewardManager : MonoBehaviour
         transform.position = new Vector3(0, 0, -1);
     }
 
-    public bool getReward;              //
-    public bool activeRewardWindow;     //보상 창이 켜져있는지 확인하는 변수
+    public bool activeRewardWindow; //보상 창이 켜져있는지 확인하는 변수
 
     public IEnumerator ShowRewardWindowCoroutine(bool isStartRewardCoroutine = true)
     {
-        SoundManager.Inst.Play(REWARDSOUND.SHOW_REWARD_WINDOW);
+        SoundManager.Inst.Play(REWARDSOUND.ShowRewardWindow);
         activeRewardWindow = true;
         rewardWindow.SetActive(true);
         SpriteRenderer windowRenderer = rewardWindow.GetComponent<SpriteRenderer>();
@@ -62,43 +69,40 @@ public class RewardManager : MonoBehaviour
         windowRenderer.color = new Color(255, 255, 255, 0);
         titleTMP.color = new Color(255, 255, 255, 0);
 
-        if (MapManager.Inst.CurrentSceneName != "지도" && MapManager.Inst.CurrentSceneName != "휴식")
+        if (MapManager.CurrentSceneName != "지도" && MapManager.CurrentSceneName != "휴식")
         {
             CardManager.Inst.FinishSceneAllMyHand();
         }
 
-        while (true)        //보상창
-        {
-            windowRenderer.color += Color.black * Time.deltaTime * 2;
-            titleTMP.color += Color.black * Time.deltaTime * 2;
-            if (windowRenderer.color.a > 1)
-            {
-                break;
-            }
+        Tween fade1 = windowRenderer.DOFade(1, 0.5f);
+        Tween fade2 = titleTMP.DOFade(1, 0.5f);
 
-            yield return new WaitForEndOfFrame();
-        }
-        for (int i = 0; i < rewards.Count; i++)         //보상 선택지
+        //보상창 페이드
+        yield return fade1.WaitForCompletion();
+        yield return fade2.WaitForCompletion();
+
+        foreach (var reward in rewards)
         {
-            if (rewards[i].isRewardOn)
+            if (reward.isRewardOn)
             {
-                yield return StartCoroutine(rewards[i].FadeCoroutine(true));
+                yield return StartCoroutine(reward.FadeCoroutine(true));
             }
         }
+
         if (isStartRewardCoroutine)
         {
             StartCoroutine(RewardCoroutine());
         }
     }
 
-    public void AddReward(REWARD_TYPE type, int reward_type, int index, int index2 = 0)
+    public void AddReward(REWARD_TYPE type, int rewardType, int index, int index2 = 0)
     {
-        for (int i = 0; i < rewards.Count; i++)
+        foreach (var reward in rewards)
         {
-            if (!rewards[i].isRewardOn)
+            if (!reward.isRewardOn)
             {
-                rewards[i].SetReward(type, reward_type, index, index2);
-                rewards[i].gameObject.SetActive(true);
+                reward.SetReward(type, rewardType, index, index2);
+                reward.gameObject.SetActive(true);
                 break;
             }
         }
@@ -114,12 +118,13 @@ public class RewardManager : MonoBehaviour
             {
                 break;
             }
+
             yield return new WaitForSeconds(0.1f);
         }
 
         activeRewardWindow = false;
         rewardWindow.SetActive(false);
-        if (MapManager.Inst.CurrentSceneName != "휴식" && MapManager.Inst.CurrentSceneName != "지도")
+        if (MapManager.CurrentSceneName != "휴식" && MapManager.CurrentSceneName != "지도")
         {
             CardManager.Inst.Init();
         }
@@ -130,73 +135,96 @@ public class RewardManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 저주를 골랐는지 확인하는 코루틴, 저주를 선택하기 전까지는 종료되지 않는다.
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator RewardStartBattleCoroutine()
     {
         isGetAllReward = false;
         yield return StartCoroutine(WaitChoiceCoroutine());
         isChoice = false;
         activeRewardWindow = false;
-        for (int i = 0; i < rewards.Count; i++)
+        foreach (var reward in rewards)
         {
-            rewards[i].Init();
+            reward.Init();
         }
 
         rewardWindow.SetActive(false);
     }
 
+    /// <summary>
+    /// 전투가 끝나고 보상을 설정한다.
+    /// </summary>
     public void SetFinishBattleReward()
     {
         SetTitleText("보상");
-        int questionCard = Random.Range(1, 3);
-        int cardPiece = Random.Range(100, 120);
+        var questionCard = Random.Range(1, 3);
+        var cardPiece = Random.Range(100, 120);
+
         cardPiece += 10 - ((cardPiece % 10) == 0 ? 10 : (cardPiece % 10));
-        AddReward(REWARD_TYPE.REWARD, (int)EVENT_REWARD_TYPE.QUESTION_CARD, questionCard);
-        AddReward(REWARD_TYPE.REWARD, (int)EVENT_REWARD_TYPE.CARD_PIECE, cardPiece);
+
+        AddReward(REWARD_TYPE.Reward, (int) EVENT_REWARD_TYPE.QuestionCard, questionCard);
+        AddReward(REWARD_TYPE.Reward, (int) EVENT_REWARD_TYPE.CardPiece, cardPiece);
     }
 
+    /// <summary>
+    /// 전투 필드 선택 시 저주를 설정한다.
+    /// </summary>
     public void SetRandomBattleDebuff()
     {
-        SoundManager.Inst.Play(MAPSOUND.OPEN_DEBUFFWINDOW);
+        SoundManager.Inst.Play(MAPSOUND.OpenDebuffWindow);
         SetTitleText("저주");
-        int[] choices = new int[3];      //랜덤으로 선택된 3개의 디버프
-        int[] Debuffs = new int[7];
-        for (int i = 0; i < Debuffs.Length; i++)
+        var choices = new int[3]; //랜덤으로 선택된 3개의 디버프
+        var debuffs = new int[7];
+        for (int i = 0; i < debuffs.Length; i++)
         {
-            Debuffs[i] = i;
+            debuffs[i] = i;
         }
+
         for (int i = 0; i < choices.Length; i++)
         {
             choices[i] = -1;
         }
-        int randomDebuff;
+
         for (int i = 0; i < choices.Length; i++)
         {
+            int randomDebuff;
             do
             {
                 randomDebuff = Random.Range(0, 7);
             } while (choices[0] == randomDebuff || choices[1] == randomDebuff || choices[2] == randomDebuff);
+
             choices[i] = randomDebuff;
-            AddReward(REWARD_TYPE.DEBUFF, choices[i], 0);
+            AddReward(REWARD_TYPE.Debuff, choices[i], 0);
         }
     }
 
+    /// <summary>
+    /// 보상창 제목을 설정한다.
+    /// </summary>
+    /// <param name="title">제목</param>
     public void SetTitleText(string title)
     {
         titleTMP.text = title;
     }
 
-    public IEnumerator CheckGetAllReward()
+    /// <summary>
+    /// 보상을 모두 받을때까지 코루틴이 종료되지 않는다.
+    /// </summary>
+    private IEnumerator CheckGetAllReward()
     {
         while (true)
         {
-            int count = 0;
-            for (int i = 0; i < rewards.Count; i++)
+            var count = 0;
+            foreach (var reward in rewards)
             {
-                if (rewards[i].isRewardOn)
+                if (reward.isRewardOn)
                 {
                     count++;
                 }
             }
+
             if (count == 0 && ThrowingObjManager.Inst.moveThrowingReward == 0)
             {
                 if (SceneManager.GetActiveScene().name == "Tutorial2")
@@ -214,11 +242,16 @@ public class RewardManager : MonoBehaviour
                 isGetAllReward = true;
                 break;
             }
+
             yield return new WaitForSeconds(0.1f);
         }
     }
 
-    public IEnumerator WaitChoiceCoroutine()
+    /// <summary>
+    /// 보상 중 하나를 선택했는지 확인하는 코루틴, 하나를 선택하기 전까지는 종료되지 않는다.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator WaitChoiceCoroutine()
     {
         while (true)
         {
@@ -231,53 +264,76 @@ public class RewardManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 보상을 얻는다.
+    /// </summary>
+    /// <param name="reward">얻을 보상</param>
     public void GetReward(Reward reward)
     {
         switch (reward.rewardData.type)
         {
-            case REWARD_TYPE.REWARD:
+            case REWARD_TYPE.Reward:
                 switch (reward.rewardData.reward_type)
                 {
-                    case EVENT_REWARD_TYPE.CARD:
+                    case EVENT_REWARD_TYPE.Card:
                         CardManager.Inst.AddCardDeck(reward.rewardData.index, reward.rewardData.index2);
-                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.NumCard, reward.transform.position + Vector3.up * 0.5f, TopBar.Inst.GetIcon(TOPBAR_TYPE.BAG).transform.position, null, 1, reward.rewardData.index2, reward.rewardData.index);
+                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.NumCard,
+                            reward.transform.position + Vector3.up * 0.5f,
+                            TopBar.Inst.GetIcon(TOPBAR_TYPE.BAG).transform.position, null, 1, reward.rewardData.index2,
+                            reward.rewardData.index);
                         break;
-                    case EVENT_REWARD_TYPE.CARD_PIECE:
+                    case EVENT_REWARD_TYPE.CardPiece:
                         if (reward.rewardData.index > 0)
                         {
-                            ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.CardPiece, reward.transform.position + Vector3.up * 0.5f, TopBar.Inst.GetIcon(TOPBAR_TYPE.CARDPIECE).transform.position, null, 1, reward.rewardData.index / 10, 10);
+                            ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.CardPiece,
+                                reward.transform.position + Vector3.up * 0.5f,
+                                TopBar.Inst.GetIcon(TOPBAR_TYPE.CARDPIECE).transform.position, null, 1,
+                                reward.rewardData.index / 10, 10);
                         }
                         else
                         {
-                            PlayerManager.Inst.card_piece += reward.rewardData.index;
+                            PlayerManager.Inst.CardPiece += reward.rewardData.index;
                         }
+
                         break;
-                    case EVENT_REWARD_TYPE.HP:
+                    case EVENT_REWARD_TYPE.Hp:
                         if (reward.rewardData.index < 0)
                         {
-                            SoundManager.Inst.Play(REWARDSOUND.LOSTHEAL);
+                            SoundManager.Inst.Play(REWARDSOUND.LostHeal);
                         }
                         else
                         {
-                            SoundManager.Inst.Play(RESTSOUND.HEAL);
+                            SoundManager.Inst.Play(RESTSOUND.Heal);
                         }
-                        PlayerManager.Inst.hp += reward.rewardData.index;
+
+                        PlayerManager.Inst.Hp += reward.rewardData.index;
                         break;
-                    case EVENT_REWARD_TYPE.DRAW:
+                    case EVENT_REWARD_TYPE.Draw:
                         break;
-                    case EVENT_REWARD_TYPE.QUESTION_CARD:
-                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.QuestionCard, reward.transform.position + Vector3.up * 0.5f, TopBar.Inst.GetIcon(TOPBAR_TYPE.QUESTION).transform.position, null, 1, reward.rewardData.index, 1);
+                    case EVENT_REWARD_TYPE.QuestionCard:
+                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.QuestionCard,
+                            reward.transform.position + Vector3.up * 0.5f,
+                            TopBar.Inst.GetIcon(TOPBAR_TYPE.QUESTION).transform.position, null, 1,
+                            reward.rewardData.index, 1);
                         break;
-                    case EVENT_REWARD_TYPE.SKILL_BOOK:
-                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.SkillBook, reward.transform.position + Vector3.up * 0.5f, TopBar.Inst.GetIcon(TOPBAR_TYPE.SKILL).transform.position, TutorialManager.Inst.SetActiveTrueTopBarSkillBook());
+                    case EVENT_REWARD_TYPE.SkillBook:
+                        ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.SkillBook,
+                            reward.transform.position + Vector3.up * 0.5f,
+                            TopBar.Inst.GetIcon(TOPBAR_TYPE.SKILL).transform.position,
+                            TutorialManager.Inst.SetActiveTrueTopBarSkillBook());
                         break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
+
                 break;
-            case REWARD_TYPE.DEBUFF:
-                SoundManager.Inst.Play(MAPSOUND.CHOICE_DEBUFF);
+            case REWARD_TYPE.Debuff:
+                SoundManager.Inst.Play(MAPSOUND.ChoiceDebuff);
                 isChoice = true;
                 DebuffManager.Inst.debuff_type = reward.debuff_type;
                 break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
 
         StartCoroutine(reward.FadeCoroutine(false));

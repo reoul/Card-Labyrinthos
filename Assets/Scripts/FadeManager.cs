@@ -2,9 +2,8 @@
 using System.Collections;
 using UnityEngine;
 
-public class FadeManager : MonoBehaviour
+public class FadeManager : Singleton<FadeManager>
 {
-    public static FadeManager Inst;
     private SpriteRenderer SR;
 
     public static event EventHandler FadeEvent;
@@ -13,20 +12,11 @@ public class FadeManager : MonoBehaviour
 
     public bool isActiveFade;
 
-    private WaitForSeconds delay01 = new WaitForSeconds(0.1f);
+    private readonly WaitForSeconds delay01 = new WaitForSeconds(0.1f);
 
     private void Awake()
     {
-        if (Inst == null)
-        {
-            Inst = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
+        ExistInstance(this);
         SR = GetComponent<SpriteRenderer>();
         isActiveFade = false;
     }
@@ -45,7 +35,9 @@ public class FadeManager : MonoBehaviour
         yield return StartCoroutine(fadeOutPrev1 ?? EmptyCoroutine());
         yield return StartCoroutine(fadeOutPrev2 ?? EmptyCoroutine());
         yield return StartCoroutine(fadeOutPrev3 ?? EmptyCoroutine());
+        
         yield return StartCoroutine(Fade(true)); //페이드아웃 실행
+        
         if (FadeEvent != null)
         {
             FadeEvent(this, EventArgs.Empty); //실행 후 이벤트 실행
@@ -58,12 +50,15 @@ public class FadeManager : MonoBehaviour
         BagManager.Inst.Init();
         SkillManager.Inst.Init();
         Init();
+        
         yield return delay01;
         TopBar.Inst.UpdateText(TOPBAR_TYPE.SCENENAME);
         yield return StartCoroutine(fadeOutAfter1 ?? EmptyCoroutine());
         yield return StartCoroutine(fadeOutAfter2 ?? EmptyCoroutine());
         yield return StartCoroutine(fadeOutAfter3 ?? EmptyCoroutine());
+        
         yield return StartCoroutine(Fade(false)); //다시 페이드인 실행
+        
         yield return StartCoroutine(fadeInAfter1 ?? EmptyCoroutine());
         yield return StartCoroutine(fadeInAfter2 ?? EmptyCoroutine());
         yield return StartCoroutine(fadeInAfter3 ?? EmptyCoroutine());

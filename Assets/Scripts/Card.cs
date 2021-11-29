@@ -77,7 +77,7 @@ public class Card : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        SoundManager.Inst.Play(EVENTSOUND.CHOICE_MOUSEUP);
+        SoundManager.Inst.Play(EVENTSOUND.ChoiceMouseup);
     }
 
     private void OnMouseOver()
@@ -106,15 +106,11 @@ public class Card : MonoBehaviour
         }
     }
 
-    public void Use(GameObject obj = null)
+    public void Use(GameObject target = null)
     {
-        if (obj.CompareTag("Player"))
+        if (target.CompareTag("Player"))
         {
             Player.Inst.Sheld(final_Num + 1);
-        }
-        else
-        {
-            Player.Inst.Attack();
         }
     }
 

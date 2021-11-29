@@ -33,7 +33,7 @@ public class Event : MonoBehaviour
 
     private int[] GetRandomAchieve()
     {
-        int[] rands = new int[3];
+        var rands = new int[3];
         rands[0] = Random.Range(0, 3); //각 이벤트 선택지마다 조건을 랜덤으로 매김
         do
         {

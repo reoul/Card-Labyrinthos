@@ -229,7 +229,7 @@ public class TalkWindow : MonoBehaviour
 
     private void OnMouseUp()
     {
-        SoundManager.Inst.Play(EVENTSOUND.CHOICE_BUTTON);
+        SoundManager.Inst.Play(EVENTSOUND.ChoiceButton);
         if (talkTMP.text.Length == currentTalk.Length)
         {
             SetFlagNext(true);

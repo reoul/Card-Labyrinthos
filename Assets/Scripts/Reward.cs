@@ -17,7 +17,7 @@ public class Reward : MonoBehaviour
     [SerializeField] private TMP_Text resultTMP;
     public RewardData rewardData;
     public DEBUFF_TYPE debuff_type;
-    private bool onReward;   //마우스가 필드 위에 있는지
+    private bool onReward; //마우스가 필드 위에 있는지
     public bool isRewardOn;
 
     [SerializeField] private SpriteRenderer windowRenderer;
@@ -47,51 +47,63 @@ public class Reward : MonoBehaviour
         }
     }
 
-    private string reward_string
+    private string RewardString
     {
         get
         {
             switch (rewardData.reward_type)
             {
-                case EVENT_REWARD_TYPE.CARD: return string.Format("{0} 카드를 {1}장 획득합니다", rewardData.index + 1, rewardData.index2);
-                case EVENT_REWARD_TYPE.CARD_PIECE: return string.Format("카드 파편을 {0}개 {1}합니다", Mathf.Abs(rewardData.index), rewardData.index > 0 ? "획득" : "감소");
-                case EVENT_REWARD_TYPE.HP: return string.Format("체력이 {0} {1}합니다", Mathf.Abs(rewardData.index), rewardData.index > 0 ? "회복" : "감소");
-                case EVENT_REWARD_TYPE.DRAW: return string.Format("시작 드로우 개수가 {0}장 증가합니다", Mathf.Abs(rewardData.index));
-                case EVENT_REWARD_TYPE.QUESTION_CARD: return string.Format("물음표카드를 {0}장 획득합니다", Mathf.Abs(rewardData.index));
-                case EVENT_REWARD_TYPE.SKILL_BOOK: return "스킬북을 획득합니다";
+                case EVENT_REWARD_TYPE.Card:
+                    return $"{(rewardData.index + 1).ToString()} 카드를 {rewardData.index2.ToString()}장 획득합니다";
+                case EVENT_REWARD_TYPE.CardPiece:
+                    return
+                        $"카드 파편을 {Mathf.Abs(rewardData.index).ToString()}개 {(rewardData.index > 0 ? "획득" : "감소")}합니다";
+                case EVENT_REWARD_TYPE.Hp:
+                    return $"체력이 {Mathf.Abs(rewardData.index).ToString()} {(rewardData.index > 0 ? "회복" : "감소")}합니다";
+                case EVENT_REWARD_TYPE.Draw:
+                    return $"시작 드로우 개수가 {Mathf.Abs(rewardData.index).ToString()}장 증가합니다";
+                case EVENT_REWARD_TYPE.QuestionCard:
+                    return $"물음표카드를 {Mathf.Abs(rewardData.index).ToString()}장 획득합니다";
+                case EVENT_REWARD_TYPE.SkillBook:
+                    return "스킬북을 획득합니다";
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
-            return "";
         }
     }
-    public void SetReward(REWARD_TYPE type, int reward_type, int index = 0, int index2 = 0)
+
+    public void SetReward(REWARD_TYPE type, int rewardType, int index = 0, int index2 = 0)
     {
         rewardData.type = type;
         switch (type)
         {
-            case REWARD_TYPE.REWARD:
-                rewardData.reward_type = (EVENT_REWARD_TYPE)reward_type;
+            case REWARD_TYPE.Reward:
+                rewardData.reward_type = (EVENT_REWARD_TYPE) rewardType;
                 rewardData.index = index;
                 rewardData.index2 = index2;
-                resultTMP.text = reward_string;
+                resultTMP.text = RewardString;
                 break;
-            case REWARD_TYPE.DEBUFF:
-                SoundManager.Inst.Play(MAPSOUND.SHOW_DEBUFF_BUTTON);
-                debuff_type = (DEBUFF_TYPE)reward_type;
+            case REWARD_TYPE.Debuff:
+                SoundManager.Inst.Play(MAPSOUND.ShowDebuffButton);
+                debuff_type = (DEBUFF_TYPE) rewardType;
                 DebuffManager.Inst.debuff_type = debuff_type;
                 resultTMP.text = DebuffManager.Inst.DebuffString;
                 break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(type), type, null);
         }
 
         isRewardOn = true;
         ColorAlpha01(true);
     }
+
     public IEnumerator FadeCoroutine(bool isOut)
     {
         ColorAlpha01(isOut);
 
         if (isOut)
         {
-            SoundManager.Inst.Play(REWARDSOUND.SHOW_REWARD_BUTTON);
+            SoundManager.Inst.Play(REWARDSOUND.ShowRewardButton);
         }
 
         while (true)
@@ -105,6 +117,7 @@ public class Reward : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
+
         if (!isOut)
         {
             isRewardOn = false;
@@ -112,7 +125,7 @@ public class Reward : MonoBehaviour
         }
     }
 
-    public void ColorAlpha01(bool isZero)          //컬러의 알파값을 0이나 1로 만들어 준다.
+    private void ColorAlpha01(bool isZero) //컬러의 알파값을 0이나 1로 만들어 준다.
     {
         windowRenderer.color = new Color(255, 255, 255, isZero ? 0 : 1);
         contentTMP.color = new Color(255, 255, 255, isZero ? 0 : 1);

@@ -1,30 +1,23 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ResetManager : MonoBehaviour
+public class ResetManager : Singleton<ResetManager>
 {
-    public static ResetManager Inst;
-
     private void Awake()
     {
-        if (Inst == null)
-        {
-            Inst = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        ExistInstance(this);
     }
 
     public void ResetGame()
     {
-        GameObject[] managers = GameObject.FindGameObjectsWithTag("Manager");
-        for (int i = 0; i < managers.Length; i++)
+        var managerObjs = GameObject.FindGameObjectsWithTag("Manager");
+
+        foreach (GameObject managerObj in managerObjs)
         {
-            Destroy(managers[i]);
+            var singleton = managerObj.GetComponent<ISingleton>();
+            singleton?.DestorySingleton();
         }
+
         SceneManager.LoadScene("Intro");
     }
 }

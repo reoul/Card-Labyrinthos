@@ -96,7 +96,7 @@ public class EventButton : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        SoundManager.Inst.Play(EVENTSOUND.CHOICE_MOUSEUP);
+        SoundManager.Inst.Play(EVENTSOUND.ChoiceMouseup);
         onEvent = true;
     }
 

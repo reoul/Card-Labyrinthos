@@ -11,7 +11,7 @@ public class IntroManager : MonoBehaviour
 
     private void Start()
     {
-        SoundManager.Inst.Play(BACKGROUNDSOUND.INTRO);
+        SoundManager.Inst.Play(BACKGROUNDSOUND.Intro);
     }
 
     public void GameStart()

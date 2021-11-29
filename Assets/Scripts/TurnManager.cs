@@ -2,44 +2,33 @@
 using System.Collections;
 using UnityEngine;
 
-public class TurnManager : MonoBehaviour
+public class TurnManager : Singleton<TurnManager>
 {
-    public static TurnManager Inst;
-
     public bool isFinish;
 
     private void Awake()
     {
-        if (Inst == null)
-        {
-            Inst = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        ExistInstance(this);
 
         isFinish = false;
     }
 
     [Tooltip("시작 카드 개수를 정합니다")]
     public int startCardCount;
-
-    public bool isStartCardCountMax        //시작 카드 개수가 최대치에 달했는지
+    public bool IsStartCardCountMax        //시작 카드 개수가 최대치에 달했는지
     {
         get
         {
-            return startCardCount >= 6 ? true : false;
+            return startCardCount >= 6;
         }
     }
 
     [Header("Properties")]
     public bool isLoading;
 
-    private WaitForEndOfFrame delayEndOfFrame = new WaitForEndOfFrame();
-    private WaitForSeconds delay01 = new WaitForSeconds(0.1f);
-    private WaitForSeconds delay07 = new WaitForSeconds(0.7f);
+    private readonly WaitForEndOfFrame delayEndOfFrame = new WaitForEndOfFrame();
+    private readonly WaitForSeconds delay01 = new WaitForSeconds(0.1f);
+    private readonly WaitForSeconds delay07 = new WaitForSeconds(0.7f);
 
     public static Action OnAddCard;
 
@@ -64,7 +53,7 @@ public class TurnManager : MonoBehaviour
             yield return StartCoroutine(TutorialDebuffBarCoroutine());
         }
         yield return delay07;
-        if (MapManager.Inst.CurrentSceneName == "전투" || MapManager.Inst.CurrentSceneName == "알 수 없는 공간" || MapManager.Inst.CurrentSceneName == "보스")
+        if (MapManager.CurrentSceneName == "전투" || MapManager.CurrentSceneName == "알 수 없는 공간" || MapManager.CurrentSceneName == "보스")
         {
             if (Player.Inst.hpbar.sheld > 0)
             {
@@ -86,22 +75,25 @@ public class TurnManager : MonoBehaviour
         }
         if (!isFinish)
         {
-            for (int i = 0; i < startCardCount; i++)
+            for (var i = 0; i < startCardCount; i++)
             {
                 OnAddCard.Invoke();
                 yield return delay01;
             }
-            if (MapManager.Inst.CurrentSceneName == "전투" || MapManager.Inst.CurrentSceneName == "보스" || MapManager.Inst.CurrentSceneName == "알 수 없는 공간")
+            
+            if (MapManager.CurrentSceneName == "전투" || MapManager.CurrentSceneName == "보스" || MapManager.CurrentSceneName == "알 수 없는 공간")
             {
-                SoundManager.Inst.Play(BATTLESOUND.TURN_START);
+                SoundManager.Inst.Play(BATTLESOUND.TurnStart);
                 GameManager.Inst.Notification("내 턴");
             }
+            
             if (isTutorialLockCard)
             {
                 CardManager.Inst.LockMyHandCardAll();
                 isTutorialLockCard = false;
             }
-            if (MapManager.Inst.CurrentSceneName == "이벤트")
+            
+            if (MapManager.CurrentSceneName == "이벤트")
             {
                 StartCoroutine(EventManager.Inst.UpdateBackColorCoroutine());
             }
@@ -131,7 +123,7 @@ public class TurnManager : MonoBehaviour
         yield return StartCoroutine(GhostManager.Inst.ShowGhost());
         for (int i = 0; i < TalkWindow.Inst.talks[6].Count; i++)
         {
-            ArrowManager.Inst.DestoryAllArrow();
+            ArrowManager.Inst.DestroyAllArrow();
 
             if (i == 0)
             {
@@ -147,7 +139,7 @@ public class TurnManager : MonoBehaviour
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
         }
 
-        ArrowManager.Inst.DestoryAllArrow();
+        ArrowManager.Inst.DestroyAllArrow();
 
         yield return StartCoroutine(TalkWindow.Inst.HideText());
 
@@ -193,7 +185,7 @@ public class TurnManager : MonoBehaviour
 
     public void AddStartTurnCard()
     {
-        if (!isStartCardCountMax)
+        if (!IsStartCardCountMax)
         {
             startCardCount++;
         }

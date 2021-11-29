@@ -1,39 +1,24 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public enum THROWING_OBJ_TYPE
 {
-    Cardback,
+    CardBack,
     CardPiece,
     NumCard,
     QuestionCard,
     SkillBook
 }
 
-public class CardManager : MonoBehaviour
+public class CardManager : Singleton<CardManager>
 {
-    public bool isIntro;
-    public static CardManager Inst;
-
     private void Awake()
     {
-        if (Inst == null)
-        {
-            Inst = this;
-            if (!isIntro)
-            {
-                DontDestroyOnLoad(gameObject);
-            }
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        ExistInstance(this);
     }
 
     //[SerializeField] ItemSO itemSO;
@@ -86,7 +71,7 @@ public class CardManager : MonoBehaviour
     private void Start()
     {
         fixedCardNum = new int[12];
-        for (int i = 0; i < fixedCardNum.Length; i++)
+        for (var i = 0; i < fixedCardNum.Length; i++)
         {
             fixedCardNum[i] = -1;
         }
@@ -94,15 +79,17 @@ public class CardManager : MonoBehaviour
 
     private void Update()
     {
-        if (MapManager.Inst.CurrentSceneName != "지도" && MapManager.Inst.CurrentSceneName != "상점")
+        if (MapManager.CurrentSceneName == "지도" || MapManager.CurrentSceneName == "상점")
         {
-            if (isMyCardDrag)
-            {
-                CardDrag();
-            }
-
-            DetectCardArea();
+            return;
         }
+
+        if (isMyCardDrag)
+        {
+            CardDrag();
+        }
+
+        DetectCardArea();
     }
 
     private Card PopItem() //카드 뽑기
@@ -126,8 +113,8 @@ public class CardManager : MonoBehaviour
         {
             for (int j = 0; j < cardDeck[i]; j++)
             {
-                GameObject cardObj = Instantiate(cardPrefab, cardSpawnPoint.position, Utils.CardRotate);
-                Card card = cardObj.GetComponentInChildren<Card>();
+                var cardObj = Instantiate(cardPrefab, cardSpawnPoint.position, Utils.CardRotate);
+                var card = cardObj.GetComponentInChildren<Card>();
                 cardObj.transform.localScale = Vector3.zero;
                 cardObj.name = (i + 1).ToString();
                 cardObj.gameObject.SetActive(false);
@@ -136,13 +123,13 @@ public class CardManager : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < itemBuffer.Count; i++)
+        for (var i = 0; i < itemBuffer.Count; i++)
         {
-            int rand = Random.Range(i, itemBuffer.Count);
+            var rand = Random.Range(i, itemBuffer.Count);
             (itemBuffer[i], itemBuffer[rand]) = (itemBuffer[rand], itemBuffer[i]);
         }
 
-        for (int i = 0; i < fixedCardNum.Length; i++)
+        for (var i = 0; i < fixedCardNum.Length; i++)
         {
             if (fixedCardNum[i] != -1)
             {
@@ -152,12 +139,15 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    private void ShuffleCard() //버린 카드 더미를 섞는다
+    /// <summary>
+    /// 버린 카드 더미를 섞는다
+    /// </summary>
+    private void ShuffleCard()
     {
         SoundManager.Inst.Play(CARDSOUND.Shuffling);
-        for (int i = 0; i < tombItemBuffer.Count; i++)
+        for (var i = 0; i < tombItemBuffer.Count; i++)
         {
-            int rand = Random.Range(i, tombItemBuffer.Count);
+            var rand = Random.Range(i, tombItemBuffer.Count);
             (tombItemBuffer[i], tombItemBuffer[rand]) = (tombItemBuffer[rand], tombItemBuffer[i]);
             tombItemBuffer[i].RevertOriginNum();
         }
@@ -185,11 +175,11 @@ public class CardManager : MonoBehaviour
 
     private void InitCard() //카드 초기화
     {
-        for (int i = 0; i < itemBuffer.Count; i++)
+        foreach (Card card in itemBuffer)
         {
-            itemBuffer[i].parent.position = cardSpawnPoint.position;
-            itemBuffer[i].parent.rotation = Utils.CardRotate;
-            itemBuffer[i].parent.localScale = Vector3.zero;
+            card.parent.position = cardSpawnPoint.position;
+            card.parent.rotation = Utils.CardRotate;
+            card.parent.localScale = Vector3.zero;
         }
     }
 
@@ -197,21 +187,21 @@ public class CardManager : MonoBehaviour
     {
         while (MyHandCards.Count > 0)
         {
-            GameObject card = MyHandCards[0].parent.gameObject;
+            var card = MyHandCards[0].parent.gameObject;
             MyHandCards.RemoveAt(0);
             Destroy(card);
         }
 
         while (itemBuffer.Count > 0)
         {
-            GameObject card = itemBuffer[0].parent.gameObject;
+            var card = itemBuffer[0].parent.gameObject;
             itemBuffer.RemoveAt(0);
             Destroy(card);
         }
 
         while (tombItemBuffer.Count > 0)
         {
-            GameObject card = tombItemBuffer[0].parent.gameObject;
+            var card = tombItemBuffer[0].parent.gameObject;
             tombItemBuffer.RemoveAt(0);
             Destroy(card);
         }
@@ -222,55 +212,31 @@ public class CardManager : MonoBehaviour
         tombItemBuffer = null;
     }
 
-    public void CardTombToItemBuffer() //버린 카드 더미에서 뽑을 카드 더미로 섞고 이동
+    private void CardTombToItemBuffer() //버린 카드 더미에서 뽑을 카드 더미로 섞고 이동
     {
         ShuffleCard();
 
-        foreach (var card in tombItemBuffer)
+        foreach (Card card in tombItemBuffer)
         {
             itemBuffer.Add(card);
         }
 
-        for (int i = 0; i < tombItemBuffer.Count;)
+        for (var i = 0; i < tombItemBuffer.Count;)
         {
             tombItemBuffer.RemoveAt(0);
         }
 
         InitCard();
     }
-
-
+    
     private void OnDestroy()
     {
         TurnManager.OnAddCard -= AddCard;
     }
 
-
-    public void TurnStartDraw()
-    {
-        StartCoroutine(DrawCardCoroutine(5));
-    }
-
-    public IEnumerator DrawCardCoroutine(int cnt)
-    {
-        for (int i = 0; i < cnt; i++)
-        {
-            AddCard();
-            yield return new WaitForSeconds(0.1f);
-        }
-    }
-
-    public void SelectCardNumAdd(int index)
-    {
-        if (selectCard != null)
-        {
-            selectCard.AddNum(index);
-        }
-    }
-
     public void AddCard() //카드 추가(카드 드로우시 사용)
     {
-        SoundManager.Inst.Play(BATTLESOUND.CARD_DRAW);
+        SoundManager.Inst.Play(BATTLESOUND.CardDraw);
         Card card = PopItem();
         card.parent.gameObject.SetActive(true);
         card.SetActiveChildObj(true);
@@ -283,7 +249,7 @@ public class CardManager : MonoBehaviour
     private void SetOriginOrder() //카드 랜더링 순서 조정
     {
         int count = MyHandCards.Count;
-        for (int i = 0; i < count; i++)
+        for (var i = 0; i < count; i++)
         {
             var targetCard = MyHandCards[i];
             targetCard.GetComponent<Order>().SetOriginOrder(3700 + i * 10);
@@ -295,7 +261,7 @@ public class CardManager : MonoBehaviour
         List<PRS> originCardPRSs =
             RoundAlignment(myCardLeft, myCardRight, MyHandCards.Count, Vector3.one);
 
-        for (int i = 0; i < MyHandCards.Count; i++)
+        for (var i = 0; i < MyHandCards.Count; i++)
         {
             var targetCard = MyHandCards[i];
             targetCard.originPRS = originCardPRSs[i];
@@ -317,32 +283,12 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    private IEnumerator FinishTurnCoroutine()
-    {
-        for (int i = 0; i < MyHandCards.Count; i++)
-        {
-            MyHandCards[i].FinishCard();
-        }
-
-        for (int i = 0; i < MyHandCards.Count; i++)
-        {
-            yield return new WaitForEndOfFrame();
-            var card = MyHandCards[i].GetComponent<Card>();
-            card.transform.DOMove(cardEndPoint.position, 0.7f).OnComplete(() =>
-            {
-                MyHandCards.Remove(card);
-                Destroy(card.gameObject);
-            });
-            tombItemBuffer.Add(card);
-        }
-    }
-
     // 카드 정렬 함수
     private List<PRS> RoundAlignment(Transform leftTr, Transform rightTr, int objCount, Vector3 scale,
         float height = 0.5f)
     {
-        float[] objLerps = new float[objCount];
-        List<PRS> results = new List<PRS>(objCount);
+        var objLerps = new float[objCount];
+        var results = new List<PRS>(objCount);
 
         switch (objCount)
         {
@@ -371,11 +317,11 @@ public class CardManager : MonoBehaviour
                 break;
         }
 
-        for (int i = 0; i < objCount; i++)
+        for (var i = 0; i < objCount; i++)
         {
             var targetPos = Vector3.Lerp(leftTr.position, rightTr.position, objLerps[i]);
 
-            float curve = Mathf.Sqrt(Mathf.Pow(height, 2) - Mathf.Pow(objLerps[i] - 0.5f, 2));
+            var curve = Mathf.Sqrt(Mathf.Pow(height, 2) - Mathf.Pow(objLerps[i] - 0.5f, 2));
             targetPos.y += curve;
             var targetRot = Quaternion.Slerp(leftTr.rotation, rightTr.rotation, objLerps[i]);
 
@@ -405,43 +351,26 @@ public class CardManager : MonoBehaviour
 
     public void CardMouseDown()
     {
-        if (onMyCardArea)
+        if (!onMyCardArea)
         {
-            SoundManager.Inst.Play(CARDSOUND.UP_CARD);
-            isMyCardDrag = true;
+            return;
         }
+
+        SoundManager.Inst.Play(CARDSOUND.UpCard);
+        isMyCardDrag = true;
     }
 
     public void CardMouseUp()
     {
-        if (isIntro)
-        {
-            isMyCardDrag = false;
-            EnlargeCard(false, selectCard);
-            switch (selectCard.final_Num)
-            {
-                case 0:
-                    MapManager.Inst.LoadTutorialScene();
-                    break;
-                case 1: //옵션창
-                    break;
-                case 2: //게임 종료
-                    Application.Quit();
-                    break;
-            }
-
-            return;
-        }
-
         isMyCardDrag = false;
         RaycastHit2D[] hits = Physics2D.RaycastAll(Utils.MousePos, Vector3.forward);
 
         int layer = LayerMask.NameToLayer("SkillBookCard");
-        for (int i = 0; i < hits.Length; i++)
+        foreach (RaycastHit2D hit in hits)
         {
-            if (hits[i].collider.gameObject.layer == layer && SkillManager.Inst.ActivePage.isFinishFade)
+            if (hit.collider.gameObject.layer == layer && SkillManager.Inst.ActivePage.isFinishFade)
             {
-                hits[i].collider.GetComponent<SkillBookCard>().SetCard(selectCard);
+                hit.collider.GetComponent<SkillBookCard>().SetCard(selectCard);
                 EnlargeCard(false, selectCard);
             }
         }
@@ -476,7 +405,7 @@ public class CardManager : MonoBehaviour
 
                 UseCard(EnemyManager.Inst.enemys[0].gameObject);
 
-                ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.Cardback,
+                ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.CardBack,
                     Player.Inst.gameObject.transform.position + Vector3.up * 3.5f,
                     EnemyManager.Inst.enemys[0].hitPos.position, null, 0.5f, damage);
 
@@ -538,7 +467,7 @@ public class CardManager : MonoBehaviour
         waypoints.SetValue(selectCard.parent.position, 0);
         waypoints.SetValue(waypoint2.position, 0);
         waypoints.SetValue(cardEndPoint.position, 1);
-        GameObject target = selectCard.parent.gameObject;
+        var target = selectCard.parent.gameObject;
         target.transform.DOPath(waypoints, 1, PathType.CatmullRom).SetLookAt(cardEndPoint).SetEase(ease)
               .OnComplete(() => { target.SetActive(false); });
         selectCard = null;
@@ -548,22 +477,19 @@ public class CardManager : MonoBehaviour
     {
         if (isEnlarge)
         {
-            Vector3 enlargePos = new Vector3(card.originPRS.pos.x, onMyCardArea ? -4 : card.originPRS.pos.y,
+            var enlargePos = new Vector3(card.originPRS.pos.x, onMyCardArea ? -4 : card.originPRS.pos.y,
                 onMyCardArea ? -100 : card.originPRS.pos.z);
             card.MoveTransform(new PRS(enlargePos, Utils.CardRotate, Vector3.one * (onMyCardArea ? 1.5f : 1)),
                 false);
         }
         else
         {
-            if (isUse)
-            {
-                card.MoveTransform(new PRS(card.parent.transform.position, card.parent.transform.rotation, Vector3.one),
-                    false);
-            }
-            else
-            {
-                card.MoveTransform(card.originPRS, false);
-            }
+            var parent = card.parent.transform;
+            card.MoveTransform(
+                isUse
+                    ? new PRS(parent.position, parent.rotation, Vector3.one)
+                    : card.originPRS,
+                false);
         }
 
         card.GetComponent<Order>().SetMostFrontOrder(isEnlarge);
@@ -576,23 +502,18 @@ public class CardManager : MonoBehaviour
         onMyCardArea = Array.Exists(hits, x => x.collider.gameObject.layer == layer);
     }
 
-    public void AddCardDeck(Card card) //플레이어 카드 덱에 카드 추가, 상점이나 보상에서 카드 획득할 때
-    {
-        cardDeck[card.original_Num]++;
-    }
-
     public void AddCardDeck(int card, int index = 1) //플레이어 카드 덱에 카드 추가, 상점이나 보상에서 카드 획득할 때
     {
-        if (!isCardDeckMax()[card])
+        if (!IsCardDeckMax()[card])
         {
             cardDeck[card] += index;
         }
     }
 
-    public bool[] isCardDeckMax() //카드덱에 최대치가 된 카드가 있는지
+    public bool[] IsCardDeckMax() //카드덱에 최대치가 된 카드가 있는지
     {
-        bool[] check = new bool[6];
-        for (int i = 0; i < check.Length; i++)
+        var check = new bool[6];
+        for (var i = 0; i < check.Length; i++)
         {
             check[i] = cardDeck[i] >= (18 - 3 * i);
         }
@@ -638,7 +559,7 @@ public class CardManager : MonoBehaviour
 
     public void LockMyHandCardAll()
     {
-        for (int i = 0; i < MyHandCards.Count; i++)
+        for (var i = 0; i < MyHandCards.Count; i++)
         {
             LockMyHandCard(i);
         }
@@ -646,7 +567,7 @@ public class CardManager : MonoBehaviour
 
     public void UnLockMyHandCardAll()
     {
-        for (int i = 0; i < MyHandCards.Count; i++)
+        for (var i = 0; i < MyHandCards.Count; i++)
         {
             UnLockMyHandCard(i);
         }

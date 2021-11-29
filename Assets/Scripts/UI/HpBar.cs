@@ -70,7 +70,7 @@ public class HpBar : MonoBehaviour
 
         if (parent.tag == "Player")
         {
-            PlayerManager.Inst.hp = hp;
+            PlayerManager.Inst.Hp = hp;
         }
 
         if (hp <= 0)         //체력이 0 이하가 되면 죽음
@@ -86,7 +86,7 @@ public class HpBar : MonoBehaviour
 
     public void Sheld(int _sheld)       //방어력을 주고 싶을 때 매개변수로 해당 수를 넣어주면 방어력이 증가함
     {
-        SoundManager.Inst.Play(BATTLESOUND.SHELD);
+        SoundManager.Inst.Play(BATTLESOUND.Sheld);
         sheld += _sheld;
         sheldObj.SetActive(true);
         ShowSheldText();
@@ -94,7 +94,7 @@ public class HpBar : MonoBehaviour
 
     public void Heal(int index)
     {
-        SoundManager.Inst.Play(BATTLESOUND.HEAL);
+        SoundManager.Inst.Play(BATTLESOUND.Heal);
         hp = Mathf.Clamp(hp + index, 0, max_hp);
         UpdateHp();
     }

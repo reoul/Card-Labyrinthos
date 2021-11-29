@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public enum EffectObjType
@@ -8,35 +9,29 @@ public enum EffectObjType
     Heal
 }
 
-public class EffectManager : MonoBehaviour
+public class EffectManager : Singleton<EffectManager>
 {
-    public static EffectManager Inst;
-
     public GameObject hitObj;
     public GameObject sheldObj;
     public GameObject healObj;
 
     private void Awake()
     {
-        if (Inst == null)
-        {
-            Inst = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        ExistInstance(this);
     }
 
     private GameObject GetEffectObj(EffectObjType type) //이펙트 타입에 따른 오브젝트 반환
     {
         switch (type)
         {
-            case EffectObjType.Hit: return hitObj;
-            case EffectObjType.Sheld: return sheldObj;
-            case EffectObjType.Heal: return healObj;
-            default: return hitObj;
+            case EffectObjType.Hit:
+                return hitObj;
+            case EffectObjType.Sheld:
+                return sheldObj;
+            case EffectObjType.Heal:
+                return healObj;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(type), type, null);
         }
     }
 
@@ -56,7 +51,7 @@ public class EffectManager : MonoBehaviour
         int cnt = 1, float multipleDelay = 0.07f)
     {
         yield return new WaitForSeconds(delay);
-        for (int i = 0; i < cnt; i++)
+        for (var i = 0; i < cnt; i++)
         {
             CreateObjAndDestory(type, pos, destoryTime);
             yield return new WaitForSeconds(multipleDelay);

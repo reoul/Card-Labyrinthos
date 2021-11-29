@@ -6,12 +6,12 @@ using Random = UnityEngine.Random;
 
 public enum EVENT_REWARD_TYPE
 {
-    CARD,
-    CARD_PIECE,
-    HP,
-    DRAW,
-    QUESTION_CARD,
-    SKILL_BOOK
+    Card,
+    CardPiece,
+    Hp,
+    Draw,
+    QuestionCard,
+    SkillBook
 }
 
 public class EventData
@@ -39,10 +39,8 @@ public class EventData
     }
 }
 
-public class EventManager : MonoBehaviour
+public class EventManager : Singleton<EventManager>
 {
-    public static EventManager Inst;
-
     public List<Event> events;
 
     public SpriteRenderer[] colorBackSpriteRenderer;
@@ -53,15 +51,7 @@ public class EventManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Inst == null)
-        {
-            Inst = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        ExistInstance(this);
     }
 
     public void Choice(EventData eventData) //조건에 맞는 해당 선택지를 클릭했을때
@@ -72,27 +62,27 @@ public class EventManager : MonoBehaviour
         }
 
         isGetReward = true;
-        SoundManager.Inst.Play(EVENTSOUND.CHOICE_BUTTON);
+        SoundManager.Inst.Play(EVENTSOUND.ChoiceButton);
         RewardManager.Inst.SetTitleText("결과");
         switch (eventData.reward_kind)
         {
             case REWARD_KIND.One:
-                RewardManager.Inst.AddReward(REWARD_TYPE.REWARD, (int) eventData.reward_type1_1, eventData.index1_1);
+                RewardManager.Inst.AddReward(REWARD_TYPE.Reward, (int) eventData.reward_type1_1, eventData.index1_1);
                 break;
             case REWARD_KIND.Two:
-                RewardManager.Inst.AddReward(REWARD_TYPE.REWARD, (int) eventData.reward_type1_1, eventData.index1_1);
-                RewardManager.Inst.AddReward(REWARD_TYPE.REWARD, (int) eventData.reward_type1_2, eventData.index1_2);
+                RewardManager.Inst.AddReward(REWARD_TYPE.Reward, (int) eventData.reward_type1_1, eventData.index1_1);
+                RewardManager.Inst.AddReward(REWARD_TYPE.Reward, (int) eventData.reward_type1_2, eventData.index1_2);
                 break;
             case REWARD_KIND.Random:
                 int rand = Random.Range(0, 100);
                 if (rand < eventData.first_reward_probability)
                 {
-                    RewardManager.Inst.AddReward(REWARD_TYPE.REWARD, (int) eventData.reward_type1_1,
+                    RewardManager.Inst.AddReward(REWARD_TYPE.Reward, (int) eventData.reward_type1_1,
                         eventData.index1_1);
                 }
                 else
                 {
-                    RewardManager.Inst.AddReward(REWARD_TYPE.REWARD, (int) eventData.reward_type2, eventData.index2);
+                    RewardManager.Inst.AddReward(REWARD_TYPE.Reward, (int) eventData.reward_type2, eventData.index2);
                 }
 
                 break;
@@ -106,11 +96,11 @@ public class EventManager : MonoBehaviour
     private void FindEvents()
     {
         this.events = new List<Event>();
-        Event[] events = GameObject.Find("Event").GetComponentsInChildren<Event>(true);
-        for (int i = 0; i < events.Length; i++)
+        var events = GameObject.Find("Event").GetComponentsInChildren<Event>(true);
+        foreach (var _event in events)
         {
-            events[i].gameObject.SetActive(false);
-            this.events.Add(events[i]);
+            _event.gameObject.SetActive(false);
+            this.events.Add(_event);
         }
 
         colorBackSpriteRenderer = new SpriteRenderer[3];
@@ -122,13 +112,15 @@ public class EventManager : MonoBehaviour
 
     public IEnumerator RandomEventCoroutine()
     {
-        SoundManager.Inst.Play(BACKGROUNDSOUND.EVENT);
+        SoundManager.Inst.Play(BACKGROUNDSOUND.Event);
         FindEvents();
-        int rand = Random.Range(0, events.Count);
+
+        var rand = Random.Range(0, events.Count);
         events[rand].Init();
         events[rand].gameObject.SetActive(true);
+
         curEventButtons = new EventButton[3];
-        for (int i = 0; i < 3; i++)
+        for (var i = 0; i < 3; i++)
         {
             curEventButtons[i] = events[rand].condition_TMP[i].transform.parent.GetComponent<EventButton>();
         }
@@ -146,7 +138,7 @@ public class EventManager : MonoBehaviour
     {
         while (!isGetReward)
         {
-            for (int i = 0; i < curEventButtons.Length; i++)
+            for (var i = 0; i < curEventButtons.Length; i++)
             {
                 if (curEventButtons[i].IsAchieve)
                 {
@@ -167,11 +159,11 @@ public class EventManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         TalkWindow.Inst.InitFlag();
         yield return StartCoroutine(GhostManager.Inst.ShowGhost());
-        for (int i = 0; i < TalkWindow.Inst.talks[10].Count; i++)
+        for (var i = 0; i < TalkWindow.Inst.talks[10].Count; i++)
         {
             if (i == 0)
             {
-                for (int j = 0; j < 3; j++)
+                for (var j = 0; j < 3; j++)
                 {
                     ArrowManager.Inst.CreateArrowObj(colorBackSpriteRenderer[j].transform.position + Vector3.up * 2,
                         ArrowCreateDirection.Up);
@@ -181,7 +173,7 @@ public class EventManager : MonoBehaviour
             yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(10, i));
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagNextCoroutine());
-            ArrowManager.Inst.DestoryAllArrow();
+            ArrowManager.Inst.DestroyAllArrow();
         }
 
         yield return StartCoroutine(TalkWindow.Inst.HideText());

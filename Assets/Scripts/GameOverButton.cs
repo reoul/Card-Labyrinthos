@@ -13,7 +13,7 @@ public class GameOverButton : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        SoundManager.Inst.Play(EVENTSOUND.CHOICE_MOUSEUP);
+        SoundManager.Inst.Play(EVENTSOUND.ChoiceMouseup);
     }
 
     private void OnMouseUp()

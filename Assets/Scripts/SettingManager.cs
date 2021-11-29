@@ -1,25 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class SettingManager : MonoBehaviour
+public class SettingManager : Singleton<SettingManager>
 {
-    public static SettingManager Inst;
-
     [SerializeField] private GameObject settingWindow;
     [SerializeField] private Slider bgmSlider;
     [SerializeField] private Slider sfxSlider;
 
     private void Awake()
     {
-        if (Inst == null)
-        {
-            Inst = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        ExistInstance(this);
     }
 
     public void Open()
@@ -40,19 +30,19 @@ public class SettingManager : MonoBehaviour
 
     public void GameReset()
     {
-        SoundManager.Inst.Play(EVENTSOUND.CHOICE_BUTTON);
+        SoundManager.Inst.Play(EVENTSOUND.ChoiceButton);
         ResetManager.Inst.ResetGame();
     }
 
     public void GameQuit()
     {
-        SoundManager.Inst.Play(EVENTSOUND.CHOICE_BUTTON);
+        SoundManager.Inst.Play(EVENTSOUND.ChoiceButton);
         Application.Quit();
     }
 
     public void SettingExit()
     {
-        SoundManager.Inst.Play(EVENTSOUND.CHOICE_BUTTON);
+        SoundManager.Inst.Play(EVENTSOUND.ChoiceButton);
         Close();
     }
 
@@ -63,6 +53,6 @@ public class SettingManager : MonoBehaviour
 
     public void UpdateSFXVolume()
     {
-        SoundManager.Inst.SetSFXVolume(sfxSlider.value);
+        SoundManager.Inst.SetSfxVolume(sfxSlider.value);
     }
 }

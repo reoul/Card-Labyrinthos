@@ -24,7 +24,7 @@ public class DebuffBar : MonoBehaviour
             return;
         }
 
-        SoundManager.Inst.Play(DEBUFFSOUND.OPEN_BAR);
+        SoundManager.Inst.Play(DEBUFFSOUND.OpenBar);
         transform.DOMove(new Vector3(6.94f, 3.65f, 0), 1).OnComplete(() =>
         {
             button.sprite = close;
@@ -35,7 +35,7 @@ public class DebuffBar : MonoBehaviour
 
     public void Close()
     {
-        SoundManager.Inst.Play(DEBUFFSOUND.CLOSE_BAR);
+        SoundManager.Inst.Play(DEBUFFSOUND.CloseBar);
         transform.DOMove(new Vector3(10.89f, 3.65f, 0), 1).OnComplete(() =>
         {
             button.sprite = open;

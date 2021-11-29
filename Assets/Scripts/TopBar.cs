@@ -48,16 +48,16 @@ public class TopBar : MonoBehaviour
         switch (type)
         {
             case TOPBAR_TYPE.HP:
-                hpTMP.text = PlayerManager.Inst.hpString;
+                hpTMP.text = PlayerManager.Inst.HpString;
                 break;
             case TOPBAR_TYPE.QUESTION:
-                questionTMP.text = PlayerManager.Inst.question_card.ToString();
+                questionTMP.text = PlayerManager.Inst.QuestionCard.ToString();
                 break;
             case TOPBAR_TYPE.CARDPIECE:
-                cardPieceTMP.text = PlayerManager.Inst.card_piece.ToString();
+                cardPieceTMP.text = PlayerManager.Inst.CardPiece.ToString();
                 break;
             case TOPBAR_TYPE.SCENENAME:
-                sceneNameTMP.text = MapManager.Inst.CurrentSceneName;
+                sceneNameTMP.text = MapManager.CurrentSceneName;
                 break;
         }
     }

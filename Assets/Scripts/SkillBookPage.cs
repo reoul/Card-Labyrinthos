@@ -18,83 +18,89 @@ public class SkillBookPage : MonoBehaviour
 
     public void Init()
     {
-        for (int i = 0; i < choiceCards.Count; i++)
+        foreach (SkillBookCard choiceCard in choiceCards)
         {
-            if (choiceCards[i].curSelectCard != null)
+            if (choiceCard.curSelectCard == null)
             {
-                choiceCards[i].curSelectCard.SetColorAlpha(false);
-                choiceCards[i].curSelectCard = null;
-                choiceCards[i].HideCard();
-                choiceCards[i].SetColorAlpha(true);
-                choiceCards[i].GetComponentInChildren<TMP_Text>().text = "+";
+                continue;
             }
+
+            choiceCard.curSelectCard.SetColorAlpha(false);
+            choiceCard.curSelectCard = null;
+            choiceCard.HideCard();
+            choiceCard.SetColorAlpha(true);
+            choiceCard.GetComponentInChildren<TMP_Text>().text = "+";
         }
 
         applyButton.isActive = false;
     }
+
     public void Show()
     {
         Init();
         isFinishFade = false;
         SkillManager.Inst.choiceCards = choiceCards;
         SkillManager.Inst.applyCards = applyCards;
-        for (int i = 0; i < TextTMP.Count; i++)
+        foreach (TMP_Text textTmp in TextTMP)
         {
-            TextTMP[i].color = new Color(1, 1, 1, 0);
+            textTmp.color = new Color(1, 1, 1, 0);
         }
-        for (int i = 0; i < renderers.Count; i++)
+
+        foreach (SpriteRenderer renderer in renderers)
         {
-            renderers[i].color = new Color(1, 1, 1, 0);
+            renderer.color = new Color(1, 1, 1, 0);
         }
-        for (int i = 0; i < choiceCards.Count; i++)
+
+        foreach (SkillBookCard choiceCard in choiceCards)
         {
-            choiceCards[i].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
-            choiceCards[i].GetComponentInChildren<TMP_Text>().color = new Color(1, 1, 1, 0);
+            choiceCard.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+            choiceCard.GetComponentInChildren<TMP_Text>().color = new Color(1, 1, 1, 0);
         }
+
         switch (skill_type)
         {
-            case SKILL_TYPE.SKILL1:     //한장의 카드에 +1 or -1
-                for (int i = 0; i < applyCards.Count; i++)
+            case SKILL_TYPE.Skill1: //한장의 카드에 +1 or -1
+                foreach (SkillBookCard applyCard in applyCards)
                 {
-                    applyCards[i].limitNum = 1;
+                    applyCard.limitNum = 1;
                 }
+
                 break;
-            case SKILL_TYPE.SKILL2:     //-n +n
-                for (int i = 0; i < applyCards.Count; i++)
+            case SKILL_TYPE.Skill2: //-n +n
+                foreach (SkillBookCard applyCard in applyCards)
                 {
-                    applyCards[i].isHideButton = true;
-                    applyCards[i].isQuestionMark = true;
+                    applyCard.isHideButton = true;
+                    applyCard.isQuestionMark = true;
                 }
+
                 break;
-            case SKILL_TYPE.SKILL3:     //원하는 숫자로 카드 한장 바꾸기
+            case SKILL_TYPE.Skill3: //원하는 숫자로 카드 한장 바꾸기
                 break;
-            case SKILL_TYPE.SKILL4:     //최대 3장 선택 후 +1 -1
-                for (int i = 0; i < applyCards.Count; i++)
+            case SKILL_TYPE.Skill4: //최대 3장 선택 후 +1 -1
+                foreach (SkillBookCard applyCard in applyCards)
                 {
-                    applyCards[i].limitNum = 1;
+                    applyCard.limitNum = 1;
                 }
+
                 break;
-            case SKILL_TYPE.SKILL5:     //손패에 있는 카드 한장을 다른 카드에 복제
-                for (int i = 0; i < applyCards.Count; i++)
+            case SKILL_TYPE.Skill5: //손패에 있는 카드 한장을 다른 카드에 복제
+                foreach (SkillBookCard applyCard in applyCards)
                 {
-                    applyCards[i].isHideButton = true;
-                    //applyCards[i].isApplyButtonOn = true;
+                    applyCard.isHideButton = true;
                 }
+
                 break;
-            case SKILL_TYPE.SKILL6:     //최대 3장 선택후 랜덤 숫자로 변경
-                for (int i = 0; i < applyCards.Count; i++)
+            case SKILL_TYPE.Skill6: //최대 3장 선택후 랜덤 숫자로 변경
+                foreach (SkillBookCard applyCard in applyCards)
                 {
-                    applyCards[i].isHideButton = true;
-                    applyCards[i].isQuestionMark = true;
+                    applyCard.isHideButton = true;
+                    applyCard.isQuestionMark = true;
                 }
+
                 break;
         }
-        //applyButton.SetButtonActive(false);
+
         StartCoroutine(ColorAlphaCoroutine(false));
-    }
-    public void Hide()
-    {
-        StartCoroutine(ColorAlphaCoroutine(true));
     }
 
     private IEnumerator ColorAlphaCoroutine(bool isHide)
@@ -102,22 +108,26 @@ public class SkillBookPage : MonoBehaviour
         while (true)
         {
             float alpha = Time.deltaTime * (isHide ? -1 : 1);
-            for (int i = 0; i < TextTMP.Count; i++)
+            foreach (TMP_Text textTmp in TextTMP)
             {
-                TextTMP[i].color += Color.black * alpha;
+                textTmp.color += Color.black * alpha;
             }
-            for (int i = 0; i < renderers.Count; i++)
+
+            foreach (SpriteRenderer renderer in renderers)
             {
-                renderers[i].color += Color.black * alpha;
+                renderer.color += Color.black * alpha;
             }
 
             applyButton.GetComponent<SpriteRenderer>().color -= Color.black * alpha * 0.5f;
             applyButton.GetComponentInChildren<TMP_Text>().color -= Color.black * alpha * 0.5f;
-            for (int i = 0; i < choiceCards.Count; i++)
+            foreach (SkillBookCard choiceCard in choiceCards)
             {
-                choiceCards[i].GetComponent<SpriteRenderer>().color += Color.black * alpha * (choiceCards[i].curSelectCard == null ? 0.5f : 1);
-                choiceCards[i].GetComponentInChildren<TMP_Text>().color += Color.black * alpha * (choiceCards[i].curSelectCard == null ? 0.5f : 1);
+                choiceCard.GetComponent<SpriteRenderer>().color +=
+                    Color.black * alpha * (choiceCard.curSelectCard == null ? 0.5f : 1);
+                choiceCard.GetComponentInChildren<TMP_Text>().color +=
+                    Color.black * alpha * (choiceCard.curSelectCard == null ? 0.5f : 1);
             }
+
             if (isHide)
             {
                 for (int i = 0; i < applyCards.Count; i++)
@@ -125,6 +135,7 @@ public class SkillBookPage : MonoBehaviour
                     choiceCards[i].GetComponent<SpriteRenderer>().color += Color.black * alpha;
                     choiceCards[i].GetComponentInChildren<TMP_Text>().color += Color.black * alpha;
                 }
+
                 if (TextTMP[0].color.a <= 0)
                 {
                     break;
@@ -137,8 +148,10 @@ public class SkillBookPage : MonoBehaviour
                     break;
                 }
             }
+
             yield return new WaitForEndOfFrame();
         }
+
         if (isHide)
         {
             gameObject.SetActive(false);

@@ -2,7 +2,11 @@
 using TMPro;
 using UnityEngine;
 
-public enum SHOPITEM_TYPE { CARD, ADD_DRAW }
+public enum SHOPITEM_TYPE
+{
+    Card,
+    AddDraw
+}
 
 [Serializable]
 public class Item
@@ -15,7 +19,7 @@ public class Item
 public class ShopItem : MonoBehaviour
 {
     public Item item;
-    private bool onItem;    //마우스가 아이템 위에 있는지
+    private bool onItem; //마우스가 아이템 위에 있는지
     private Vector3 originalScale;
     private bool isMax;
     [SerializeField] private GameObject bottomBar;
@@ -23,28 +27,32 @@ public class ShopItem : MonoBehaviour
 
     public void Start()
     {
-        originalScale = transform.localScale == Vector3.zero ? Vector3.one * 0.35f : transform.localScale;
+        originalScale = (transform.localScale == Vector3.zero) ? Vector3.one * 0.35f : transform.localScale;
     }
 
     private void OnMouseUp()
     {
-        if (onItem && !FadeManager.Inst.isActiveFade && !isMax)
+        if (!onItem || FadeManager.Inst.isActiveFade || isMax)
         {
-            if (PlayerManager.Inst.card_piece >= item.price || PlayerManager.Inst.question_card > 0)
-            {
-                ShopManager.Inst.Click(this);
-            }
+            return;
+        }
+
+        if (PlayerManager.Inst.CardPiece >= item.price || PlayerManager.Inst.QuestionCard > 0)
+        {
+            ShopManager.Inst.Click(this);
         }
     }
 
     private void OnMouseEnter()
     {
-        if (!isMax && !FadeManager.Inst.isActiveFade)
+        if (isMax || FadeManager.Inst.isActiveFade)
         {
-            SoundManager.Inst.Play(EVENTSOUND.CHOICE_MOUSEUP);
-            onItem = true;
-            transform.localScale = originalScale + Vector3.one * 0.02f;
+            return;
         }
+
+        SoundManager.Inst.Play(EVENTSOUND.ChoiceMouseup);
+        onItem = true;
+        transform.localScale = originalScale + Vector3.one * 0.02f;
     }
 
     private void OnMouseExit()
@@ -53,16 +61,12 @@ public class ShopItem : MonoBehaviour
         transform.localScale = originalScale;
     }
 
+    /// <summary>
+    /// 아이템 가격보다 돈이 많거나 같은 때 가격의 색깔을 초록색으로 설정한다. 아니면 빨간색으로 설정한다.
+    /// </summary>
     public void ChangePriceColor()
     {
-        if (PlayerManager.Inst.card_piece >= item.price)
-        {
-            priceTMP.color = Color.green;
-        }
-        else
-        {
-            priceTMP.color = Color.red;
-        }
+        priceTMP.color = (PlayerManager.Inst.CardPiece >= item.price) ? Color.green : Color.red;
     }
 
     public void CountMax()

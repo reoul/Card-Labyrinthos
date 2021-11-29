@@ -1,26 +1,45 @@
-﻿using System.Collections;
-using DG.Tweening;
+﻿using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    public static GameManager Inst { get; private set; }
-
     [SerializeField] private Notification notificationPanel;
-    [SerializeField] private GameObject endingCredit;
-    [SerializeField] private GameObject gameOver;
+
+    private GameObject _endingCredit;
+
+    private GameObject EndingCredit
+    {
+        get
+        {
+            if (_endingCredit == null)
+            {
+                _endingCredit = transform.GetChild(0).gameObject;
+            }
+
+            return _endingCredit;
+        }
+    }
+
+    private GameObject _gameOver;
+
+    private GameObject gameOver
+    {
+        get
+        {
+            if (_gameOver == null)
+            {
+                _gameOver = transform.GetChild(1).gameObject;
+            }
+
+            return _gameOver;
+        }
+    }
+
 
     private void Awake()
     {
-        if (Inst == null)
-        {
-            Inst = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        ExistInstance(this);
     }
 
     private void Start()
@@ -50,6 +69,9 @@ public class GameManager : MonoBehaviour
         {
             TopBar.Inst.Open(TOPBAR_TYPE.SETTING);
         }
+
+        if (Input.GetKeyDown(KeyCode.O))
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Intro");
     }
 
     public void Notification(string message)
@@ -76,7 +98,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(EndingCoroutine());
     }
 
-    public IEnumerator EndingCoroutine()
+    private IEnumerator EndingCoroutine()
     {
         yield return StartCoroutine(GhostManager.Inst.ShowGhost());
         for (int i = 0; i < TalkWindow.Inst.talks[14].Count; i++)
@@ -93,15 +115,15 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator EndingCreditCoroutine()
     {
-        SoundManager.Inst.Play(BACKGROUNDSOUND.ENDING);
-        endingCredit.SetActive(true);
+        SoundManager.Inst.Play(BACKGROUNDSOUND.Ending);
+        EndingCredit.SetActive(true);
         yield return new WaitForSeconds(5f);
         ResetManager.Inst.ResetGame();
     }
 
     public void GameOver()
     {
-        SoundManager.Inst.Play(BACKGROUNDSOUND.ENDING);
+        SoundManager.Inst.Play(BACKGROUNDSOUND.Ending);
         gameOver.SetActive(true);
     }
 }

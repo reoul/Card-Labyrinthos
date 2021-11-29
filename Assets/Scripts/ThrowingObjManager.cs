@@ -44,7 +44,7 @@ public class ThrowingObjManager : MonoBehaviour
     {
         for (int i = 0; i < cnt; i++)
         {
-            SoundManager.Inst.Play(SHOPSOUND.THROWINGOBJ);
+            SoundManager.Inst.Play(SHOPSOUND.ThrowingObj);
             var throwingObj = Instantiate(GetThrowingObjPrefab(type), startPos, type == THROWING_OBJ_TYPE.NumCard ? Utils.CardRotate : Quaternion.identity);
             throwingRewardObj.Add(throwingObj);
             if (type == THROWING_OBJ_TYPE.NumCard)
@@ -61,17 +61,17 @@ public class ThrowingObjManager : MonoBehaviour
 
                 switch (type)
                 {
-                    case THROWING_OBJ_TYPE.Cardback:
+                    case THROWING_OBJ_TYPE.CardBack:
                         break;
                     case THROWING_OBJ_TYPE.CardPiece:
-                        SoundManager.Inst.Play(REWARDSOUND.GETCARDPIECE);
-                        PlayerManager.Inst.card_piece += index;
+                        SoundManager.Inst.Play(REWARDSOUND.GetCardPiece);
+                        PlayerManager.Inst.CardPiece += index;
                         break;
                     case THROWING_OBJ_TYPE.NumCard:
                         break;
                     case THROWING_OBJ_TYPE.QuestionCard:
-                        SoundManager.Inst.Play(REWARDSOUND.GETQUESTION);
-                        PlayerManager.Inst.question_card += index;
+                        SoundManager.Inst.Play(REWARDSOUND.GetQuestion);
+                        PlayerManager.Inst.QuestionCard += index;
                         break;
                 }
                 if (EnemyManager.Inst.enemys.Count > 0)
@@ -90,7 +90,7 @@ public class ThrowingObjManager : MonoBehaviour
     {
         switch (type)
         {
-            case THROWING_OBJ_TYPE.Cardback:
+            case THROWING_OBJ_TYPE.CardBack:
                 return CardBackPrefab;
             case THROWING_OBJ_TYPE.CardPiece:
                 return CardPiecePrefab;

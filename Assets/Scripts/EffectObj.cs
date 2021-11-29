@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using UnityEngine;
 
 public class EffectObj : MonoBehaviour
@@ -18,6 +19,8 @@ public class EffectObj : MonoBehaviour
             case EffectObjType.Heal:
                 HealAnimation();
                 break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 

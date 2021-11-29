@@ -9,28 +9,19 @@ public enum ArrowCreateDirection
     Down
 } //화살표가 생성되는 위치
 
-public class ArrowManager : MonoBehaviour
+public class ArrowManager : Singleton<ArrowManager>
 {
-    public static ArrowManager Inst;
     public GameObject arrowPrefab;
 
     [SerializeField] private List<Arrow> arrows;
 
     private void Awake()
     {
-        if (Inst == null)
-        {
-            Inst = this;
-            DontDestroyOnLoad(gameObject);
-            arrows = new List<Arrow>();
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        arrows = new List<Arrow>();
+        ExistInstance(this); 
     }
 
-    public void DestoryAllArrow()
+    public void DestroyAllArrow()
     {
         var arrowCnt = arrows.Count;
         for (var i = 0; i < arrowCnt; i++)

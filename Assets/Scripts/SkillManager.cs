@@ -3,10 +3,18 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum SKILL_TYPE { SKILL1, SKILL2, SKILL3, SKILL4, SKILL5, SKILL6 }
+public enum SKILL_TYPE
+{
+    Skill1,
+    Skill2,
+    Skill3,
+    Skill4,
+    Skill5,
+    Skill6
+}
+
 public class SkillManager : MonoBehaviour
 {
-
     public static SkillManager Inst;
     private bool isOpen;
     [SerializeField] private int page;
@@ -19,8 +27,15 @@ public class SkillManager : MonoBehaviour
     public List<GameObject> skillXObjs;
     public bool[] isUseSkill;
 
-    public SkillBookPage ActivePage { get { return pages[page]; } }
-    public int ActivePageIndex { get { return page; } }
+    public SkillBookPage ActivePage
+    {
+        get { return pages[page]; }
+    }
+
+    public int ActivePageIndex
+    {
+        get { return page; }
+    }
 
     private void Awake()
     {
@@ -40,14 +55,15 @@ public class SkillManager : MonoBehaviour
         transform.position = new Vector3(0, 0, -2);
     }
 
-    public void Open()      //스킬창 여는 것
+    public void Open() //스킬창 여는 것
     {
         if (isOpen)
         {
             Close();
             return;
         }
-        SoundManager.Inst.Play(SKILLBOOKSOUND.OPEN_BOOK);
+
+        SoundManager.Inst.Play(SKILLBOOKSOUND.OpenBook);
         GameManager.Inst.CloseAllUI();
         isOpen = true;
         transform.GetChild(0).gameObject.SetActive(true);
@@ -61,9 +77,9 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    public void Close()      //스킬창 여는 것
+    public void Close() //스킬창 여는 것
     {
-        SoundManager.Inst.Play(SKILLBOOKSOUND.CLOSE_BOOK);
+        SoundManager.Inst.Play(SKILLBOOKSOUND.CloseBook);
         InitCard();
         pages[page].gameObject.SetActive(false);
         transform.GetChild(0).gameObject.SetActive(false);
@@ -77,6 +93,7 @@ public class SkillManager : MonoBehaviour
             return;
         }
 
+        //todo : 여기부터 해야함
         for (int i = 0; i < choiceCards.Count; i++)
         {
             if (choiceCards[i].curSelectCard == card)
@@ -87,10 +104,14 @@ public class SkillManager : MonoBehaviour
                 choiceCards[i].GetComponentInChildren<TMP_Text>().text = "+";
             }
         }
-        SoundManager.Inst.Play(SKILLBOOKSOUND.CARD_ON_BOOK);
+
+        SoundManager.Inst.Play(SKILLBOOKSOUND.CardONBook);
         skillBookCard.frontCard.SetActive(true);
-        skillBookCard.originNum = card.final_Num;
-        skillBookCard.frontCard.GetComponent<SkillBookCard>().originNum = skillBookCard.frontCard.GetComponent<SkillBookCard>().isQuestionMark ? RandomNum(card.final_Num) : card.final_Num;
+        skillBookCard.OriginNum = card.final_Num;
+        skillBookCard.frontCard.GetComponent<SkillBookCard>().OriginNum =
+            skillBookCard.frontCard.GetComponent<SkillBookCard>().isQuestionMark
+                ? RandomNum(card.final_Num)
+                : card.final_Num;
         skillBookCard.SetColorAlpha(false);
         skillBookCard.GetComponentInChildren<TMP_Text>().text = (card.final_Num + 1).ToString();
         if (skillBookCard.curSelectCard == null)
@@ -115,6 +136,7 @@ public class SkillManager : MonoBehaviour
         {
             result = Random.Range(0, 6);
         } while (num == result);
+
         return result;
     }
 
@@ -124,7 +146,7 @@ public class SkillManager : MonoBehaviour
         {
             if (applyCards[i].gameObject.activeInHierarchy)
             {
-                applyCards[i].curSelectCard.SetFinalNum(applyCards[i].curNum);
+                applyCards[i].curSelectCard.SetFinalNum(applyCards[i].CurNum);
             }
         }
 
@@ -148,7 +170,8 @@ public class SkillManager : MonoBehaviour
                 break;
             }
         }
-        SoundManager.Inst.Play(SKILLBOOKSOUND.TURN_PAGE);
+
+        SoundManager.Inst.Play(SKILLBOOKSOUND.TurnPage);
         for (int i = 0; i < bookmarks.Count; i++)
         {
             //bookmarks[i].gameObject.SetActive(CardManager.Inst.cardDeck[0] >= (i * 2 + 1) ? true : false);
@@ -171,6 +194,7 @@ public class SkillManager : MonoBehaviour
                 applyCards[i].curSelectCard.SetColorAlpha(false);
             }
         }
+
         for (int i = 0; i < choiceCards.Count; i++)
         {
             choiceCards[i].curSelectCard = null;

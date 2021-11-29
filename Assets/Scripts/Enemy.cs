@@ -1,5 +1,7 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
@@ -90,10 +92,12 @@ public class Enemy : MonoBehaviour
             case PATTERN_TYPE.HEAL:
                 Heal();
                 break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 
-    public void Heal()
+    private void Heal()
     {
         EffectManager.Inst.CreateEffectObj(EffectObjType.Heal, hitPos.position + new Vector3(0, 0, -15), 0, 0.7f);
         hpbar.Heal(pattenIndex);
@@ -114,7 +118,7 @@ public class Enemy : MonoBehaviour
             hpbar.Heal(damage < 0 ? Mathf.Abs(damage) : 0);
         }
 
-        SoundManager.Inst.Play(BATTLESOUND.HIT);
+        SoundManager.Inst.Play(BATTLESOUND.Hit);
         Player.Inst.Damage(pattenIndex + force);
         pattenIndex = 0;
     }
@@ -133,6 +137,8 @@ public class Enemy : MonoBehaviour
                 pattenIndexTMP.text = isPattenHidden ? "???" : pattenIndex.ToString();
                 pattenIndexTMP.color = new Color(60f / 255, 180f / 255, 60f / 255);
                 break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
 
         weaknessTMP.text = isWeaknessHidden ? "?" : (weaknessNum + 1).ToString();
@@ -142,7 +148,7 @@ public class Enemy : MonoBehaviour
 
     public void Damage(int damage) //적이 공격 당할때 호출
     {
-        SoundManager.Inst.Play(BATTLESOUND.HIT);
+        SoundManager.Inst.Play(BATTLESOUND.Hit);
         hpbar.Damage(damage);
         DebuffManager.Inst.turnDamage += damage;
     }
@@ -162,7 +168,7 @@ public class Enemy : MonoBehaviour
         {
             if (monster.type != MONSTER_TYPE.BOSS)
             {
-                SoundManager.Inst.Play(BATTLESOUND.GAME_WIN);
+                SoundManager.Inst.Play(BATTLESOUND.GameWin);
                 StartCoroutine(TurnManager.Inst.ShowReward());
             }
             else

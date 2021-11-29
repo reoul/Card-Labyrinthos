@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 
-public enum IntroButtonType { START, SETTING, QUIT }
+public enum IntroButtonType
+{
+    Start,
+    Setting,
+    Quit
+}
+
 public class IntroButton : MonoBehaviour
 {
     private bool isButtonOn;
@@ -17,7 +23,7 @@ public class IntroButton : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        SoundManager.Inst.Play(EVENTSOUND.CHOICE_MOUSEUP);
+        SoundManager.Inst.Play(EVENTSOUND.ChoiceMouseup);
         isButtonOn = true;
     }
 
@@ -28,17 +34,17 @@ public class IntroButton : MonoBehaviour
 
     private void Click()
     {
-        SoundManager.Inst.Play(EVENTSOUND.CHOICE_BUTTON);
+        SoundManager.Inst.Play(EVENTSOUND.ChoiceButton);
         switch (type)
         {
-            case IntroButtonType.START:
+            case IntroButtonType.Start:
                 isClick = true;
                 IntroManager.Inst.GameStart();
                 break;
-            case IntroButtonType.SETTING:
+            case IntroButtonType.Setting:
                 IntroManager.Inst.Setting();
                 break;
-            case IntroButtonType.QUIT:
+            case IntroButtonType.Quit:
                 IntroManager.Inst.GameQuit();
                 break;
         }

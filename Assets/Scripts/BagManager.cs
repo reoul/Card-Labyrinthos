@@ -2,24 +2,15 @@
 using TMPro;
 using UnityEngine;
 
-public class BagManager : MonoBehaviour
+public class BagManager : Singleton<BagManager>
 {
-    public static BagManager Inst;
-    private readonly int[] cardMax = {18, 15, 12, 9, 6, 3};
+    private readonly int[] cardMax = { 18, 15, 12, 9, 6, 3 };
 
     public bool isOpen;
 
     private void Awake()
     {
-        if (Inst == null)
-        {
-            Inst = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        ExistInstance(this);
     }
 
     [SerializeField] private List<TMP_Text> card_text;
@@ -54,14 +45,14 @@ public class BagManager : MonoBehaviour
         transform.GetChild(0).gameObject.SetActive(true);
     }
 
-    public void UpdateText()
+    private void UpdateText()
     {
-        for (int i = 0; i < card_text.Count; i++)
+        for (var i = 0; i < card_text.Count; i++)
         {
             card_text[i].text = string.Format($"{CardManager.Inst.cardDeck[i].ToString()}/{cardMax[i].ToString()}");
         }
 
-        for (int i = 0; i < skill_spriteRenderer.Count; i++)
+        for (var i = 0; i < skill_spriteRenderer.Count; i++)
         {
             skill_spriteRenderer[i].color = new Color(0, 0, 0, 0.5f);
             skill_spriteRenderer[i].transform.GetChild(0).GetComponent<TMP_Text>().color = new Color(0, 0, 0, 0.5f);
