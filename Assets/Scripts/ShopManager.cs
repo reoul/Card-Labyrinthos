@@ -64,7 +64,7 @@ public class ShopManager : MonoBehaviour
                 }
 
                 ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.NumCard, shopItem.transform.position,
-                    TopBar.Inst.GetIcon(TOPBAR_TYPE.BAG).transform.position, null, 1, 1, shopItem.item.index);
+                    TopBarManager.Inst.GetIcon(TOPBAR_TYPE.Bag).transform.position, null, 1, 1, shopItem.item.index);
                 break;
             case SHOPITEM_TYPE.AddDraw:
                 if (PlayerManager.Inst.CardPiece >= shopItem.item.price)
@@ -95,7 +95,7 @@ public class ShopManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         TalkWindow.Inst.InitFlag();
         yield return StartCoroutine(GhostManager.Inst.ShowGhost());
-        for (var i = 0; i < TalkWindow.Inst.talks[12].Count; i++)
+        for (var i = 0; i < TalkWindow.Inst.TalkLists[12].Count; i++)
         {
             switch (i)
             {

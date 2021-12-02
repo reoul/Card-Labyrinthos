@@ -6,42 +6,42 @@ using UnityEngine;
 public class Singleton<T> : MonoBehaviour, ISingleton where T : MonoBehaviour
 {
     // Destroy 여부 확인용
-    private static bool _ShuttingDown = false;
-    private static object _Lock = new object();
+    private static bool _shuttingDown = false;
+    private static object _lock = new object();
     
-    private static T _Inst;
+    private static T _inst;
     public static T Inst
     {
         get
         {
             // 게임 종료 시 Object 보다 싱글톤의 OnDestroy 가 먼저 실행 될 수도 있다. 
             // 해당 싱글톤을 gameObject.Ondestory() 에서는 사용하지 않거나 사용한다면 null 체크를 해주자
-            if (_ShuttingDown)
+            if (_shuttingDown)
             {
                 Debug.Log($"[Singleton] Instance '{typeof(T)}' already destroyed. Returning null.");
                 return null;
             }
 
-            lock (_Lock) //Thread Safe
+            lock (_lock) //Thread Safe
             {
-                if (_Inst == null)
+                if (_inst == null)
                 {
                     // 인스턴스 존재 여부 확인
-                    _Inst = (T) FindObjectOfType(typeof(T));
+                    _inst = (T) FindObjectOfType(typeof(T));
 
                     // 아직 생성되지 않았다면 인스턴스 생성
-                    if (_Inst == null)
+                    if (_inst == null)
                     {
                         // 새로운 게임오브젝트를 만들어서 싱글톤 Attach
                         var singletonObject = new GameObject();
-                        _Inst = singletonObject.AddComponent<T>();
+                        _inst = singletonObject.AddComponent<T>();
 
                         GameObject managerObject = GetObjFromResource();
                         if (managerObject != null)
                         {
-                            singletonObject.GetComponent<ISingleton>().DestorySingleton();
+                            singletonObject.GetComponent<ISingleton>().DestroySingleton();
                             singletonObject = Instantiate(managerObject);
-                            _Inst = singletonObject.GetComponent<T>();
+                            _inst = singletonObject.GetComponent<T>();
                         }
                         
                         singletonObject.name = $"{typeof(T)} (Singleton)";
@@ -52,30 +52,30 @@ public class Singleton<T> : MonoBehaviour, ISingleton where T : MonoBehaviour
                     }
                 }
 
-                return _Inst;
+                return _inst;
             }
         }
     }
 
     private void OnApplicationQuit()
     {
-        _ShuttingDown = true;
+        _shuttingDown = true;
     }
 
     private void OnDestroy()
     {
-        _ShuttingDown = true;
+        _shuttingDown = true;
     }
 
     /// <summary>
     /// 해당 클래스 싱글톤이 존재하는지 체크해서
     /// 존재 한다면 오브젝트 제거
     /// </summary>
-    protected void ExistInstance(T inst)
+    protected void CheckExistInstanceAndDestroy(T inst)
     { 
         if ((Inst != null) && (Inst != inst))
         {
-            DestorySingleton();
+            DestroySingleton();
             return;
         }
         DontDestroyOnLoad(gameObject);
@@ -84,11 +84,11 @@ public class Singleton<T> : MonoBehaviour, ISingleton where T : MonoBehaviour
     /// <summary>
     /// 싱글톤 오브젝트 삭제
     /// </summary>
-    public void DestorySingleton()
+    public void DestroySingleton()
     {
-        _Inst = null;
+        _inst = null;
         DestroyImmediate(gameObject);
-        _ShuttingDown = false;
+        _shuttingDown = false;
     }
 
     /// <summary>

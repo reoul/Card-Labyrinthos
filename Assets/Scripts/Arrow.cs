@@ -24,7 +24,7 @@ public class Arrow : MonoBehaviour
         });
     }
 
-    public void ArrowDestory()
+    public void ArrowDestroy()
     {
         transform.DOPause();
         Destroy(gameObject);

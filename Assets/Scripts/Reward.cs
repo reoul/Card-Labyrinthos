@@ -12,12 +12,11 @@ public class RewardData
     public int index2;
 }
 
-public class Reward : MonoBehaviour
+public class Reward : MouseInteractionObject
 {
     [SerializeField] private TMP_Text resultTMP;
     public RewardData rewardData;
     public DEBUFF_TYPE debuff_type;
-    private bool onReward; //마우스가 필드 위에 있는지
     public bool isRewardOn;
 
     [SerializeField] private SpriteRenderer windowRenderer;
@@ -29,19 +28,9 @@ public class Reward : MonoBehaviour
         contentTMP = transform.GetChild(0).GetComponent<TMP_Text>();
     }
 
-    private void OnMouseEnter()
-    {
-        onReward = true;
-    }
-
-    private void OnMouseExit()
-    {
-        onReward = false;
-    }
-
     private void OnMouseUp()
     {
-        if (onReward && !RewardManager.Inst.isChoice)
+        if (OnMouse && !RewardManager.Inst.isChoice)
         {
             RewardManager.Inst.GetReward(this);
         }
@@ -133,7 +122,7 @@ public class Reward : MonoBehaviour
 
     public void Init()
     {
-        onReward = false;
+        OnMouse = false;
         isRewardOn = false;
         gameObject.SetActive(false);
     }

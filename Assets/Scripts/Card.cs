@@ -2,17 +2,17 @@
 using TMPro;
 using UnityEngine;
 
-public class Card : MonoBehaviour
+public class Card : MouseInteractionObject
 {
-    public int original_Num { get; private set; }
-    private int _final_Num;
+    private int OriginalNum { get; set; }
+    private int _finalNum;
 
-    public int final_Num
+    public int FinalNum
     {
-        get => _final_Num;
+        get => _finalNum;
         private set
         {
-            _final_Num = Mathf.Clamp(value, 0, 5);
+            _finalNum = Mathf.Clamp(value, 0, 5);
             UpdateNumTMP();
         }
     }
@@ -20,62 +20,57 @@ public class Card : MonoBehaviour
     public TMP_Text num_TMP;
 
     public PRS originPRS;
-    public Transform parent => transform.parent;
+    public Transform Parent => transform.parent;
     public bool isFinish;
-    private bool _isLock;
 
-    public bool isLock
-    {
-        get => _isLock;
-        private set => _isLock = value;
-    }
+    private bool IsLock { get; set; }
 
     public void Setup(int num)
     {
-        original_Num = num;
-        final_Num = num;
+        OriginalNum = num;
+        FinalNum = num;
         UpdateNumTMP();
     }
 
     public void RevertOriginNum()
     {
-        final_Num = original_Num;
+        FinalNum = OriginalNum;
     }
 
     private void UpdateNumTMP()
     {
-        num_TMP.text = (final_Num + 1).ToString();
+        num_TMP.text = (FinalNum + 1).ToString();
     }
 
     public void MoveTransform(PRS prs, bool useDoTween, float doTweenTime = 0)
     {
         if (useDoTween)
         {
-            parent.DOMove(prs.pos, doTweenTime);
-            parent.DORotateQuaternion(prs.rot, doTweenTime);
-            parent.DOScale(prs.scale, doTweenTime);
+            Parent.DOMove(prs.Pos, doTweenTime);
+            Parent.DORotateQuaternion(prs.Rot, doTweenTime);
+            Parent.DOScale(prs.Scale, doTweenTime);
         }
         else
         {
-            parent.position = prs.pos;
-            parent.rotation = prs.rot;
-            parent.localScale = prs.scale;
+            Parent.position = prs.Pos;
+            Parent.rotation = prs.Rot;
+            Parent.localScale = prs.Scale;
         }
     }
 
     public void FinishCard()
     {
-        parent.localScale = Vector3.one * 0.1f;
+        Parent.localScale = Vector3.one * 0.1f;
         SetActiveChildObj(false);
     }
 
     public void SetActiveChildObj(bool isActive)
     {
-        parent.GetChild(1).gameObject.SetActive(isActive);
-        parent.GetChild(2).gameObject.SetActive(isActive);
+        Parent.GetChild(1).gameObject.SetActive(isActive);
+        Parent.GetChild(2).gameObject.SetActive(isActive);
     }
 
-    private void OnMouseEnter()
+    protected override void OnMouseEnter()
     {
         SoundManager.Inst.Play(EVENTSOUND.ChoiceMouseup);
     }
@@ -85,14 +80,14 @@ public class Card : MonoBehaviour
         CardManager.Inst.CardMouseOver(this);
     }
 
-    private void OnMouseExit()
+    protected override void OnMouseExit()
     {
         CardManager.Inst.CardMouseExit(this);
     }
 
     private void OnMouseDown()
     {
-        if (!FadeManager.Inst.isActiveFade && !isFinish && !isLock)
+        if (!FadeManager.Inst.isActiveFade && !isFinish && !IsLock)
         {
             CardManager.Inst.CardMouseDown();
         }
@@ -100,7 +95,7 @@ public class Card : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (!isFinish && !isLock)
+        if (!isFinish && !IsLock)
         {
             CardManager.Inst.CardMouseUp();
         }
@@ -108,9 +103,9 @@ public class Card : MonoBehaviour
 
     public void Use(GameObject target = null)
     {
-        if (target.CompareTag("Player"))
+        if (!(target is null) && target.CompareTag("Player"))
         {
-            Player.Inst.Sheld(final_Num + 1);
+            Player.Inst.AddShield(FinalNum + 1);
         }
     }
 
@@ -118,41 +113,36 @@ public class Card : MonoBehaviour
     {
         isFinish = true;
         MoveTransform(originPRS, false);
-        MoveTransform(new PRS(originPRS.pos - Vector3.up * 3, originPRS.rot, originPRS.scale), true,
+        MoveTransform(new PRS(originPRS.Pos - Vector3.up * 3, originPRS.Rot, originPRS.Scale), true,
             0.3f);
-    }
-
-    public void AddNum(int index)
-    {
-        final_Num += index;
     }
 
     public void SetFinalNum(int index)
     {
-        final_Num = index;
+        FinalNum = index;
     }
 
     public void SetColorAlpha(bool isHalf)
     {
         GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, isHalf ? 0 : 1);
-        parent.GetChild(1).GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, isHalf ? 0.5f : 1); //카드 앞면
-        parent.GetChild(2).GetComponent<TMP_Text>().color = new Color(0, 0, 0, isHalf ? 0.5f : 1); //숫자 텍스트
+        Parent.GetChild(1).GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, isHalf ? 0.5f : 1); //카드 앞면
+        Parent.GetChild(2).GetComponent<TMP_Text>().color = new Color(0, 0, 0, isHalf ? 0.5f : 1); //숫자 텍스트
     }
 
     public void Lock()
     {
-        isLock = true;
+        IsLock = true;
     }
 
     public void UnLock()
     {
-        isLock = false;
+        IsLock = false;
     }
 
     public void SetOrderLayer(int index)
     {
         GetComponent<SpriteRenderer>().sortingOrder = index;
-        parent.GetChild(1).GetComponent<SpriteRenderer>().sortingOrder = index + 1;
-        parent.GetChild(2).GetComponent<Renderer>().sortingOrder = index + 2;
+        Parent.GetChild(1).GetComponent<SpriteRenderer>().sortingOrder = index + 1;
+        Parent.GetChild(2).GetComponent<Renderer>().sortingOrder = index + 2;
     }
 }

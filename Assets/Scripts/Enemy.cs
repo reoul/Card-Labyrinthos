@@ -84,12 +84,12 @@ public class Enemy : MonoBehaviour
     {
         switch (curPatten.pattern_type)
         {
-            case PATTERN_TYPE.ATTACK:
+            case PATTERN_TYPE.Attack:
                 EffectManager.Inst.CreateEffectObj(EffectObjType.Hit,
                     Player.Inst.transform.position + new Vector3(0, 1, -15), 0.15f + attackDelay);
                 GetComponent<Animator>().SetTrigger("Attack"); //공격 애니메이션 실행
                 break;
-            case PATTERN_TYPE.HEAL:
+            case PATTERN_TYPE.Heal:
                 Heal();
                 break;
             default:
@@ -103,10 +103,10 @@ public class Enemy : MonoBehaviour
         hpbar.Heal(pattenIndex);
     }
 
-    public void Sheld(int sheld)
+    public void Shield(int shield)
     {
-        EffectManager.Inst.CreateEffectObj(EffectObjType.Sheld, hitPos.position + new Vector3(0, 0, -15), 0, 0.7f);
-        hpbar.Sheld(sheld);
+        EffectManager.Inst.CreateEffectObj(EffectObjType.Shield, hitPos.position + new Vector3(0, 0, -15), 0, 0.7f);
+        hpbar.AddShield(shield);
     }
 
     //공격 애니메이션 끝날 때 호출
@@ -114,7 +114,7 @@ public class Enemy : MonoBehaviour
     {
         if (isVampire)
         {
-            int damage = Player.Inst.hpbar.sheld - pattenIndex + force;
+            int damage = Player.Inst.hpbar.Shield - pattenIndex + force;
             hpbar.Heal(damage < 0 ? Mathf.Abs(damage) : 0);
         }
 
@@ -127,12 +127,12 @@ public class Enemy : MonoBehaviour
     {
         switch (curPatten.pattern_type)
         {
-            case PATTERN_TYPE.ATTACK:
+            case PATTERN_TYPE.Attack:
                 patten_sprite.sprite = isPattenHidden ? null : StageManager.Inst.attackSprite;
                 pattenIndexTMP.text = isPattenHidden ? "???" : (pattenIndex + force).ToString();
                 pattenIndexTMP.color = Color.red;
                 break;
-            case PATTERN_TYPE.HEAL:
+            case PATTERN_TYPE.Heal:
                 patten_sprite.sprite = isPattenHidden ? null : StageManager.Inst.healSprite;
                 pattenIndexTMP.text = isPattenHidden ? "???" : pattenIndex.ToString();
                 pattenIndexTMP.color = new Color(60f / 255, 180f / 255, 60f / 255);
@@ -166,7 +166,7 @@ public class Enemy : MonoBehaviour
         TurnManager.Inst.isFinish = true;
         if (EnemyManager.Inst.enemys.Count == 0)
         {
-            if (monster.type != MONSTER_TYPE.BOSS)
+            if (monster.type != MONSTER_TYPE.Boss)
             {
                 SoundManager.Inst.Play(BATTLESOUND.GameWin);
                 StartCoroutine(TurnManager.Inst.ShowReward());

@@ -8,7 +8,6 @@ public class StageManager : MonoBehaviour
 
     public MonsterSO monsterSO;
 
-    public Transform player_spawn;
     public Transform enemy_spawn;
 
     public Sprite attackSprite;
@@ -17,8 +16,6 @@ public class StageManager : MonoBehaviour
     public TMP_Text debuffTMP;
 
     [SerializeField] private bool isTutorial;
-
-    public bool isWin;
 
     private void Awake()
     {
@@ -33,83 +30,72 @@ public class StageManager : MonoBehaviour
         }
     }
 
-    public void CreateStage()
+    private void CreateStage()
     {
         if (MapManager.CurrentSceneName == "전투" || MapManager.CurrentSceneName == "보스")
         {
             SoundManager.Inst.Play(BACKGROUNDSOUND.Battle);
-            for (int i = 0; i < monsterSO.monsters.Length; i++)
+            foreach (Monster monster in monsterSO.monsters)
             {
-                if (MapManager.Inst.fieldData.monster_type == MONSTER_TYPE.BOSS)
+                SoundManager.Inst.Play(MapManager.Inst.fieldData.monster_type == MONSTER_TYPE.Boss
+                    ? BACKGROUNDSOUND.Boss
+                    : BACKGROUNDSOUND.Battle);
+
+                if (MapManager.Inst.fieldData.monster_type != monster.type)
                 {
-                    SoundManager.Inst.Play(BACKGROUNDSOUND.Boss);
+                    continue;
                 }
-                else
+
+                var enemy = Instantiate(monster.prefab, enemy_spawn.position, Quaternion.identity)
+                    .GetComponent<Enemy>();
+                if (MapManager.Inst.fieldData.monster_type == MONSTER_TYPE.Boss)
                 {
-                    SoundManager.Inst.Play(BACKGROUNDSOUND.Battle);
+                    enemy.transform.rotation = Quaternion.Euler(0, 180, 0);
                 }
 
-                if (MapManager.Inst.fieldData.monster_type == monsterSO.monsters[i].type)
-                {
-                    Enemy enemy = Instantiate(monsterSO.monsters[i].prefab, enemy_spawn.position, Quaternion.identity).GetComponent<Enemy>();
-                    if (MapManager.Inst.fieldData.monster_type == MONSTER_TYPE.BOSS)
-                    {
-                        enemy.transform.rotation = Quaternion.Euler(0, 180, 0);
-                    }
-                    Vector3 enemy_position = enemy.hpbar.transform.position;
-                    float position_x = enemy_position.x - enemy_spawn.position.x;
-                    float position_y = enemy_position.y - enemy_spawn.position.y;
-                    enemy.transform.position -= new Vector3(position_x, position_y, 0);
+                var enemyPosition = enemy.hpbar.transform.position;
+                var position = enemyPosition - enemy_spawn.position;
+                enemy.transform.position -= new Vector3(position.x, position.y, 0);
 
-                    EnemyManager.Inst.enemys.Add(enemy);
-                    enemy.hpbar.SetHP(monsterSO.monsters[i].hp);
-                    enemy.attackDelay = monsterSO.monsters[i].attackDelay;
-                    //enemy.hpbar.hp = 5;
-                    enemy.monster = monsterSO.monsters[i];
-                    enemy.name = "Enemy";
-                    enemy.tag = "Enemy";
-                    break;
-                }
-            }
-        }
-
-        debuffTMP.text = string.Format($"저주 : {DebuffManager.Inst.DebuffString}");
-        DebuffManager.Inst.ApplyDebuff();
-    }
-
-    private IEnumerator CheckBossWinCoroutine()
-    {
-        while (!isWin)
-        {
-            yield return new WaitForEndOfFrame();
-        }
-
-    }
-
-    public IEnumerator CreateStageInTutorial()
-    {
-        for (int i = 0; i < monsterSO.monsters.Length; i++)
-        {
-            if (MapManager.Inst.fieldData.monster_type == monsterSO.monsters[i].type)
-            {
-                Enemy enemy = Instantiate(monsterSO.monsters[i].prefab, enemy_spawn.position, Quaternion.identity).GetComponent<Enemy>();
-                Vector3 enemy_position = enemy.hpbar.transform.position;
-                float position_x = enemy_position.x - enemy_spawn.position.x;
-                float position_y = enemy_position.y - enemy_spawn.position.y;
-                enemy.transform.position -= new Vector3(position_x, position_y, 0);
-                enemy.SetFixedWeaknessNum(MapManager.Inst.tutorialIndex == 1 ? 2 : -1);
                 EnemyManager.Inst.enemys.Add(enemy);
-                enemy.hpbar.SetHP(monsterSO.monsters[i].hp);
-                enemy.attackDelay = monsterSO.monsters[i].attackDelay;
-                //enemy.hpbar.hp = 5;
-                enemy.monster = monsterSO.monsters[i];
-                enemy.name = "Enemy123";
+                enemy.hpbar.SetHp(monster.hp);
+                enemy.attackDelay = monster.attackDelay;
+                enemy.monster = monster;
+                enemy.name = "Enemy";
                 enemy.tag = "Enemy";
                 break;
             }
         }
+
+        debuffTMP.text = $"저주 : {DebuffManager.Inst.DebuffString}";
+        DebuffManager.Inst.ApplyDebuff();
+    }
+
+    public IEnumerator CreateStageInTutorial()
+    {
+        foreach (Monster monster in monsterSO.monsters)
+        {
+            if (MapManager.Inst.fieldData.monster_type != monster.type)
+            {
+                continue;
+            }
+
+            var enemy = Instantiate(monster.prefab, enemy_spawn.position, Quaternion.identity)
+                .GetComponent<Enemy>();
+            var enemyPosition = enemy.hpbar.transform.position;
+            var position = enemyPosition - enemy_spawn.position;
+            enemy.transform.position -= new Vector3(position.x, position.y, 0);
+
+            enemy.SetFixedWeaknessNum(MapManager.Inst.tutorialIndex == 1 ? 2 : -1);
+            EnemyManager.Inst.enemys.Add(enemy);
+            enemy.hpbar.SetHp(monster.hp);
+            enemy.attackDelay = monster.attackDelay;
+            enemy.monster = monster;
+            enemy.name = "Enemy";
+            enemy.tag = "Enemy";
+            break;
+        }
+
         yield return null;
-        //debuffTMP.text = string.Format($"저주 : {DebuffManager.Inst.DebuffString}");
-        //DebuffManager.Inst.ApplyDebuff();
     }
 }

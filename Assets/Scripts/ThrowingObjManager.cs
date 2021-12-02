@@ -1,15 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class ThrowingObjManager : MonoBehaviour
+public class ThrowingObjManager : Singleton<ThrowingObjManager>
 {
-    public static ThrowingObjManager Inst;
-
     public List<GameObject> throwingRewardObj;
 
-    public int moveThrowingReward { get { return throwingRewardObj.Count; } }
+    public int MoveThrowingReward
+    {
+        get { return throwingRewardObj.Count; }
+    }
 
     public GameObject CardBackPrefab;
     public GameObject CardPiecePrefab;
@@ -19,15 +21,7 @@ public class ThrowingObjManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Inst == null)
-        {
-            Inst = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        CheckExistInstanceAndDestroy(this);
     }
 
     private void Start()
@@ -35,28 +29,35 @@ public class ThrowingObjManager : MonoBehaviour
         throwingRewardObj = new List<GameObject>();
     }
 
-    public void CreateThrowingObj(THROWING_OBJ_TYPE type, Vector3 startPos, Vector3 endPos, IEnumerator enumerator = null, float moveTime = 1, int cnt = 1, int index = 0)   //index : 추가적으로 변수를 함수로 넘겨줘야할 경우
+    /// <summary>
+    /// 날아가는 오브젝트 생성
+    /// </summary>
+    public void CreateThrowingObj(THROWING_OBJ_TYPE type, Vector3 startPos, Vector3 endPos,
+        IEnumerator enumerator = null, float moveTime = 1, int cnt = 1, int index = 0) //index : 추가적으로 변수를 함수로 넘겨줘야할 경우
     {
         StartCoroutine(CreateThrowingObjCoroutine(type, startPos, endPos, enumerator, moveTime, cnt, index));
     }
 
-    private IEnumerator CreateThrowingObjCoroutine(THROWING_OBJ_TYPE type, Vector3 startPos, Vector3 endPos, IEnumerator enumerator123 = null, float moveTime = 1, int cnt = 1, int index = 0)
+    private IEnumerator CreateThrowingObjCoroutine(THROWING_OBJ_TYPE type, Vector3 startPos, Vector3 endPos,
+        IEnumerator enumerator = null, float moveTime = 1, int cnt = 1, int index = 0)
     {
-        for (int i = 0; i < cnt; i++)
+        for (var i = 0; i < cnt; i++)
         {
             SoundManager.Inst.Play(SHOPSOUND.ThrowingObj);
-            var throwingObj = Instantiate(GetThrowingObjPrefab(type), startPos, type == THROWING_OBJ_TYPE.NumCard ? Utils.CardRotate : Quaternion.identity);
+            var throwingObj = Instantiate(GetThrowingObjPrefab(type), startPos,
+                type == THROWING_OBJ_TYPE.NumCard ? Utils.CardRotate : Quaternion.identity);
             throwingRewardObj.Add(throwingObj);
             if (type == THROWING_OBJ_TYPE.NumCard)
             {
                 throwingObj.GetComponentInChildren<Card>().Setup(index);
                 throwingObj.GetComponentInChildren<Card>().SetOrderLayer(5500 + i * 4);
             }
+
             throwingObj.transform.DOMove(endPos, moveTime).SetEase(Ease.InQuint).OnComplete(() =>
             {
-                if (enumerator123 != null)
+                if (enumerator != null)
                 {
-                    StartCoroutine(enumerator123);
+                    StartCoroutine(enumerator);
                 }
 
                 switch (type)
@@ -73,7 +74,12 @@ public class ThrowingObjManager : MonoBehaviour
                         SoundManager.Inst.Play(REWARDSOUND.GetQuestion);
                         PlayerManager.Inst.QuestionCard += index;
                         break;
+                    case THROWING_OBJ_TYPE.SkillBook:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(type), type, null);
                 }
+
                 if (EnemyManager.Inst.enemys.Count > 0)
                 {
                     EnemyManager.Inst.enemys[0].Damage(1);
@@ -100,7 +106,8 @@ public class ThrowingObjManager : MonoBehaviour
                 return QuestionCardPrefab;
             case THROWING_OBJ_TYPE.SkillBook:
                 return SkillBookPrefab;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(type), type, null);
         }
-        return CardBackPrefab;
     }
 }

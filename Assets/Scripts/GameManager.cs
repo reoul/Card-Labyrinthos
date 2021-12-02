@@ -39,7 +39,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Awake()
     {
-        ExistInstance(this);
+        CheckExistInstanceAndDestroy(this);
     }
 
     private void Start()
@@ -54,20 +54,20 @@ public class GameManager : Singleton<GameManager>
             ResetManager.Inst.ResetGame();
         }
 
-        if (Input.GetKeyDown(KeyCode.I) && TopBar.Inst != null)
+        if (Input.GetKeyDown(KeyCode.I) && TopBarManager.Inst != null)
         {
-            TopBar.Inst.Open(TOPBAR_TYPE.BAG);
+            TopBarManager.Inst.Open(TOPBAR_TYPE.Bag);
         }
 
-        if (Input.GetKeyDown(KeyCode.K) && TopBar.Inst.GetIcon(TOPBAR_TYPE.SKILL).gameObject.activeInHierarchy &&
-            TopBar.Inst != null)
+        if (Input.GetKeyDown(KeyCode.K) && TopBarManager.Inst.GetIcon(TOPBAR_TYPE.Skill).gameObject.activeInHierarchy &&
+            TopBarManager.Inst != null)
         {
-            TopBar.Inst.Open(TOPBAR_TYPE.SKILL);
+            TopBarManager.Inst.Open(TOPBAR_TYPE.Skill);
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) && TopBar.Inst != null)
+        if (Input.GetKeyDown(KeyCode.Escape) && TopBarManager.Inst != null)
         {
-            TopBar.Inst.Open(TOPBAR_TYPE.SETTING);
+            TopBarManager.Inst.Open(TOPBAR_TYPE.Setting);
         }
 
         if (Input.GetKeyDown(KeyCode.O))
@@ -101,7 +101,7 @@ public class GameManager : Singleton<GameManager>
     private IEnumerator EndingCoroutine()
     {
         yield return StartCoroutine(GhostManager.Inst.ShowGhost());
-        for (int i = 0; i < TalkWindow.Inst.talks[14].Count; i++)
+        for (int i = 0; i < TalkWindow.Inst.TalkLists[14].Count; i++)
         {
             yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(14, i));
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());

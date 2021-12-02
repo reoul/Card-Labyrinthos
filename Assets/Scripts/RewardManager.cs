@@ -37,7 +37,7 @@ public class RewardManager : Singleton<RewardManager>
 
     private void Awake()
     {
-        ExistInstance(this);
+        CheckExistInstanceAndDestroy(this);
     }
 
     private void Start()
@@ -45,7 +45,7 @@ public class RewardManager : Singleton<RewardManager>
         activeRewardWindow = false;
         isGetAllReward = true;
         var rewards = GetComponentsInChildren<Reward>(true);
-        foreach (Reward reward in rewards)
+        foreach (var reward in rewards)
         {
             this.rewards.Add(reward);
         }
@@ -63,8 +63,8 @@ public class RewardManager : Singleton<RewardManager>
         SoundManager.Inst.Play(REWARDSOUND.ShowRewardWindow);
         activeRewardWindow = true;
         rewardWindow.SetActive(true);
-        SpriteRenderer windowRenderer = rewardWindow.GetComponent<SpriteRenderer>();
-        TMP_Text titleTMP = rewardWindow.transform.GetChild(0).GetComponent<TMP_Text>();
+        var windowRenderer = rewardWindow.GetComponent<SpriteRenderer>();
+        var titleTMP = rewardWindow.transform.GetChild(0).GetComponent<TMP_Text>();
 
         windowRenderer.color = new Color(255, 255, 255, 0);
         titleTMP.color = new Color(255, 255, 255, 0);
@@ -225,14 +225,13 @@ public class RewardManager : Singleton<RewardManager>
                 }
             }
 
-            if (count == 0 && ThrowingObjManager.Inst.moveThrowingReward == 0)
+            if (count == 0 && ThrowingObjManager.Inst.MoveThrowingReward == 0)
             {
                 if (SceneManager.GetActiveScene().name == "Tutorial2")
                 {
                     TalkWindow.Inst.SetFlagIndex(false);
                     TalkWindow.Inst.SetFlagNext(true);
                     TalkWindow.Inst.SetSkip(true);
-                    TutorialManager.Inst.isToturialFinish = true;
                     if (MapManager.Inst.tutorialIndex == 1)
                     {
                         yield return new WaitForSeconds(2);
@@ -279,7 +278,7 @@ public class RewardManager : Singleton<RewardManager>
                         CardManager.Inst.AddCardDeck(reward.rewardData.index, reward.rewardData.index2);
                         ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.NumCard,
                             reward.transform.position + Vector3.up * 0.5f,
-                            TopBar.Inst.GetIcon(TOPBAR_TYPE.BAG).transform.position, null, 1, reward.rewardData.index2,
+                            TopBarManager.Inst.GetIcon(TOPBAR_TYPE.Bag).transform.position, null, 1, reward.rewardData.index2,
                             reward.rewardData.index);
                         break;
                     case EVENT_REWARD_TYPE.CardPiece:
@@ -287,7 +286,7 @@ public class RewardManager : Singleton<RewardManager>
                         {
                             ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.CardPiece,
                                 reward.transform.position + Vector3.up * 0.5f,
-                                TopBar.Inst.GetIcon(TOPBAR_TYPE.CARDPIECE).transform.position, null, 1,
+                                TopBarManager.Inst.GetIcon(TOPBAR_TYPE.CardPiece).transform.position, null, 1,
                                 reward.rewardData.index / 10, 10);
                         }
                         else
@@ -313,13 +312,13 @@ public class RewardManager : Singleton<RewardManager>
                     case EVENT_REWARD_TYPE.QuestionCard:
                         ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.QuestionCard,
                             reward.transform.position + Vector3.up * 0.5f,
-                            TopBar.Inst.GetIcon(TOPBAR_TYPE.QUESTION).transform.position, null, 1,
+                            TopBarManager.Inst.GetIcon(TOPBAR_TYPE.Question).transform.position, null, 1,
                             reward.rewardData.index, 1);
                         break;
                     case EVENT_REWARD_TYPE.SkillBook:
                         ThrowingObjManager.Inst.CreateThrowingObj(THROWING_OBJ_TYPE.SkillBook,
                             reward.transform.position + Vector3.up * 0.5f,
-                            TopBar.Inst.GetIcon(TOPBAR_TYPE.SKILL).transform.position,
+                            TopBarManager.Inst.GetIcon(TOPBAR_TYPE.Skill).transform.position,
                             TutorialManager.Inst.SetActiveTrueTopBarSkillBook());
                         break;
                     default:

@@ -9,23 +9,17 @@ public class Notification : MonoBehaviour
     public void Show(string message)
     {
         notificationTmp.text = message;
-        Sequence sequence = DOTween.Sequence().Append(transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.InOutQuad))
-            .AppendInterval(0.9f)
-            .Append(transform.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InOutQuad));
+        DOTween.Sequence().Append(transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.InOutQuad))
+               .AppendInterval(0.9f)
+               .Append(transform.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InOutQuad));
     }
 
-    // Start is called before the first frame update
     private void Start()
     {
         ScaleZero();
     }
 
-    public void ScaleOne()
-    {
-        transform.localScale = Vector3.one;
-    }
-
-    public void ScaleZero()
+    private void ScaleZero()
     {
         transform.localScale = Vector3.zero;
     }

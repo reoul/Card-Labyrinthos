@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 
-public class Map : MonoBehaviour
+public class Map : MouseInteractionObject
 {
     public static Map Inst;
-    public bool onMap;
     private bool isMoveCamera;
     private Vector3 lastMousePos;
 
@@ -12,20 +11,15 @@ public class Map : MonoBehaviour
         Inst = this;
     }
 
-    private void OnMouseEnter()
+    protected override void OnMouseExit()
     {
-        onMap = true;
-    }
-
-    private void OnMouseExit()
-    {
-        onMap = false;
+        base.OnMouseExit();
         isMoveCamera = false;
     }
 
     private void Update()
     {
-        if (!onMap)
+        if (!OnMouse)
         {
             return;
         }

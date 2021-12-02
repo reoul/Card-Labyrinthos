@@ -1,4 +1,4 @@
 ﻿interface ISingleton
 {
-    void DestorySingleton();
+    void DestroySingleton();
 }

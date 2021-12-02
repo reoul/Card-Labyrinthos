@@ -14,43 +14,38 @@ public class FieldInspector : Editor
         serializedObject.Update();
         EditorGUILayout.PropertyField(serializedObject.FindProperty("field_type"));
         int propertyField = serializedObject.FindProperty("field_type").enumValueIndex;
-        Field field = (Field) target;
-        Sprite[] fieldIcon = Resources.LoadAll<Sprite>("FieldIcon");
+        var field = (Field) target;
+        var fieldIcon = Resources.LoadAll<Sprite>("FieldIcon");
         switch ((FieldType) propertyField)
         {
             case FieldType.Battle:
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("monster_difficulty"));
-                //field.spriteRenderer.sprite = fieldIcon[1];
                 break;
             case FieldType.Event:
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("event_type"));
-                //field.spriteRenderer.sprite = fieldIcon[2];
                 break;
             case FieldType.Rest:
-                //field.spriteRenderer.sprite = fieldIcon[3];
                 break;
             case FieldType.Shop:
-                //field.spriteRenderer.sprite = fieldIcon[4];
                 break;
             case FieldType.Boss:
-                //field.spriteRenderer.sprite = fieldIcon[0];
                 break;
         }
 
-        string titleTxt = string.Empty;
+        var titleTxt = string.Empty;
         switch (propertyField)
         {
             case (int) FieldType.Battle:
                 int monsterDifficulty = serializedObject.FindProperty("monster_difficulty").enumValueIndex;
                 switch (monsterDifficulty)
                 {
-                    case (int) MONSTER_DIFFICULTY.EASY:
+                    case (int) MONSTER_DIFFICULTY.Easy:
                         titleTxt = "이지";
                         break;
-                    case (int) MONSTER_DIFFICULTY.NOMAL:
+                    case (int) MONSTER_DIFFICULTY.Nomal:
                         titleTxt = "노말";
                         break;
-                    case (int) MONSTER_DIFFICULTY.HARD:
+                    case (int) MONSTER_DIFFICULTY.Hard:
                         titleTxt = "하드";
                         break;
                 }
@@ -108,12 +103,10 @@ public class FieldInspector : Editor
 #endif
 
 [Serializable]
-public class Field : MonoBehaviour
+public class Field : MouseInteractionObject
 {
     [SerializeField] private FieldType field_type;
     [SerializeField] private MONSTER_DIFFICULTY monster_difficulty;
-
-    private bool onField; //마우스가 필드 위에 있는지
 
     public List<GameObject> surroundingObj;
 
@@ -144,8 +137,8 @@ public class Field : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (onField && !isClear && isReady && !FadeManager.Inst.isActiveFade &&
-            ThrowingObjManager.Inst.moveThrowingReward == 0)
+        if (OnMouse && !isClear && isReady && !FadeManager.Inst.isActiveFade &&
+            ThrowingObjManager.Inst.MoveThrowingReward == 0)
         {
             if (MapManager.CurrentSceneName == "상점" && !ShopManager.Inst.isFinishTutorial)
             {
@@ -157,7 +150,7 @@ public class Field : MonoBehaviour
                 return;
             }
 
-            if (!MapManager.Inst.isTutorialBoss && monster_difficulty == MONSTER_DIFFICULTY.BOSS)
+            if (!MapManager.Inst.isTutorialBoss && monster_difficulty == MONSTER_DIFFICULTY.Boss)
             {
                 return;
             }
@@ -166,15 +159,10 @@ public class Field : MonoBehaviour
         }
     }
 
-    private void OnMouseEnter()
+    protected override void OnMouseEnter()
     {
+        base.OnMouseEnter();
         SoundManager.Inst.Play(EVENTSOUND.ChoiceMouseup);
-        onField = true;
-    }
-
-    private void OnMouseExit()
-    {
-        onField = false;
     }
 
     /// <summary>
@@ -185,55 +173,55 @@ public class Field : MonoBehaviour
         var rand = Random.Range(0, 4);
         switch (difficulty)
         {
-            case MONSTER_DIFFICULTY.EASY:
+            case MONSTER_DIFFICULTY.Easy:
                 switch (rand)
                 {
                     case 0:
-                        return MONSTER_TYPE.EARTH_WISP;
+                        return MONSTER_TYPE.EarthWisp;
                     case 1:
-                        return MONSTER_TYPE.FIRE_WISP;
+                        return MONSTER_TYPE.FireWisp;
                     case 2:
-                        return MONSTER_TYPE.WATER_WISP;
+                        return MONSTER_TYPE.WaterWisp;
                     case 3:
-                        return MONSTER_TYPE.WIND_WISP;
+                        return MONSTER_TYPE.WindWisp;
                 }
 
                 break;
-            case MONSTER_DIFFICULTY.NOMAL:
+            case MONSTER_DIFFICULTY.Nomal:
                 switch (rand)
                 {
                     case 0:
-                        return MONSTER_TYPE.EXECUTIONER;
+                        return MONSTER_TYPE.Executioner;
                     case 1:
-                        return MONSTER_TYPE.KOBOLD;
+                        return MONSTER_TYPE.Kobold;
                     case 2:
-                        return MONSTER_TYPE.REAPER;
+                        return MONSTER_TYPE.Reaper;
                     case 3:
-                        return MONSTER_TYPE.SHADE;
+                        return MONSTER_TYPE.Shade;
                 }
 
                 break;
-            case MONSTER_DIFFICULTY.HARD:
+            case MONSTER_DIFFICULTY.Hard:
                 switch (rand)
                 {
                     case 0:
-                        return MONSTER_TYPE.FIRE_GOLEM;
+                        return MONSTER_TYPE.FireGolem;
                     case 1:
-                        return MONSTER_TYPE.MINOTAUR;
+                        return MONSTER_TYPE.Minotaur;
                     case 2:
-                        return MONSTER_TYPE.RED_OGRE;
+                        return MONSTER_TYPE.RedOgre;
                     case 3:
-                        return MONSTER_TYPE.YETI;
+                        return MONSTER_TYPE.Yeti;
                 }
 
                 break;
-            case MONSTER_DIFFICULTY.BOSS:
-                return MONSTER_TYPE.BOSS;
+            case MONSTER_DIFFICULTY.Boss:
+                return MONSTER_TYPE.Boss;
             default:
                 throw new ArgumentOutOfRangeException(nameof(difficulty), difficulty, null);
         }
 
-        return MONSTER_TYPE.EARTH_WISP;
+        return MONSTER_TYPE.EarthWisp;
     }
 
     public void UpdateTypeText()
@@ -244,13 +232,13 @@ public class Field : MonoBehaviour
             case FieldType.Battle:
                 switch (monster_difficulty)
                 {
-                    case MONSTER_DIFFICULTY.EASY:
+                    case MONSTER_DIFFICULTY.Easy:
                         fieldTxt = "이지";
                         break;
-                    case MONSTER_DIFFICULTY.NOMAL:
+                    case MONSTER_DIFFICULTY.Nomal:
                         fieldTxt = "노말";
                         break;
-                    case MONSTER_DIFFICULTY.HARD:
+                    case MONSTER_DIFFICULTY.Hard:
                         fieldTxt = "하드";
                         break;
                 }
@@ -269,6 +257,10 @@ public class Field : MonoBehaviour
                 break;
             case FieldType.Boss:
                 fieldTxt = "보스";
+                break;
+            case FieldType.Tutorial:
+                break;
+            case FieldType.Tutorial2:
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

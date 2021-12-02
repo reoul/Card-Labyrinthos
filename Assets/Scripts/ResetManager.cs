@@ -5,7 +5,7 @@ public class ResetManager : Singleton<ResetManager>
 {
     private void Awake()
     {
-        ExistInstance(this);
+        CheckExistInstanceAndDestroy(this);
     }
 
     public void ResetGame()
@@ -15,7 +15,7 @@ public class ResetManager : Singleton<ResetManager>
         foreach (GameObject managerObj in managerObjs)
         {
             var singleton = managerObj.GetComponent<ISingleton>();
-            singleton?.DestorySingleton();
+            singleton?.DestroySingleton();
         }
 
         SceneManager.LoadScene("Intro");

@@ -11,10 +11,10 @@ public class Player : MonoBehaviour
         Inst = this;
     }
 
-    public void Sheld(int sheld)
+    public void AddShield(int shield)
     {
-        EffectManager.Inst.CreateEffectObj(EffectObjType.Sheld, transform.position + new Vector3(0, 2, -15), 0, 0.7f);
-        hpbar.Sheld(sheld);
+        EffectManager.Inst.CreateEffectObj(EffectObjType.Shield, transform.position + new Vector3(0, 2, -15), 0, 0.7f);
+        hpbar.AddShield(shield);
     }
 
     public void Damage(int damage) //플레이어가 공격 당할때 호출

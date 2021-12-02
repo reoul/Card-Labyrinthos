@@ -35,7 +35,7 @@ public enum BATTLESOUND
 {
     Heal,
     CardDraw,
-    Sheld,
+    Shield,
     Hit,
     TurnStart,
     TurnEnd,
@@ -88,20 +88,16 @@ public enum DEBUFFSOUND
 [Serializable]
 public class Sounds
 {
-    [Header("스킬북")]
-    public AudioClip skillbook_openBook;
+    [Header("스킬북")] public AudioClip skillbook_openBook;
     public AudioClip skillbook_closeBook;
-    [Header("카드 스킬북에 올려놓는 소리")] 
-    public AudioClip skillbook_cardOnBook;
+    [Header("카드 스킬북에 올려놓는 소리")] public AudioClip skillbook_cardOnBook;
     public AudioClip skillbook_cardNumUpDown;
     public AudioClip skillbook_turnPage;
-    [Header("지도")] 
-    public AudioClip map_choiceField;
+    [Header("지도")] public AudioClip map_choiceField;
     public AudioClip map_openDebuffWindow;
     public AudioClip map_choiceDebuff;
     public AudioClip map_showDebuffButton;
-    [Header("전투")] 
-    public AudioClip battle_heal;
+    [Header("전투")] public AudioClip battle_heal;
     public AudioClip battle_cardDraw;
     public AudioClip battle_sheld;
     public AudioClip battle_hit;
@@ -109,28 +105,22 @@ public class Sounds
     public AudioClip battle_turnEnd;
     public AudioClip battle_gameWin;
     public AudioClip battle_gameFaild;
-    [Header("이벤트")] 
-    public AudioClip event_choiceMouseUp;
+    [Header("이벤트")] public AudioClip event_choiceMouseUp;
     public AudioClip event_choiceButton;
-    [Header("상점")] 
-    public AudioClip shop_buyitem;
+    [Header("상점")] public AudioClip shop_buyitem;
     public AudioClip shop_soldOut;
     public AudioClip shop_throwingObj;
     public AudioClip shop_inTopBarIcon;
-    [Header("보상창")] 
-    public AudioClip reward_showRewardWindow;
+    [Header("보상창")] public AudioClip reward_showRewardWindow;
     public AudioClip reward_getQuestion;
     public AudioClip reward_getCardPiece;
     public AudioClip reward_lostHeal;
     public AudioClip reward_showRewardButton;
-    [Header("카드")] 
-    public AudioClip card_upCard;
+    [Header("카드")] public AudioClip card_upCard;
     public AudioClip card_goback;
     public AudioClip card_shuffling;
-    [Header("휴식방")] 
-    public AudioClip rest_heal;
-    [Header("저주바")] 
-    public AudioClip debuff_openbar;
+    [Header("휴식방")] public AudioClip rest_heal;
+    [Header("저주바")] public AudioClip debuff_openbar;
     public AudioClip debuff_closebar;
 }
 
@@ -140,7 +130,7 @@ public class SoundManager : Singleton<SoundManager>
 
     private void Awake()
     {
-        ExistInstance(this);
+        CheckExistInstanceAndDestroy(this);
     }
 
     public AudioClip[] BackGroundAudio;
@@ -293,7 +283,7 @@ public class SoundManager : Singleton<SoundManager>
             case BATTLESOUND.CardDraw:
                 clip = sounds.battle_cardDraw;
                 break;
-            case BATTLESOUND.Sheld:
+            case BATTLESOUND.Shield:
                 clip = sounds.battle_sheld;
                 break;
             case BATTLESOUND.Hit:

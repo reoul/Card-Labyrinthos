@@ -5,7 +5,7 @@ public class PlayerManager : Singleton<PlayerManager>
 {
     private void Awake()
     {
-        ExistInstance(this);
+        CheckExistInstanceAndDestroy(this);
     }
 
     [SerializeField] private int _hp;
@@ -19,7 +19,7 @@ public class PlayerManager : Singleton<PlayerManager>
         set
         {
             _hp = Mathf.Clamp(value, 0, MAXHp);
-            TopBar.Inst.UpdateText(TOPBAR_TYPE.HP);
+            TopBarManager.Inst.UpdateText(TOPBAR_TYPE.Hp);
         }
     }
 
@@ -30,7 +30,7 @@ public class PlayerManager : Singleton<PlayerManager>
         {
             _card_piece = Mathf.Clamp(value, 0, 9999);
             ;
-            TopBar.Inst.UpdateText(TOPBAR_TYPE.CARDPIECE);
+            TopBarManager.Inst.UpdateText(TOPBAR_TYPE.CardPiece);
         }
     }
 
@@ -40,7 +40,7 @@ public class PlayerManager : Singleton<PlayerManager>
         set
         {
             _question_card = Mathf.Clamp(value, 0, 99);
-            TopBar.Inst.UpdateText(TOPBAR_TYPE.QUESTION);
+            TopBarManager.Inst.UpdateText(TOPBAR_TYPE.Question);
         }
     }
 
@@ -58,8 +58,8 @@ public class PlayerManager : Singleton<PlayerManager>
     public IEnumerator SetupGameCoroutine()
     {
         yield return new WaitForEndOfFrame();
-        Player.Inst.hpbar.hp = Hp;
-        Player.Inst.hpbar.max_hp = MAXHp;
+        Player.Inst.hpbar.Hp = Hp;
+        Player.Inst.hpbar.MAXHp = MAXHp;
         Player.Inst.hpbar.Init();
     }
 }

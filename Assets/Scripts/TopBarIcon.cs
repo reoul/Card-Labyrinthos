@@ -1,58 +1,64 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public class TopBarIcon : MonoBehaviour
+public class TopBarIcon : MouseInteractionObject
 {
     public TOPBAR_TYPE type;
-    private bool onTopBarIcon;   //마우스가 필드 위에 있는지
-    private bool _isLock;
-    public bool isLock
-    {
-        get { return _isLock; }
-        private set { _isLock = value; }
-    }
+    
+    public bool IsLock { get; private set; }
 
-    private void OnMouseEnter()
+    protected override void OnMouseEnter()
     {
+        base.OnMouseEnter();
         SoundManager.Inst.Play(EVENTSOUND.ChoiceMouseup);
-        onTopBarIcon = true;
         switch (type)
         {
-            case TOPBAR_TYPE.BAG:
-            case TOPBAR_TYPE.SETTING:
-            case TOPBAR_TYPE.SKILL:
-                TopBar.Inst.OnMouseEnterIcon(type);
+            case TOPBAR_TYPE.Bag:
+            case TOPBAR_TYPE.Setting:
+            case TOPBAR_TYPE.Skill:
+                TopBarManager.Inst.OnMouseEnterIcon(type);
                 break;
+            case TOPBAR_TYPE.Hp:
+                break;
+            case TOPBAR_TYPE.Question:
+                break;
+            case TOPBAR_TYPE.CardPiece:
+                break;
+            case TOPBAR_TYPE.SceneName:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 
-    private void OnMouseExit()
+    protected override void OnMouseExit()
     {
-        onTopBarIcon = false;
+        base.OnMouseExit();
         switch (type)
         {
-            case TOPBAR_TYPE.BAG:
-            case TOPBAR_TYPE.SETTING:
-            case TOPBAR_TYPE.SKILL:
-                TopBar.Inst.OnMouseExitIcon(type);
+            case TOPBAR_TYPE.Bag:
+            case TOPBAR_TYPE.Setting:
+            case TOPBAR_TYPE.Skill:
+                TopBarManager.Inst.OnMouseExitIcon(type);
                 break;
+            case TOPBAR_TYPE.Hp:
+                break;
+            case TOPBAR_TYPE.Question:
+                break;
+            case TOPBAR_TYPE.CardPiece:
+                break;
+            case TOPBAR_TYPE.SceneName:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 
     private void OnMouseUp()
     {
-        if (onTopBarIcon)
+        if (OnMouse)
         {
-            TopBar.Inst.Open(this);
+            TopBarManager.Inst.Open(this);
         }
     }
-
-    public void Lock()
-    {
-        isLock = true;
-    }
-    public void UnLock()
-    {
-        isLock = false;
-    }
-
 }

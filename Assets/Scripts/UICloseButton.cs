@@ -1,24 +1,14 @@
 ﻿using UnityEngine;
 
-public class UICloseButton : MonoBehaviour
+public class UICloseButton : MouseInteractionObject
 {
-    private bool isOnButton;
-
-    private void OnMouseEnter()
-    {
-        isOnButton = true;
-    }
-
-    private void OnMouseExit()
-    {
-        isOnButton = false;
-    }
-
     private void OnMouseUp()
     {
-        if (isOnButton)
+        if (!OnMouse)
         {
-            GameManager.Inst.CloseAllUI();
+            return;
         }
+
+        GameManager.Inst.CloseAllUI();
     }
 }

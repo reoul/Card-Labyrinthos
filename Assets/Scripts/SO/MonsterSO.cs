@@ -3,14 +3,53 @@ using UnityEngine;
 
 public enum MONSTER_TYPE
 {
-    GOBLIN, KOBOLD, OGRE, OCULLOTHORAX, MIMIC, EARTH_WISP, WIND_WISP, FIRE_WISP, WATER_WISP, MINOTAUR,
-    RAT, MANDRAKE, DJINN_BANDIT, SATYR, SHADE, WASP, WEREWOLF, YETI, GOLEM, EXECUTIONER, FIRE_GOLEM, GHOUL,
-    ICE_GOLEM, IMP, NECROMANCER, PHANTOM_KNIGHT, REAPER, SLUG, UNDEAD_WARRIOR, NOMAL_CHEST, RED_OGRE, BOSS
+    Goblin,
+    Kobold,
+    Ogre,
+    Ocullothorax,
+    Mimic,
+    EarthWisp,
+    WindWisp,
+    FireWisp,
+    WaterWisp,
+    Minotaur,
+    Rat,
+    Mandrake,
+    DjinnBandit,
+    Satyr,
+    Shade,
+    Wasp,
+    Werewolf,
+    Yeti,
+    Golem,
+    Executioner,
+    FireGolem,
+    Ghoul,
+    IceGolem,
+    Imp,
+    Necromancer,
+    PhantomKnight,
+    Reaper,
+    Slug,
+    UndeadWarrior,
+    NomalChest,
+    RedOgre,
+    Boss
 }
 
-public enum MONSTER_DIFFICULTY { EASY, NOMAL, HARD, BOSS }
+public enum MONSTER_DIFFICULTY
+{
+    Easy,
+    Nomal,
+    Hard,
+    Boss
+}
 
-public enum PATTERN_TYPE { ATTACK, HEAL }
+public enum PATTERN_TYPE
+{
+    Attack,
+    Heal
+}
 
 [Serializable]
 public class PATTERN
@@ -25,25 +64,18 @@ public class PATTERN
     }
 }
 
-public enum CardType
-{
-    Designated,
-    NonDesignated
-}
-
 [Serializable]
 public class Monster
 {
-    public string name; //¸ó½ºÅÍ ÀÌ¸§
-    public int hp;    //¸ó½ºÅÍ Ã¼·Â
-    public MONSTER_TYPE type;   //Å¸ÀÔ
-    public GameObject prefab;   //¸ó½ºÅÍ ÇÁ¸®ÆÕ
+    public string name;
+    public int hp;
+    public MONSTER_TYPE type;
+    public GameObject prefab;
 
-    [Header("ÆÐÅÏ")]
-    public PATTERN pattern_1; //¾à°ø
-    public PATTERN pattern_2; //Áß°ø
-    public PATTERN pattern_3; //°­°ø
-    public PATTERN pattern_4; //È¸º¹
+    public PATTERN pattern_1;
+    public PATTERN pattern_2;
+    public PATTERN pattern_3;
+    public PATTERN pattern_4;
 
     public float attackDelay;
 }

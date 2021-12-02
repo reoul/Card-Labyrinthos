@@ -48,7 +48,7 @@ public enum REWARD_KIND
 }
 
 [Serializable]
-public class EventButton : MonoBehaviour
+public class EventButton : MouseInteractionObject
 {
     [SerializeField] private REWARD_KIND reward_kind;
 
@@ -82,26 +82,19 @@ public class EventButton : MonoBehaviour
                 reward_type1_2, index1_2, reward_type2, index2);
         }
     }
-
-    private bool onEvent; //마우스가 필드 위에 있는지
-
+    
     private void OnMouseUp()
     {
-        if (onEvent && IsAchieve && !RewardManager.Inst.activeRewardWindow &&
+        if (OnMouse && IsAchieve && !RewardManager.Inst.activeRewardWindow &&
             !FadeManager.Inst.isActiveFade && CardManager.Inst.MyHandCards.Count >= 3)
         {
             transform.parent.GetComponent<Event>().MouseUp(EventData);
         }
     }
 
-    private void OnMouseEnter()
+    protected override void OnMouseEnter()
     {
+        base.OnMouseEnter();
         SoundManager.Inst.Play(EVENTSOUND.ChoiceMouseup);
-        onEvent = true;
-    }
-
-    private void OnMouseExit()
-    {
-        onEvent = false;
     }
 }

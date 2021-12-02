@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class GameOverButton : MonoBehaviour
+public class GameOverButton : MouseInteractionObject
 {
     public enum Type
     {
@@ -11,13 +11,19 @@ public class GameOverButton : MonoBehaviour
 
     public Type type;
 
-    private void OnMouseEnter()
+    protected override void OnMouseEnter()
     {
+        base.OnMouseEnter();
         SoundManager.Inst.Play(EVENTSOUND.ChoiceMouseup);
     }
 
     private void OnMouseUp()
     {
+        if (!OnMouse)
+        {
+            return;
+        }
+
         switch (type)
         {
             case Type.Title:

@@ -10,7 +10,7 @@ public class BagManager : Singleton<BagManager>
 
     private void Awake()
     {
-        ExistInstance(this);
+        CheckExistInstanceAndDestroy(this);
     }
 
     [SerializeField] private List<TMP_Text> card_text;
@@ -35,7 +35,7 @@ public class BagManager : Singleton<BagManager>
             MapManager.Inst.isTutorialOpenBag = true;
             TalkWindow.Inst.SetFlagNext(true);
             TalkWindow.Inst.SetSkip(true);
-            TalkWindow.Inst.index2 = 1;
+            TalkWindow.Inst.Index2 = 1;
             MapManager.Inst.tutorialIndex++;
         }
 

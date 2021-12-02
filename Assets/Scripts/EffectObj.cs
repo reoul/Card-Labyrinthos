@@ -13,8 +13,8 @@ public class EffectObj : MonoBehaviour
         {
             case EffectObjType.Hit:
                 break;
-            case EffectObjType.Sheld:
-                SheldAnimation();
+            case EffectObjType.Shield:
+                ShieldAnimation();
                 break;
             case EffectObjType.Heal:
                 HealAnimation();
@@ -24,7 +24,7 @@ public class EffectObj : MonoBehaviour
         }
     }
 
-    private void SheldAnimation()
+    private void ShieldAnimation()
     {
         transform.DOMoveY(transform.position.y - 0.5f, 1);
         AnimationObjFade();

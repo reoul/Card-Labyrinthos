@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public enum IntroButtonType
 {
@@ -7,29 +8,23 @@ public enum IntroButtonType
     Quit
 }
 
-public class IntroButton : MonoBehaviour
+public class IntroButton : MouseInteractionObject
 {
-    private bool isButtonOn;
     private bool isClick;
     [SerializeField] private IntroButtonType type;
 
     private void OnMouseUp()
     {
-        if (isButtonOn && !isClick)
+        if (OnMouse && !isClick)
         {
             Click();
         }
     }
 
-    private void OnMouseEnter()
+    protected override void OnMouseEnter()
     {
+        base.OnMouseEnter();
         SoundManager.Inst.Play(EVENTSOUND.ChoiceMouseup);
-        isButtonOn = true;
-    }
-
-    private void OnMouseExit()
-    {
-        isButtonOn = false;
     }
 
     private void Click()
@@ -47,6 +42,8 @@ public class IntroButton : MonoBehaviour
             case IntroButtonType.Quit:
                 IntroManager.Inst.GameQuit();
                 break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 }

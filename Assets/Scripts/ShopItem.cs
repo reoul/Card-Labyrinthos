@@ -16,10 +16,9 @@ public class Item
     public int price;
 }
 
-public class ShopItem : MonoBehaviour
+public class ShopItem : MouseInteractionObject
 {
     public Item item;
-    private bool onItem; //마우스가 아이템 위에 있는지
     private Vector3 originalScale;
     private bool isMax;
     [SerializeField] private GameObject bottomBar;
@@ -32,7 +31,7 @@ public class ShopItem : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (!onItem || FadeManager.Inst.isActiveFade || isMax)
+        if (!OnMouse || FadeManager.Inst.isActiveFade || isMax)
         {
             return;
         }
@@ -43,21 +42,21 @@ public class ShopItem : MonoBehaviour
         }
     }
 
-    private void OnMouseEnter()
+    protected override void OnMouseEnter()
     {
+        base.OnMouseEnter();
         if (isMax || FadeManager.Inst.isActiveFade)
         {
             return;
         }
 
         SoundManager.Inst.Play(EVENTSOUND.ChoiceMouseup);
-        onItem = true;
         transform.localScale = originalScale + Vector3.one * 0.02f;
     }
 
-    private void OnMouseExit()
+    protected override void OnMouseExit()
     {
-        onItem = false;
+        base.OnMouseExit();
         transform.localScale = originalScale;
     }
 

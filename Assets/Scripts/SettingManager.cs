@@ -9,7 +9,7 @@ public class SettingManager : Singleton<SettingManager>
 
     private void Awake()
     {
-        ExistInstance(this);
+        CheckExistInstanceAndDestroy(this);
     }
 
     public void Open()

@@ -36,7 +36,7 @@ public class MapManager : Singleton<MapManager>
 {
     private void Awake()
     {
-        ExistInstance(this);
+        CheckExistInstanceAndDestroy(this);
     }
 
     public FieldData fieldData;
@@ -352,7 +352,7 @@ public class MapManager : Singleton<MapManager>
     private IEnumerator MapTutorialBattleCoroutine()
     {
         yield return StartCoroutine(GhostManager.Inst.ShowGhost());
-        for (int i = 0; i < TalkWindow.Inst.talks[1].Count; i++)
+        for (int i = 0; i < TalkWindow.Inst.TalkLists[1].Count; i++)
         {
             if (i == 0)
             {
@@ -385,12 +385,12 @@ public class MapManager : Singleton<MapManager>
     private IEnumerator MapTutorialBagCoroutine() //가방 설명
     {
         yield return StartCoroutine(GhostManager.Inst.ShowGhost());
-        for (var i = 0; i < TalkWindow.Inst.talks[3].Count; i++)
+        for (var i = 0; i < TalkWindow.Inst.TalkLists[3].Count; i++)
         {
             if (i == 0)
             {
                 ArrowManager.Inst.CreateArrowObj(
-                    TopBar.Inst.GetIcon(TOPBAR_TYPE.BAG).transform.position + new Vector3(0, -1, 0),
+                    TopBarManager.Inst.GetIcon(TOPBAR_TYPE.Bag).transform.position + new Vector3(0, -1, 0),
                     ArrowCreateDirection.Down);
             }
             else if (i == 1)
@@ -415,7 +415,7 @@ public class MapManager : Singleton<MapManager>
     private IEnumerator MapTutorialDebuffCoroutine() //Debuff 설명
     {
         yield return StartCoroutine(GhostManager.Inst.ShowGhost());
-        for (var i = 0; i < TalkWindow.Inst.talks[5].Count; i++)
+        for (var i = 0; i < TalkWindow.Inst.TalkLists[5].Count; i++)
         {
             yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(5, i));
             yield return StartCoroutine(TalkWindow.Inst.CheckFlagIndexCoroutine());
@@ -431,7 +431,7 @@ public class MapManager : Singleton<MapManager>
     private IEnumerator MapTutorialRestCoroutine()
     {
         yield return StartCoroutine(GhostManager.Inst.ShowGhost());
-        for (var i = 0; i < TalkWindow.Inst.talks[7].Count; i++)
+        for (var i = 0; i < TalkWindow.Inst.TalkLists[7].Count; i++)
         {
             ArrowManager.Inst.CreateArrowObj(fields[4].transform.position + Vector3.right, ArrowCreateDirection.Right,
                 fields[4].transform);
@@ -449,7 +449,7 @@ public class MapManager : Singleton<MapManager>
     private IEnumerator MapTutorialEventCoroutine()
     {
         yield return StartCoroutine(GhostManager.Inst.ShowGhost());
-        for (var i = 0; i < TalkWindow.Inst.talks[9].Count; i++)
+        for (var i = 0; i < TalkWindow.Inst.TalkLists[9].Count; i++)
         {
             ArrowManager.Inst.CreateArrowObj(fields[5].transform.position + Vector3.right, ArrowCreateDirection.Right,
                 fields[5].transform);
@@ -469,7 +469,7 @@ public class MapManager : Singleton<MapManager>
     {
         yield return StartCoroutine(GhostManager.Inst.ShowGhost());
         fields[7].isReady = false;
-        for (var i = 0; i < TalkWindow.Inst.talks[11].Count; i++)
+        for (var i = 0; i < TalkWindow.Inst.TalkLists[11].Count; i++)
         {
             ArrowManager.Inst.CreateArrowObj(fields[6].transform.position + Vector3.right, ArrowCreateDirection.Right,
                 fields[6].transform);
@@ -487,7 +487,7 @@ public class MapManager : Singleton<MapManager>
     {
         fields[6].isReady = false;
         yield return StartCoroutine(GhostManager.Inst.ShowGhost());
-        for (var i = 0; i < TalkWindow.Inst.talks[13].Count; i++)
+        for (var i = 0; i < TalkWindow.Inst.TalkLists[13].Count; i++)
         {
             if (i == 0)
             {

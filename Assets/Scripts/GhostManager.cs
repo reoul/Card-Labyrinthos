@@ -8,7 +8,7 @@ public class GhostManager : Singleton<GhostManager>
 
     private void Awake()
     {
-        ExistInstance(this);
+        CheckExistInstanceAndDestroy(this);
     }
 
     public IEnumerator ShowGhost()
@@ -27,11 +27,6 @@ public class GhostManager : Singleton<GhostManager>
     public void MoveOriginPos()
     {
         transform.position = new Vector3(-7.39f, 2.85f, -5);
-    }
-
-    public void MoveTutorialPos()
-    {
-        transform.position = new Vector3(-7.95f, -2.88f, -5);
     }
 
     public void MoveTutorialSkillPos()

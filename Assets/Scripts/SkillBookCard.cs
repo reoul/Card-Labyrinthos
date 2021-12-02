@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-public class SkillBookCard : MonoBehaviour
+public class SkillBookCard : MouseInteractionObject
 {
     public GameObject frontCard;
     public Card curSelectCard;

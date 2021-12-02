@@ -39,7 +39,7 @@ public class DebuffManager : Singleton<DebuffManager>
 
     private void Awake()
     {
-        ExistInstance(this);
+        CheckExistInstanceAndDestroy(this);
     }
 
     public void CheckDebuff()
@@ -85,7 +85,7 @@ public class DebuffManager : Singleton<DebuffManager>
                 EnemyManager.Inst.enemys[0].isVampire = true;
                 break;
             case DEBUFF_TYPE.Debuff7: //매턴마다 방어도가 3씩 쌓인다
-                EnemyManager.Inst.enemys[0].hpbar.SetTurnStartSheld(3);
+                EnemyManager.Inst.enemys[0].hpbar.SetTurnStartShield(3);
                 break;
         }
     }

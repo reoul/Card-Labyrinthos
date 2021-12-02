@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Rest : MonoBehaviour
+public class Rest : MouseInteractionObject
 {
-    private bool onRestButton; //마우스가 필드 위에 있는지
     private bool isTutorial;
     private bool isClick;
 
@@ -16,19 +15,9 @@ public class Rest : MonoBehaviour
         }
     }
 
-    private void OnMouseEnter()
-    {
-        onRestButton = true;
-    }
-
-    private void OnMouseExit()
-    {
-        onRestButton = false;
-    }
-
     private void OnMouseUp()
     {
-        if (onRestButton && !FadeManager.Inst.isActiveFade && !isTutorial && !isClick)
+        if (OnMouse && !FadeManager.Inst.isActiveFade && !isTutorial && !isClick)
         {
             StartCoroutine(RestCoroutine());
         }
@@ -49,7 +38,7 @@ public class Rest : MonoBehaviour
         isTutorial = true;
         yield return new WaitForSeconds(1);
         yield return StartCoroutine(GhostManager.Inst.ShowGhost());
-        for (var i = 0; i < TalkWindow.Inst.talks[8].Count; i++)
+        for (var i = 0; i < TalkWindow.Inst.TalkLists[8].Count; i++)
         {
             ArrowManager.Inst.CreateArrowObj(transform.position + Vector3.right * 2, ArrowCreateDirection.Right);
             yield return StartCoroutine(TalkWindow.Inst.TalkTypingCoroutine(8, i));

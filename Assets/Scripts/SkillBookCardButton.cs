@@ -2,11 +2,9 @@
 using TMPro;
 using UnityEngine;
 
-public class SkillBookCardButton : MonoBehaviour
+public class SkillBookCardButton : MouseInteractionObject
 {
     public SkillBookCard parent;
-
-    [SerializeField] private bool onButton;
 
     private enum Type
     {
@@ -25,7 +23,7 @@ public class SkillBookCardButton : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (onButton && isActive)
+        if (OnMouse && isActive)
         {
             switch (type)
             {
@@ -50,16 +48,6 @@ public class SkillBookCardButton : MonoBehaviour
                     throw new ArgumentOutOfRangeException();
             }
         }
-    }
-
-    private void OnMouseEnter()
-    {
-        onButton = true;
-    }
-
-    private void OnMouseExit()
-    {
-        onButton = false;
     }
 
     public void SetButtonActive(bool isActive)

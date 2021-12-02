@@ -13,9 +13,8 @@ public enum SKILL_TYPE
     Skill6
 }
 
-public class SkillManager : MonoBehaviour
+public class SkillManager : Singleton<SkillManager>
 {
-    public static SkillManager Inst;
     private bool isOpen;
     [SerializeField] private int page;
 
@@ -39,15 +38,7 @@ public class SkillManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Inst == null)
-        {
-            Inst = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        CheckExistInstanceAndDestroy(this);
     }
 
     public void Init()
@@ -73,7 +64,7 @@ public class SkillManager : MonoBehaviour
             TutorialManager.Inst.isToturialOpenSkill = true;
             TalkWindow.Inst.SetFlagNext(true);
             TalkWindow.Inst.SetSkip(true);
-            TalkWindow.Inst.index2 = 1;
+            TalkWindow.Inst.Index2 = 1;
         }
     }
 
@@ -93,27 +84,30 @@ public class SkillManager : MonoBehaviour
             return;
         }
 
-        //todo : 여기부터 해야함
-        for (int i = 0; i < choiceCards.Count; i++)
+        foreach (SkillBookCard choiceCard in choiceCards)
         {
-            if (choiceCards[i].curSelectCard == card)
+            if (choiceCard.curSelectCard != card)
             {
-                choiceCards[i].curSelectCard = null;
-                choiceCards[i].HideCard();
-                choiceCards[i].SetColorAlpha(true);
-                choiceCards[i].GetComponentInChildren<TMP_Text>().text = "+";
+                continue;
             }
+
+            choiceCard.curSelectCard = null;
+            choiceCard.HideCard();
+            choiceCard.SetColorAlpha(true);
+            choiceCard.GetComponentInChildren<TMP_Text>().text = "+";
         }
 
         SoundManager.Inst.Play(SKILLBOOKSOUND.CardONBook);
         skillBookCard.frontCard.SetActive(true);
-        skillBookCard.OriginNum = card.final_Num;
+        skillBookCard.OriginNum = card.FinalNum;
         skillBookCard.frontCard.GetComponent<SkillBookCard>().OriginNum =
             skillBookCard.frontCard.GetComponent<SkillBookCard>().isQuestionMark
-                ? RandomNum(card.final_Num)
-                : card.final_Num;
+                ? RandomNum(card.FinalNum)
+                : card.FinalNum;
+
         skillBookCard.SetColorAlpha(false);
-        skillBookCard.GetComponentInChildren<TMP_Text>().text = (card.final_Num + 1).ToString();
+        skillBookCard.GetComponentInChildren<TMP_Text>().text = (card.FinalNum + 1).ToString();
+
         if (skillBookCard.curSelectCard == null)
         {
             card.SetColorAlpha(true);
@@ -129,6 +123,9 @@ public class SkillManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 입력된 값과 다른 랜던한 값을 리턴해준다.
+    /// </summary>
     private int RandomNum(int num)
     {
         int result = 0;
@@ -142,11 +139,11 @@ public class SkillManager : MonoBehaviour
 
     public void ApplyCardAll()
     {
-        for (int i = 0; i < applyCards.Count; i++)
+        foreach (SkillBookCard applyCard in applyCards)
         {
-            if (applyCards[i].gameObject.activeInHierarchy)
+            if (applyCard.gameObject.activeInHierarchy)
             {
-                applyCards[i].curSelectCard.SetFinalNum(applyCards[i].CurNum);
+                applyCard.curSelectCard.SetFinalNum(applyCard.CurNum);
             }
         }
 
@@ -156,26 +153,27 @@ public class SkillManager : MonoBehaviour
 
     public void SelectPage(int index)
     {
-        for (int i = 0; i < pages.Count; i++)
+        for (var i = 0; i < pages.Count; i++)
         {
-            if (pages[i].gameObject.activeInHierarchy)
+            if (!pages[i].gameObject.activeInHierarchy)
             {
-                if (i == index)
-                {
-                    return;
-                }
-
-                pages[i].Init();
-                pages[i].gameObject.SetActive(false);
-                break;
+                continue;
             }
+
+            if (i == index)
+            {
+                return;
+            }
+
+            pages[i].Init();
+            pages[i].gameObject.SetActive(false);
+            break;
         }
 
         SoundManager.Inst.Play(SKILLBOOKSOUND.TurnPage);
-        for (int i = 0; i < bookmarks.Count; i++)
+        foreach (SkillBookCardButton bookmark in bookmarks)
         {
-            //bookmarks[i].gameObject.SetActive(CardManager.Inst.cardDeck[0] >= (i * 2 + 1) ? true : false);
-            bookmarks[i].gameObject.SetActive(true);
+            bookmark.gameObject.SetActive(true);
         }
 
         bookmarks[page].transform.localPosition += new Vector3(-0.09158f, 0, 0);
@@ -185,35 +183,41 @@ public class SkillManager : MonoBehaviour
         pages[page].Show();
     }
 
-    public void InitCard()
+    private void InitCard()
     {
-        for (int i = 0; i < applyCards.Count; i++)
+        foreach (SkillBookCard applyCard in applyCards)
         {
-            if (applyCards[i].gameObject.activeInHierarchy)
+            if (applyCard.gameObject.activeInHierarchy)
             {
-                applyCards[i].curSelectCard.SetColorAlpha(false);
+                applyCard.curSelectCard.SetColorAlpha(false);
             }
         }
 
-        for (int i = 0; i < choiceCards.Count; i++)
+        foreach (SkillBookCard choiceCard in choiceCards)
         {
-            choiceCards[i].curSelectCard = null;
-            choiceCards[i].HideCard();
-            choiceCards[i].SetColorAlpha(true);
-            choiceCards[i].GetComponentInChildren<TMP_Text>().text = "+";
+            choiceCard.curSelectCard = null;
+            choiceCard.HideCard();
+            choiceCard.SetColorAlpha(true);
+            choiceCard.GetComponentInChildren<TMP_Text>().text = "+";
         }
     }
 
+    /// <summary>
+    /// 스킬들의 사용 횟수를 초기화해준다.
+    /// </summary>
     public void InitSkillTime()
     {
-        for (int i = 0; i < isUseSkill.Length; i++)
+        for (var i = 0; i < isUseSkill.Length; i++)
         {
             isUseSkill[i] = false;
             skillXObjs[i].SetActive(false);
         }
     }
 
-    public void UseSkill(bool use)
+    /// <summary>
+    /// 현재 페이지 스킬의 사용 여부를 설정해준다.
+    /// </summary>
+    private void UseSkill(bool use)
     {
         isUseSkill[page] = use;
         skillXObjs[page].SetActive(use);

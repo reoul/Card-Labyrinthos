@@ -18,24 +18,7 @@ public class ArrowManager : Singleton<ArrowManager>
     private void Awake()
     {
         arrows = new List<Arrow>();
-        ExistInstance(this); 
-    }
-
-    public void DestroyAllArrow()
-    {
-        var arrowCnt = arrows.Count;
-        for (var i = 0; i < arrowCnt; i++)
-        {
-            if (arrows[0] == null || arrows[0].isActiveAndEnabled == false)
-            {
-                arrows.RemoveAt(0);
-                i++;
-            }
-
-            var arrow = arrows[0];
-            arrows.RemoveAt(0);
-            arrow.ArrowDestory();
-        }
+        CheckExistInstanceAndDestroy(this);
     }
 
     public void CreateArrowObj(Vector3 pos, ArrowCreateDirection direction, Transform parent = null)
@@ -50,7 +33,7 @@ public class ArrowManager : Singleton<ArrowManager>
 
     private Quaternion GetRotate(ArrowCreateDirection direction)
     {
-        Quaternion quaternion = Quaternion.identity;
+        var quaternion = Quaternion.identity;
         switch (direction)
         {
             case ArrowCreateDirection.Left:
@@ -71,5 +54,22 @@ public class ArrowManager : Singleton<ArrowManager>
         }
 
         return quaternion;
+    }
+
+    public void DestroyAllArrow()
+    {
+        var arrowCnt = arrows.Count;
+        for (var i = 0; i < arrowCnt; i++)
+        {
+            if (arrows[0] == null || arrows[0].isActiveAndEnabled == false)
+            {
+                arrows.RemoveAt(0);
+                i++;
+            }
+
+            var arrow = arrows[0];
+            arrows.RemoveAt(0);
+            arrow.ArrowDestroy();
+        }
     }
 }

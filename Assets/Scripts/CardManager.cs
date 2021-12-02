@@ -18,22 +18,18 @@ public class CardManager : Singleton<CardManager>
 {
     private void Awake()
     {
-        ExistInstance(this);
+        CheckExistInstanceAndDestroy(this);
     }
 
-    //[SerializeField] ItemSO itemSO;
     [SerializeField] private GameObject cardPrefab;
     [SerializeField] private GameObject beenCardPrefab;
     [SerializeField] private Transform cardSpawnPoint; //뽑기 카드 더미 위치
     [SerializeField] private Transform cardEndPoint; //버린 카드 더미 위치
     [SerializeField] private Transform myCardLeft; //내 손패 왼쪽 포지션
     [SerializeField] private Transform myCardRight; //내 손패 오른쪽 포지션
-    [SerializeField] private Transform CardCenterPoint;
 
     public int[] cardDeck; //현재 플레이어 카드 덱, 1~6
     public int[] fixedCardNum; //카드 숫자 고정 시킬때 사용 -1이면 고정 안함
-
-    public GameObject IntroCardPrefab;
 
     public List<Card> MyHandCards; //내 손에 들고 있는 카드 리스트
     [SerializeField] private List<Card> itemBuffer; //뽑을 카드 더미
@@ -58,10 +54,10 @@ public class CardManager : Singleton<CardManager>
     {
         get
         {
-            int sum = 0;
-            for (int i = 0; i < MyHandCards.Count; i++)
+            var sum = 0;
+            foreach (Card card in MyHandCards)
             {
-                sum += MyHandCards[i].final_Num + 1;
+                sum += card.FinalNum + 1;
             }
 
             return sum;
@@ -92,7 +88,10 @@ public class CardManager : Singleton<CardManager>
         DetectCardArea();
     }
 
-    private Card PopItem() //카드 뽑기
+    /// <summary>
+    /// 카드 뽑기
+    /// </summary>
+    private Card PopItem()
     {
         if (itemBuffer.Count == 0)
         {
@@ -104,14 +103,17 @@ public class CardManager : Singleton<CardManager>
         return card;
     }
 
-    private void SetupItemBuffer() //초기 카드 생성
+    /// <summary>
+    /// 초기 카드 생성
+    /// </summary>
+    private void SetupItemBuffer()
     {
         itemBuffer = new List<Card>();
         tombItemBuffer = new List<Card>();
         MyHandCards = new List<Card>();
-        for (int i = 0; i < cardDeck.Length; i++)
+        for (var i = 0; i < cardDeck.Length; i++)
         {
-            for (int j = 0; j < cardDeck[i]; j++)
+            for (var j = 0; j < cardDeck[i]; j++)
             {
                 var cardObj = Instantiate(cardPrefab, cardSpawnPoint.position, Utils.CardRotate);
                 var card = cardObj.GetComponentInChildren<Card>();
@@ -177,9 +179,9 @@ public class CardManager : Singleton<CardManager>
     {
         foreach (Card card in itemBuffer)
         {
-            card.parent.position = cardSpawnPoint.position;
-            card.parent.rotation = Utils.CardRotate;
-            card.parent.localScale = Vector3.zero;
+            card.Parent.position = cardSpawnPoint.position;
+            card.Parent.rotation = Utils.CardRotate;
+            card.Parent.localScale = Vector3.zero;
         }
     }
 
@@ -187,21 +189,21 @@ public class CardManager : Singleton<CardManager>
     {
         while (MyHandCards.Count > 0)
         {
-            var card = MyHandCards[0].parent.gameObject;
+            var card = MyHandCards[0].Parent.gameObject;
             MyHandCards.RemoveAt(0);
             Destroy(card);
         }
 
         while (itemBuffer.Count > 0)
         {
-            var card = itemBuffer[0].parent.gameObject;
+            var card = itemBuffer[0].Parent.gameObject;
             itemBuffer.RemoveAt(0);
             Destroy(card);
         }
 
         while (tombItemBuffer.Count > 0)
         {
-            var card = tombItemBuffer[0].parent.gameObject;
+            var card = tombItemBuffer[0].Parent.gameObject;
             tombItemBuffer.RemoveAt(0);
             Destroy(card);
         }
@@ -228,7 +230,7 @@ public class CardManager : Singleton<CardManager>
 
         InitCard();
     }
-    
+
     private void OnDestroy()
     {
         TurnManager.OnAddCard -= AddCard;
@@ -238,7 +240,7 @@ public class CardManager : Singleton<CardManager>
     {
         SoundManager.Inst.Play(BATTLESOUND.CardDraw);
         Card card = PopItem();
-        card.parent.gameObject.SetActive(true);
+        card.Parent.gameObject.SetActive(true);
         card.SetActiveChildObj(true);
         MyHandCards.Add(card);
 
@@ -277,9 +279,9 @@ public class CardManager : Singleton<CardManager>
         }
 
         selectCard = null;
-        for (int i = 0; i < MyHandCards.Count; i++)
+        foreach (Card card in MyHandCards)
         {
-            MyHandCards[i].FinishScene();
+            card.FinishScene();
         }
     }
 
@@ -399,8 +401,8 @@ public class CardManager : Singleton<CardManager>
 
                 isUse = true;
 
-                int damage = selectCard.final_Num == EnemyManager.Inst.enemys[0].GetComponent<Enemy>().weaknessNum
-                    ? selectCard.final_Num + 1
+                int damage = selectCard.FinalNum == EnemyManager.Inst.enemys[0].GetComponent<Enemy>().weaknessNum
+                    ? selectCard.FinalNum + 1
                     : 1;
 
                 UseCard(EnemyManager.Inst.enemys[0].gameObject);
@@ -437,11 +439,11 @@ public class CardManager : Singleton<CardManager>
         tombItemBuffer.Add(selectCard);
         MyHandCards.Remove(selectCard);
         CardAlignment();
-        var position = selectCard.parent.position;
+        var position = selectCard.Parent.position;
         position = new Vector3(position.x, position.y, -3);
-        selectCard.parent.position = position;
-        selectCard.originPRS.pos = position;
-        selectCard.originPRS.scale = Vector3.one * 0.1f;
+        selectCard.Parent.position = position;
+        selectCard.originPRS.Pos = position;
+        selectCard.originPRS.Scale = Vector3.one * 0.1f;
         selectCard.Use(obj);
         CardFinishMove();
     }
@@ -451,7 +453,7 @@ public class CardManager : Singleton<CardManager>
         if (!onMyCardArea)
         {
             selectCard.MoveTransform(
-                new PRS(Utils.MousePos, Utils.CardRotate, selectCard.originPRS.scale * 0.5f), false);
+                new PRS(Utils.MousePos, Utils.CardRotate, selectCard.originPRS.Scale * 0.5f), false);
         }
         else
         {
@@ -464,10 +466,10 @@ public class CardManager : Singleton<CardManager>
         selectCard.FinishCard();
         selectCard.GetComponent<Order>().SetOriginOrder(3700);
         waypoints = new Vector3[2];
-        waypoints.SetValue(selectCard.parent.position, 0);
+        waypoints.SetValue(selectCard.Parent.position, 0);
         waypoints.SetValue(waypoint2.position, 0);
         waypoints.SetValue(cardEndPoint.position, 1);
-        var target = selectCard.parent.gameObject;
+        var target = selectCard.Parent.gameObject;
         target.transform.DOPath(waypoints, 1, PathType.CatmullRom).SetLookAt(cardEndPoint).SetEase(ease)
               .OnComplete(() => { target.SetActive(false); });
         selectCard = null;
@@ -477,14 +479,14 @@ public class CardManager : Singleton<CardManager>
     {
         if (isEnlarge)
         {
-            var enlargePos = new Vector3(card.originPRS.pos.x, onMyCardArea ? -4 : card.originPRS.pos.y,
-                onMyCardArea ? -100 : card.originPRS.pos.z);
+            var enlargePos = new Vector3(card.originPRS.Pos.x, onMyCardArea ? -4 : card.originPRS.Pos.y,
+                onMyCardArea ? -100 : card.originPRS.Pos.z);
             card.MoveTransform(new PRS(enlargePos, Utils.CardRotate, Vector3.one * (onMyCardArea ? 1.5f : 1)),
                 false);
         }
         else
         {
-            var parent = card.parent.transform;
+            var parent = card.Parent.transform;
             card.MoveTransform(
                 isUse
                     ? new PRS(parent.position, parent.rotation, Vector3.one)

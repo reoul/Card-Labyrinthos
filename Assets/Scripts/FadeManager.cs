@@ -16,7 +16,7 @@ public class FadeManager : Singleton<FadeManager>
 
     private void Awake()
     {
-        ExistInstance(this);
+        CheckExistInstanceAndDestroy(this);
         SR = GetComponent<SpriteRenderer>();
         isActiveFade = false;
     }
@@ -45,14 +45,14 @@ public class FadeManager : Singleton<FadeManager>
         }
 
         yield return delay01;
-        TopBar.Inst.InitPosition();
+        TopBarManager.Inst.InitPosition();
         RewardManager.Inst.Init();
         BagManager.Inst.Init();
         SkillManager.Inst.Init();
         Init();
         
         yield return delay01;
-        TopBar.Inst.UpdateText(TOPBAR_TYPE.SCENENAME);
+        TopBarManager.Inst.UpdateText(TOPBAR_TYPE.SceneName);
         yield return StartCoroutine(fadeOutAfter1 ?? EmptyCoroutine());
         yield return StartCoroutine(fadeOutAfter2 ?? EmptyCoroutine());
         yield return StartCoroutine(fadeOutAfter3 ?? EmptyCoroutine());

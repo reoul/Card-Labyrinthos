@@ -51,7 +51,7 @@ public class EventManager : Singleton<EventManager>
 
     private void Awake()
     {
-        ExistInstance(this);
+        CheckExistInstanceAndDestroy(this);
     }
 
     public void Choice(EventData eventData) //조건에 맞는 해당 선택지를 클릭했을때
@@ -159,7 +159,7 @@ public class EventManager : Singleton<EventManager>
         yield return new WaitForSeconds(1);
         TalkWindow.Inst.InitFlag();
         yield return StartCoroutine(GhostManager.Inst.ShowGhost());
-        for (var i = 0; i < TalkWindow.Inst.talks[10].Count; i++)
+        for (var i = 0; i < TalkWindow.Inst.TalkLists[10].Count; i++)
         {
             if (i == 0)
             {

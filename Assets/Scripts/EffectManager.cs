@@ -5,7 +5,7 @@ using UnityEngine;
 public enum EffectObjType
 {
     Hit,
-    Sheld,
+    Shield,
     Heal
 }
 
@@ -17,7 +17,7 @@ public class EffectManager : Singleton<EffectManager>
 
     private void Awake()
     {
-        ExistInstance(this);
+        CheckExistInstanceAndDestroy(this);
     }
 
     private GameObject GetEffectObj(EffectObjType type) //이펙트 타입에 따른 오브젝트 반환
@@ -26,7 +26,7 @@ public class EffectManager : Singleton<EffectManager>
         {
             case EffectObjType.Hit:
                 return hitObj;
-            case EffectObjType.Sheld:
+            case EffectObjType.Shield:
                 return sheldObj;
             case EffectObjType.Heal:
                 return healObj;
@@ -40,11 +40,11 @@ public class EffectManager : Singleton<EffectManager>
         StartCoroutine(DelayAndMultipleCreate(type, pos, delay, destoryTime, cnt));
     }
 
-    private void CreateObjAndDestory(EffectObjType type, Vector3 pos, float destoryTime = 1)
+    private void CreateObjAndDestroy(EffectObjType type, Vector3 pos, float destoryTime = 1)
     {
-        GameObject obj = Instantiate(GetEffectObj(type), pos, Quaternion.identity);
-        obj.GetComponent<EffectObj>().Init(type);
-        Destroy(obj, destoryTime);
+        var effectObj = Instantiate(GetEffectObj(type), pos, Quaternion.identity);
+        effectObj.GetComponent<EffectObj>().Init(type);
+        Destroy(effectObj, destoryTime);
     }
 
     private IEnumerator DelayAndMultipleCreate(EffectObjType type, Vector3 pos, float delay = 0, float destoryTime = 1,
@@ -53,7 +53,7 @@ public class EffectManager : Singleton<EffectManager>
         yield return new WaitForSeconds(delay);
         for (var i = 0; i < cnt; i++)
         {
-            CreateObjAndDestory(type, pos, destoryTime);
+            CreateObjAndDestroy(type, pos, destoryTime);
             yield return new WaitForSeconds(multipleDelay);
         }
     }
